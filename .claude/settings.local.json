@@ -1,0 +1,13 @@
+{
+  "env": {
+    "SHELL": "C:\\软件\\Git\\bin\\bash.exe"
+  },
+  "permissions": {
+    "allow": [
+      "Skill(update-config)",
+      "Skill(update-config:*)",
+      "Bash(python -)"
+    ]
+  },
+  "defaultShell": "bash"
+}

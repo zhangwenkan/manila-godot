@@ -1,0 +1,9 @@
+# Godot 4+ specific ignores
+.godot/
+/android/
+
+# Project-local tool environments
+/tools/agent_sprite_forge/.venv/
+/tools/agent_sprite_forge/**/__pycache__/
+/generated/agent_sprite_forge/.cache/
+/generated/agent_sprite_forge/tmp/

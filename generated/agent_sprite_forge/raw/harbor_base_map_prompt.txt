@@ -1,0 +1,35 @@
+Create a ground-only base map for a horizontal 2D boat board-game track set in a Manila-style harbor.
+
+Base layer only. Do not include boats, stakes, numbers, dice, crates, barrels, signs, buoys, ropes, UI, text, labels, characters, or foreground props.
+
+The map should support a boat moving from left to right across numbered future stake positions.
+
+Layout:
+- wide horizontal water lane across the entire map
+- clear open sailing corridor
+- dock or shoreline boundaries above and below the lane
+- subtle harbor platforms and pier edges at the sides
+- enough empty space for 10 future stake markers along the route
+- keep the center route clean and readable
+- avoid visual clutter where the boat will move
+- make the map suitable for a 1280x720 viewport, with possible wider horizontal scrolling
+
+Visual theme:
+- Manila-inspired tropical harbor
+- blue-green water
+- warm sunlight
+- weathered wooden dock edges
+- concrete quay shapes
+- subtle waves and painted water texture
+- bright, friendly, stylized 2D game art
+
+Important:
+- base terrain and water only
+- no individual objects
+- no markers
+- no numbers
+- no characters
+- no boats
+- no text
+- no UI
+- collision-friendly dock and shoreline boundaries

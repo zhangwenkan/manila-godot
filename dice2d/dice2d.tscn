@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dd1c2eu5xq2bn"]
+
+[ext_resource type="Script" path="res://dice2d/dice2d.gd" id="1_dice2d"]
+
+[node name="Dice2D" type="Node2D"]
+script = ExtResource("1_dice2d")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+centered = true

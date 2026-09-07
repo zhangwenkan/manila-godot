@@ -1,0 +1,12 @@
+{
+     "terminal.integrated.profiles.windows": {
+     "Git Bash": {
+        "path": "C:\\软件\\Git\\Git-Bash.exe"
+      }
+    },
+    "terminal.integrated.defaultProfile.windows": "Git Bash",
+    "terminal.integrated.automationProfile.windows": {
+        "path": "C:\\软件\\Git\\Git-Bash.exe"
+    },
+    "godotTools.editorPath.godot4": "c:\\Users\\51440\\Desktop\\Godot_v4.6.1-stable_win64.exe"
+}
