@@ -15,7 +15,6 @@ var _felt: ImageTexture
 
 func _ready() -> void:
 	_wood = _make_wood_texture()
-	_felt = _make_felt_texture()
 	_body = StaticBody3D.new()
 	_body.name = "TrayCollision"
 	add_child(_body)
@@ -35,6 +34,7 @@ func configure(new_radii: Vector2) -> void:
 	if new_radii.is_equal_approx(radii) and _surface.mesh != null:
 		return
 	radii = new_radii
+	_felt = _make_felt_texture()
 	var floor_points := PackedVector3Array()
 	for i in SEGMENTS:
 		var a := _ellipse_point(i, 0.0, 0.0)
@@ -148,6 +148,9 @@ func _make_wood_texture() -> ImageTexture:
 
 func _make_felt_texture() -> ImageTexture:
 	var image := Image.create(256, 256, false, Image.FORMAT_RGB8)
+	var compass := _make_compass_stamp()
+	# Keep the printed compass circular on the tray as its aspect ratio changes.
+	var compass_scale := radii / (minf(radii.x, radii.y) * 1.45)
 	var rng := RandomNumberGenerator.new()
 	rng.seed = 906
 	for y in 256:
@@ -161,11 +164,65 @@ func _make_felt_texture() -> ImageTexture:
 			var angle := atan2(offset.y, offset.x)
 			if absf(distance - 116.0) < 0.6 and int((angle + PI) * 72.0) % 5 < 3:
 				color = Color("#8a9b7e")
-			# A worn compass rose and stitch ring belong to the tray's canvas lining.
-			var rose := offset / Vector2(27.0, 42.0)
-			if absf(rose.x) + absf(rose.y) < 1.0:
-				color = Color("#4c7770") if rose.x * rose.y > 0.0 else Color("#6b8d7c")
-			if absf(distance - 35.0) < 0.6:
-				color = Color("#638579")
+			var stamp_position := Vector2i((offset * compass_scale + Vector2(64.0, 64.0)).floor())
+			if Rect2i(0, 0, 128, 128).has_point(stamp_position):
+				var ink := compass.get_pixelv(stamp_position)
+				if ink.a > 0.0:
+					color = ink
 			image.set_pixel(x, y, color)
 	return ImageTexture.create_from_image(image)
+
+
+func _make_compass_stamp() -> Image:
+	var image := Image.create(128, 128, false, Image.FORMAT_RGBA8)
+	image.fill(Color(0.0, 0.0, 0.0, 0.0))
+	var outline := Color("#203e39")
+	var brass := Color("#cbbb85")
+	for y in 128:
+		for x in 128:
+			var offset := Vector2(x + 0.5, y + 0.5) - Vector2(64.0, 64.0)
+			var distance := offset.length()
+			var ink := Color(0.0, 0.0, 0.0, 0.0)
+			if distance >= 44.0 and distance <= 48.0:
+				ink = brass if distance >= 45.0 and distance <= 47.0 else outline
+			var tick_angle := snappedf(offset.angle(), TAU / 32.0)
+			var tick_direction := Vector2.from_angle(tick_angle)
+			var tick_index := int(round(tick_angle * 32.0 / TAU))
+			var tick_start := 38.0 if tick_index % 4 == 0 else 41.0
+			if offset.dot(tick_direction) >= tick_start and distance < 44.0 and absf(offset.dot(tick_direction.orthogonal())) < 0.8:
+				ink = brass
+			# Short diagonal points sit behind the four long, split-color needles.
+			for point in [1, 3, 5, 7, 0, 2, 4, 6]:
+				var direction := Vector2.from_angle(-PI * 0.5 + point * PI * 0.25)
+				var along := offset.dot(direction)
+				var across := offset.dot(direction.orthogonal())
+				var length := 37.0 if point % 2 == 0 else 28.0
+				var half_width := (1.0 - along / length) * (9.0 if point % 2 == 0 else 6.0)
+				if along < 0.0 or along > length or absf(across) > half_width:
+					continue
+				ink = outline
+				if absf(across) < half_width - 1.1:
+					if point == 0:
+						ink = Color("#ec8069") if across < 0.0 else Color("#b64e44")
+					else:
+						ink = Color("#e1d3a5") if across < 0.0 else Color("#9e895e")
+			if distance < 4.5:
+				ink = outline
+			if distance < 2.5:
+				ink = Color("#efdfaa")
+			image.set_pixel(x, y, ink)
+	_stamp_compass_letter(image, ["10001", "11001", "11001", "10101", "10011", "10011", "10001"], Vector2i(59, 0), Color("#ec8069"))
+	_stamp_compass_letter(image, ["11111", "10000", "10000", "11110", "10000", "10000", "11111"], Vector2i(115, 57), brass)
+	_stamp_compass_letter(image, ["01111", "10000", "10000", "01110", "00001", "00001", "11110"], Vector2i(59, 114), brass)
+	_stamp_compass_letter(image, ["10001", "10001", "10001", "10101", "10101", "11011", "10001"], Vector2i(3, 57), brass)
+	return image
+
+
+func _stamp_compass_letter(image: Image, rows: Array[String], origin: Vector2i, color: Color) -> void:
+	for outline in [true, false]:
+		for y in rows.size():
+			for x in rows[y].length():
+				if rows[y][x] != "1":
+					continue
+				var block := Rect2i(origin + Vector2i(x, y) * 2, Vector2i(2, 2))
+				image.fill_rect(block.grow(1) if outline else block, Color("#203e39") if outline else color)
