@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cncohrysrvtvb"
-path="res://.godot/imported/Kage.png-628dca871d70f3f19b7b64b32c2dad6d.ctex"
+uid="uid://ck4jkgcsttceb"
+path="res://.godot/imported/izefia.webp-e47011ce074ab3361639eafd1d283cb3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://card/image/Kage.png"
-dest_files=["res://.godot/imported/Kage.png-628dca871d70f3f19b7b64b32c2dad6d.ctex"]
+source_file="res://card/image/izefia.webp"
+dest_files=["res://.godot/imported/izefia.webp-e47011ce074ab3361639eafd1d283cb3.ctex"]
 
 [params]
 

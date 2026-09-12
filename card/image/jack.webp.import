@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b5tapx11kqkny"
-path="res://.godot/imported/Jack.png-845a61e2f2bb8a7a015ccc2e4674aeb4.ctex"
+uid="uid://co6htr4pxi64q"
+path="res://.godot/imported/jack.webp-ddf7d37df20c98b02acc4ee19063c4fa.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://card/image/Jack.png"
-dest_files=["res://.godot/imported/Jack.png-845a61e2f2bb8a7a015ccc2e4674aeb4.ctex"]
+source_file="res://card/image/jack.webp"
+dest_files=["res://.godot/imported/jack.webp-ddf7d37df20c98b02acc4ee19063c4fa.ctex"]
 
 [params]
 

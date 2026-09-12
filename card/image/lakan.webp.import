@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://pyrsiuyigod7"
-path="res://.godot/imported/dice_style_game.png-0f4001862d9ed1cd53d3fc11274e5338.ctex"
+uid="uid://bogjbvmrosic"
+path="res://.godot/imported/lakan.webp-4ae4c8bd5f8bccdb4784dd35429ddae5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://generated/dice_style_game.png"
-dest_files=["res://.godot/imported/dice_style_game.png-0f4001862d9ed1cd53d3fc11274e5338.ctex"]
+source_file="res://card/image/lakan.webp"
+dest_files=["res://.godot/imported/lakan.webp-4ae4c8bd5f8bccdb4784dd35429ddae5.ctex"]
 
 [params]
 

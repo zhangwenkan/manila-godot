@@ -1,150 +1,183 @@
-extends TextureRect
+extends Button
+
+const Pixel := preload("res://card/pixel_card_theme.gd")
+const CARD_SIZE := Vector2(304, 568)
+const ART_RECT := Rect2(20, 60, 264, 264)
 
 @export var character_name := "角色"
 @export var character_name_en := "Character"
-@export var slogan := "The Queen of Manhattan"
-@export var accent_color := Color8(167, 50, 52)
+@export_multiline var slogan := ""
+@export var accent_color := Color("c99da7")
 @export var portrait: Texture2D
+## Normalized illustration bounds, excluding the original frame and lettering.
+@export var portrait_region := Rect2(0.09, 0.215, 0.82, 0.485)
+@export var roster_number := 1
+@export var country_code := "PH"
+@export var trait_title := "航海者"
+
+var selected := false
+var _lift := 0.0
+var _hovered := false
+var _motion: Tween
+var _labels: Control
+var _source_region := Rect2()
+var _body_ink := Pixel.INK
+var _detail_color := Pixel.MUTED
+
 
 func _ready() -> void:
-	custom_minimum_size = Vector2(400, 534)
-	texture = _create_card_texture()
-	expand_mode = TextureRect.EXPAND_IGNORE_SIZE
-	stretch_mode = TextureRect.STRETCH_SCALE
-	mouse_filter = Control.MOUSE_FILTER_STOP
-	clip_contents = false
-	_ensure_text_labels()
-
-func _create_card_texture() -> ImageTexture:
-	var image := Image.create(400, 534, false, Image.FORMAT_RGBA8)
-	image.fill(Color.TRANSPARENT)
-
-	_draw_rect(image, Rect2i(0, 0, 400, 534), Color8(39, 30, 25))
-	_draw_rect(image, Rect2i(12, 12, 376, 510), Color8(229, 204, 153))
-	_draw_rect(image, Rect2i(24, 24, 352, 486), Color8(73, 55, 43))
-	_draw_rect(image, Rect2i(32, 32, 336, 470), Color8(238, 219, 172))
-
-	_draw_rect(image, Rect2i(46, 46, 308, 68), accent_color.darkened(0.3))
-	_draw_rect(image, Rect2i(50, 50, 300, 60), accent_color)
-	_draw_rect(image, Rect2i(58, 58, 284, 44), Color8(252, 236, 196))
-	_draw_rect(image, Rect2i(58, 58, 284, 2), accent_color.darkened(0.4))
-	_draw_rect(image, Rect2i(58, 100, 284, 2), accent_color.darkened(0.4))
-	_draw_name_plate(image)
-
-	_draw_rect(image, Rect2i(46, 122, 308, 240), Color8(35, 28, 24))
-	_draw_rect(image, Rect2i(50, 126, 300, 232), Color8(58, 44, 36))
-	_draw_portrait(image, Rect2i(58, 134, 284, 216))
-
-	_draw_rect(image, Rect2i(46, 372, 308, 4), accent_color.darkened(0.4))
-
-	_draw_rect(image, Rect2i(46, 432, 308, 64), accent_color.darkened(0.3))
-	_draw_rect(image, Rect2i(50, 436, 300, 56), Color8(244, 224, 178))
-	_draw_rect(image, Rect2i(50, 436, 300, 2), accent_color.darkened(0.4))
-	_draw_rect(image, Rect2i(50, 490, 300, 2), accent_color.darkened(0.4))
-	_draw_decorations(image)
-	_apply_rounded_corners(image, 24)
-
-	return ImageTexture.create_from_image(image)
-
-func _apply_rounded_corners(image: Image, radius: int) -> void:
-	var w := image.get_width()
-	var h := image.get_height()
-	for y in range(radius):
-		for x in range(radius):
-			var dx := radius - x
-			var dy := radius - y
-			if dx * dx + dy * dy > radius * radius:
-				image.set_pixel(x, y, Color.TRANSPARENT)
-				image.set_pixel(w - 1 - x, y, Color.TRANSPARENT)
-				image.set_pixel(x, h - 1 - y, Color.TRANSPARENT)
-				image.set_pixel(w - 1 - x, h - 1 - y, Color.TRANSPARENT)
-
-func _ensure_text_labels() -> void:
-	for child in get_children():
-		if child is Label and child.name.begins_with("Card"):
-			child.queue_free()
-
-	var name_label := Label.new()
-	name_label.name = "CardNameLabel"
-	name_label.text = character_name
-	name_label.position = Vector2(58, 56)
-	name_label.size = Vector2(284, 30)
-	name_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	name_label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
-	name_label.add_theme_font_size_override("font_size", 28)
-	name_label.add_theme_color_override("font_color", accent_color.darkened(0.5))
-	name_label.add_theme_color_override("font_shadow_color", Color(1, 1, 1, 0.4))
-	name_label.add_theme_constant_override("shadow_offset_x", 1)
-	name_label.add_theme_constant_override("shadow_offset_y", 1)
-	name_label.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	add_child(name_label)
-
-	var name_en_label := Label.new()
-	name_en_label.name = "CardNameEnLabel"
-	name_en_label.text = character_name_en
-	name_en_label.position = Vector2(58, 84)
-	name_en_label.size = Vector2(284, 18)
-	name_en_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	name_en_label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
-	name_en_label.add_theme_font_size_override("font_size", 14)
-	name_en_label.add_theme_color_override("font_color", accent_color.darkened(0.25))
-	name_en_label.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	add_child(name_en_label)
-
-	var slogan_label := Label.new()
-	slogan_label.name = "CardSloganLabel"
-	slogan_label.text = slogan
-	slogan_label.position = Vector2(58, 438)
-	slogan_label.size = Vector2(284, 52)
-	slogan_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	slogan_label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
-	slogan_label.add_theme_font_size_override("font_size", 17)
-	slogan_label.add_theme_color_override("font_color", Color8(92, 55, 38))
-	slogan_label.add_theme_color_override("font_shadow_color", Color(1, 1, 1, 0.25))
-	slogan_label.add_theme_constant_override("shadow_offset_x", 1)
-	slogan_label.add_theme_constant_override("shadow_offset_y", 1)
-	slogan_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	slogan_label.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	add_child(slogan_label)
-
-func _draw_rect(image: Image, rect: Rect2i, color: Color) -> void:
-	for y in range(rect.position.y, rect.position.y + rect.size.y):
-		for x in range(rect.position.x, rect.position.x + rect.size.x):
-			if x >= 0 and x < image.get_width() and y >= 0 and y < image.get_height():
-				image.set_pixel(x, y, color)
-
-func _draw_portrait(image: Image, rect: Rect2i) -> void:
+	custom_minimum_size = CARD_SIZE
+	size = CARD_SIZE
+	mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
+	texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+	Pixel.clear_button_styles(self)
+	var light_surface := accent_color.srgb_to_linear().get_luminance() > 0.22
+	_body_ink = Color("222326") if light_surface else Color("f5f5f0")
+	_detail_color = accent_color.darkened(0.5) if light_surface else accent_color.lightened(0.5)
+	_labels = Control.new()
+	_labels.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	add_child(_labels)
+	Pixel.label(_labels, trait_title, Rect2(62, 21, 174, 26), 20, Pixel.PAPER)
+	var name_label := Pixel.label(_labels, character_name, Rect2(24, 341, 256, 44), 36, _body_ink)
+	name_label.name = "CharacterName"
+	var english_label := Pixel.label(_labels, character_name_en.to_upper(), Rect2(24, 388, 256, 26), 24, _body_ink.lerp(accent_color, 0.15))
+	english_label.name = "CharacterNameEn"
+	for label: Label in [name_label, english_label]:
+		var font_size := label.get_theme_font_size("font_size")
+		while Pixel.FONT.get_string_size(label.text, HORIZONTAL_ALIGNMENT_LEFT, -1, font_size).x > 256 and font_size > 16:
+			font_size -= 2
+		label.add_theme_font_size_override("font_size", font_size)
+		label.size.x = 256
+	var quote := Pixel.label(_labels, slogan, Rect2(24, 440, 256, 96), 20, _body_ink)
+	quote.name = "Slogan"
+	quote.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	quote.add_theme_constant_override("line_spacing", 0)
 	if portrait:
-		var portrait_image := portrait.get_image()
-		portrait_image.resize(rect.size.x, rect.size.y, Image.INTERPOLATE_LANCZOS)
-		image.blit_rect(portrait_image, Rect2i(Vector2i.ZERO, rect.size), rect.position)
+		var texture_size := portrait.get_size()
+		# Use the full texture, ignore portrait_region for now to debug
+		_source_region = Rect2(Vector2.ZERO, texture_size)
+		# Contain the image inside the square window without cropping - scale to fit
+		var source_aspect := texture_size.x / texture_size.y
+		var window_size := ART_RECT.size
+		var draw_rect := ART_RECT
+		if source_aspect > 1.0:
+			# Wider than tall - fit width
+			draw_rect.size.y = window_size.x / source_aspect
+			draw_rect.position.y = ART_RECT.position.y + (window_size.y - draw_rect.size.y) * 0.5
+		else:
+			# Taller than wide - fit height
+			draw_rect.size.x = window_size.y * source_aspect
+			draw_rect.position.x = ART_RECT.position.x + (window_size.x - draw_rect.size.x) * 0.5
+		# Store the fitted draw rect for use in _draw()
+		set_meta("_fitted_art_rect", draw_rect)
+	mouse_entered.connect(func(): _hovered = true; _update_state())
+	mouse_exited.connect(func(): _hovered = false; _update_state())
+	focus_entered.connect(_update_state)
+	focus_exited.connect(_update_state)
+	visibility_changed.connect(_reset_motion)
+	queue_redraw()
+
+
+func set_selected(value: bool) -> void:
+	selected = value
+	_update_state()
+
+
+func _update_state() -> void:
+	if not is_node_ready():
 		return
+	if _motion and _motion.is_valid():
+		_motion.kill()
+	var target := 8.0 if selected or _hovered or has_focus() else 0.0
+	_motion = create_tween().set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+	_motion.tween_method(_set_lift, _lift, target, 0.14)
+	queue_redraw()
 
-	for y in range(rect.position.y, rect.position.y + rect.size.y):
-		for x in range(rect.position.x, rect.position.x + rect.size.x):
-			var u := float(x - rect.position.x) / rect.size.x
-			var v := float(y - rect.position.y) / rect.size.y
-			var color := Color(0.25 + u * 0.2, 0.18 + v * 0.18, 0.13 + (1.0 - v) * 0.1)
-			image.set_pixel(x, y, color)
 
-	_draw_circle(image, Vector2i(200, 165), 48, Color8(230, 190, 150))
-	_draw_rect(image, Rect2i(150, 220, 100, 112), accent_color.darkened(0.2))
-	_draw_rect(image, Rect2i(128, 255, 144, 70), Color8(45, 36, 35))
+func _set_lift(value: float) -> void:
+	_lift = value
+	_labels.position.y = -roundf(value)
+	queue_redraw()
 
-func _draw_name_plate(_image: Image) -> void:
-	pass
 
-func _draw_slogan_area(_image: Image) -> void:
-	pass
+func _reset_motion() -> void:
+	if is_visible_in_tree():
+		return
+	if _motion and _motion.is_valid():
+		_motion.kill()
+	_hovered = false
+	if _labels:
+		_set_lift(8.0 if selected else 0.0)
 
-func _draw_decorations(_image: Image) -> void:
-	pass
 
-func _draw_circle(image: Image, center: Vector2i, radius: int, color: Color) -> void:
-	for y in range(-radius, radius + 1):
-		for x in range(-radius, radius + 1):
-			if x * x + y * y <= radius * radius:
-				var px := center.x + x
-				var py := center.y + y
-				if px >= 0 and px < image.get_width() and py >= 0 and py < image.get_height():
-					image.set_pixel(px, py, color)
+func _draw() -> void:
+	var edge := accent_color.lightened(0.15)
+	if selected:
+		edge = Pixel.GOLD
+	elif _hovered or has_focus():
+		edge = accent_color.lightened(0.3)
+	Pixel.step_rect(self, Rect2(8, 21, 292, 540), 8, Color(0.025, 0.045, 0.045, 0.7))
+	draw_set_transform(Vector2(0, -roundf(_lift)))
+	Pixel.step_rect(self, Rect2(0, 8, 304, 548), 12, Pixel.INK)
+	Pixel.step_rect(self, Rect2(4, 12, 296, 540), 8, edge)
+	Pixel.step_rect(self, Rect2(8, 16, 288, 532), 8, accent_color)
+	draw_rect(Rect2(12, 20, 280, 320), accent_color.darkened(0.66))
+	draw_rect(Rect2(16, 16, 272, 4), edge.lightened(0.35))
+	draw_rect(Rect2(12, 24, 4, 512), Color(1, 1, 1, 0.22))
+	draw_rect(Rect2(288, 24, 4, 512), Color(0, 0, 0, 0.18))
+	draw_rect(Rect2(16, 56, 272, 272), edge.darkened(0.35))
+	if portrait:
+		var fitted_rect: Rect2 = get_meta("_fitted_art_rect", ART_RECT)
+		draw_texture_rect_region(portrait, fitted_rect, _source_region)
+	else:
+		draw_rect(ART_RECT, accent_color.darkened(0.4))
+	draw_rect(Rect2(20, 324, 264, 4), edge)
+	_draw_flag(Vector2(248, 24), country_code, edge)
+	draw_rect(Rect2(20, 52, 264, 2), Color(edge, 0.55))
+	for corner: Vector2 in [Vector2(16, 56), Vector2(280, 56), Vector2(16, 320), Vector2(280, 320)]:
+		draw_rect(Rect2(corner, Vector2(8, 8)), Pixel.GOLD)
+		draw_rect(Rect2(corner + Vector2(2, 2), Vector2(3, 3)), Pixel.GOLD.lightened(0.3))
+	draw_rect(Rect2(24, 428, 104, 2), _detail_color)
+	draw_rect(Rect2(176, 428, 104, 2), _detail_color)
+	Pixel.icon(self, "diamond", Vector2(144, 422), 2, _detail_color)
+	for x in range(28, 280, 12):
+		draw_rect(Rect2(x, 543, 4, 1), Color(_detail_color, 0.4))
+	if selected:
+		for x in [0, 292]:
+			draw_rect(Rect2(x, 0, 12, 4), Pixel.GOLD)
+			draw_rect(Rect2(x, 560, 12, 4), Pixel.GOLD)
+
+
+func _draw_flag(origin: Vector2, code: String, edge: Color) -> void:
+	var frame := Rect2(origin, Vector2(36, 22))
+	var inner := Rect2(origin + Vector2(2, 2), Vector2(32, 18))
+	draw_rect(frame, Color(edge, 0.7))
+	draw_rect(inner, Color("e6ebe0"))
+	match code:
+		"ES":
+			draw_rect(Rect2(inner.position, Vector2(32, 5)), Color("c94343"))
+			draw_rect(Rect2(inner.position + Vector2(0, 5), Vector2(32, 8)), Color("f2c54f"))
+			draw_rect(Rect2(inner.position + Vector2(0, 13), Vector2(32, 5)), Color("c94343"))
+			draw_rect(Rect2(inner.position + Vector2(8, 7), Vector2(2, 5)), Color("a94b3e"))
+		"US":
+			for stripe in 7:
+				draw_rect(Rect2(inner.position + Vector2(0, stripe * 18.0 / 7.0), Vector2(32, 18.0 / 7.0 + 0.5)), Color("d94b4b") if stripe % 2 == 0 else Color("f1e8d5"))
+			draw_rect(Rect2(inner.position, Vector2(14, 10)), Color("315a91"))
+			draw_rect(Rect2(inner.position + Vector2(5, 3), Vector2(3, 3)), Color("f2c54f"))
+		"CN":
+			draw_rect(inner, Color("d84040"))
+			draw_colored_polygon(PackedVector2Array([inner.position + Vector2(5, 3), inner.position + Vector2(6, 5), inner.position + Vector2(8, 5), inner.position + Vector2(6.5, 6.2), inner.position + Vector2(7, 8), inner.position + Vector2(5, 6.8), inner.position + Vector2(3, 8), inner.position + Vector2(3.5, 6.2), inner.position + Vector2(2, 5), inner.position + Vector2(4, 5)]), Color("f2c54f"))
+		"JP":
+			draw_rect(inner, Color("f4eee0"))
+			draw_rect(Rect2(inner.position + Vector2(12, 5), Vector2(8, 8)), Color("cf4a4a"))
+			draw_rect(Rect2(inner.position + Vector2(10, 7), Vector2(12, 4)), Color("cf4a4a"))
+		"TZ":
+			draw_rect(inner, Color("2f7a70"))
+			draw_colored_polygon(PackedVector2Array([inner.position, inner.position + Vector2(32, 0), inner.position + Vector2(0, 18)]), Color("2f63a0"))
+			draw_colored_polygon(PackedVector2Array([inner.position + Vector2(32, 18), inner.position + Vector2(0, 18), inner.position + Vector2(32, 0)]), Color("e3bb48"))
+			draw_colored_polygon(PackedVector2Array([inner.position + Vector2(0, 18), inner.position + Vector2(32, 0), inner.position + Vector2(32, 3), inner.position + Vector2(0, 18)]), Color("1d292c"))
+		"PH":
+			draw_rect(Rect2(inner.position, Vector2(32, 9)), Color("3974a8"))
+			draw_rect(Rect2(inner.position + Vector2(0, 9), Vector2(32, 9)), Color("c94747"))
+			draw_colored_polygon(PackedVector2Array([inner.position, inner.position + Vector2(13, 9), inner.position + Vector2(0, 18)]), Color("f4eee0"))
+			draw_rect(Rect2(inner.position + Vector2(4, 7), Vector2(3, 4)), Color("f2c54f"))

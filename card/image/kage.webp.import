@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bojruodo5mhm1"
-path="res://.godot/imported/dice_style_preview.png-c8fe0b5cae1cf8e15eec425c193720d9.ctex"
+uid="uid://ltq5hs2cbytc"
+path="res://.godot/imported/kage.webp-f825f5fd87d6687f61b1ff7c4ae331e4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://generated/dice_style_preview.png"
-dest_files=["res://.godot/imported/dice_style_preview.png-c8fe0b5cae1cf8e15eec425c193720d9.ctex"]
+source_file="res://card/image/kage.webp"
+dest_files=["res://.godot/imported/kage.webp-f825f5fd87d6687f61b1ff7c4ae331e4.ctex"]
 
 [params]
 

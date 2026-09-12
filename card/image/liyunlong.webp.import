@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cax66jcmqlc4j"
-path="res://.godot/imported/Lakan.png-3320e87cd53472e253e8fda59126e3bf.ctex"
+uid="uid://bxr2vnbi5jfu"
+path="res://.godot/imported/liyunlong.webp-52c05007d583b47ab69bcd13903203ae.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://card/image/Lakan.png"
-dest_files=["res://.godot/imported/Lakan.png-3320e87cd53472e253e8fda59126e3bf.ctex"]
+source_file="res://card/image/liyunlong.webp"
+dest_files=["res://.godot/imported/liyunlong.webp-52c05007d583b47ab69bcd13903203ae.ctex"]
 
 [params]
 

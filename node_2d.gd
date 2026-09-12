@@ -11,7 +11,7 @@ extends Node2D
 @onready var left_pan_button: Button = $CanvasLayer/LeftPanButton
 @onready var right_pan_button: Button = $CanvasLayer/RightPanButton
 @onready var select_character_button: Button = $CanvasLayer/SelectCharacterButton
-@onready var character_overlay: ColorRect = $CanvasLayer/CharacterOverlay
+@onready var character_overlay = $CanvasLayer/CharacterOverlay
 @onready var dice_stage = $CanvasLayer/DiceStage3D
 @onready var dice_overlay: ColorRect = $CanvasLayer/DiceOverlay
 @onready var dice_close_button: Button = $CanvasLayer/DiceCloseButton
@@ -19,16 +19,12 @@ extends Node2D
 var _dice_rolling := false
 var _current_stakes := [0, 0, 0]
 var _dice_results := [1, 1, 1]
-var _selected_card: TextureRect = null
+var selected_character_id := ""
 var _camera_target_x := 0.0
 var _camera_target_y := 0.0
 var _camera_velocity := 0.0
 var _is_manual_camera := false
 var _button_press_time := {}
-var _card_original_positions: Dictionary = {}
-var _card_original_rotations: Dictionary = {}
-var _card_original_indices: Dictionary = {}
-var _select_tween: Tween = null
 
 func _ready() -> void:
 	_camera_target_x = layout_view_size.x * 0.5
@@ -44,7 +40,8 @@ func _ready() -> void:
 		dice_stage.set_value(i, int(_dice_results[i]))
 	dice_stage.dice_settled.connect(_on_dice_settled)
 	dice_stage.all_settled.connect(_on_all_dice_settled)
-	_setup_cards()
+	character_overlay.character_confirmed.connect(_on_character_confirmed)
+	character_overlay.closed.connect(_on_character_roster_closed)
 
 
 func _process(delta: float) -> void:
@@ -136,81 +133,16 @@ func _on_all_dice_settled(values: Array) -> void:
 			_dice_results[i] = int(values[i])
 	dice_stage.enable_debug_inspect()
 
-func _setup_cards() -> void:
-	for fan_name in ["CardFan", "OriginalCardFan"]:
-		var card_fan := character_overlay.get_node(fan_name)
-		for i in card_fan.get_child_count():
-			var card: TextureRect = card_fan.get_child(i)
-			card.gui_input.connect(_on_card_gui_input.bind(card))
-			card.mouse_filter = Control.MOUSE_FILTER_STOP
-
-			_card_original_positions[card] = card.position
-			_card_original_rotations[card] = card.rotation
-			_card_original_indices[card] = i
-
 func _on_select_character_pressed() -> void:
-	character_overlay.visible = true
-	_deselect_card()
+	for control: Control in [left_pan_button, right_pan_button, select_character_button, debug_dice_button, roll_button]:
+		control.hide()
+	character_overlay.open()
 
-func _on_card_gui_input(event: InputEvent, card: TextureRect) -> void:
-	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
-		_animate_select_card(card)
-	elif event is InputEventScreenTouch and event.pressed:
-		_animate_select_card(card)
+func _on_character_confirmed(character_id: String, display_name: String) -> void:
+	selected_character_id = character_id
+	select_character_button.text = "角色: " + display_name
 
-func _animate_select_card(card: TextureRect) -> void:
-	if _selected_card == card:
-		return
-	_deselect_card()
-	_selected_card = card
-
-	var fan := card.get_parent()
-	fan.move_child(card, -1)
-
-	if _select_tween and _select_tween.is_valid():
-		_select_tween.kill()
-
-	_select_tween = create_tween()
-	_select_tween.set_parallel(true)
-	_select_tween.set_ease(Tween.EASE_OUT)
-	_select_tween.set_trans(Tween.TRANS_BACK)
-
-	var viewport_size := get_viewport().get_visible_rect().size
-	var target_pos := Vector2(
-		-200.0,
-		-viewport_size.y / 2.0 - 267.0
-	)
-
-	_select_tween.tween_property(card, "position", target_pos, 0.4)
-	_select_tween.tween_property(card, "rotation", 0.0, 0.3).set_trans(Tween.TRANS_CUBIC)
-	_select_tween.tween_property(card, "scale", Vector2(1.3, 1.3), 0.35).set_trans(Tween.TRANS_ELASTIC)
-	_select_tween.tween_property(card, "modulate", Color(1.15, 1.15, 1.25, 1.0), 0.25).set_trans(Tween.TRANS_CUBIC)
-
-	_select_tween.set_parallel(false)
-	_select_tween.tween_property(card, "scale", Vector2(1.2, 1.2), 0.15).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE)
-
-func _deselect_card() -> void:
-	if not _selected_card:
-		return
-	var card := _selected_card
-	_selected_card = null
-
-	if _select_tween and _select_tween.is_valid():
-		_select_tween.kill()
-
-	var tween := create_tween()
-	tween.set_parallel(true)
-	tween.set_ease(Tween.EASE_OUT)
-	tween.set_trans(Tween.TRANS_CUBIC)
-
-	var orig_pos: Vector2 = _card_original_positions[card]
-	var orig_rot: float = _card_original_rotations[card]
-	var orig_idx: int = _card_original_indices[card]
-
-	tween.tween_property(card, "position", orig_pos, 0.3)
-	tween.tween_property(card, "rotation", orig_rot, 0.3)
-	tween.tween_property(card, "scale", Vector2.ONE, 0.25)
-	tween.tween_property(card, "modulate", Color.WHITE, 0.2)
-
-	tween.set_parallel(false)
-	tween.tween_callback(func(): card.get_parent().move_child(card, orig_idx))
+func _on_character_roster_closed() -> void:
+	for control: Control in [left_pan_button, right_pan_button, select_character_button, debug_dice_button, roll_button]:
+		control.show()
+	select_character_button.grab_focus()
