@@ -18,6 +18,7 @@ const ART_RECT := Rect2(20, 60, 264, 264)
 var selected := false
 var _lift := 0.0
 var _hovered := false
+var _animation_locked := false
 var _motion: Tween
 var _labels: Control
 var _source_region := Rect2()
@@ -70,8 +71,8 @@ func _ready() -> void:
 			draw_rect.position.x = ART_RECT.position.x + (window_size.x - draw_rect.size.x) * 0.5
 		# Store the fitted draw rect for use in _draw()
 		set_meta("_fitted_art_rect", draw_rect)
-	mouse_entered.connect(func(): _hovered = true; _update_state())
-	mouse_exited.connect(func(): _hovered = false; _update_state())
+	mouse_entered.connect(_set_hovered.bind(true))
+	mouse_exited.connect(_set_hovered.bind(false))
 	focus_entered.connect(_update_state)
 	focus_exited.connect(_update_state)
 	visibility_changed.connect(_reset_motion)
@@ -83,8 +84,29 @@ func set_selected(value: bool) -> void:
 	_update_state()
 
 
+func set_animation_locked(value: bool) -> void:
+	_animation_locked = value
+	if _motion and _motion.is_valid():
+		_motion.kill()
+	_hovered = false
+	disabled = value
+	mouse_filter = Control.MOUSE_FILTER_IGNORE if value else Control.MOUSE_FILTER_STOP
+	focus_mode = Control.FOCUS_NONE if value else Control.FOCUS_ALL
+	# Keep the current lift while moving between parents; restore a stable rest pose afterwards.
+	if not value:
+		_set_lift(8.0 if selected else 0.0)
+	queue_redraw()
+
+
+func _set_hovered(value: bool) -> void:
+	if _animation_locked:
+		return
+	_hovered = value
+	_update_state()
+
+
 func _update_state() -> void:
-	if not is_node_ready():
+	if not is_node_ready() or _animation_locked:
 		return
 	if _motion and _motion.is_valid():
 		_motion.kill()
@@ -101,7 +123,7 @@ func _set_lift(value: float) -> void:
 
 
 func _reset_motion() -> void:
-	if is_visible_in_tree():
+	if is_visible_in_tree() or _animation_locked:
 		return
 	if _motion and _motion.is_valid():
 		_motion.kill()
