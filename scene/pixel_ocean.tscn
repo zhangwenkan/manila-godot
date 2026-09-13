@@ -1,0 +1,18 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scene/pixel_ocean.gd" id="1_script"]
+[ext_resource type="Shader" path="res://scene/shader/pixel_ocean.gdshader" id="2_shader"]
+[ext_resource type="Texture2D" path="res://scene/image/ocean_layout.png" id="3_layout"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ocean"]
+resource_local_to_scene = true
+shader = ExtResource("2_shader")
+shader_parameter/layout_map = ExtResource("3_layout")
+
+[node name="PixelOcean" type="ColorRect"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_ocean")
+offset_right = 6144.0
+offset_bottom = 1152.0
+mouse_filter = 2
+script = ExtResource("1_script")
