@@ -1,0 +1,10 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://ui/situation_panel.gd" id="1_situation"]
+
+[node name="SituationPanel" type="Control"]
+layout_mode = 3
+offset_right = 328.0
+offset_bottom = 100.0
+mouse_filter = 2
+script = ExtResource("1_situation")

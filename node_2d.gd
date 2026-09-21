@@ -2,6 +2,7 @@ extends Node2D
 
 const CharacterCard := preload("res://card/character_card.gd")
 const PlacementPanel := preload("res://ui/placement_panel.gd")
+const SituationPanel := preload("res://ui/situation_panel.gd")
 
 @export var layout_mode := true
 @export var layout_view_size := Vector2(2340.0, 1080.0)
@@ -17,6 +18,7 @@ const PlacementPanel := preload("res://ui/placement_panel.gd")
 @onready var turn_bar = $CanvasLayer/TurnBar
 @onready var character_overlay = $CanvasLayer/CharacterOverlay
 @onready var select_character_button: Button = $CanvasLayer/SelectCharacterButton
+@onready var situation_panel = $CanvasLayer/SituationPanel
 @onready var dice_stage = $CanvasLayer/DiceStage3D
 @onready var dice_overlay: ColorRect = $CanvasLayer/DiceOverlay
 @onready var dice_close_button: Button = $CanvasLayer/DiceCloseButton
@@ -60,6 +62,7 @@ func _ready() -> void:
 	character_overlay.character_confirmed.connect(_on_character_confirmed)
 	character_overlay.closed.connect(_on_character_roster_closed)
 	turn_bar.changed.connect(_sync_active_player)
+	placement_panel.state.changed.connect(_refresh_situation)
 	for i in character_overlay.cards.size():
 		var card = character_overlay.cards[i]
 		_player_resources[card.character_name_en] = {
@@ -76,6 +79,7 @@ func _ready() -> void:
 		turn_bar.set_players(_preview_players(null))
 	get_viewport().size_changed.connect(_layout_personal_controls)
 	_layout_personal_controls()
+	_refresh_situation()
 
 
 func _layout_personal_controls() -> void:
@@ -92,6 +96,16 @@ func _layout_personal_controls() -> void:
 	turn_bar.position = personal_bar.position + Vector2(0, (content_rect.position.y - turn_bar.size.y - 6) * hud_scale)
 	placement_panel.available_bottom = turn_bar.position.y - 12
 	placement_panel._layout()
+	# 态势面板固定在左上角，与底栏同缩放；尺寸由 set_situation 按玩家数决定，这里不覆盖。
+	situation_panel.scale = personal_bar.scale
+	situation_panel.position = Vector2(margin, margin).floor()
+	situation_panel.visible = not character_overlay.visible and not dice_overlay.visible
+
+
+func _refresh_situation() -> void:
+	if not is_instance_valid(situation_panel):
+		return
+	situation_panel.set_situation(turn_bar.players, _displayed_character_id, _player_resources, placement_panel.state.owners, turn_bar.voyage_number)
 
 
 func _process(delta: float) -> void:
@@ -154,7 +168,7 @@ func _show_dice_mode() -> void:
 	dice_overlay.show()
 	dice_close_button.show()
 	_sync_placement()
-	for control: Control in [left_pan_button, right_pan_button, personal_bar, turn_bar]:
+	for control: Control in [left_pan_button, right_pan_button, personal_bar, turn_bar, situation_panel]:
 		control.hide()
 
 func _on_close_dice_pressed() -> void:
@@ -164,7 +178,7 @@ func _on_close_dice_pressed() -> void:
 	dice_overlay.hide()
 	dice_close_button.hide()
 	_sync_placement()
-	for control: Control in [left_pan_button, right_pan_button, personal_bar, turn_bar, select_character_button]:
+	for control: Control in [left_pan_button, right_pan_button, personal_bar, turn_bar, select_character_button, situation_panel]:
 		control.show()
 
 func _on_dice_overlay_gui_input(event: InputEvent) -> void:
@@ -186,7 +200,7 @@ func _on_all_dice_settled(values: Array) -> void:
 func open_character_roster() -> void:
 	if dice_stage.visible:
 		return
-	for control: Control in [left_pan_button, right_pan_button, personal_bar, turn_bar, select_character_button]:
+	for control: Control in [left_pan_button, right_pan_button, personal_bar, turn_bar, select_character_button, situation_panel]:
 		control.hide()
 	character_overlay.open()
 	_sync_placement()
@@ -218,6 +232,7 @@ func _sync_active_player() -> void:
 	personal_bar.round_number = turn_bar.voyage_number
 	personal_bar.set_turn_context(turn_bar.current_player_index == turn_bar.harbor_master_index, turn_bar.phase != turn_bar.Phase.SETTLEMENT)
 	_sync_placement()
+	_refresh_situation()
 
 
 func placement_reason(id: String) -> String:
@@ -278,6 +293,7 @@ func _confirm_placement(id: String, requesting_actor: CharacterCard, phase_key: 
 		_sync_placement()
 	placement_panel.state.changed.emit()
 	placement_panel.show_result(result)
+	_refresh_situation()
 	_placement_committing = false
 
 
@@ -305,5 +321,6 @@ func _preview_players(local_card) -> Array[CharacterCard]:
 
 func _on_character_roster_closed() -> void:
 	_sync_placement()
-	for control: Control in [left_pan_button, right_pan_button, personal_bar, turn_bar, select_character_button]:
+	for control: Control in [left_pan_button, right_pan_button, personal_bar, turn_bar, select_character_button, situation_panel]:
 		control.show()
+	_refresh_situation()

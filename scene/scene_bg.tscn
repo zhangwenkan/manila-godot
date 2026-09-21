@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" path="res://scene/pixel_ocean.tscn" id="15_ocean"]
 [ext_resource type="PackedScene" path="res://ui/personal_bar.tscn" id="16_personal_bar"]
 [ext_resource type="PackedScene" path="res://ui/turn_bar.tscn" id="17_turn_bar"]
+[ext_resource type="PackedScene" path="res://ui/situation_panel.tscn" id="18_situation"]
 
 [node name="scene" type="Node2D" unique_id=1881670658]
 script = ExtResource("2_8yb0q")
@@ -61,6 +62,9 @@ scale = Vector2(0.8, 0.8)
 [node name="PersonalBar" parent="CanvasLayer" instance=ExtResource("16_personal_bar")]
 
 [node name="TurnBar" parent="CanvasLayer" instance=ExtResource("17_turn_bar")]
+
+[node name="SituationPanel" parent="CanvasLayer" instance=ExtResource("18_situation")]
+visible = false
 
 [node name="DiceOverlay" type="ColorRect" parent="CanvasLayer"]
 visible = false
