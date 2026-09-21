@@ -8,6 +8,12 @@
 [ext_resource type="Texture2D" path="res://card/image/kage.webp" id="6_kage"]
 [ext_resource type="Texture2D" path="res://card/image/izefia.webp" id="7_izefia"]
 [ext_resource type="Texture2D" path="res://card/image/lakan.webp" id="8_lakan"]
+[ext_resource type="Texture2D" path="res://card/image/lanka_avatar.png" id="9_lakan_avatar"]
+[ext_resource type="Texture2D" path="res://card/image/carmen_avatar.png" id="10_carmen_avatar"]
+[ext_resource type="Texture2D" path="res://card/image/liyunlong_avatar.png" id="11_liyun_avatar"]
+[ext_resource type="Texture2D" path="res://card/image/izefia_avatar.png" id="12_izefia_avatar"]
+[ext_resource type="Texture2D" path="res://card/image/kage_avatar.png" id="13_kage_avatar"]
+[ext_resource type="Texture2D" path="res://card/image/jack_avatar.png" id="14_jack_avatar"]
 
 [node name="CharacterRoster" type="Control"]
 layout_mode = 3
@@ -27,6 +33,8 @@ character_name = "卡门"
 character_name_en = "Carmen"
 accent_color = Color(0.788235, 0.615686, 0.654902, 1)
 portrait = ExtResource("3_carmen")
+avatar = ExtResource("10_carmen_avatar")
+avatar_region = Rect2(0.11, 0.12, 0.78, 0.58)
 portrait_region = Rect2(0.09, 0.214, 0.82, 0.48)
 slogan = "别惹老娘，我的船，我说了算。\n主打一个稳稳捞钱。"
 roster_number = 1
@@ -39,6 +47,8 @@ character_name = "李云龙"
 character_name_en = "Li Yunlong"
 accent_color = Color(0.34902, 0.380392, 0.407843, 1)
 portrait = ExtResource("4_liyun")
+avatar = ExtResource("11_liyun_avatar")
+avatar_region = Rect2(0.11, 0.12, 0.78, 0.58)
 portrait_region = Rect2(0.09, 0.214, 0.82, 0.52)
 slogan = "行事堂堂正正，\n发财干干净净。"
 roster_number = 2
@@ -51,6 +61,8 @@ character_name = "拉坎·巴蒂斯塔"
 character_name_en = "Lakan Bautista"
 accent_color = Color(0.556863, 0.4, 0.313725, 1)
 portrait = ExtResource("8_lakan")
+avatar = ExtResource("9_lakan_avatar")
+avatar_region = Rect2(0.110497, 0.124309, 0.779006, 0.584254)
 portrait_region = Rect2(0.09, 0.214, 0.82, 0.478)
 slogan = "港口的规矩？我就是规矩。\n只要钱到位，海盗都给你当搬运工。"
 roster_number = 3
@@ -63,6 +75,8 @@ character_name = "伊泽菲亚"
 character_name_en = "Izefia"
 accent_color = Color(0.627451, 0.843137, 0.741176, 1)
 portrait = ExtResource("7_izefia")
+avatar = ExtResource("12_izefia_avatar")
+avatar_region = Rect2(0.11, 0.12, 0.78, 0.58)
 portrait_region = Rect2(0.08, 0.239, 0.84, 0.545)
 slogan = "听歌随心意，赚钱凭实力"
 roster_number = 4
@@ -75,6 +89,8 @@ character_name = "影"
 character_name_en = "Kage"
 accent_color = Color(0.14902, 0.152941, 0.160784, 1)
 portrait = ExtResource("6_kage")
+avatar = ExtResource("13_kage_avatar")
+avatar_region = Rect2(0.11, 0.12, 0.78, 0.58)
 portrait_region = Rect2(0.09, 0.239, 0.82, 0.52)
 slogan = "你看不见我，\n但你的钱已经是我的了。"
 roster_number = 5
@@ -87,6 +103,8 @@ character_name = "杰克"
 character_name_en = "Jack"
 accent_color = Color(0.913725, 0.552941, 0.258824, 1)
 portrait = ExtResource("5_jack")
+avatar = ExtResource("14_jack_avatar")
+avatar_region = Rect2(0.11, 0.12, 0.78, 0.58)
 portrait_region = Rect2(0.09, 0.214, 0.82, 0.53)
 slogan = "赌一把，赢了会所嫩模，\n输了下海干活。"
 roster_number = 6

@@ -1,0 +1,15 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://ui/personal_bar.gd" id="1_bar"]
+
+[node name="PersonalBar" type="Control"]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 24.0
+offset_top = -144.0
+offset_right = -24.0
+offset_bottom = -16.0
+grow_vertical = 0
+script = ExtResource("1_bar")

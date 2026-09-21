@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" path="res://card/character_roster.tscn" id="14_roster"]
 [ext_resource type="PackedScene" uid="uid://bq8dice3dstage" path="res://dice3d/dice_stage_3d.tscn" id="13_dice3d"]
 [ext_resource type="PackedScene" path="res://scene/pixel_ocean.tscn" id="15_ocean"]
+[ext_resource type="PackedScene" path="res://ui/personal_bar.tscn" id="16_personal_bar"]
+[ext_resource type="PackedScene" path="res://ui/turn_bar.tscn" id="17_turn_bar"]
 
 [node name="scene" type="Node2D" unique_id=1881670658]
 script = ExtResource("2_8yb0q")
@@ -41,7 +43,7 @@ position = Vector2(1170, 540)
 
 [node name="BoatTop" parent="." instance=ExtResource("1_lqi74")]
 z_index = 10
-position = Vector2(80, 560)
+position = Vector2(220, 560)
 scale = Vector2(0.8, 0.8)
 
 [node name="BoatMiddle" parent="." instance=ExtResource("1_lqi74")]
@@ -55,6 +57,10 @@ position = Vector2(80, 920)
 scale = Vector2(0.8, 0.8)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1134434106]
+
+[node name="PersonalBar" parent="CanvasLayer" instance=ExtResource("16_personal_bar")]
+
+[node name="TurnBar" parent="CanvasLayer" instance=ExtResource("17_turn_bar")]
 
 [node name="DiceOverlay" type="ColorRect" parent="CanvasLayer"]
 visible = false
@@ -83,35 +89,6 @@ theme_override_font_sizes/font_size = 32
 text = "×"
 tooltip_text = "关闭"
 
-[node name="RollButton" type="Button" parent="CanvasLayer"]
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -180.0
-
-offset_top = -150.0
-offset_right = -40.0
-offset_bottom = -100.0
-grow_horizontal = 0
-grow_vertical = 0
-text = "投掷"
-
-[node name="DebugDiceButton" type="Button" parent="CanvasLayer"]
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -320.0
-offset_top = -150.0
-offset_right = -200.0
-offset_bottom = -100.0
-grow_horizontal = 0
-grow_vertical = 0
-text = "调试骰子"
-
 [node name="LeftPanButton" type="Button" parent="CanvasLayer"]
 anchors_preset = 4
 anchor_top = 0.5
@@ -122,6 +99,18 @@ offset_right = 84.0
 offset_bottom = 45.0
 grow_vertical = 2
 text = "‹"
+
+[node name="SelectCharacterButton" type="Button" parent="CanvasLayer"]
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -200.0
+offset_top = 24.0
+offset_right = -24.0
+offset_bottom = 64.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 20
+text = "选择角色"
+tooltip_text = "打开角色列表，切换查看头像"
 
 [node name="RightPanButton" type="Button" parent="CanvasLayer"]
 anchors_preset = 6
@@ -137,23 +126,9 @@ grow_horizontal = 0
 grow_vertical = 2
 text = "›"
 
-[node name="SelectCharacterButton" type="Button" parent="CanvasLayer"]
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -160.0
-offset_top = -60.0
-grow_horizontal = 0
-grow_vertical = 0
-text = "选择角色"
-
 [node name="CharacterOverlay" parent="CanvasLayer" instance=ExtResource("14_roster")]
 visible = false
 
-[connection signal="pressed" from="CanvasLayer/RollButton" to="." method="_on_roll_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/DebugDiceButton" to="." method="_on_debug_dice_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/SelectCharacterButton" to="." method="open_character_roster"]
 [connection signal="pressed" from="CanvasLayer/DiceCloseButton" to="." method="_on_close_dice_pressed"]
 [connection signal="gui_input" from="CanvasLayer/DiceOverlay" to="." method="_on_dice_overlay_gui_input"]
-[connection signal="pressed" from="CanvasLayer/SelectCharacterButton" to="." method="_on_select_character_pressed"]

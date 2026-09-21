@@ -9,8 +9,12 @@ const ART_RECT := Rect2(20, 60, 264, 264)
 @export_multiline var slogan := ""
 @export var accent_color := Color("c99da7")
 @export var portrait: Texture2D
+## Optional dedicated in-game portrait; the card illustration stays independent.
+@export var avatar: Texture2D
 ## Normalized illustration bounds, excluding the original frame and lettering.
 @export var portrait_region := Rect2(0.09, 0.215, 0.82, 0.485)
+## Normalized crop in avatar when supplied, otherwise in portrait.
+@export var avatar_region := Rect2(0.3, 0.1, 0.4, 0.4)
 @export var roster_number := 1
 @export var country_code := "PH"
 @export var trait_title := "航海者"

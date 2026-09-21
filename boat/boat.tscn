@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bb6ibce41o4ui" path="res://boat/script/boat.gd" id="1_enlnh"]
 [ext_resource type="Texture2D" uid="uid://be6uj2lh5kw0l" path="res://boat/boat.png" id="2_f5k8p"]
-[ext_resource type="Texture2D" path="res://worker/worker_lakan.png" id="3_worker_lakan"]
+[ext_resource type="Script" path="res://boat/boat_seats.gd" id="4_seats"]
 
 [sub_resource type="Shader" id="Shader_boat_top"]
 code = "shader_type canvas_item;
@@ -30,11 +30,8 @@ position = Vector2(131.7647, 69.99999)
 scale = Vector2(0.26, 0.26)
 texture = ExtResource("2_f5k8p")
 
-[node name="WorkerLakan" type="Sprite2D" parent="VisualRoot" unique_id=896455728]
-z_index = 1
-position = Vector2(91.03, 57.000004)
-scale = Vector2(0.09762695, 0.086914055)
-texture = ExtResource("3_worker_lakan")
+[node name="Seats" type="Node2D" parent="VisualRoot"]
+script = ExtResource("4_seats")
 
 [node name="BoatTop" type="Sprite2D" parent="VisualRoot" unique_id=609055832]
 z_index = 2

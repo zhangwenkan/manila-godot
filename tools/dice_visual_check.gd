@@ -153,7 +153,7 @@ func _run() -> void:
 		var game = load("res://scene/scene_bg.tscn").instantiate()
 		root.add_child(game)
 		_check(game.get_node_or_null("CanvasLayer/DiceOverlay") != null, "Dice overlay is missing")
-		game._on_debug_dice_button_pressed()
+		game.inspect_dice()
 		_check(game.get_node("CanvasLayer/DiceOverlay").visible and game.dice_stage.visible, "Dice mode did not show the full-screen overlay")
 		game.dice_stage.set_value(0, 6)
 		game.dice_stage.set_value(1, 4)
@@ -161,8 +161,8 @@ func _run() -> void:
 		await process_frame
 		await RenderingServer.frame_post_draw
 		root.get_texture().get_image().save_png(OUTPUT_DIR.path_join("game.png"))
-		game._on_roll_button_pressed()
-		game._on_debug_dice_button_pressed()
+		game.roll_dice()
+		game.inspect_dice()
 		_check(game._dice_rolling, "Debug button interrupted an active throw")
 		game._on_close_dice_pressed()
 		_check(game.dice_overlay.visible and game.dice_close_button.disabled, "Active throw can be dismissed")
@@ -182,8 +182,8 @@ func _run() -> void:
 		for game_die: Dice3D in game.dice_stage._dice:
 			game_poses.append(game_die.global_transform)
 		game._on_close_dice_pressed()
-		_check(not game.dice_overlay.visible and not game.dice_stage.visible and game.debug_dice_button.visible, "Dice mode did not close")
-		game._on_debug_dice_button_pressed()
+		_check(not game.dice_overlay.visible and not game.dice_stage.visible and game.personal_bar.visible, "Dice mode did not close")
+		game.inspect_dice()
 		for i in game_poses.size():
 			_check(game.dice_stage._dice[i].global_transform.is_equal_approx(game_poses[i]), "Reopening dice mode moved a die")
 		game.queue_free()
