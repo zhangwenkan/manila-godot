@@ -32,6 +32,7 @@ class PreviewController extends Node:
 		game.turn_bar.harbor_master_index = initial_master
 		panel.state.arrived.assign([false, false, false])
 		panel.state.set_preview_occupants({})
+		game.reset_voyage_flow()
 		game.turn_bar.set_stage(game.turn_bar.Phase.DISPATCH, 1, 1, 0)
 		game.personal_bar.conceal_stocks()
 		if was_open:
@@ -368,7 +369,7 @@ func _check_dispatch() -> void:
 	await _click_control(panel.launcher)
 	await _capture_seats("dispatch_mixed_panel")
 
-	# Skip depleted players, including the single remaining player and final worker.
+	# Skip players without workers. Someone who still has a worker cannot act twice this round.
 	await _prepare_dispatch()
 	_game._player_resources[turn.players[1].character_name_en].remaining = 0
 	await _click_slot("harbor_0")
@@ -377,15 +378,19 @@ func _check_dispatch() -> void:
 	await _prepare_dispatch()
 	for card in turn.players:
 		_game._player_resources[card.character_name_en].remaining = 0
+	_game._player_resources[turn.players[0].character_name_en].remaining = 2
 	hud.set_resources(30, 2)
 	await _click_slot("harbor_0")
 	await _click_control(panel.confirm_button)
-	_check(turn.current_player_index == 0 and hud.remaining_crew == 1, "Single remaining player lost turn")
+	_check(_game._player_resources[turn.players[0].character_name_en].remaining == 1, "Only worker was not spent once")
+	_check(_game._awaiting_sail and not _game.sail_button.disabled, "One legal placement did not end the round")
+	_check(turn.phase == turn.Phase.DISPATCH, "Round completion invented a sailing phase")
+	var placed: int = state.owners.size()
 	await _click_control(panel.launcher)
 	await _click_slot("harbor_1")
 	await _click_control(panel.confirm_button)
-	_check(hud.remaining_crew == 0 and panel.result_notice.text.contains("演示结束"), "Final worker did not end demo")
-	_check(turn.phase == turn.Phase.DISPATCH, "Demo invented a sailing phase")
+	_check(not panel.shade.visible and state.owners.size() == placed, "Same player started a second placement")
+	_check(_game._player_resources[turn.players[0].character_name_en].remaining == 1, "Second placement spent another worker")
 
 	# Reset really restores resources and arrival flags, then small windows can commit.
 	state.arrived[0] = true
@@ -456,7 +461,7 @@ func _tour() -> void:
 	await _click_slot("ship_0_0")
 	await _click_control(panel.cancel_button)
 	_check(panel.state.owners.is_empty(), "Tour cancellation placed crew")
-	for id in ["ship_0_0", "ship_0_1", "harbor_1", "shipyard_2", "pirate_0", "pilot_0", "pilot_1", "insurance_0"]:
+	for id in ["ship_0_0", "ship_0_1", "harbor_1", "shipyard_2", "pirate_0"]:
 		if not panel.shade.visible:
 			await _click_control(panel.launcher)
 		await _click_slot(id)
@@ -466,6 +471,10 @@ func _tour() -> void:
 		await _click_control(panel.confirm_button)
 		_check(panel.state.owners.get(id) == actor, "Tour confirmation failed " + id)
 		await create_timer(1.3).timeout
+	_check(_game._awaiting_sail and not _game.sail_button.disabled, "Tour did not wait for sailing")
+	var tour_placed: int = panel.state.owners.size()
+	await _click_control(panel.launcher)
+	_check(not panel.shade.visible and panel.state.owners.size() == tour_placed, "Tour opened a second round")
 	await _capture_seats("dispatch_tour_result")
 	await _click_control(panel.launcher)
 	await _capture_seats("dispatch_tour_board")

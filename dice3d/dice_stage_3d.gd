@@ -86,6 +86,14 @@ func enable_debug_inspect() -> void:
 		die.enable_debug_inspect()
 
 
+func configure_cargo(cargo_ids: Array, labels: Array = []) -> void:
+	# 每枚骰子对应一种货物颜色；原版四色骰子按本航程所装货物匹配。
+	for i in mini(_dice.size(), cargo_ids.size()):
+		var id: String = cargo_ids[i]
+		var label: String = labels[i] if i < labels.size() else ""
+		_dice[i].set_cargo(id, label)
+
+
 func handle_debug_input(event: InputEvent) -> bool:
 	if _rolling:
 		return false

@@ -30,6 +30,7 @@ var detail: Label
 var result_notice: Label
 var _notice_timer: Timer
 var _phase_key := ""
+var _disabled_reason := ""
 var available_bottom := 880.0
 
 
@@ -61,34 +62,13 @@ func _ready() -> void:
 	shade.add_child(sheet)
 	sheet.draw.connect(_draw_sheet)
 	Pixel.label(sheet, "派遣图板", Rect2(28, 20, 400, 42), 36, Pixel.PAPER)
-	Pixel.label(sheet, "选择岗位 → 确认派遣 → 下一位玩家 · 当前为单次派遣演示", Rect2(28, 65, 1160, 28), 22, Pixel.MUTED)
+	Pixel.label(sheet, "选择岗位 → 确认派遣 → 本轮下一位 · 每人每轮只派一次", Rect2(28, 65, 1160, 28), 22, Pixel.MUTED)
 	close_button = _button(sheet, "收起", Rect2(1284, 24, 128, 48))
 	close_button.pressed.connect(close)
 	for group_index in GROUPS.size():
 		var rect: Rect2 = RECTS[group_index]
 		Pixel.label(sheet, TITLES[group_index], Rect2(rect.position + Vector2(60, 10), Vector2(320, 32)), 26, Pixel.PAPER)
-		var items: Array[Dictionary] = []
-		for item in state.positions:
-			if item.group == GROUPS[group_index]:
-				items.append(item)
-		var spacing := 96.0 if group_index < 3 else 106.0
-		var start := rect.position + Vector2(rect.size.x - items.size() * spacing - 12, 64 if group_index < 3 else 60)
-		for i in items.size():
-			var item := items[i]
-			var button := Button.new()
-			button.name = item.id
-			button.position = start + Vector2(i * spacing, 0)
-			button.size = Vector2(84, 82)
-			button.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
-			Pixel.clear_button_styles(button)
-			sheet.add_child(button)
-			buttons[item.id] = button
-			button.pressed.connect(select.bind(item.id))
-			button.draw.connect(_draw_slot.bind(button, item))
-			button.mouse_entered.connect(button.queue_redraw)
-			button.mouse_exited.connect(button.queue_redraw)
-			button.focus_entered.connect(button.queue_redraw)
-			button.focus_exited.connect(button.queue_redraw)
+		var items := _add_slot_buttons(group_index)
 		if group_index < 3:
 			Pixel.label(sheet, "到港分红 %d · %d 个船位" % [[18, 30, 36][group_index], items.size()], Rect2(rect.position + Vector2(18, 189), Vector2(390, 28)), 22, Pixel.MUTED)
 		else:
@@ -105,6 +85,66 @@ func _ready() -> void:
 	shade.hide()
 	_layout()
 	_refresh()
+
+
+## 按 group 建该组的岗位按钮（船位座数随货物变化，故需可重建）。返回该组岗位项。
+func _add_slot_buttons(group_index: int) -> Array[Dictionary]:
+	var rect: Rect2 = RECTS[group_index]
+	var items: Array[Dictionary] = []
+	for item in state.positions:
+		if item.group == GROUPS[group_index]:
+			items.append(item)
+	var spacing := 96.0 if group_index < 3 else 106.0
+	var start := rect.position + Vector2(rect.size.x - items.size() * spacing - 12, 64 if group_index < 3 else 60)
+	for i in items.size():
+		var item := items[i]
+		var button := Button.new()
+		button.name = item.id
+		button.position = start + Vector2(i * spacing, 0)
+		button.size = Vector2(84, 82)
+		button.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
+		Pixel.clear_button_styles(button)
+		sheet.add_child(button)
+		buttons[item.id] = button
+		button.pressed.connect(select.bind(item.id))
+		button.draw.connect(_draw_slot.bind(button, item))
+		button.mouse_entered.connect(button.queue_redraw)
+		button.mouse_exited.connect(button.queue_redraw)
+		button.focus_entered.connect(button.queue_redraw)
+		button.focus_exited.connect(button.queue_redraw)
+	return items
+
+
+## 港务长换货后重建三船的座位按钮（座位数随货物变化）。分红/座位数文字标签属 UI-09，暂不更新。
+func rebuild_ship_slots() -> void:
+	_sync_ship_slots()
+	_refresh()
+
+
+## 让船位按钮与 state.positions 对齐；不匹配才重建。_refresh 起手调用以自愈，
+## 因为 set_voyage_cargo 的 changed 信号可能早于外部重建触达。
+func _sync_ship_slots() -> void:
+	if not is_instance_valid(sheet):
+		return
+	var expected: Array[String] = []
+	for item in state.positions:
+		if item.group.begins_with("ship_"):
+			expected.append(item.id)
+	var have: Array[String] = []
+	for id in buttons:
+		if id.begins_with("ship_"):
+			have.append(id)
+	expected.sort()
+	have.sort()
+	if expected == have:
+		return
+	for id in have:
+		var old: Button = buttons[id]
+		sheet.remove_child(old)   # 立即脱离树，避免同名新按钮被自动改名
+		old.queue_free()
+		buttons.erase(id)
+	for group_index in 3:
+		_add_slot_buttons(group_index)
 
 
 func _button(parent: Control, text: String, rect: Rect2) -> Button:
@@ -137,13 +177,15 @@ func _layout() -> void:
 	result_notice.position = Vector2(viewport.x - result_notice.size.x - 24, 84)
 
 
-func set_context(current_actor: CharacterCard, enabled: bool, phase_key: String) -> void:
-	if actor != current_actor or phase_key != _phase_key or not enabled:
+func set_context(current_actor: CharacterCard, enabled: bool, phase_key: String, disabled_reason: String = "") -> void:
+	var context_changed := actor != current_actor or phase_key != _phase_key or interaction_enabled != enabled
+	if context_changed:
 		clear_selection()
 		result_notice.hide()
 	actor = current_actor
 	interaction_enabled = enabled
 	_phase_key = phase_key
+	_disabled_reason = disabled_reason
 	if not enabled:
 		close()
 	_refresh()
@@ -214,8 +256,9 @@ func _on_state_changed() -> void:
 func _refresh() -> void:
 	if not is_instance_valid(detail):
 		return
+	_sync_ship_slots()
 	launcher.disabled = not interaction_enabled
-	launcher.tooltip_text = "所有岗位在这里选择" if interaction_enabled else "派遣阶段才可打开"
+	launcher.tooltip_text = "所有岗位在这里选择" if interaction_enabled else (_disabled_reason if not _disabled_reason.is_empty() else "派遣阶段才可打开")
 	cancel_button.disabled = selected_id.is_empty()
 	confirm_button.disabled = true
 	confirm_button.text = "确认派遣"
@@ -228,7 +271,7 @@ func _refresh() -> void:
 		detail.text = "%s → %s · %s\n消耗 1 名伙计 · %s" % [actor.character_name, item.title, payment, item.effect if reason.is_empty() else reason]
 		confirm_button.disabled = not interaction_enabled or not reason.is_empty()
 		confirm_button.text = "确认 · 领取 10" if item.group == "insurance" else "确认 · 支付 %d" % item.cost
-		confirm_button.tooltip_text = "确认后轮到下一位演示玩家" if reason.is_empty() else reason
+		confirm_button.tooltip_text = "确认后轮到本轮下一位" if reason.is_empty() else reason
 	for item in state.positions:
 		var button: Button = buttons[item.id]
 		var reason := state.unavailable_reason(item.id)

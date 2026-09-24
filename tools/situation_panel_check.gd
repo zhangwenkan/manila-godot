@@ -1,6 +1,6 @@
 extends SceneTree
 ## 有界检查：godot --path . --headless --script res://tools/situation_panel_check.gd
-## 实例化真实场景，验证态势面板的存在、布局、数据同步，然后立即退出。
+## 实例化真实场景，验证横向态势长条的存在、布局、数据同步与展开，然后立即退出。
 
 var _failures: Array[String] = []
 var _game
@@ -29,19 +29,37 @@ func _run() -> void:
 	# 数据同步：玩家数与 turn_bar 一致，且不为空。
 	_check(panel._players.size() == _game.turn_bar.players.size() and not panel._players.is_empty(), "玩家列表未同步")
 	_check(panel._current_id == _game.turn_bar.players[_game.turn_bar.current_player_index].character_name_en, "当前玩家高亮未同步")
-	# 面板高度随玩家数增长。
-	var expected_h: float = panel.HEADER_H + 10.0 + panel._players.size() * panel.ROW_H + (panel._players.size() - 1) * panel.ROW_GAP + 6.0
-	_check(is_equal_approx(panel.size.y, expected_h), "面板高度与玩家数不符：%s vs %s" % [panel.size.y, expected_h])
-	# 只显示公共信息：面板持有的资源里不解读现金/股票（仅读 remaining/capacity）。
-	_check(panel.mouse_filter == Control.MOUSE_FILTER_IGNORE, "态势面板拦截了输入")
+	# 横条可点击（展开/收起需要接收输入）。
+	_check(panel.mouse_filter == Control.MOUSE_FILTER_STOP, "横条应可点击展开")
+	# 折叠时高度为一条 BAR_H。
+	_check(is_equal_approx(panel.size.y, panel.BAR_H), "折叠高度应为 BAR_H：%s vs %s" % [panel.size.y, panel.BAR_H])
 
-	# 模拟一次派遣，验证分布条随 owners 变化刷新。
+	# 模拟一次派遣，验证该玩家的派遣项列表随 owners 刷新。
 	var actor = _game.turn_bar.players[_game.turn_bar.current_player_index]
 	_game.placement_panel.state.owners["harbor_2"] = actor
 	_game.placement_panel.state.changed.emit()
 	await _frames(2)
-	var counts: Dictionary = panel._counts_for(actor)
-	_check(counts["harbor"] == 1, "派遣后分布条未反映 harbor 占位")
+	var lines: Array = panel._placement_lines(actor)
+	_check(lines.size() == 1 and String(lines[0]).begins_with("港口"), "派遣后派遣项未反映 harbor 占位：%s" % [lines])
+
+	# 展开：高度按最多派遣项数增长；再点收起还原。
+	panel._gui_input(_left_click())
+	await _frames(2)
+	_check(panel._expanded, "点击未展开")
+	var expected_h: float = panel.BAR_H + panel._max_lines * panel.DETAIL_LINE_H + 6.0
+	_check(is_equal_approx(panel.size.y, expected_h), "展开高度与派遣项数不符：%s vs %s" % [panel.size.y, expected_h])
+	panel._gui_input(_left_click())
+	await _frames(2)
+	_check(not panel._expanded and is_equal_approx(panel.size.y, panel.BAR_H), "再次点击未收起")
+
+	# 船名随港务长选货更新：换 nutmeg/jade/ginseng 后，船位派遣项显示新货名。
+	_game.set_voyage(["nutmeg", "jade", "ginseng"], [], [3, 3, 3])
+	_game.placement_panel.state.owners.clear()
+	_game.placement_panel.state.owners["ship_0_0"] = actor   # 船0 现为 nutmeg
+	_game.placement_panel.state.changed.emit()
+	await _frames(2)
+	lines = panel._placement_lines(actor)
+	_check(lines.size() == 1 and String(lines[0]).begins_with("肉豆蔻"), "选货后船名未更新：%s" % [lines])
 
 	# 覆盖开关面板时的可见性。
 	_game.open_character_roster()
@@ -54,6 +72,14 @@ func _run() -> void:
 	_game.queue_free()
 	await _frames(2)
 	quit(0 if _failures.is_empty() else 1)
+
+
+func _left_click() -> InputEventMouseButton:
+	var event := InputEventMouseButton.new()
+	event.button_index = MOUSE_BUTTON_LEFT
+	event.pressed = true
+	event.position = Vector2(10, 10)
+	return event
 
 
 func _check(condition: bool, message: String) -> void:

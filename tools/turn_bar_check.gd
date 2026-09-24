@@ -35,6 +35,7 @@ class PreviewController extends Node:
 				bar.set_current_player(bar.harbor_master_index)
 		elif event.keycode == KEY_R:
 			stage_index = 0
+			game.reset_voyage_flow()
 			bar.set_current_player(0)
 			bar.set_harbor_master(2)
 			bar.set_stage(TurnBar.Phase.DISPATCH, 1, 1, 0)

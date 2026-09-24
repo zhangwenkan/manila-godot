@@ -20,11 +20,14 @@ const FACE_NORMALS: Array[Vector3] = [Vector3.UP, Vector3.BACK, Vector3.RIGHT, V
 @export var settle_hold_time: float = 0.55
 
 var target_value: int = 1
+var cargo_id: String = ""
+var cargo_label: String = ""
 var is_rolling_flag: bool = false
 var settle_with_group: bool = false
 var _debug_mode: bool = false
 var _settle_timer: float = 0.0
 var _mesh_root: Node3D
+var _body_mesh: MeshInstance3D
 var _collision: CollisionShape3D
 var _pending_impulse: Vector3 = Vector3.ZERO
 var _pending_torque: Vector3 = Vector3.ZERO
@@ -225,6 +228,8 @@ func _build_visual_and_collision() -> void:
 	body.name = "RoundedBody"
 	body.mesh = mesh
 	_mesh_root.add_child(body)
+	_body_mesh = body
+	_apply_cargo_colors()
 	# Broad, flat contacts keep the decorative round corners from resting at a tilt.
 	var box_shape := BoxShape3D.new()
 	box_shape.size = Vector3.ONE * mesh_size
@@ -263,6 +268,47 @@ func _add_rounded_surface(mesh: ArrayMesh, face_normal: Vector3) -> void:
 	arrays[Mesh.ARRAY_TEX_UV] = uvs
 	arrays[Mesh.ARRAY_INDEX] = indices
 	mesh.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES, arrays)
+
+
+func _apply_cargo_colors() -> void:
+	if _body_mesh == null or _body_mesh.mesh == null:
+		return
+	var palette := cargo_palette(cargo_id)
+	for i in FACE_NORMALS.size():
+		var material := _body_mesh.mesh.surface_get_material(i)
+		if material == null or not material is ShaderMaterial:
+			continue
+		material.set_shader_parameter("top_color", palette.top)
+		material.set_shader_parameter("base_color", palette.base)
+		material.set_shader_parameter("side_color", palette.side)
+		material.set_shader_parameter("separator_color", palette.separator)
+		material.set_shader_parameter("dot_color", palette.dot)
+
+
+func cargo_palette(id: String) -> Dictionary:
+	# 原版四种货物对应不同颜色骰子；默认沿用旧色，未设货物时保持原样。
+	match id:
+		"ginseng":
+			return {"top": Color("#f5e88a"), "base": Color("#e8d840"), "side": Color("#c0a820"),
+					"separator": Color("#f8f0b8"), "dot": Color("#5a4a10")}
+		"nutmeg":
+			return {"top": Color("#b85a3a"), "base": Color("#8a3818"), "side": Color("#5a2010"),
+					"separator": Color("#c8704a"), "dot": Color("#2a0808")}
+		"silk":
+			return {"top": Color("#a8c8e8"), "base": Color("#5080b8"), "side": Color("#2a5080"),
+					"separator": Color("#c0d8f0"), "dot": Color("#0a1a30")}
+		"jade":
+			return {"top": Color("#8ec4a0"), "base": Color("#4a8a5e"), "side": Color("#2f6b42"),
+					"separator": Color("#b8d8c4"), "dot": Color("#10241a")}
+		_:
+			return {"top": top_color, "base": base_color, "side": side_color,
+					"separator": separator_color, "dot": dot_color}
+
+
+func set_cargo(id: String, label: String = "") -> void:
+	cargo_id = id
+	cargo_label = label
+	_apply_cargo_colors()
 
 
 func _make_face_texture(face_value: int) -> ImageTexture:

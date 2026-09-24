@@ -24,6 +24,7 @@ var _current_id := ""
 var _resources: Dictionary = {}
 var _owners: Dictionary = {}
 var _voyage_number := 1
+var _ship_names: Array = ["人参", "丝绸", "玉石"]   # 本航程三船货物名，随港务长选货更新
 var _expanded := false
 var _hover := false
 var _cell_x: Array[float] = []       # 每段起始 x
@@ -40,12 +41,14 @@ func _ready() -> void:
 	_refresh()
 
 
-func set_situation(players: Array, current_id: String, resources: Dictionary, owners: Dictionary, voyage_number: int = 1) -> void:
+func set_situation(players: Array, current_id: String, resources: Dictionary, owners: Dictionary, voyage_number: int = 1, ship_names: Array = []) -> void:
 	_players = players.duplicate()
 	_current_id = current_id
 	_resources = resources.duplicate()
 	_owners = owners.duplicate()
 	_voyage_number = maxi(1, voyage_number)
+	if ship_names.size() == 3:
+		_ship_names = ship_names.duplicate()
 	_refresh()
 
 
@@ -92,7 +95,7 @@ func _refresh() -> void:
 func _place_label(id: String) -> String:
 	if id.begins_with("ship_"):
 		var ship := int(id.split("_")[1])
-		return ["人参船", "丝绸船", "玉石船"][ship] if ship < 3 else "货船"
+		return (_ship_names[ship] + "船") if ship < _ship_names.size() else "货船"
 	if id.begins_with("harbor_"):
 		return "港口" + ["A", "B", "C"][int(id.split("_")[1])]
 	if id.begins_with("shipyard_"):

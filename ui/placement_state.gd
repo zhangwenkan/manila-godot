@@ -7,6 +7,7 @@ const COSTS := {
 	"silk": [3, 4, 5], "jade": [3, 4, 5, 5],
 }
 const CARGO_NAMES := {"ginseng": "人参", "nutmeg": "肉豆蔻", "silk": "丝绸", "jade": "玉石"}
+const ALL_CARGOES := ["ginseng", "nutmeg", "silk", "jade"]
 
 var ships: Array[String] = ["ginseng", "silk", "jade"]
 var positions: Array[Dictionary] = []
@@ -15,6 +16,39 @@ var arrived: Array[bool] = [false, false, false]
 
 
 func _init() -> void:
+	_rebuild_positions()
+
+
+## 本航程装货（R04）：从四种货物中选三种、每船装一种、不重复。
+## 重建船位并清空占用与到港（准备阶段调用，派遣前）。返回是否合法。
+func set_voyage_cargo(cargo_ids: Array) -> bool:
+	if cargo_ids.size() != 3:
+		return false
+	var seen := {}
+	for id in cargo_ids:
+		if not COSTS.has(id) or seen.has(id):
+			return false
+		seen[id] = true
+	ships.assign(cargo_ids)
+	owners.clear()
+	arrived.assign([false, false, false])
+	_rebuild_positions()
+	changed.emit()
+	return true
+
+
+## 第 ship 艘船本航程所装货物 id / 中文名。
+func cargo_of(ship: int) -> String:
+	return ships[ship] if ship >= 0 and ship < ships.size() else ""
+
+
+func cargo_name(ship: int) -> String:
+	var id := cargo_of(ship)
+	return CARGO_NAMES.get(id, "货")
+
+
+func _rebuild_positions() -> void:
+	positions.clear()
 	for ship in ships.size():
 		for seat in COSTS[ships[ship]].size():
 			positions.append({"id": "ship_%d_%d" % [ship, seat], "group": "ship_%d" % ship,
