@@ -79,6 +79,8 @@ func _ready() -> void:
 		style.set_border_width_all(2)
 		sail_button.add_theme_stylebox_override(key, style)
 	$CanvasLayer.add_child(sail_button)
+	# The dispatch modal must cover the regular HUD, including this runtime button.
+	$CanvasLayer.move_child(sail_button, placement_panel.get_index())
 	sail_button.pressed.connect(_on_sail_button_pressed)
 
 	for i in dice_stage.get_dice_count():
@@ -125,11 +127,11 @@ func _layout_personal_controls() -> void:
 	placement_panel._layout()
 	# 态势面板固定在左上角，与底栏同缩放；尺寸由 set_situation 按玩家数决定，这里不覆盖。
 	situation_panel.scale = personal_bar.scale
-	situation_panel.position = Vector2(margin, margin).floor()
+	situation_panel.position = Vector2(margin, maxf(margin, placement_panel.available_top)).floor()
 	situation_panel.visible = not character_overlay.visible and not dice_overlay.visible
 	# 投骰航行按钮：贴在态势面板右侧、同 y、同缩放，受各遮罩隐藏。
 	sail_button.scale = personal_bar.scale
-	sail_button.position = Vector2(margin + situation_panel.size.x * personal_bar.scale.x + 12, margin).floor()
+	sail_button.position = Vector2(margin + situation_panel.size.x * personal_bar.scale.x + 12, situation_panel.position.y).floor()
 	sail_button.visible = not character_overlay.visible and not dice_overlay.visible
 	_update_sail_button()
 
@@ -279,7 +281,7 @@ func _show_dice_mode() -> void:
 	dice_overlay.show()
 	dice_close_button.show()
 	_sync_placement()
-	for control: Control in [left_pan_button, right_pan_button, personal_bar, turn_bar, situation_panel, sail_button]:
+	for control: Control in [left_pan_button, right_pan_button, personal_bar, turn_bar, select_character_button, situation_panel, sail_button]:
 		control.hide()
 
 func _on_close_dice_pressed() -> void:

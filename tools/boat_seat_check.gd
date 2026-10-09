@@ -18,32 +18,18 @@ class PreviewController extends Node:
 		initial_character = game.selected_character_id
 		initial_confirmed = game.character_overlay.confirmed_index
 
-	func reset() -> void:
-		var panel = game.placement_panel
-		var was_open: bool = panel.shade.visible
-		panel.close()
-		panel.result_notice.hide()
-		game._displayed_character_id = ""
-		game._player_resources = initial_resources.duplicate(true)
-		game.selected_character_id = initial_character
-		game.character_overlay.confirmed_index = initial_confirmed
-		game.turn_bar.players.assign(initial_players)
-		game.turn_bar.current_player_index = 0
-		game.turn_bar.harbor_master_index = initial_master
-		panel.state.arrived.assign([false, false, false])
-		panel.state.set_preview_occupants({})
-		game.reset_voyage_flow()
-		game.turn_bar.set_stage(game.turn_bar.Phase.DISPATCH, 1, 1, 0)
-		game.personal_bar.conceal_stocks()
-		if was_open:
-			panel.open()
-
-	func _unhandled_key_input(event: InputEvent) -> void:
-		if not event.is_pressed() or event.is_echo() or game.character_overlay.visible or game.dice_overlay.visible:
+	## Synthetic key events from the automated test harness (headless mode).
+	func _input(event: InputEvent) -> void:
+		if not event is InputEventKey or not event.is_pressed() or event.is_echo():
 			return
+		if game.character_overlay.visible or game.dice_overlay.visible:
+			return
+		_handle_key((event as InputEventKey).keycode)
+
+	func _handle_key(key: Key) -> void:
 		var panel = game.placement_panel
 		var players: Array = game.turn_bar.players
-		match event.keycode:
+		match key:
 			KEY_M:
 				panel.state.set_preview_occupants({"ship_0_0": players[0], "ship_1_0": players[1], "ship_2_0": players[0], "ship_2_1": players[1], "pirate_0": players[2], "harbor_0": players[3]})
 			KEY_F:
@@ -65,6 +51,26 @@ class PreviewController extends Node:
 				return
 		get_viewport().set_input_as_handled()
 
+	func reset() -> void:
+		var panel = game.placement_panel
+		var was_open: bool = panel.shade.visible
+		panel.close()
+		panel.result_notice.hide()
+		game._displayed_character_id = ""
+		game._player_resources = initial_resources.duplicate(true)
+		game.selected_character_id = initial_character
+		game.character_overlay.confirmed_index = initial_confirmed
+		game.turn_bar.players.assign(initial_players)
+		game.turn_bar.current_player_index = 0
+		game.turn_bar.harbor_master_index = initial_master
+		panel.state.arrived.assign([false, false, false])
+		panel.state.set_preview_occupants({})
+		game.reset_voyage_flow()
+		game.turn_bar.set_stage(game.turn_bar.Phase.DISPATCH, 1, 1, 0)
+		game.personal_bar.conceal_stocks()
+		if was_open:
+			panel.open()
+
 
 func _run() -> void:
 	DirAccess.make_dir_recursive_absolute(ProjectSettings.globalize_path(SEAT_OUTPUT))
@@ -72,23 +78,31 @@ func _run() -> void:
 	root.content_scale_size = Vector2i(2048, 1152)
 	root.content_scale_mode = Window.CONTENT_SCALE_MODE_VIEWPORT
 	root.size = Vector2i(1280, 720)
-	_game = load("res://scene/scene_bg.tscn").instantiate()
+	# Follow the same configured main scene as the editor's F5 run.
+	_game = load(ProjectSettings.get_setting("application/run/main_scene")).instantiate()
 	root.add_child(_game)
+	create_timer(90).timeout.connect(_timeout)
+	await _frames(8)
+	_check(_game.get_node_or_null("DebugLayer") == null, "Main scene must not expose a debug toolbar")
+	_check(_game.get_node_or_null("CanvasLayer/DebugDiceControls") == null, "Main scene must not expose dice-test controls")
+	print("MAIN_SCENE_CLEAN_CHECK DebugLayer=absent DebugDiceControls=absent")
 	_controller = PreviewController.new()
 	_controller.game = _game
 	root.add_child(_controller)
 	await _frames(8)
 	if "--preview" in OS.get_cmdline_user_args():
-		if "--auto" not in OS.get_cmdline_user_args():
-			root.title += " | R: reset A: arrived M/F: fixtures N: next C: roster D: dice"
+		await _frames(2)
 		_game.placement_panel.open()
+		await _frames(2)
+		await RenderingServer.frame_post_draw
+		if DisplayServer.get_name() != "headless":
+			root.get_texture().get_image().save_png(ProjectSettings.globalize_path(SEAT_OUTPUT) + "/dispatch_preview.png")
 		if "--auto" not in OS.get_cmdline_user_args():
 			return
 		create_timer(60).timeout.connect(_timeout)
 		await _tour()
 		await _finish()
 		return
-	create_timer(90).timeout.connect(_timeout)
 	var panel = _game.placement_panel
 	var state = panel.state
 	var turn = _game.turn_bar

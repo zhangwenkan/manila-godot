@@ -31,7 +31,9 @@ var result_notice: Label
 var _notice_timer: Timer
 var _phase_key := ""
 var _disabled_reason := ""
+var _ship_status_labels: Array[Label] = []
 var available_bottom := 880.0
+var available_top := 24.0
 
 
 func _ready() -> void:
@@ -68,9 +70,9 @@ func _ready() -> void:
 	for group_index in GROUPS.size():
 		var rect: Rect2 = RECTS[group_index]
 		Pixel.label(sheet, TITLES[group_index], Rect2(rect.position + Vector2(60, 10), Vector2(320, 32)), 26, Pixel.PAPER)
-		var items := _add_slot_buttons(group_index)
+		_add_slot_buttons(group_index)
 		if group_index < 3:
-			Pixel.label(sheet, "到港分红 %d · %d 个船位" % [[18, 30, 36][group_index], items.size()], Rect2(rect.position + Vector2(18, 189), Vector2(390, 28)), 22, Pixel.MUTED)
+			_ship_status_labels.append(Pixel.label(sheet, "", Rect2(rect.position + Vector2(18, 189), Vector2(412, 28)), 22, Pixel.MUTED))
 		else:
 			var notes := ["有船才有收益", "受损船入厂", "登船 / 劫掠", "小先大后", "先领 10\n后担赔付"]
 			Pixel.label(sheet, notes[group_index - 3], Rect2(rect.position + Vector2(18, 70), Vector2(230 if group_index < 5 else 190, 60)), 22, Pixel.MUTED)
@@ -168,10 +170,10 @@ func _button(parent: Control, text: String, rect: Rect2) -> Button:
 
 func _layout() -> void:
 	var viewport := get_viewport_rect().size
-	var factor := minf(1.0, minf((viewport.x - 48) / DESIGN.x, (minf(available_bottom, viewport.y - 24) - 24) / DESIGN.y))
+	var factor := minf(1.0, minf((viewport.x - 48) / DESIGN.x, (minf(available_bottom, viewport.y - 24) - available_top) / DESIGN.y))
 	factor = maxf(0.2, factor)
 	sheet.scale = Vector2.ONE * factor
-	sheet.position = Vector2((viewport.x - DESIGN.x * factor) * 0.5, 24).floor()
+	sheet.position = Vector2((viewport.x - DESIGN.x * factor) * 0.5, available_top).floor()
 	launcher.position = Vector2(viewport.x - 240, 24)
 	result_notice.size.x = minf(660, viewport.x - 48)
 	result_notice.position = Vector2(viewport.x - result_notice.size.x - 24, 84)
@@ -257,6 +259,10 @@ func _refresh() -> void:
 	if not is_instance_valid(detail):
 		return
 	_sync_ship_slots()
+	for ship in _ship_status_labels.size():
+		var status := _ship_status_labels[ship]
+		status.text = "已到港 · 不能再派人" if state.arrived[ship] else "到港分红 %d · %d 个船位" % [[18, 30, 36][ship], state.ship_occupants(ship).size()]
+		status.add_theme_color_override("font_color", Pixel.GOLD if state.arrived[ship] else Pixel.MUTED)
 	launcher.disabled = not interaction_enabled
 	launcher.tooltip_text = "所有岗位在这里选择" if interaction_enabled else (_disabled_reason if not _disabled_reason.is_empty() else "派遣阶段才可打开")
 	cancel_button.disabled = selected_id.is_empty()
