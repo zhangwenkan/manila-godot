@@ -1,0 +1,8 @@
+Godot Engine v4.6.1.stable.official.14d19694e - https://godotengine.org
+D3D12 12_0 - Forward Mobile - Using Device #0: Intel - Intel(R) Arc(TM) 140T GPU (16GB)
+ERROR: Can't create shader cache folder, no shader caching will happen: user://
+   at: RendererCompositorRD (servers/rendering/renderer_rd/renderer_compositor_rd.cpp:287)
+
+DEMO_READY phase=auction
+START_ROLL=true overlay_state=rolling
+DICE_GIF_CAPTURE frames=38 elapsed_ms=11472 fps=3.31 settled=true values=[4, 1, 6]

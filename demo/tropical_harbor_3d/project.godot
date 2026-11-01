@@ -1,0 +1,24 @@
+config_version=5
+
+[application]
+config/name="Tropical Water Study"
+run/main_scene="res://tropical_harbor_demo.tscn"
+config/features=PackedStringArray("4.6", "Forward Plus")
+
+[display]
+window/size/viewport_width=1600
+window/size/viewport_height=900
+window/size/window_width_override=1440
+window/size/window_height_override=810
+window/stretch/mode="canvas_items"
+
+[rendering]
+renderer/rendering_method="forward_plus"
+rendering_device/driver.windows="d3d12"
+textures/default_filters/use_nearest_mipmap_filter=false
+anti_aliasing/quality/msaa_3d=2
+lights_and_shadows/directional_shadow/size=2048
+textures/default_filters/anisotropic_filtering_level=3
+
+[environment]
+defaults/default_clear_color=Color(0.055, 0.34, 0.49, 1)
