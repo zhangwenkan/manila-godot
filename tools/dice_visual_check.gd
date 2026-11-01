@@ -14,6 +14,10 @@ func _initialize() -> void:
 
 
 func _run() -> void:
+	if "--game" in OS.get_cmdline_user_args():
+		push_error("DICE_VISUAL_CHECK: --game was removed with the legacy scene; use the harbor pixel integration check instead.")
+		quit(2)
+		return
 	if "--native-viewport" in OS.get_cmdline_user_args():
 		root.content_scale_size = root.size
 	DirAccess.make_dir_recursive_absolute(ProjectSettings.globalize_path(OUTPUT_DIR))
@@ -147,47 +151,6 @@ func _run() -> void:
 		print("ROLL_CHECK faces_seen=%d completed=%d signals=%d" % [changed_faces.size(), _completed_rolls, _settled_indices.size()])
 	stage.queue_free()
 	await process_frame
-	if "--game" in OS.get_cmdline_user_args():
-		root.content_scale_size = Vector2i(2048, 1152)
-		root.content_scale_mode = Window.CONTENT_SCALE_MODE_VIEWPORT
-		var game = load("res://scene/scene_bg.tscn").instantiate()
-		root.add_child(game)
-		_check(game.get_node_or_null("CanvasLayer/DiceOverlay") != null, "Dice overlay is missing")
-		game.inspect_dice()
-		_check(game.get_node("CanvasLayer/DiceOverlay").visible and game.dice_stage.visible, "Dice mode did not show the full-screen overlay")
-		game.dice_stage.set_value(0, 6)
-		game.dice_stage.set_value(1, 4)
-		game.dice_stage.set_value(2, 5)
-		await process_frame
-		await RenderingServer.frame_post_draw
-		root.get_texture().get_image().save_png(OUTPUT_DIR.path_join("game.png"))
-		game.roll_dice()
-		game.inspect_dice()
-		_check(game._dice_rolling, "Debug button interrupted an active throw")
-		game._on_close_dice_pressed()
-		_check(game.dice_overlay.visible and game.dice_close_button.disabled, "Active throw can be dismissed")
-		for frame in range(1200):
-			await physics_frame
-			if frame in [12, 30, 60, 100]:
-				await RenderingServer.frame_post_draw
-				root.get_texture().get_image().save_png(OUTPUT_DIR.path_join("game_roll_%03d.png" % frame))
-			if not game._dice_rolling:
-				break
-		_check(not game._dice_rolling and game._dice_results == game.dice_stage.get_values(), "Game roll did not finish with matching results")
-		for game_die: Dice3D in game.dice_stage._dice:
-			_check_resting_pose(game.dice_stage, game_die)
-		await RenderingServer.frame_post_draw
-		root.get_texture().get_image().save_png(OUTPUT_DIR.path_join("game_settled.png"))
-		var game_poses: Array[Transform3D] = []
-		for game_die: Dice3D in game.dice_stage._dice:
-			game_poses.append(game_die.global_transform)
-		game._on_close_dice_pressed()
-		_check(not game.dice_overlay.visible and not game.dice_stage.visible and game.personal_bar.visible, "Dice mode did not close")
-		game.inspect_dice()
-		for i in game_poses.size():
-			_check(game.dice_stage._dice[i].global_transform.is_equal_approx(game_poses[i]), "Reopening dice mode moved a die")
-		game.queue_free()
-		await process_frame
 	print("DICE_VISUAL_CHECK failures=%d output=%s" % [_failures.size(), ProjectSettings.globalize_path(OUTPUT_DIR)])
 	quit(0 if _failures.is_empty() else 1)
 

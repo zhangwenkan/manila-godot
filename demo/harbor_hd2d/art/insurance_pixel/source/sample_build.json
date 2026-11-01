@@ -1,0 +1,801 @@
+{
+  "stage": "partial style sample; not full reconstruction",
+  "input_sha256": "b809395557fa853da7ef64f20a267515974bc3e5d58598a8ba64c86f4317a85c",
+  "bounds_z_up": [
+    [
+      -5.800000190734863,
+      -1.090000033378601,
+      0.15000000596046448
+    ],
+    [
+      6.900000095367432,
+      2.25,
+      6.677499771118164
+    ]
+  ],
+  "parts": [
+    {
+      "name": "INS7_WallLeft",
+      "vertices": 8,
+      "faces": 6,
+      "closed": true
+    },
+    {
+      "name": "INS7_WallRight",
+      "vertices": 8,
+      "faces": 6,
+      "closed": true
+    },
+    {
+      "name": "INS7_WallBelowWindow",
+      "vertices": 8,
+      "faces": 6,
+      "closed": true
+    },
+    {
+      "name": "INS7_WallAboveWindow",
+      "vertices": 8,
+      "faces": 6,
+      "closed": true
+    },
+    {
+      "name": "INS7_WindowRecess",
+      "vertices": 8,
+      "faces": 6,
+      "closed": true
+    },
+    {
+      "name": "INS7_WindowJamb-3.65",
+      "vertices": 8,
+      "faces": 6,
+      "closed": true
+    },
+    {
+      "name": "INS7_WindowJamb-1.75",
+      "vertices": 8,
+      "faces": 6,
+      "closed": true
+    },
+    {
+      "name": "INS7_WindowSill1.34",
+      "vertices": 8,
+      "faces": 6,
+      "closed": true
+    },
+    {
+      "name": "INS7_WindowSill3.06",
+      "vertices": 8,
+      "faces": 6,
+      "closed": true
+    },
+    {
+      "name": "INS7_WindowMullion-3.0",
+      "vertices": 8,
+      "faces": 6,
+      "closed": true
+    },
+    {
+      "name": "INS7_WindowMullion-2.4",
+      "vertices": 8,
+      "faces": 6,
+      "closed": true
+    },
+    {
+      "name": "INS7_WindowTransom",
+      "vertices": 8,
+      "faces": 6,
+      "closed": true
+    },
+    {
+      "name": "INS7_WindowReflection",
+      "vertices": 8,
+      "faces": 6,
+      "closed": true
+    },
+    {
+      "name": "INS7_WallBottomTrim",
+      "vertices": 8,
+      "faces": 6,
+      "closed": true
+    },
+    {
+      "name": "INS7_RoofPlate-1",
+      "vertices": 8,
+      "faces": 6,
+      "closed": true
+    },
+    {
+      "name": "INS7_Fascia-1",
+      "vertices": 8,
+      "faces": 6,
+      "closed": true
+    },
+    {
+      "name": "INS7_RoofPlate1",
+      "vertices": 8,
+      "faces": 6,
+      "closed": true
+    },
+    {
+      "name": "INS7_Fascia1",
+      "vertices": 8,
+      "faces": 6,
+      "closed": true
+    },
+    {
+      "name": "INS7_Gable",
+      "vertices": 6,
+      "faces": 5,
+      "closed": true
+    },
+    {
+      "name": "INS7_Ridge",
+      "vertices": 8,
+      "faces": 6,
+      "closed": true
+    },
+    {
+      "name": "INS7_OfficeSignFrame",
+      "vertices": 8,
+      "faces": 6,
+      "closed": true
+    },
+    {
+      "name": "INS7_OfficeSignRimTop",
+      "vertices": 8,
+      "faces": 6,
+      "closed": true
+    },
+    {
+      "name": "INS7_OfficeSignFace",
+      "vertices": 8,
+      "faces": 6,
+      "closed": true
+    },
+    {
+      "name": "INS7_PortalPost2.15",
+      "vertices": 8,
+      "faces": 6,
+      "closed": true
+    },
+    {
+      "name": "INS7_PostHighlight2.15",
+      "vertices": 8,
+      "faces": 6,
+      "closed": true
+    },
+    {
+      "name": "INS7_BaseShoe2.15",
+      "vertices": 8,
+      "faces": 6,
+      "closed": true
+    },
+    {
+      "name": "INS7_PortalPost5.85",
+      "vertices": 8,
+      "faces": 6,
+      "closed": true
+    },
+    {
+      "name": "INS7_PostHighlight5.85",
+      "vertices": 8,
+      "faces": 6,
+      "closed": true
+    },
+    {
+      "name": "INS7_BaseShoe5.85",
+      "vertices": 8,
+      "faces": 6,
+      "closed": true
+    },
+    {
+      "name": "INS7_PortalHeader",
+      "vertices": 8,
+      "faces": 6,
+      "closed": true
+    },
+    {
+      "name": "INS7_PortalCrossbar",
+      "vertices": 8,
+      "faces": 6,
+      "closed": true
+    },
+    {
+      "name": "INS7_BraceLeft",
+      "vertices": 8,
+      "faces": 6,
+      "closed": true
+    },
+    {
+      "name": "INS7_BraceRight",
+      "vertices": 8,
+      "faces": 6,
+      "closed": true
+    },
+    {
+      "name": "INS7_CraneSignFrame",
+      "vertices": 8,
+      "faces": 6,
+      "closed": true
+    },
+    {
+      "name": "INS7_CraneSignRimTop",
+      "vertices": 8,
+      "faces": 6,
+      "closed": true
+    },
+    {
+      "name": "INS7_CraneSignFace",
+      "vertices": 8,
+      "faces": 6,
+      "closed": true
+    },
+    {
+      "name": "INS7_DeckSlice0",
+      "vertices": 8,
+      "faces": 6,
+      "closed": true
+    },
+    {
+      "name": "INS7_DeckSlice1",
+      "vertices": 8,
+      "faces": 6,
+      "closed": true
+    },
+    {
+      "name": "INS7_DeckFrontBeam",
+      "vertices": 8,
+      "faces": 6,
+      "closed": true
+    }
+  ],
+  "uv_mapping": [
+    {
+      "object": "INS7_WallLeft",
+      "face": 0,
+      "density": 24,
+      "max_extent_texels": 28.80000114440918
+    },
+    {
+      "object": "INS7_WallLeft",
+      "face": 1,
+      "density": 24,
+      "max_extent_texels": 28.80000114440918
+    },
+    {
+      "object": "INS7_WallLeft",
+      "face": 2,
+      "density": 24,
+      "max_extent_texels": 69.60000228881836
+    },
+    {
+      "object": "INS7_WallLeft",
+      "face": 3,
+      "density": 24,
+      "max_extent_texels": 69.60000228881836
+    },
+    {
+      "object": "INS7_WallLeft",
+      "face": 4,
+      "density": 24,
+      "max_extent_texels": 69.60000228881836
+    },
+    {
+      "object": "INS7_WallLeft",
+      "face": 5,
+      "density": 24,
+      "max_extent_texels": 69.60000228881836
+    },
+    {
+      "object": "INS7_WallRight",
+      "face": 0,
+      "density": 24,
+      "max_extent_texels": 57.60000228881836
+    },
+    {
+      "object": "INS7_WallRight",
+      "face": 1,
+      "density": 24,
+      "max_extent_texels": 57.60000228881836
+    },
+    {
+      "object": "INS7_WallRight",
+      "face": 2,
+      "density": 24,
+      "max_extent_texels": 69.60000228881836
+    },
+    {
+      "object": "INS7_WallRight",
+      "face": 3,
+      "density": 24,
+      "max_extent_texels": 69.60000228881836
+    },
+    {
+      "object": "INS7_WallRight",
+      "face": 4,
+      "density": 24,
+      "max_extent_texels": 69.60000228881836
+    },
+    {
+      "object": "INS7_WallRight",
+      "face": 5,
+      "density": 24,
+      "max_extent_texels": 69.60000228881836
+    },
+    {
+      "object": "INS7_WallBelowWindow",
+      "face": 0,
+      "density": 24,
+      "max_extent_texels": 43.19999885559082
+    },
+    {
+      "object": "INS7_WallBelowWindow",
+      "face": 1,
+      "density": 24,
+      "max_extent_texels": 43.19999885559082
+    },
+    {
+      "object": "INS7_WallBelowWindow",
+      "face": 2,
+      "density": 24,
+      "max_extent_texels": 43.19999885559082
+    },
+    {
+      "object": "INS7_WallBelowWindow",
+      "face": 3,
+      "density": 24,
+      "max_extent_texels": 19.200000286102295
+    },
+    {
+      "object": "INS7_WallBelowWindow",
+      "face": 4,
+      "density": 24,
+      "max_extent_texels": 43.19999885559082
+    },
+    {
+      "object": "INS7_WallBelowWindow",
+      "face": 5,
+      "density": 24,
+      "max_extent_texels": 19.200000286102295
+    },
+    {
+      "object": "INS7_WallAboveWindow",
+      "face": 0,
+      "density": 24,
+      "max_extent_texels": 43.19999885559082
+    },
+    {
+      "object": "INS7_WallAboveWindow",
+      "face": 1,
+      "density": 24,
+      "max_extent_texels": 43.19999885559082
+    },
+    {
+      "object": "INS7_WallAboveWindow",
+      "face": 2,
+      "density": 24,
+      "max_extent_texels": 43.19999885559082
+    },
+    {
+      "object": "INS7_WallAboveWindow",
+      "face": 3,
+      "density": 24,
+      "max_extent_texels": 12.0
+    },
+    {
+      "object": "INS7_WallAboveWindow",
+      "face": 4,
+      "density": 24,
+      "max_extent_texels": 43.19999885559082
+    },
+    {
+      "object": "INS7_WallAboveWindow",
+      "face": 5,
+      "density": 24,
+      "max_extent_texels": 12.0
+    },
+    {
+      "object": "INS7_RoofPlate-1",
+      "face": 0,
+      "density": 24,
+      "max_extent_texels": 76.28263092041016
+    },
+    {
+      "object": "INS7_RoofPlate-1",
+      "face": 1,
+      "density": 24,
+      "max_extent_texels": 76.2826280593872
+    },
+    {
+      "object": "INS7_RoofPlate-1",
+      "face": 2,
+      "density": 24,
+      "max_extent_texels": 72.0
+    },
+    {
+      "object": "INS7_RoofPlate-1",
+      "face": 3,
+      "density": 24,
+      "max_extent_texels": 61.199997425079346
+    },
+    {
+      "object": "INS7_RoofPlate-1",
+      "face": 4,
+      "density": 24,
+      "max_extent_texels": 72.0
+    },
+    {
+      "object": "INS7_RoofPlate-1",
+      "face": 5,
+      "density": 24,
+      "max_extent_texels": 61.199997425079346
+    },
+    {
+      "object": "INS7_RoofPlate1",
+      "face": 0,
+      "density": 24,
+      "max_extent_texels": 76.28262948989868
+    },
+    {
+      "object": "INS7_RoofPlate1",
+      "face": 1,
+      "density": 24,
+      "max_extent_texels": 76.28262662887573
+    },
+    {
+      "object": "INS7_RoofPlate1",
+      "face": 2,
+      "density": 24,
+      "max_extent_texels": 71.99999713897705
+    },
+    {
+      "object": "INS7_RoofPlate1",
+      "face": 3,
+      "density": 24,
+      "max_extent_texels": 61.199997425079346
+    },
+    {
+      "object": "INS7_RoofPlate1",
+      "face": 4,
+      "density": 24,
+      "max_extent_texels": 71.99999713897705
+    },
+    {
+      "object": "INS7_RoofPlate1",
+      "face": 5,
+      "density": 24,
+      "max_extent_texels": 61.199997425079346
+    },
+    {
+      "object": "INS7_Gable",
+      "face": 0,
+      "density": 24,
+      "max_extent_texels": 129.6000051498413
+    },
+    {
+      "object": "INS7_Gable",
+      "face": 1,
+      "density": 24,
+      "max_extent_texels": 129.6000051498413
+    },
+    {
+      "object": "INS7_Gable",
+      "face": 2,
+      "density": 24,
+      "max_extent_texels": 129.6000051498413
+    },
+    {
+      "object": "INS7_Gable",
+      "face": 3,
+      "density": 24,
+      "max_extent_texels": 71.61054039001465
+    },
+    {
+      "object": "INS7_Gable",
+      "face": 4,
+      "density": 24,
+      "max_extent_texels": 71.6105489730835
+    },
+    {
+      "object": "INS7_PortalPost2.15",
+      "face": 0,
+      "density": 24,
+      "max_extent_texels": 10.079999685287476
+    },
+    {
+      "object": "INS7_PortalPost2.15",
+      "face": 1,
+      "density": 24,
+      "max_extent_texels": 10.079999685287476
+    },
+    {
+      "object": "INS7_PortalPost2.15",
+      "face": 2,
+      "density": 24,
+      "max_extent_texels": 139.19999313354492
+    },
+    {
+      "object": "INS7_PortalPost2.15",
+      "face": 3,
+      "density": 24,
+      "max_extent_texels": 139.19999313354492
+    },
+    {
+      "object": "INS7_PortalPost2.15",
+      "face": 4,
+      "density": 24,
+      "max_extent_texels": 139.19999313354492
+    },
+    {
+      "object": "INS7_PortalPost2.15",
+      "face": 5,
+      "density": 24,
+      "max_extent_texels": 139.19999313354492
+    },
+    {
+      "object": "INS7_PortalPost5.85",
+      "face": 0,
+      "density": 24,
+      "max_extent_texels": 10.079999685287476
+    },
+    {
+      "object": "INS7_PortalPost5.85",
+      "face": 1,
+      "density": 24,
+      "max_extent_texels": 10.079999685287476
+    },
+    {
+      "object": "INS7_PortalPost5.85",
+      "face": 2,
+      "density": 24,
+      "max_extent_texels": 139.19999313354492
+    },
+    {
+      "object": "INS7_PortalPost5.85",
+      "face": 3,
+      "density": 24,
+      "max_extent_texels": 139.19999313354492
+    },
+    {
+      "object": "INS7_PortalPost5.85",
+      "face": 4,
+      "density": 24,
+      "max_extent_texels": 139.19999313354492
+    },
+    {
+      "object": "INS7_PortalPost5.85",
+      "face": 5,
+      "density": 24,
+      "max_extent_texels": 139.19999313354492
+    },
+    {
+      "object": "INS7_PortalHeader",
+      "face": 0,
+      "density": 24,
+      "max_extent_texels": 11.040000200271606
+    },
+    {
+      "object": "INS7_PortalHeader",
+      "face": 1,
+      "density": 24,
+      "max_extent_texels": 11.040000200271606
+    },
+    {
+      "object": "INS7_PortalHeader",
+      "face": 2,
+      "density": 24,
+      "max_extent_texels": 100.79999542236328
+    },
+    {
+      "object": "INS7_PortalHeader",
+      "face": 3,
+      "density": 24,
+      "max_extent_texels": 100.79999542236328
+    },
+    {
+      "object": "INS7_PortalHeader",
+      "face": 4,
+      "density": 24,
+      "max_extent_texels": 100.79999542236328
+    },
+    {
+      "object": "INS7_PortalHeader",
+      "face": 5,
+      "density": 24,
+      "max_extent_texels": 100.79999542236328
+    },
+    {
+      "object": "INS7_PortalCrossbar",
+      "face": 0,
+      "density": 24,
+      "max_extent_texels": 6.0
+    },
+    {
+      "object": "INS7_PortalCrossbar",
+      "face": 1,
+      "density": 24,
+      "max_extent_texels": 6.0
+    },
+    {
+      "object": "INS7_PortalCrossbar",
+      "face": 2,
+      "density": 24,
+      "max_extent_texels": 88.79999542236328
+    },
+    {
+      "object": "INS7_PortalCrossbar",
+      "face": 3,
+      "density": 24,
+      "max_extent_texels": 88.79999542236328
+    },
+    {
+      "object": "INS7_PortalCrossbar",
+      "face": 4,
+      "density": 24,
+      "max_extent_texels": 88.79999542236328
+    },
+    {
+      "object": "INS7_PortalCrossbar",
+      "face": 5,
+      "density": 24,
+      "max_extent_texels": 88.79999542236328
+    },
+    {
+      "object": "INS7_BraceLeft",
+      "face": 0,
+      "density": 24,
+      "max_extent_texels": 6.0
+    },
+    {
+      "object": "INS7_BraceLeft",
+      "face": 1,
+      "density": 24,
+      "max_extent_texels": 6.0
+    },
+    {
+      "object": "INS7_BraceLeft",
+      "face": 2,
+      "density": 24,
+      "max_extent_texels": 70.84066772460938
+    },
+    {
+      "object": "INS7_BraceLeft",
+      "face": 3,
+      "density": 24,
+      "max_extent_texels": 70.84066772460938
+    },
+    {
+      "object": "INS7_BraceLeft",
+      "face": 4,
+      "density": 24,
+      "max_extent_texels": 70.84066772460938
+    },
+    {
+      "object": "INS7_BraceLeft",
+      "face": 5,
+      "density": 24,
+      "max_extent_texels": 70.84066772460938
+    },
+    {
+      "object": "INS7_BraceRight",
+      "face": 0,
+      "density": 24,
+      "max_extent_texels": 6.0
+    },
+    {
+      "object": "INS7_BraceRight",
+      "face": 1,
+      "density": 24,
+      "max_extent_texels": 6.0
+    },
+    {
+      "object": "INS7_BraceRight",
+      "face": 2,
+      "density": 24,
+      "max_extent_texels": 70.84066772460938
+    },
+    {
+      "object": "INS7_BraceRight",
+      "face": 3,
+      "density": 24,
+      "max_extent_texels": 70.84066772460938
+    },
+    {
+      "object": "INS7_BraceRight",
+      "face": 4,
+      "density": 24,
+      "max_extent_texels": 70.84066772460938
+    },
+    {
+      "object": "INS7_BraceRight",
+      "face": 5,
+      "density": 24,
+      "max_extent_texels": 70.84066772460938
+    },
+    {
+      "object": "INS7_DeckSlice0",
+      "face": 0,
+      "density": 24,
+      "max_extent_texels": 152.39999771118164
+    },
+    {
+      "object": "INS7_DeckSlice0",
+      "face": 1,
+      "density": 24,
+      "max_extent_texels": 152.39999771118164
+    },
+    {
+      "object": "INS7_DeckSlice0",
+      "face": 2,
+      "density": 24,
+      "max_extent_texels": 152.39999771118164
+    },
+    {
+      "object": "INS7_DeckSlice0",
+      "face": 3,
+      "density": 24,
+      "max_extent_texels": 76.80000114440918
+    },
+    {
+      "object": "INS7_DeckSlice0",
+      "face": 4,
+      "density": 24,
+      "max_extent_texels": 152.39999771118164
+    },
+    {
+      "object": "INS7_DeckSlice0",
+      "face": 5,
+      "density": 24,
+      "max_extent_texels": 76.80000114440918
+    },
+    {
+      "object": "INS7_DeckSlice1",
+      "face": 0,
+      "density": 24,
+      "max_extent_texels": 152.39999771118164
+    },
+    {
+      "object": "INS7_DeckSlice1",
+      "face": 1,
+      "density": 24,
+      "max_extent_texels": 152.39999771118164
+    },
+    {
+      "object": "INS7_DeckSlice1",
+      "face": 2,
+      "density": 24,
+      "max_extent_texels": 152.39999771118164
+    },
+    {
+      "object": "INS7_DeckSlice1",
+      "face": 3,
+      "density": 24,
+      "max_extent_texels": 76.80000114440918
+    },
+    {
+      "object": "INS7_DeckSlice1",
+      "face": 4,
+      "density": 24,
+      "max_extent_texels": 152.39999771118164
+    },
+    {
+      "object": "INS7_DeckSlice1",
+      "face": 5,
+      "density": 24,
+      "max_extent_texels": 76.80000114440918
+    }
+  ],
+  "master_density": 24,
+  "reference_orientation": "Unregistered: final silhouette/landmark alignment still requires visual review",
+  "materials": [
+    "Atlas",
+    "Signs",
+    "Ink",
+    "EdgeBlue",
+    "RedLight",
+    "RedDark",
+    "Steel",
+    "Glass",
+    "GlassLight"
+  ]
+}

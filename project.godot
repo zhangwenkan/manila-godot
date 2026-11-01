@@ -11,15 +11,21 @@ config_version=5
 [application]
 
 config/name="manila-godot"
-run/main_scene="uid://cmx6pfk1iojts"
+run/main_scene="res://character_preview/character_select_preview.tscn"
 config/features=PackedStringArray("4.6", "Mobile")
 config/icon="res://icon.svg"
 
 [display]
 
-window/size/viewport_width=2048
-window/size/viewport_height=1152
+window/size/viewport_width=1448
+window/size/viewport_height=1086
+window/size/window_width_override=1200
+window/size/window_height_override=900
 window/stretch/mode="viewport"
+
+[filesystem]
+
+import/blender/enabled=false
 
 [physics]
 

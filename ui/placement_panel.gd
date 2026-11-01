@@ -3,14 +3,15 @@ extends Control
 signal confirm_requested(id: String, requesting_actor: CharacterCard, phase_key: String)
 
 const Pixel := preload("res://card/pixel_card_theme.gd")
+const DialogSkin := preload("res://ui/harbor_dialog_skin.gd")
 const State := preload("res://ui/placement_state.gd")
 const CharacterCard := preload("res://card/character_card.gd")
 const BOAT := preload("res://boat/boat.png")
-const DESIGN := Vector2(1440, 790)
+const DESIGN := Vector2(1504, 896)
 const GROUPS := ["ship_0", "ship_1", "ship_2", "harbor", "shipyard", "pirate", "pilot", "insurance"]
-const RECTS := [Rect2(24, 104, 448, 230), Rect2(496, 104, 448, 230), Rect2(968, 104, 448, 230),
-	Rect2(24, 354, 684, 156), Rect2(732, 354, 684, 156),
-	Rect2(24, 530, 448, 162), Rect2(496, 530, 448, 162), Rect2(968, 530, 448, 162)]
+const RECTS := [Rect2(56, 168, 448, 230), Rect2(528, 168, 448, 230), Rect2(1000, 168, 448, 230),
+	Rect2(56, 418, 684, 156), Rect2(764, 418, 684, 156),
+	Rect2(56, 594, 448, 162), Rect2(528, 594, 448, 162), Rect2(1000, 594, 448, 162)]
 const TITLES := ["01  人参船", "02  丝绸船", "03  玉石船", "港口", "修船厂", "海盗", "引航员", "保险公司"]
 const ICONS := ["anchor", "anchor", "diamond", "anchor", "trade", "sword", "helm", "scale"]
 
@@ -56,31 +57,34 @@ func _ready() -> void:
 	_notice_timer.timeout.connect(result_notice.hide)
 	add_child(_notice_timer)
 	shade = ColorRect.new()
-	shade.color = Color(0.02, 0.06, 0.07, 0.62)
+	shade.color = DialogSkin.SHADE
 	shade.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	add_child(shade)
 	sheet = Control.new()
 	sheet.size = DESIGN
 	shade.add_child(sheet)
 	sheet.draw.connect(_draw_sheet)
-	Pixel.label(sheet, "派遣图板", Rect2(28, 20, 400, 42), 36, Pixel.PAPER)
-	Pixel.label(sheet, "选择岗位 → 确认派遣 → 本轮下一位 · 每人每轮只派一次", Rect2(28, 65, 1160, 28), 22, Pixel.MUTED)
-	close_button = _button(sheet, "收起", Rect2(1284, 24, 128, 48))
+	sheet.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR
+	Pixel.label(sheet, "选择岗位 → 确认派遣 → 本轮下一位 · 每人每轮只派一次", Rect2(64, 120, 1292, 28), 22, DialogSkin.MUTED)
+	close_button = _button(sheet, "", Rect2(1412, 18, 76, 76))
+	close_button.tooltip_text = "收起派遣图板 [Esc]"
+	DialogSkin.decorate_close(close_button)
 	close_button.pressed.connect(close)
 	for group_index in GROUPS.size():
 		var rect: Rect2 = RECTS[group_index]
 		Pixel.label(sheet, TITLES[group_index], Rect2(rect.position + Vector2(60, 10), Vector2(320, 32)), 26, Pixel.PAPER)
 		_add_slot_buttons(group_index)
 		if group_index < 3:
-			_ship_status_labels.append(Pixel.label(sheet, "", Rect2(rect.position + Vector2(18, 189), Vector2(412, 28)), 22, Pixel.MUTED))
+			_ship_status_labels.append(Pixel.label(sheet, "", Rect2(rect.position + Vector2(18, 189), Vector2(412, 28)), 22, DialogSkin.MUTED))
 		else:
 			var notes := ["有船才有收益", "受损船入厂", "登船 / 劫掠", "小先大后", "先领 10\n后担赔付"]
-			Pixel.label(sheet, notes[group_index - 3], Rect2(rect.position + Vector2(18, 70), Vector2(230 if group_index < 5 else 190, 60)), 22, Pixel.MUTED)
-	detail = Pixel.label(sheet, "", Rect2(28, 700, 860, 78), 22, Pixel.PAPER)
+			Pixel.label(sheet, notes[group_index - 3], Rect2(rect.position + Vector2(18, 70), Vector2(230 if group_index < 5 else 190, 60)), 22, DialogSkin.MUTED)
+	detail = Pixel.label(sheet, "", Rect2(64, 780, 844, 78), 22, DialogSkin.PAPER)
 	detail.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	cancel_button = _button(sheet, "取消选择", Rect2(908, 718, 152, 48))
+	cancel_button = _button(sheet, "取消选择", Rect2(940, 798, 152, 48))
 	cancel_button.pressed.connect(clear_selection)
-	confirm_button = _button(sheet, "确认派遣", Rect2(1076, 718, 324, 48))
+	confirm_button = _button(sheet, "确认派遣", Rect2(1108, 798, 324, 48))
+	DialogSkin.style_button(confirm_button, true)
 	confirm_button.pressed.connect(confirm_selection)
 	state.changed.connect(_on_state_changed)
 	get_viewport().size_changed.connect(_layout)
@@ -157,13 +161,8 @@ func _button(parent: Control, text: String, rect: Rect2) -> Button:
 	button.add_theme_font_override("font", Pixel.FONT)
 	button.add_theme_font_size_override("font_size", 24)
 	button.add_theme_color_override("font_color", Pixel.PAPER)
-	button.add_theme_color_override("font_disabled_color", Pixel.MUTED)
-	for key in ["normal", "hover", "pressed", "disabled", "focus"]:
-		var style := StyleBoxFlat.new()
-		style.bg_color = Color("365c59") if key in ["hover", "focus"] else Color("203b3b")
-		style.border_color = Pixel.GOLD if key == "focus" else Pixel.TEAL
-		style.set_border_width_all(2)
-		button.add_theme_stylebox_override(key, style)
+	button.add_theme_color_override("font_disabled_color", DialogSkin.MUTED)
+	DialogSkin.style_button(button)
 	parent.add_child(button)
 	return button
 
@@ -262,7 +261,7 @@ func _refresh() -> void:
 	for ship in _ship_status_labels.size():
 		var status := _ship_status_labels[ship]
 		status.text = "已到港 · 不能再派人" if state.arrived[ship] else "到港分红 %d · %d 个船位" % [[18, 30, 36][ship], state.ship_occupants(ship).size()]
-		status.add_theme_color_override("font_color", Pixel.GOLD if state.arrived[ship] else Pixel.MUTED)
+		status.add_theme_color_override("font_color", Pixel.GOLD if state.arrived[ship] else DialogSkin.MUTED)
 	launcher.disabled = not interaction_enabled
 	launcher.tooltip_text = "所有岗位在这里选择" if interaction_enabled else (_disabled_reason if not _disabled_reason.is_empty() else "派遣阶段才可打开")
 	cancel_button.disabled = selected_id.is_empty()
@@ -289,17 +288,18 @@ func _refresh() -> void:
 
 
 func _draw_sheet() -> void:
-	Pixel.step_rect(sheet, Rect2(Vector2.ZERO, DESIGN), 12, Pixel.GOLD)
-	Pixel.step_rect(sheet, Rect2(Vector2(3, 3), DESIGN - Vector2(6, 6)), 10, Color("142e30"))
+	DialogSkin.frame(sheet, Rect2(0, 44, DESIGN.x, DESIGN.y - 44), 90)
+	DialogSkin.header(sheet, Rect2(382, 0, 740, 108), "派遣图板", 38)
 	for i in RECTS.size():
 		var rect: Rect2 = RECTS[i]
-		Pixel.step_rect(sheet, rect, 8, Color("284749"))
+		Pixel.step_rect(sheet, rect, 8, Color("806749"))
+		Pixel.step_rect(sheet, rect.grow(-2), 6, Color("39332a"))
 		Pixel.icon(sheet, ICONS[i], rect.position + Vector2(18, 14), 3, Pixel.GOLD)
 		if i < 3:
 			sheet.draw_texture_rect(BOAT, Rect2(rect.position + Vector2(12, 84), Vector2(420, 104)), false, Color(1, 1, 1, 0.55))
 		elif i in [3, 4, 7]:
 			var origin := rect.position + Vector2(250 if i < 5 else 224, 69)
-			sheet.draw_rect(Rect2(origin, Vector2(44, 62)), Pixel.TEAL)
+			sheet.draw_rect(Rect2(origin, Vector2(44, 62)), DialogSkin.GOLD)
 			sheet.draw_colored_polygon(PackedVector2Array([origin + Vector2(-8, 0), origin + Vector2(22, -22), origin + Vector2(52, 0)]), Pixel.GOLD)
 			sheet.draw_rect(Rect2(origin + Vector2(15, 34), Vector2(14, 28)), Pixel.INK)
 
@@ -307,9 +307,9 @@ func _draw_sheet() -> void:
 func _draw_slot(button: Button, item: Dictionary) -> void:
 	var owner: CharacterCard = state.owners.get(item.id)
 	var selected: bool = selected_id == item.id
-	var edge := Pixel.GOLD if selected else Pixel.PAPER if button.is_hovered() or button.has_focus() else Pixel.TEAL if not button.disabled else Color("617976")
+	var edge := Pixel.GOLD if selected else Pixel.PAPER if button.is_hovered() or button.has_focus() else DialogSkin.GOLD if not button.disabled else Color("617976")
 	Pixel.step_rect(button, Rect2(Vector2.ZERO, button.size), 6, edge)
-	Pixel.step_rect(button, Rect2(Vector2(2, 2), button.size - Vector2(4, 4)), 4, Color("162f32"))
+	Pixel.step_rect(button, Rect2(Vector2(2, 2), button.size - Vector2(4, 4)), 4, Color("29251f"))
 	if owner != null:
 		var texture := owner.avatar if owner.avatar != null else owner.portrait
 		if texture != null:
@@ -321,4 +321,4 @@ func _draw_slot(button: Button, item: Dictionary) -> void:
 	button.draw_string(Pixel.FONT, Vector2(12, 72), caption, HORIZONTAL_ALIGNMENT_CENTER, 60, 24, edge)
 	if item.ship < 0:
 		var short_title: String = {"harbor": ["A", "B", "C"][int(item.id.right(1))], "shipyard": ["A", "B", "C"][int(item.id.right(1))], "pirate": "船长" if item.id.ends_with("0") else "次席", "pilot": "小" if item.id.ends_with("0") else "大", "insurance": "保险"}.get(item.group, "")
-		button.draw_string(Pixel.FONT, Vector2(4, -5), short_title, HORIZONTAL_ALIGNMENT_CENTER, 76, 20, Pixel.MUTED)
+		button.draw_string(Pixel.FONT, Vector2(4, -5), short_title, HORIZONTAL_ALIGNMENT_CENTER, 76, 20, DialogSkin.MUTED)

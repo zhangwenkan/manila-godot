@@ -3,6 +3,7 @@ extends Node2D
 const CharacterCard := preload("res://card/character_card.gd")
 const PlacementPanel := preload("res://ui/placement_panel.gd")
 const SituationPanel := preload("res://ui/situation_panel.gd")
+const DialogSkin := preload("res://ui/harbor_dialog_skin.gd")
 
 @export var layout_mode := true
 @export var layout_view_size := Vector2(2340.0, 1080.0)
@@ -47,6 +48,7 @@ var _voyage_locked := false
 var _flow_hold := ""
 
 func _ready() -> void:
+	DialogSkin.decorate_close(dice_close_button)
 	placement_panel = PlacementPanel.new()
 	placement_panel.name = "PlacementPanel"
 	placement_panel.validate_placement = placement_reason

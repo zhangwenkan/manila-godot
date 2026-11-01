@@ -1,0 +1,3179 @@
+{
+  "input_sha256": "b809395557fa853da7ef64f20a267515974bc3e5d58598a8ba64c86f4317a85c",
+  "stage": "complete rebuilt asset draft; not game-integrated or art-approved",
+  "editable_parts": [
+    {
+      "name": "INR2_Facade_0_0",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_Facade_0_1",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_Facade_0_2",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_Facade_0_3",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_Facade_0_4",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_Facade_0_5",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_Facade_1_0",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_Facade_1_3",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_Facade_1_4",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_Facade_1_5",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_Facade_2_0",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_Facade_2_1",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_Facade_2_2",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_Facade_2_3",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_Facade_2_4",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_Facade_2_5",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_Facade_3_0",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_Facade_3_1",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_Facade_3_5",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_Facade_4_0",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_Facade_4_1",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_Facade_4_2",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_Facade_4_3",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_Facade_4_4",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_Facade_4_5",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_Facade_5_4",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_Facade_5_5",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_Facade_6_0",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_Facade_6_1",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_Facade_6_2",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_Facade_6_3",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_Facade_6_4",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_Facade_6_5",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_RearWall_0_0",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_RearWall_0_1",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_RearWall_0_2",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_RearWall_1_0",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_RearWall_1_2",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_RearWall_2_0",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_RearWall_2_1",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_RearWall_2_2",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_RearWall_3_0",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_RearWall_3_2",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_RearWall_4_0",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_RearWall_4_1",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_RearWall_4_2",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_WestWall",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_EastWall",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_EnclosedFloor",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_FrontGable",
+      "group": "INR2_Office",
+      "faces": 5,
+      "vertices": 6
+    },
+    {
+      "name": "INR2_RearGable",
+      "group": "INR2_Office",
+      "faces": 5,
+      "vertices": 6
+    },
+    {
+      "name": "INR2_CornerTrim(-6.02, -1.42)",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_CornerTrim(-6.02, 3.5700000000000003)",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_CornerTrim(1.1199999999999999, -1.42)",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_CornerTrim(1.1199999999999999, 3.5700000000000003)",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_BaseBeam-1.4300000000000002",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_Lintel-1.4300000000000002",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_BaseBeam3.58",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_Lintel3.58",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_LeftWindowRecess",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_LeftWindowGlass",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_LeftWindowReflect",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_LeftWindowJamb-1",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_LeftWindowRail-1",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_LeftWindowJamb1",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_LeftWindowRail1",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_LeftWindowSlat-1",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_LeftWindowSlat0",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_LeftWindowSlat1",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_CounterWindowRecess",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_CounterWindowGlass",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_CounterWindowReflect",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_CounterWindowJamb-1",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_CounterWindowRail-1",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_CounterWindowJamb1",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_CounterWindowRail1",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_CounterWindowMullion",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_RearWindow-4.325Recess",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_RearWindow-4.325Glass",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_RearWindow-4.325Reflect",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_RearWindow-4.325Jamb-1",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_RearWindow-4.325Rail-1",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_RearWindow-4.325Jamb1",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_RearWindow-4.325Rail1",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_RearWindow-4.325Mullion",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_RearWindow-0.475Recess",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_RearWindow-0.475Glass",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_RearWindow-0.475Reflect",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_RearWindow-0.475Jamb-1",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_RearWindow-0.475Rail-1",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_RearWindow-0.475Jamb1",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_RearWindow-0.475Rail1",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_RearWindow-0.475Mullion",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_DoorRecess",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_DoorWood",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_DoorGlass",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_DoorGlassReflection",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_DoorJamb-0.675",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_DoorJamb0.425",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_DoorHeader",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_DoorHandle",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_EntranceStep0",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_EntranceStep1",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_EntranceStep2",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_CounterSill",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_CounterAwning",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_CounterAwningEdge",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_CounterAwningSeam0",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_CounterAwningSeam1",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_CounterAwningSeam2",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_CounterAwningSeam3",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_CounterAwningSeam4",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_CounterAwningSeam5",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_CounterAwningSeam6",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_CounterAwningSeam7",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_CounterAwningSeam8",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_DoorAwning",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_DoorAwningEdge",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_DoorAwningSeam0",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_DoorAwningSeam1",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_DoorAwningSeam2",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_DoorAwningSeam3",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_DoorAwningSeam4",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_DoorAwningSeam5",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_InsuranceSignFrame",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_InsuranceSignInsetRim",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_InsuranceSignLetterFace",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_GableVentRecess",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_GableVentGlass",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_GableVentReflect",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_GableVentJamb-1",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_GableVentRail-1",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_GableVentJamb1",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_GableVentRail1",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_GableVentSlat-1",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_GableVentSlat0",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_GableVentSlat1",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_LowerRoofPlate0",
+      "group": "INR2_Roof",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_LowerRoofFrontFascia0",
+      "group": "INR2_Roof",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_LowerRoofFrontFasciaLight0",
+      "group": "INR2_Roof",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_LowerRoofRearFascia0",
+      "group": "INR2_Roof",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_LowerRoofRearFasciaLight0",
+      "group": "INR2_Roof",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_LowerRoofEave0",
+      "group": "INR2_Roof",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_LowerRoofPlate1",
+      "group": "INR2_Roof",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_LowerRoofFrontFascia1",
+      "group": "INR2_Roof",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_LowerRoofFrontFasciaLight1",
+      "group": "INR2_Roof",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_LowerRoofRearFascia1",
+      "group": "INR2_Roof",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_LowerRoofRearFasciaLight1",
+      "group": "INR2_Roof",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_LowerRoofEave1",
+      "group": "INR2_Roof",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_LowerRoofRidge",
+      "group": "INR2_Roof",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_MiddleRoofEnclosedTier",
+      "group": "INR2_Office",
+      "faces": 7,
+      "vertices": 10
+    },
+    {
+      "name": "INR2_MiddleRoofPlate0",
+      "group": "INR2_Roof",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_MiddleRoofFrontFascia0",
+      "group": "INR2_Roof",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_MiddleRoofFrontFasciaLight0",
+      "group": "INR2_Roof",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_MiddleRoofRearFascia0",
+      "group": "INR2_Roof",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_MiddleRoofRearFasciaLight0",
+      "group": "INR2_Roof",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_MiddleRoofEave0",
+      "group": "INR2_Roof",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_MiddleRoofPlate1",
+      "group": "INR2_Roof",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_MiddleRoofFrontFascia1",
+      "group": "INR2_Roof",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_MiddleRoofFrontFasciaLight1",
+      "group": "INR2_Roof",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_MiddleRoofRearFascia1",
+      "group": "INR2_Roof",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_MiddleRoofRearFasciaLight1",
+      "group": "INR2_Roof",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_MiddleRoofEave1",
+      "group": "INR2_Roof",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_MiddleRoofRidge",
+      "group": "INR2_Roof",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_HighRoofEnclosedTier",
+      "group": "INR2_Office",
+      "faces": 7,
+      "vertices": 10
+    },
+    {
+      "name": "INR2_HighRoofPlate0",
+      "group": "INR2_Roof",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_HighRoofFrontFascia0",
+      "group": "INR2_Roof",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_HighRoofFrontFasciaLight0",
+      "group": "INR2_Roof",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_HighRoofRearFascia0",
+      "group": "INR2_Roof",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_HighRoofRearFasciaLight0",
+      "group": "INR2_Roof",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_HighRoofEave0",
+      "group": "INR2_Roof",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_HighRoofPlate1",
+      "group": "INR2_Roof",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_HighRoofFrontFascia1",
+      "group": "INR2_Roof",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_HighRoofFrontFasciaLight1",
+      "group": "INR2_Roof",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_HighRoofRearFascia1",
+      "group": "INR2_Roof",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_HighRoofRearFasciaLight1",
+      "group": "INR2_Roof",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_HighRoofEave1",
+      "group": "INR2_Roof",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_HighRoofRidge",
+      "group": "INR2_Roof",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_WestSideUtilityBox",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_WestUtilitySlat0",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_WestUtilitySlat1",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_WestUtilitySlat2",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_WestUtilitySlat3",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_EastSideUtilityBox",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_EastUtilitySlat0",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_EastUtilitySlat1",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_EastUtilitySlat2",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_EastUtilitySlat3",
+      "group": "INR2_Office",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_RearDrain-5.8999999999999995",
+      "group": "INR2_Office",
+      "faces": 14,
+      "vertices": 18
+    },
+    {
+      "name": "INR2_RearDrain0.9999999999999999",
+      "group": "INR2_Office",
+      "faces": 14,
+      "vertices": 18
+    },
+    {
+      "name": "INR2_Post_0_0Web",
+      "group": "INR2_Crane",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_Post_0_0Flange-0.19",
+      "group": "INR2_Crane",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_Post_0_0Edge-0.19",
+      "group": "INR2_Crane",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_Post_0_0Flange0.19",
+      "group": "INR2_Crane",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_Post_0_0Edge0.19",
+      "group": "INR2_Crane",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_Post_0_0Foot",
+      "group": "INR2_Crane",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_Post_0_0FootRim",
+      "group": "INR2_Crane",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_Post_0_0Anchor(-0.25, -0.28)",
+      "group": "INR2_Crane",
+      "faces": 8,
+      "vertices": 12
+    },
+    {
+      "name": "INR2_Post_0_0Anchor(-0.25, 0.28)",
+      "group": "INR2_Crane",
+      "faces": 8,
+      "vertices": 12
+    },
+    {
+      "name": "INR2_Post_0_0Anchor(0.25, -0.28)",
+      "group": "INR2_Crane",
+      "faces": 8,
+      "vertices": 12
+    },
+    {
+      "name": "INR2_Post_0_0Anchor(0.25, 0.28)",
+      "group": "INR2_Crane",
+      "faces": 8,
+      "vertices": 12
+    },
+    {
+      "name": "INR2_Post_0_1Web",
+      "group": "INR2_Crane",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_Post_0_1Flange-0.19",
+      "group": "INR2_Crane",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_Post_0_1Edge-0.19",
+      "group": "INR2_Crane",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_Post_0_1Flange0.19",
+      "group": "INR2_Crane",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_Post_0_1Edge0.19",
+      "group": "INR2_Crane",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_Post_0_1Foot",
+      "group": "INR2_Crane",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_Post_0_1FootRim",
+      "group": "INR2_Crane",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_Post_0_1Anchor(-0.25, -0.28)",
+      "group": "INR2_Crane",
+      "faces": 8,
+      "vertices": 12
+    },
+    {
+      "name": "INR2_Post_0_1Anchor(-0.25, 0.28)",
+      "group": "INR2_Crane",
+      "faces": 8,
+      "vertices": 12
+    },
+    {
+      "name": "INR2_Post_0_1Anchor(0.25, -0.28)",
+      "group": "INR2_Crane",
+      "faces": 8,
+      "vertices": 12
+    },
+    {
+      "name": "INR2_Post_0_1Anchor(0.25, 0.28)",
+      "group": "INR2_Crane",
+      "faces": 8,
+      "vertices": 12
+    },
+    {
+      "name": "INR2_Post_1_0Web",
+      "group": "INR2_Crane",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_Post_1_0Flange-0.19",
+      "group": "INR2_Crane",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_Post_1_0Edge-0.19",
+      "group": "INR2_Crane",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_Post_1_0Flange0.19",
+      "group": "INR2_Crane",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_Post_1_0Edge0.19",
+      "group": "INR2_Crane",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_Post_1_0Foot",
+      "group": "INR2_Crane",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_Post_1_0FootRim",
+      "group": "INR2_Crane",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_Post_1_0Anchor(-0.25, -0.28)",
+      "group": "INR2_Crane",
+      "faces": 8,
+      "vertices": 12
+    },
+    {
+      "name": "INR2_Post_1_0Anchor(-0.25, 0.28)",
+      "group": "INR2_Crane",
+      "faces": 8,
+      "vertices": 12
+    },
+    {
+      "name": "INR2_Post_1_0Anchor(0.25, -0.28)",
+      "group": "INR2_Crane",
+      "faces": 8,
+      "vertices": 12
+    },
+    {
+      "name": "INR2_Post_1_0Anchor(0.25, 0.28)",
+      "group": "INR2_Crane",
+      "faces": 8,
+      "vertices": 12
+    },
+    {
+      "name": "INR2_Post_1_1Web",
+      "group": "INR2_Crane",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_Post_1_1Flange-0.19",
+      "group": "INR2_Crane",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_Post_1_1Edge-0.19",
+      "group": "INR2_Crane",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_Post_1_1Flange0.19",
+      "group": "INR2_Crane",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_Post_1_1Edge0.19",
+      "group": "INR2_Crane",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_Post_1_1Foot",
+      "group": "INR2_Crane",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_Post_1_1FootRim",
+      "group": "INR2_Crane",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_Post_1_1Anchor(-0.25, -0.28)",
+      "group": "INR2_Crane",
+      "faces": 8,
+      "vertices": 12
+    },
+    {
+      "name": "INR2_Post_1_1Anchor(-0.25, 0.28)",
+      "group": "INR2_Crane",
+      "faces": 8,
+      "vertices": 12
+    },
+    {
+      "name": "INR2_Post_1_1Anchor(0.25, -0.28)",
+      "group": "INR2_Crane",
+      "faces": 8,
+      "vertices": 12
+    },
+    {
+      "name": "INR2_Post_1_1Anchor(0.25, 0.28)",
+      "group": "INR2_Crane",
+      "faces": 8,
+      "vertices": 12
+    },
+    {
+      "name": "INR2_FrontHeader",
+      "group": "INR2_Crane",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_FrontCrossbar",
+      "group": "INR2_Crane",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_FrontBraceShadow0",
+      "group": "INR2_Crane",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_FrontBrace0",
+      "group": "INR2_Crane",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_FrontBraceEdge0",
+      "group": "INR2_Crane",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_FrontBraceShadow1",
+      "group": "INR2_Crane",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_FrontBrace1",
+      "group": "INR2_Crane",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_FrontBraceEdge1",
+      "group": "INR2_Crane",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_FrontMidTie",
+      "group": "INR2_Crane",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_FrontJointPlate2.8",
+      "group": "INR2_Crane",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_FrontJointPlate5.7",
+      "group": "INR2_Crane",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_RearHeader",
+      "group": "INR2_Crane",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_RearCrossbar",
+      "group": "INR2_Crane",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_RearBraceShadow0",
+      "group": "INR2_Crane",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_RearBrace0",
+      "group": "INR2_Crane",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_RearBraceEdge0",
+      "group": "INR2_Crane",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_RearBraceShadow1",
+      "group": "INR2_Crane",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_RearBrace1",
+      "group": "INR2_Crane",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_RearBraceEdge1",
+      "group": "INR2_Crane",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_RearMidTie",
+      "group": "INR2_Crane",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_RearJointPlate2.8",
+      "group": "INR2_Crane",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_RearJointPlate5.7",
+      "group": "INR2_Crane",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_LeftDepthGirder",
+      "group": "INR2_Crane",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_LeftSideKnee",
+      "group": "INR2_Crane",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_LeftRearKnee",
+      "group": "INR2_Crane",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_RightDepthGirder",
+      "group": "INR2_Crane",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_RightSideKnee",
+      "group": "INR2_Crane",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_RightRearKnee",
+      "group": "INR2_Crane",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_MachineryDeck",
+      "group": "INR2_Crane",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_PlatformFrontRim",
+      "group": "INR2_Crane",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_PlatformFrontHighlight",
+      "group": "INR2_Crane",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_PlatformRearRim",
+      "group": "INR2_Crane",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_CargoCraneSignFrame",
+      "group": "INR2_Crane",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_CargoCraneSignInsetRim",
+      "group": "INR2_Crane",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_CargoCraneSignLetterFace",
+      "group": "INR2_Crane",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_BoomWeb",
+      "group": "INR2_Crane",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_BoomFrontOutline",
+      "group": "INR2_Crane",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_BoomFrontFlange",
+      "group": "INR2_Crane",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_BoomBackOutline",
+      "group": "INR2_Crane",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_BoomBackFlange",
+      "group": "INR2_Crane",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_BoomCrossRib0",
+      "group": "INR2_Crane",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_BoomCrossRib1",
+      "group": "INR2_Crane",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_BoomCrossRib2",
+      "group": "INR2_Crane",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_BoomCrossRib3",
+      "group": "INR2_Crane",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_BoomMast",
+      "group": "INR2_Crane",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_BoomTipPulley",
+      "group": "INR2_Crane",
+      "faces": 14,
+      "vertices": 24
+    },
+    {
+      "name": "INR2_BoomTipHub",
+      "group": "INR2_Crane",
+      "faces": 14,
+      "vertices": 24
+    },
+    {
+      "name": "INR2_BoomPivot",
+      "group": "INR2_Crane",
+      "faces": 14,
+      "vertices": 24
+    },
+    {
+      "name": "INR2_BoomPivotCap",
+      "group": "INR2_Crane",
+      "faces": 14,
+      "vertices": 24
+    },
+    {
+      "name": "INR2_LongBackStay",
+      "group": "INR2_Crane",
+      "faces": 8,
+      "vertices": 12
+    },
+    {
+      "name": "INR2_ShortMastStay",
+      "group": "INR2_Crane",
+      "faces": 8,
+      "vertices": 12
+    },
+    {
+      "name": "INR2_BoomHoistLine",
+      "group": "INR2_Crane",
+      "faces": 8,
+      "vertices": 12
+    },
+    {
+      "name": "INR2_HangingLiftLine",
+      "group": "INR2_Crane",
+      "faces": 8,
+      "vertices": 12
+    },
+    {
+      "name": "INR2_HookBlock",
+      "group": "INR2_Crane",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_HookBlockFace",
+      "group": "INR2_Crane",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_Hook",
+      "group": "INR2_Crane",
+      "faces": 26,
+      "vertices": 30
+    },
+    {
+      "name": "INR2_WinchCheek1.04",
+      "group": "INR2_Crane",
+      "faces": 8,
+      "vertices": 12
+    },
+    {
+      "name": "INR2_WinchCheek1.97",
+      "group": "INR2_Crane",
+      "faces": 8,
+      "vertices": 12
+    },
+    {
+      "name": "INR2_WinchDrum",
+      "group": "INR2_Crane",
+      "faces": 14,
+      "vertices": 24
+    },
+    {
+      "name": "INR2_WinchFlange1.23",
+      "group": "INR2_Crane",
+      "faces": 14,
+      "vertices": 24
+    },
+    {
+      "name": "INR2_WinchFlange1.9",
+      "group": "INR2_Crane",
+      "faces": 14,
+      "vertices": 24
+    },
+    {
+      "name": "INR2_WinchAxle",
+      "group": "INR2_Crane",
+      "faces": 14,
+      "vertices": 24
+    },
+    {
+      "name": "INR2_OperatorBoxOutline",
+      "group": "INR2_Crane",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_OperatorBox",
+      "group": "INR2_Crane",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_OperatorPanel",
+      "group": "INR2_Crane",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_OperatorPanelInset",
+      "group": "INR2_Crane",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_OperatorSwitch0",
+      "group": "INR2_Crane",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_OperatorSwitch1",
+      "group": "INR2_Crane",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_OperatorSwitch2",
+      "group": "INR2_Crane",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_OperatorKnee",
+      "group": "INR2_Crane",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_LadderRail5.18",
+      "group": "INR2_Crane",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_LadderRail5.62",
+      "group": "INR2_Crane",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_LadderRung0",
+      "group": "INR2_Crane",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_LadderRung1",
+      "group": "INR2_Crane",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_LadderRung2",
+      "group": "INR2_Crane",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_LadderRung3",
+      "group": "INR2_Crane",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_LadderRung4",
+      "group": "INR2_Crane",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_LadderRung5",
+      "group": "INR2_Crane",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_LadderRung6",
+      "group": "INR2_Crane",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_LadderRung7",
+      "group": "INR2_Crane",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_LadderRung8",
+      "group": "INR2_Crane",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_LadderRung9",
+      "group": "INR2_Crane",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_LadderRung10",
+      "group": "INR2_Crane",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_LadderRung11",
+      "group": "INR2_Crane",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_LadderRung12",
+      "group": "INR2_Crane",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_LadderRung13",
+      "group": "INR2_Crane",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_LadderRung14",
+      "group": "INR2_Crane",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_LadderRung15",
+      "group": "INR2_Crane",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_LadderRung16",
+      "group": "INR2_Crane",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_RearGuardUpright3.15",
+      "group": "INR2_Crane",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_RearGuardUpright4.05",
+      "group": "INR2_Crane",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_RearGuardUpright4.95",
+      "group": "INR2_Crane",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_RearGuardRail",
+      "group": "INR2_Crane",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_DockDeck(0, 0)",
+      "group": "INR2_Dock",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_DockDeck(0, 1)",
+      "group": "INR2_Dock",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_DockDeck(1, 0)",
+      "group": "INR2_Dock",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_DockDeck(1, 1)",
+      "group": "INR2_Dock",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_DockFascia(0, -3.64)",
+      "group": "INR2_Dock",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_DockRim(0, -3.64)",
+      "group": "INR2_Dock",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_DockFascia(0, 3.64)",
+      "group": "INR2_Dock",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_DockRim(0, 3.64)",
+      "group": "INR2_Dock",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_DockFascia(1, -3.64)",
+      "group": "INR2_Dock",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_DockRim(1, -3.64)",
+      "group": "INR2_Dock",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_DockFascia(1, 3.64)",
+      "group": "INR2_Dock",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_DockRim(1, 3.64)",
+      "group": "INR2_Dock",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_DockSideFascia-7.22",
+      "group": "INR2_Dock",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_DockSideRim-7.22",
+      "group": "INR2_Dock",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_DockSideFascia7.22",
+      "group": "INR2_Dock",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_DockSideRim7.22",
+      "group": "INR2_Dock",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_MooringPile(-6.65, -3.69)",
+      "group": "INR2_Dock",
+      "faces": 10,
+      "vertices": 16
+    },
+    {
+      "name": "INR2_MooringPileCap(-6.65, -3.69)",
+      "group": "INR2_Dock",
+      "faces": 10,
+      "vertices": 16
+    },
+    {
+      "name": "INR2_PileGrain(-6.65, -3.69)",
+      "group": "INR2_Dock",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_MooringPile(-6.65, 3.62)",
+      "group": "INR2_Dock",
+      "faces": 10,
+      "vertices": 16
+    },
+    {
+      "name": "INR2_MooringPileCap(-6.65, 3.62)",
+      "group": "INR2_Dock",
+      "faces": 10,
+      "vertices": 16
+    },
+    {
+      "name": "INR2_PileGrain(-6.65, 3.62)",
+      "group": "INR2_Dock",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_MooringPile(-0.15, -3.69)",
+      "group": "INR2_Dock",
+      "faces": 10,
+      "vertices": 16
+    },
+    {
+      "name": "INR2_MooringPileCap(-0.15, -3.69)",
+      "group": "INR2_Dock",
+      "faces": 10,
+      "vertices": 16
+    },
+    {
+      "name": "INR2_PileGrain(-0.15, -3.69)",
+      "group": "INR2_Dock",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_MooringPile(-0.15, 3.62)",
+      "group": "INR2_Dock",
+      "faces": 10,
+      "vertices": 16
+    },
+    {
+      "name": "INR2_MooringPileCap(-0.15, 3.62)",
+      "group": "INR2_Dock",
+      "faces": 10,
+      "vertices": 16
+    },
+    {
+      "name": "INR2_PileGrain(-0.15, 3.62)",
+      "group": "INR2_Dock",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_MooringPile(6.6, -3.69)",
+      "group": "INR2_Dock",
+      "faces": 10,
+      "vertices": 16
+    },
+    {
+      "name": "INR2_MooringPileCap(6.6, -3.69)",
+      "group": "INR2_Dock",
+      "faces": 10,
+      "vertices": 16
+    },
+    {
+      "name": "INR2_PileGrain(6.6, -3.69)",
+      "group": "INR2_Dock",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_MooringPile(6.6, 3.62)",
+      "group": "INR2_Dock",
+      "faces": 10,
+      "vertices": 16
+    },
+    {
+      "name": "INR2_MooringPileCap(6.6, 3.62)",
+      "group": "INR2_Dock",
+      "faces": 10,
+      "vertices": 16
+    },
+    {
+      "name": "INR2_PileGrain(6.6, 3.62)",
+      "group": "INR2_Dock",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_RearSupport-5.0",
+      "group": "INR2_Dock",
+      "faces": 10,
+      "vertices": 16
+    },
+    {
+      "name": "INR2_RearSupport1.5",
+      "group": "INR2_Dock",
+      "faces": 10,
+      "vertices": 16
+    },
+    {
+      "name": "INR2_RearSupport5.5",
+      "group": "INR2_Dock",
+      "faces": 10,
+      "vertices": 16
+    },
+    {
+      "name": "INR2_LeftCrateBody",
+      "group": "INR2_Props",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_LeftCrateStile(-1, -2.3329999999999997)",
+      "group": "INR2_Props",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_LeftCrateStile(-1, -1.627)",
+      "group": "INR2_Props",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_LeftCrateStile(1, -2.3329999999999997)",
+      "group": "INR2_Props",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_LeftCrateStile(1, -1.627)",
+      "group": "INR2_Props",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_LeftCrateRail0.67",
+      "group": "INR2_Props",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_LeftCrateRail1.24",
+      "group": "INR2_Props",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_LeftCrateDiagonal",
+      "group": "INR2_Props",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_LeftStackBody",
+      "group": "INR2_Props",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_LeftStackStile(-1, -2.2129999999999996)",
+      "group": "INR2_Props",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_LeftStackStile(-1, -1.607)",
+      "group": "INR2_Props",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_LeftStackStile(1, -2.2129999999999996)",
+      "group": "INR2_Props",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_LeftStackStile(1, -1.607)",
+      "group": "INR2_Props",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_LeftStackRail1.34",
+      "group": "INR2_Props",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_LeftStackRail1.8099999999999998",
+      "group": "INR2_Props",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_LeftStackDiagonal",
+      "group": "INR2_Props",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_LeftLowBody",
+      "group": "INR2_Props",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_LeftLowStile(-1, -2.458)",
+      "group": "INR2_Props",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_LeftLowStile(-1, -1.9020000000000001)",
+      "group": "INR2_Props",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_LeftLowStile(1, -2.458)",
+      "group": "INR2_Props",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_LeftLowStile(1, -1.9020000000000001)",
+      "group": "INR2_Props",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_LeftLowRail0.67",
+      "group": "INR2_Props",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_LeftLowRail1.09",
+      "group": "INR2_Props",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_LeftLowDiagonal",
+      "group": "INR2_Props",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_DoorCrateBody",
+      "group": "INR2_Props",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_DoorCrateStile(-1, -2.9229999999999996)",
+      "group": "INR2_Props",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_DoorCrateStile(-1, -2.3770000000000002)",
+      "group": "INR2_Props",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_DoorCrateStile(1, -2.9229999999999996)",
+      "group": "INR2_Props",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_DoorCrateStile(1, -2.3770000000000002)",
+      "group": "INR2_Props",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_DoorCrateRail0.67",
+      "group": "INR2_Props",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_DoorCrateRail1.0799999999999998",
+      "group": "INR2_Props",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_DoorCrateDiagonal",
+      "group": "INR2_Props",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_EastTallBody",
+      "group": "INR2_Props",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_EastTallStile(-1, -1.008)",
+      "group": "INR2_Props",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_EastTallStile(-1, -0.232)",
+      "group": "INR2_Props",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_EastTallStile(1, -1.008)",
+      "group": "INR2_Props",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_EastTallStile(1, -0.232)",
+      "group": "INR2_Props",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_EastTallRail0.67",
+      "group": "INR2_Props",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_EastTallRail1.3099999999999998",
+      "group": "INR2_Props",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_EastTallDiagonal",
+      "group": "INR2_Props",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_EastStackBody",
+      "group": "INR2_Props",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_EastStackStile(-1, -0.9630000000000001)",
+      "group": "INR2_Props",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_EastStackStile(-1, -0.27699999999999997)",
+      "group": "INR2_Props",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_EastStackStile(1, -0.9630000000000001)",
+      "group": "INR2_Props",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_EastStackStile(1, -0.27699999999999997)",
+      "group": "INR2_Props",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_EastStackRail1.4100000000000001",
+      "group": "INR2_Props",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_EastStackRail1.9600000000000002",
+      "group": "INR2_Props",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_EastStackDiagonal",
+      "group": "INR2_Props",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_RearCrateBody",
+      "group": "INR2_Props",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_RearCrateStile(-1, 2.6820000000000004)",
+      "group": "INR2_Props",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_RearCrateStile(-1, 3.3579999999999997)",
+      "group": "INR2_Props",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_RearCrateStile(1, 2.6820000000000004)",
+      "group": "INR2_Props",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_RearCrateStile(1, 3.3579999999999997)",
+      "group": "INR2_Props",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_RearCrateRail0.67",
+      "group": "INR2_Props",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_RearCrateRail1.21",
+      "group": "INR2_Props",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_RearCrateDiagonal",
+      "group": "INR2_Props",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_CraneCrateBody",
+      "group": "INR2_Props",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_CraneCrateStile(-1, 1.617)",
+      "group": "INR2_Props",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_CraneCrateStile(-1, 2.303)",
+      "group": "INR2_Props",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_CraneCrateStile(1, 1.617)",
+      "group": "INR2_Props",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_CraneCrateStile(1, 2.303)",
+      "group": "INR2_Props",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_CraneCrateRail0.67",
+      "group": "INR2_Props",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_CraneCrateRail1.22",
+      "group": "INR2_Props",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_CraneCrateDiagonal",
+      "group": "INR2_Props",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_EastBarrelStaves",
+      "group": "INR2_Props",
+      "faces": 50,
+      "vertices": 60
+    },
+    {
+      "name": "INR2_EastBarrelHoop0",
+      "group": "INR2_Props",
+      "faces": 14,
+      "vertices": 24
+    },
+    {
+      "name": "INR2_EastBarrelHoop1",
+      "group": "INR2_Props",
+      "faces": 14,
+      "vertices": 24
+    },
+    {
+      "name": "INR2_EastBarrelLid",
+      "group": "INR2_Props",
+      "faces": 14,
+      "vertices": 24
+    },
+    {
+      "name": "INR2_EastSmallBarrelStaves",
+      "group": "INR2_Props",
+      "faces": 50,
+      "vertices": 60
+    },
+    {
+      "name": "INR2_EastSmallBarrelHoop0",
+      "group": "INR2_Props",
+      "faces": 14,
+      "vertices": 24
+    },
+    {
+      "name": "INR2_EastSmallBarrelHoop1",
+      "group": "INR2_Props",
+      "faces": 14,
+      "vertices": 24
+    },
+    {
+      "name": "INR2_EastSmallBarrelLid",
+      "group": "INR2_Props",
+      "faces": 14,
+      "vertices": 24
+    },
+    {
+      "name": "INR2_CraneBarrelStaves",
+      "group": "INR2_Props",
+      "faces": 50,
+      "vertices": 60
+    },
+    {
+      "name": "INR2_CraneBarrelHoop0",
+      "group": "INR2_Props",
+      "faces": 14,
+      "vertices": 24
+    },
+    {
+      "name": "INR2_CraneBarrelHoop1",
+      "group": "INR2_Props",
+      "faces": 14,
+      "vertices": 24
+    },
+    {
+      "name": "INR2_CraneBarrelLid",
+      "group": "INR2_Props",
+      "faces": 14,
+      "vertices": 24
+    },
+    {
+      "name": "INR2_RearBarrelStaves",
+      "group": "INR2_Props",
+      "faces": 50,
+      "vertices": 60
+    },
+    {
+      "name": "INR2_RearBarrelHoop0",
+      "group": "INR2_Props",
+      "faces": 14,
+      "vertices": 24
+    },
+    {
+      "name": "INR2_RearBarrelHoop1",
+      "group": "INR2_Props",
+      "faces": 14,
+      "vertices": 24
+    },
+    {
+      "name": "INR2_RearBarrelLid",
+      "group": "INR2_Props",
+      "faces": 14,
+      "vertices": 24
+    },
+    {
+      "name": "INR2_CoiledMooringRope",
+      "group": "INR2_Props",
+      "faces": 32,
+      "vertices": 36
+    },
+    {
+      "name": "INR2_TugClosedHull",
+      "group": "INR2_Tug",
+      "faces": 54,
+      "vertices": 65
+    },
+    {
+      "name": "INR2_TugDeck",
+      "group": "INR2_Tug",
+      "faces": 15,
+      "vertices": 26
+    },
+    {
+      "name": "INR2_TugGunwale0",
+      "group": "INR2_Tug",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_TugGunwale1",
+      "group": "INR2_Tug",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_TugGunwale2",
+      "group": "INR2_Tug",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_TugGunwale3",
+      "group": "INR2_Tug",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_TugGunwale4",
+      "group": "INR2_Tug",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_TugGunwale5",
+      "group": "INR2_Tug",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_TugGunwale6",
+      "group": "INR2_Tug",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_TugGunwale7",
+      "group": "INR2_Tug",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_TugGunwale8",
+      "group": "INR2_Tug",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_TugGunwale9",
+      "group": "INR2_Tug",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_TugGunwale10",
+      "group": "INR2_Tug",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_TugGunwale11",
+      "group": "INR2_Tug",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_TugGunwale12",
+      "group": "INR2_Tug",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_TugCabinShadow",
+      "group": "INR2_Tug",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_TugCabin",
+      "group": "INR2_Tug",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_TugCabinRoof",
+      "group": "INR2_Tug",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_TugCabinRoofRim",
+      "group": "INR2_Tug",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_CabinFrontWindowFrame-1",
+      "group": "INR2_Tug",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_CabinFrontWindow-1",
+      "group": "INR2_Tug",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_CabinFrontGlint-1",
+      "group": "INR2_Tug",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_CabinFrontWindowFrame0",
+      "group": "INR2_Tug",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_CabinFrontWindow0",
+      "group": "INR2_Tug",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_CabinFrontGlint0",
+      "group": "INR2_Tug",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_CabinFrontWindowFrame1",
+      "group": "INR2_Tug",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_CabinFrontWindow1",
+      "group": "INR2_Tug",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_CabinFrontGlint1",
+      "group": "INR2_Tug",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_CabinSideWindowFrame-1",
+      "group": "INR2_Tug",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_CabinSideWindow-1",
+      "group": "INR2_Tug",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_CabinSideGlint-1",
+      "group": "INR2_Tug",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_CabinSideWindowFrame1",
+      "group": "INR2_Tug",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_CabinSideWindow1",
+      "group": "INR2_Tug",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_CabinSideGlint1",
+      "group": "INR2_Tug",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_CabinRearDoor",
+      "group": "INR2_Tug",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_CabinRearGlass",
+      "group": "INR2_Tug",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_CabinRoofHatchFrame",
+      "group": "INR2_Tug",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_CabinRoofHatch",
+      "group": "INR2_Tug",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_CabinRoofHatchGlass",
+      "group": "INR2_Tug",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_TugEngineBoxDark",
+      "group": "INR2_Tug",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_TugEngineBox",
+      "group": "INR2_Tug",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_EngineTopVent0",
+      "group": "INR2_Tug",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_EngineFrontSlat0",
+      "group": "INR2_Tug",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_EngineTopVent1",
+      "group": "INR2_Tug",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_EngineFrontSlat1",
+      "group": "INR2_Tug",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_EngineTopVent2",
+      "group": "INR2_Tug",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_EngineFrontSlat2",
+      "group": "INR2_Tug",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_EngineTopVent3",
+      "group": "INR2_Tug",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_EngineFrontSlat3",
+      "group": "INR2_Tug",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_EngineTopVent4",
+      "group": "INR2_Tug",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_EngineFrontSlat4",
+      "group": "INR2_Tug",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_EngineTopVent5",
+      "group": "INR2_Tug",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_EngineFrontSlat5",
+      "group": "INR2_Tug",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_EngineTopVent6",
+      "group": "INR2_Tug",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_EngineFrontSlat6",
+      "group": "INR2_Tug",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_TugFunnel",
+      "group": "INR2_Tug",
+      "faces": 10,
+      "vertices": 16
+    },
+    {
+      "name": "INR2_TugFunnelCap",
+      "group": "INR2_Tug",
+      "faces": 10,
+      "vertices": 16
+    },
+    {
+      "name": "INR2_TugMast",
+      "group": "INR2_Tug",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_TugMastBar",
+      "group": "INR2_Tug",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_TugFenderOutline(-1, 0)",
+      "group": "INR2_Tug",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_TugFenderRubber(-1, 0)",
+      "group": "INR2_Tug",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_TugFenderOutline(-1, 1)",
+      "group": "INR2_Tug",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_TugFenderRubber(-1, 1)",
+      "group": "INR2_Tug",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_TugFenderOutline(-1, 2)",
+      "group": "INR2_Tug",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_TugFenderRubber(-1, 2)",
+      "group": "INR2_Tug",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_TugSideRail-1",
+      "group": "INR2_Tug",
+      "faces": 14,
+      "vertices": 18
+    },
+    {
+      "name": "INR2_TugFenderOutline(1, 0)",
+      "group": "INR2_Tug",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_TugFenderRubber(1, 0)",
+      "group": "INR2_Tug",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_TugFenderOutline(1, 1)",
+      "group": "INR2_Tug",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_TugFenderRubber(1, 1)",
+      "group": "INR2_Tug",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_TugFenderOutline(1, 2)",
+      "group": "INR2_Tug",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_TugFenderRubber(1, 2)",
+      "group": "INR2_Tug",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_TugSideRail1",
+      "group": "INR2_Tug",
+      "faces": 14,
+      "vertices": 18
+    },
+    {
+      "name": "INR2_BowBollard",
+      "group": "INR2_Tug",
+      "faces": 10,
+      "vertices": 16
+    },
+    {
+      "name": "INR2_BowBollardCross",
+      "group": "INR2_Tug",
+      "faces": 6,
+      "vertices": 8
+    },
+    {
+      "name": "INR2_TugMooringLine",
+      "group": "INR2_Tug",
+      "faces": 14,
+      "vertices": 18
+    }
+  ],
+  "bounds_blender_z_up": [
+    [
+      -7.294999599456787,
+      -7.958948612213135,
+      -0.4099999964237213
+    ],
+    [
+      7.294999599456787,
+      3.8575000762939453,
+      8.59999942779541
+    ]
+  ],
+  "density": 32,
+  "rear": "Fully enclosed inferred rear, because reference is front-only",
+  "sign_uv": "One shared active PixelUV on every part before joining",
+  "reference_camera": {
+    "yaw": 0,
+    "pitch": 42,
+    "target": [
+      0,
+      -1.05,
+      3.35
+    ]
+  },
+  "materials": [
+    "Atlas",
+    "Signs",
+    "Ink",
+    "Steel",
+    "SteelLight",
+    "WallDark",
+    "WallLight",
+    "RedDark",
+    "Red",
+    "RedLight",
+    "WoodDark",
+    "Wood",
+    "WoodLight",
+    "Glass",
+    "GlassLight",
+    "Cream",
+    "CreamLight",
+    "Hull",
+    "HullLight",
+    "Water",
+    "Rope"
+  ]
+}

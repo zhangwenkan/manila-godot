@@ -1,0 +1,34 @@
+{
+  "input": "C:\\Users\\51440\\Downloads\\harbor dock 3d model.glb",
+  "sha256": "b809395557fa853da7ef64f20a267515974bc3e5d58598a8ba64c86f4317a85c",
+  "original_session": {
+    "filepath": "",
+    "scene": "Scene",
+    "view_layer": "ViewLayer",
+    "active": "Cube",
+    "selected": [
+      "Cube"
+    ]
+  },
+  "scene": "INS7_Reference",
+  "objects": [
+    {
+      "name": "tripo_node_c8de3c9c-b146-4f07-8515-a5d33b20c76f",
+      "vertices": 247872,
+      "faces": 464790
+    }
+  ],
+  "blender_z_up_bounds": [
+    [
+      -0.4837646484375,
+      -0.4999847412109375,
+      0.0
+    ],
+    [
+      0.4837646484375,
+      0.4999847412109375,
+      0.5113525986671448
+    ]
+  ],
+  "scale_and_orientation": "Unmodified import; no projection registration claimed."
+}

@@ -1,0 +1,71 @@
+{
+  "colors": {
+    "wall": [
+      "#394952",
+      "#526772",
+      "#718690",
+      "#95a4aa"
+    ],
+    "roof": [
+      "#464a4c",
+      "#666762",
+      "#89887b",
+      "#aaa493",
+      "#805e45"
+    ],
+    "red": [
+      "#553233",
+      "#893d36",
+      "#b65441",
+      "#d57852"
+    ],
+    "wood": [
+      "#4c423a",
+      "#77614b",
+      "#9c8060",
+      "#c1a47a"
+    ],
+    "sign": [
+      "#303841",
+      "#495660",
+      "#cad0c1",
+      "#f0e0b8"
+    ]
+  },
+  "texels_per_unit": 24,
+  "tile_inner_pixels": 248,
+  "tile_padding": 4,
+  "tiles": {
+    "wall": [
+      0,
+      0
+    ],
+    "roof": [
+      256,
+      0
+    ],
+    "red": [
+      0,
+      256
+    ],
+    "wood": [
+      256,
+      256
+    ]
+  },
+  "sign_rects": {
+    "INSURANCE CO.": [
+      4,
+      4,
+      124,
+      28
+    ],
+    "CARGO CRANE": [
+      132,
+      4,
+      248,
+      28
+    ]
+  },
+  "method": "Integer-coordinate authored clusters and bitmap glyphs; no interpolation, noise or generated-model baking."
+}

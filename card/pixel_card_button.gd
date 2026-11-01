@@ -1,6 +1,7 @@
 extends Button
 
 const Pixel := preload("res://card/pixel_card_theme.gd")
+const DialogSkin := preload("res://ui/harbor_dialog_skin.gd")
 
 var caption := ""
 var glyph := "arrow"
@@ -10,7 +11,7 @@ var primary := false
 func _ready() -> void:
 	custom_minimum_size = Vector2(64, 64)
 	mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
-	texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+	texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR if glyph == "close" else CanvasItem.TEXTURE_FILTER_NEAREST
 	Pixel.clear_button_styles(self)
 	for event in [mouse_entered, mouse_exited, focus_entered, focus_exited, button_down, button_up]:
 		event.connect(queue_redraw)
@@ -18,18 +19,13 @@ func _ready() -> void:
 
 
 func _draw() -> void:
+	if glyph == "close":
+		DialogSkin.close_icon(self, Rect2(Vector2.ZERO, size), is_hovered(), is_pressed(), disabled, has_focus())
+		return
 	var active := not disabled and (is_hovered() or has_focus())
-	var fill := Pixel.TEAL if primary else Pixel.INK
-	if active:
-		fill = fill.lightened(0.13)
-	if disabled:
-		fill = Color("33413f")
-	var edge := Pixel.GOLD if active else Color("6c8b83")
-	var ink := Pixel.PAPER if not disabled else Color("83958c")
+	var ink := DialogSkin.PAPER if not disabled else DialogSkin.MUTED
 	var down := 3.0 if is_pressed() else 0.0
-	Pixel.step_rect(self, Rect2(0, 4, size.x, size.y - 4), 8, Color("101b1b"))
-	Pixel.step_rect(self, Rect2(0, down, size.x, size.y - 4), 8, edge)
-	Pixel.step_rect(self, Rect2(3, 3 + down, size.x - 6, size.y - 10), 6, fill)
+	DialogSkin.action(self, Rect2(0, down, size.x, size.y - 4), primary, not disabled, active)
 	if caption.is_empty():
 		Pixel.icon(self, glyph, (size - Vector2(27, 27)) * 0.5 + Vector2(0, down - 2), 3, ink)
 	else:

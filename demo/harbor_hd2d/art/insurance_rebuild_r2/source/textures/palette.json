@@ -1,0 +1,49 @@
+{
+  "palette": {
+    "wall": [
+      "#394851",
+      "#566970",
+      "#6b8086",
+      "#829196",
+      "#8e8980"
+    ],
+    "roof": [
+      "#424950",
+      "#616d77",
+      "#7b8387",
+      "#939695",
+      "#956243",
+      "#b0794d"
+    ],
+    "red": [
+      "#482d33",
+      "#71393b",
+      "#934742",
+      "#ac5b4c",
+      "#c07959"
+    ],
+    "wood": [
+      "#4e433b",
+      "#77624e",
+      "#998267",
+      "#b29b77",
+      "#c2ab86"
+    ]
+  },
+  "density": 32,
+  "sign_rects": {
+    "INSURANCE CO.": [
+      8,
+      8,
+      248,
+      56
+    ],
+    "CARGO CRANE": [
+      264,
+      8,
+      504,
+      56
+    ]
+  },
+  "method": "Locally painted finite-color clusters; no normal maps, smoothing or AI texture baking."
+}

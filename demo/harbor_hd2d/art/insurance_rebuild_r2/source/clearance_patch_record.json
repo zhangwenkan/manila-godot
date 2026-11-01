@@ -1,0 +1,73 @@
+{
+  "revision": "r2_1",
+  "input_sha256": "b809395557fa853da7ef64f20a267515974bc3e5d58598a8ba64c86f4317a85c",
+  "parts": 523,
+  "before": {
+    "signs": {
+      "InsuranceSignLetterFace": {
+        "samples": 171,
+        "obstructed_by": [
+          "INR2_LowerRoofFrontFascia0",
+          "INR2_LowerRoofFrontFascia1",
+          "INR2_LowerRoofFrontFasciaLight0",
+          "INR2_LowerRoofFrontFasciaLight1"
+        ],
+        "clear": 147
+      },
+      "CargoCraneSignLetterFace": {
+        "samples": 171,
+        "obstructed_by": [],
+        "clear": 171
+      }
+    },
+    "body_faces": {
+      "TugCabin": {
+        "front": "INR2_TugEngineBoxDark",
+        "left": "INR2_TugCabinShadow",
+        "right": "INR2_TugCabinShadow"
+      },
+      "TugEngineBox": {
+        "front": "INR2_TugGunwale6",
+        "left": "INR2_TugEngineBoxDark",
+        "right": "INR2_TugEngineBoxDark"
+      },
+      "OperatorBox": {
+        "front": "INR2_OperatorPanelInset",
+        "left": "INR2_OperatorBoxOutline",
+        "right": "INR2_OperatorBoxOutline"
+      }
+    }
+  },
+  "after": {
+    "signs": {
+      "InsuranceSignLetterFace": {
+        "samples": 171,
+        "obstructed_by": [],
+        "clear": 171
+      },
+      "CargoCraneSignLetterFace": {
+        "samples": 171,
+        "obstructed_by": [],
+        "clear": 171
+      }
+    },
+    "body_faces": {
+      "TugCabin": {
+        "front": "INR2_TugEngineBox",
+        "left": "INR2_TugCabin",
+        "right": "INR2_TugCabin"
+      },
+      "TugEngineBox": {
+        "front": "INR2_TugGunwale6",
+        "left": "INR2_TugEngineBox",
+        "right": "INR2_TugEngineBox"
+      },
+      "OperatorBox": {
+        "front": "INR2_OperatorPanelInset",
+        "left": "INR2_OperatorBox",
+        "right": "INR2_OperatorBox"
+      }
+    }
+  },
+  "limit": "Ray checks establish sampled visibility, not screen-space legibility or art approval. Rear remains inferred."
+}
