@@ -3,8 +3,18 @@ extends Node3D
 const WATER_SHADER = preload("res://materials/tropical_water.gdshader")
 const SAND_SHADER = preload("res://materials/sand.gdshader")
 const NOISE = preload("res://assets/water_noise.png")
+const SWASH_SHADER = preload("res://materials/shore_swash.gdshader")
+const COAST_SHAPE := Vector4(8.0, 2.0, 0.6, 0.0)
+const BAY_SHAPE := Vector4(-2.5, 3.6, 2.2, 0.85)
+const WASH_PERIOD := 4.8
 
 var water_material: ShaderMaterial
+var sand_material: ShaderMaterial
+var swash_material: ShaderMaterial
+var contact_objects := PackedVector4Array()
+var camera_override := false
+var sea: MeshInstance3D
+var swash: MeshInstance3D
 var camera: Camera3D
 var boat: Node3D
 var ui: CanvasLayer
@@ -30,7 +40,12 @@ func _ready() -> void:
     _build_environment()
     _build_water()
     _build_sand()
+    _build_swash()
     _build_context()
+    _build_contact_stones()
+    water_material.set_shader_parameter("contact_count", contact_objects.size())
+    contact_objects.resize(10)
+    water_material.set_shader_parameter("contact_objects", contact_objects)
     _build_boat()
     _build_camera()
     _build_ui()
@@ -50,21 +65,21 @@ func _ready() -> void:
 func _build_environment() -> void:
     var environment := Environment.new()
     environment.background_mode = Environment.BG_COLOR
-    environment.background_color = Color("91cbd7")
+    environment.background_color = Color("a8c2c3")
     environment.ambient_light_source = Environment.AMBIENT_SOURCE_COLOR
-    environment.ambient_light_color = Color("a8d6e5")
-    environment.ambient_light_energy = 0.62
+    environment.ambient_light_color = Color("d1dfda")
+    environment.ambient_light_energy = 0.42
     environment.reflected_light_source = Environment.REFLECTION_SOURCE_SKY
     var sky := Sky.new()
     var sky_mat := ProceduralSkyMaterial.new()
-    sky_mat.sky_top_color = Color("528db8")
-    sky_mat.sky_horizon_color = Color("d2ecea")
-    sky_mat.ground_bottom_color = Color("467b91")
-    sky_mat.ground_horizon_color = Color("bedcde")
+    sky_mat.sky_top_color = Color("829faa")
+    sky_mat.sky_horizon_color = Color("cad8d3")
+    sky_mat.ground_bottom_color = Color("668c8b")
+    sky_mat.ground_horizon_color = Color("bdccc4")
     sky.sky_material = sky_mat
     environment.sky = sky
     environment.tonemap_mode = Environment.TONE_MAPPER_FILMIC
-    environment.tonemap_exposure = 1.12
+    environment.tonemap_exposure = 1.0
     environment.ssao_enabled = true
     environment.ssao_radius = 1.25
     environment.ssao_intensity = 1.3
@@ -75,9 +90,9 @@ func _build_environment() -> void:
     add_child(world_environment)
     var sun := DirectionalLight3D.new()
     sun.name = "WarmAfternoon"
-    sun.rotation_degrees = Vector3(-53, -36, 0)
-    sun.light_color = Color("fff1d0")
-    sun.light_energy = 1.45
+    sun.rotation_degrees = Vector3(-48, -145, 0)
+    sun.light_color = Color("fff0d6")
+    sun.light_energy = 1.05
     sun.light_angular_distance = 1.6
     sun.shadow_enabled = true
     sun.directional_shadow_max_distance = 100.0
@@ -93,8 +108,8 @@ func _build_water() -> void:
     mesh.subdivide_depth = 260
     water_material = ShaderMaterial.new()
     water_material.shader = WATER_SHADER
-    water_material.set_shader_parameter("water_noise", NOISE)
-    var sea := MeshInstance3D.new()
+    _configure_shore_material(water_material)
+    sea = MeshInstance3D.new()
     sea.name = "Ocean"
     sea.mesh = mesh
     sea.material_override = water_material
@@ -102,28 +117,43 @@ func _build_water() -> void:
     add_child(sea)
 
 
+func _configure_shore_material(material: ShaderMaterial) -> void:
+    material.set_shader_parameter("water_noise", NOISE)
+    material.set_shader_parameter("coast_shape", COAST_SHAPE)
+    material.set_shader_parameter("bay_shape", BAY_SHAPE)
+    material.set_shader_parameter("wash_period", WASH_PERIOD)
+    material.set_shader_parameter("study_time", time)
+
+
 func _shore(z: float) -> float:
-    return 8.0 + sin(z * 0.14) * 2.0 + sin(z * 0.37 + 0.4) * 0.6
+    var bay := (z - BAY_SHAPE.x) / BAY_SHAPE.y
+    var point := (z - BAY_SHAPE.x - 5.0) / (BAY_SHAPE.y * 0.65)
+    return COAST_SHAPE.x + sin(z * 0.14) * COAST_SHAPE.y + sin(z * 0.37 + 0.4) * COAST_SHAPE.z + BAY_SHAPE.z * exp(-bay * bay) - BAY_SHAPE.w * exp(-point * point)
 
 
 func _sand_height(offset: float, z: float) -> float:
     if offset < 0.0:
-        return offset * 0.35 - 0.025
-    return 0.02 + minf(offset * 0.20, 0.7) + smoothstep(2.0, 14.0, offset) * (0.2 + sin(z * 0.21) * 0.16)
+        var d := -offset
+        return -0.11 * d - 0.013 * d * d / (1.0 + d * 0.025)
+    return minf(offset * 0.20, 0.7) + smoothstep(2.0, 14.0, offset) * (0.2 + sin(z * 0.21) * 0.16)
 
 
 func _build_sand() -> void:
     var vertices := PackedVector3Array()
     var colors := PackedColorArray()
     var indices := PackedInt32Array()
-    var width := 54
-    var length := 190
+    var offsets := PackedFloat32Array([-160.0, -110.0, -80.0, -55.0, -38.0, -28.0, -22.0, -18.0])
+    for i in range(173):
+        offsets.append(-16.0 + i * 0.25)
+    offsets.append_array(PackedFloat32Array([32.0, 45.0, 75.0, 110.0]))
+    var width := offsets.size() - 1
+    var length := 320
     for iz in range(length + 1):
-        var z := -65.0 + iz * 130.0 / length
+        var z := -100.0 + iz * 200.0 / length
         for ix in range(width + 1):
-            var offset := -2.0 + ix * 42.0 / width
+            var offset := offsets[ix]
             vertices.append(Vector3(_shore(z) + offset, _sand_height(offset, z), z))
-            var tint := Color("bead73").lerp(Color("efd18a"), smoothstep(0.0, 2.8, offset))
+            var tint := Color("a39c80").lerp(Color("b3aa89"), smoothstep(-1.0, 3.0, offset))
             colors.append(tint.srgb_to_linear())
     for iz in range(length):
         for ix in range(width):
@@ -141,11 +171,68 @@ func _build_sand() -> void:
     var land := MeshInstance3D.new()
     land.name = "CurvedSandBank"
     land.mesh = surface.commit()
-    var material := ShaderMaterial.new()
-    material.shader = SAND_SHADER
-    material.set_shader_parameter("water_noise", NOISE)
-    land.material_override = material
+    sand_material = ShaderMaterial.new()
+    sand_material.shader = SAND_SHADER
+    _configure_shore_material(sand_material)
+    land.material_override = sand_material
     add_child(land)
+
+
+func _build_swash() -> void:
+    var surface := SurfaceTool.new()
+    surface.begin(Mesh.PRIMITIVE_TRIANGLES)
+    var width := 36
+    var length := 800
+    for iz in range(length + 1):
+        var z := -100.0 + iz * 200.0 / length
+        for ix in range(width + 1):
+            var offset := -1.8 + ix * 3.0 / width
+            surface.add_vertex(Vector3(_shore(z) + offset, maxf(0.0, _sand_height(offset, z)) + 0.012, z))
+    for iz in range(length):
+        for ix in range(width):
+            var a := iz * (width + 1) + ix
+            var b := a + width + 1
+            for index in [a, a + 1, b, a + 1, b + 1, b]:
+                surface.add_index(index)
+    surface.generate_normals()
+    swash_material = ShaderMaterial.new()
+    swash_material.shader = SWASH_SHADER
+    swash_material.render_priority = 1
+    _configure_shore_material(swash_material)
+    swash = MeshInstance3D.new()
+    swash.name = "ShallowSwashFilm"
+    swash.layers = 2
+    swash.mesh = surface.commit()
+    swash.material_override = swash_material
+    swash.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+    add_child(swash)
+
+
+func _build_contact_stones() -> void:
+    var material := _mat("89988e")
+    var stones := [
+        Vector4(_shore(-2.5) - 0.65, -2.5, 0.90, 0.30),
+        Vector4(_shore(0.4) - 2.0, 0.4, 0.48, 0.12),
+        Vector4(_shore(-6.0) - 4.1, -6.0, 0.85, -0.88),
+        Vector4(_shore(4.2) - 5.4, 4.2, 1.0, -1.32)
+    ]
+    for i in stones.size():
+        var spec: Vector4 = stones[i]
+        var mesh := SphereMesh.new()
+        mesh.radius = 1.0
+        mesh.height = 2.0
+        mesh.radial_segments = 10
+        mesh.rings = 5
+        var rock := MeshInstance3D.new()
+        rock.name = "ContactStone%d" % i
+        rock.mesh = mesh
+        rock.material_override = material
+        rock.position = Vector3(spec.x, spec.w, spec.y)
+        rock.scale = Vector3(spec.z, spec.z * 0.7, spec.z * 0.82)
+        rock.rotation.y = i * 0.73
+        add_child(rock)
+        if spec.w >= 0.0:
+            contact_objects.append(Vector4(spec.x, spec.y, spec.z, 1.0))
 
 
 func _mat(hex: String, roughness: float = 0.85) -> StandardMaterial3D:
@@ -196,8 +283,10 @@ func _build_context() -> void:
     for z in [6.42, 8.18]:
         _box(pier, "CrossBeam", Vector3(6.7, 0.46, z), Vector3(7.9, 0.24, 0.22), dark_wood)
         for x in [3.5, 6.25, 9.3]:
-            var post := _cylinder(pier, Vector3(x, 0.27, z), 0.15, 2.15, dark_wood)
-            post.rotation.z = rng.randf_range(-0.045, 0.045)
+            var post_bottom := minf(_sand_height(x - _shore(z), z) - 0.15, -0.80)
+            var post := _cylinder(pier, Vector3(x, (post_bottom + 1.345) * 0.5, z), 0.15, 1.345 - post_bottom, dark_wood)
+            contact_objects.append(Vector4(x, z, 0.18, 0.50))
+            post.rotation.z = rng.randf_range(-0.025, 0.025)
             _cylinder(pier, Vector3(x, 1.37, z), 0.175, 0.07, cap_wood)
             for band in 3:
                 _cylinder(pier, Vector3(x, 1.11 + band * 0.045, z), 0.162, 0.025, _mat("c4a66d"))
@@ -256,6 +345,8 @@ func _build_camera() -> void:
 
 
 func _update_camera(delta: float) -> void:
+    if camera_override:
+        return
     camera_mix = move_toward(camera_mix, 1.0 if close_view else 0.0, delta * 1.1)
     var blend := smoothstep(0.0, 1.0, camera_mix)
     var target := Vector3(-0.8, 0, 0).lerp(Vector3(4.0, 0, 2.8), blend)
@@ -273,7 +364,7 @@ func _build_ui() -> void:
     root.mouse_filter = Control.MOUSE_FILTER_IGNORE
     ui.add_child(root)
     var title := Label.new()
-    title.text = "海水习作  /  01"
+    title.text = "海水习作  /  02"
     title.position = Vector2(30, 25)
     title.add_theme_color_override("font_color", Color("fff4db"))
     title.add_theme_color_override("font_shadow_color", Color(0.02, 0.12, 0.19, 0.55))
@@ -350,6 +441,8 @@ func _toggle_sailing() -> void:
 
 
 func reset_study() -> void:
+    camera_override = false
+    camera.projection = Camera3D.PROJECTION_ORTHOGONAL
     time = 0.0
     playing = true
     sailing = true
@@ -389,12 +482,17 @@ func _process(delta: float) -> void:
         boat.position.y = sin(time * 1.1) * 0.034
         boat.rotation.z = sin(time * 0.92) * 0.012
         boat.rotation.x = sin(time * 0.77 + 0.7) * 0.009
-    water_material.set_shader_parameter("study_time", time)
-    water_material.set_shader_parameter("boat_position", boat.position)
-    water_material.set_shader_parameter("wake_strength", wake)
+    _sync_water_materials()
     if (capture_mode or demo_mode) and Time.get_ticks_msec() - _capture_started > 150000:
         push_error("WATER_STUDY_FAIL: 150 second watchdog")
         get_tree().quit(2)
+
+
+func _sync_water_materials() -> void:
+    for material in [water_material, sand_material, swash_material]:
+        material.set_shader_parameter("study_time", time)
+    water_material.set_shader_parameter("boat_position", boat.position)
+    water_material.set_shader_parameter("wake_strength", wake)
 
 
 func _run_capture() -> void:
@@ -441,11 +539,21 @@ func _run_capture() -> void:
     if not await _save_clean_frame(output + "/03_shore_closeup.png"):
         return
     var near_performance := await _measure_frames(5.0)
+    if not await _save_clean_frame(output + "/06_wake_moving.png"):
+        return
     if not await _click_button(sail_button):
         return
     var stopped_z := boat.position.z
-    await get_tree().create_timer(3.1).timeout
+    var moving_wake := wake
+    await get_tree().create_timer(1.0).timeout
+    if not _check(wake > 0.0 and wake < moving_wake, "wake must decay gradually after stopping"):
+        return
+    if not await _save_clean_frame(output + "/07_wake_fading.png"):
+        return
+    await get_tree().create_timer(2.1).timeout
     if not _check(not sailing and wake <= 0.01 and boat.position.z == stopped_z, "stop must freeze travel and fade wake"):
+        return
+    if not await _save_clean_frame(output + "/08_wake_stopped.png"):
         return
     if not await _save_frame(output + "/04_controls.png"):
         return
@@ -470,14 +578,28 @@ func _run_capture() -> void:
         return
     if not await _save_frame(output + "/05_reset.png"):
         return
+    var low_performance := await _capture_water_details(output)
+    if low_performance.is_empty():
+        return
     var metadata := {
+        "study_version": 2,
+        "water_model": "alpha blended depth attenuation; opaque sea floor; no refraction distortion",
+        "water_style": "calm mid/deep surfaces; broken sun ribbons; preserved shore swash",
+        "shore_phases_seconds": [0.25, 0.95, 1.7, 2.4, 3.4, 4.4],
+        "surface_diagnostics": {
+            "overview_seconds": [1.7, 3.4], "low_seconds": 1.7,
+            "boat_position": [-4.5, 0.0, 0.5], "boat_rotation": [0.0, 0.0, 0.0], "wake": 0.0,
+            "overview_position": [15.0, 27.0, 33.0], "overview_target": [-0.8, 0.0, 0.0], "overview_size": 25.0,
+            "low_position": [-2.0, 6.5, 14.0], "low_target": [4.0, 0.0, 4.0], "low_fov": 44.0
+        },
+        "contact_objects": int(water_material.get_shader_parameter("contact_count")),
         "renderer": RenderingServer.get_current_rendering_method(),
         "size": str(get_viewport().get_visible_rect().size),
         "window_pixels": str(DisplayServer.window_get_size()),
         "frames": Engine.get_frames_drawn(),
         "boat_asset": ResourceLoader.exists("res://assets/test_boat.glb"),
         "controls": "viewport mouse press/release: pause/resume, near view, stop/wake decay, endpoint restart, reset/wide view",
-        "frame_timing": {"method": "monotonic process-to-process milliseconds; no screenshot or recording during measurement; includes VSync and desktop scheduling", "overview": overview_performance, "near": near_performance},
+        "frame_timing": {"method": "monotonic process-to-process milliseconds; no screenshot or recording during measurement; includes VSync and desktop scheduling", "overview": overview_performance, "near": near_performance, "low": low_performance},
         "visual_acceptance": "awaiting user"
     }
     var file := FileAccess.open(output + "/result.json", FileAccess.WRITE)
@@ -488,6 +610,106 @@ func _run_capture() -> void:
     file.close()
     print("WATER_STUDY_CAPTURE_PASS ", ProjectSettings.globalize_path(output))
     get_tree().quit()
+
+
+func _capture_surface_details(output: String) -> bool:
+    playing = false
+    sailing = false
+    wake = 0.0
+    boat.position = Vector3(-4.5, 0.0, 0.5)
+    boat.rotation = Vector3.ZERO
+    camera_override = true
+    camera.projection = Camera3D.PROJECTION_ORTHOGONAL
+    camera.size = 25.0
+    camera.position = Vector3(15.0, 27.0, 33.0)
+    camera.look_at(Vector3(-0.8, 0.0, 0.0))
+    var phases := [1.7, 3.4]
+    for i in phases.size():
+        time = phases[i]
+        _sync_water_materials()
+        await get_tree().process_frame
+        await get_tree().process_frame
+        if not await _save_clean_frame(output + "/surface_fixed_%02d.png" % i):
+            return false
+        if not _check(time == phases[i] and boat.position == Vector3(-4.5, 0.0, 0.5) and boat.rotation == Vector3.ZERO and wake == 0.0, "surface diagnostic must remain frozen"):
+            return false
+    camera.projection = Camera3D.PROJECTION_PERSPECTIVE
+    camera.fov = 44.0
+    camera.position = Vector3(-2.0, 6.5, 14.0)
+    camera.look_at(Vector3(4.0, 0.0, 4.0))
+    time = 1.7
+    _sync_water_materials()
+    await get_tree().process_frame
+    await get_tree().process_frame
+    return await _save_clean_frame(output + "/surface_fixed_low.png")
+
+
+func _capture_water_details(output: String) -> Dictionary:
+    if not await _capture_surface_details(output):
+        return {}
+    _sync_water_materials()
+    for material in [water_material, sand_material, swash_material]:
+        if not _check(material.get_shader_parameter("coast_shape") == COAST_SHAPE and material.get_shader_parameter("bay_shape") == BAY_SHAPE, "shore materials must share geometry parameters"):
+            return {}
+        if not _check(is_equal_approx(float(material.get_shader_parameter("study_time")), time), "all water layers must share paused time"):
+            return {}
+    if not _check(is_equal_approx(_sand_height(0.0, 0.0), 0.0) and absf(_sand_height(-0.001, 0.0) - _sand_height(0.001, 0.0)) < 0.001, "shore surface must be continuous"):
+        return {}
+    var ground := get_node("CurvedSandBank") as MeshInstance3D
+    var ground_bounds := ground.mesh.get_aabb()
+    if not _check(ground_bounds.position.x < -90.0 and ground_bounds.position.z <= -100.0 and ground_bounds.end.z >= 100.0, "sea floor must cover the visible water"):
+        return {}
+    if not _check(int(water_material.get_shader_parameter("contact_count")) == 8, "expected six pier posts and two emergent stones"):
+        return {}
+    camera_override = true
+    camera.projection = Camera3D.PROJECTION_ORTHOGONAL
+    camera.size = 12.0
+    var target := Vector3(_shore(-2.5) - 1.2, 0.0, -2.5)
+    camera.position = target + Vector3(7.0, 12.0, 13.0)
+    camera.look_at(target)
+    var phases := [0.25, 0.95, 1.7, 2.4, 3.4, 4.4]
+    for i in phases.size():
+        time = phases[i]
+        _sync_water_materials()
+        await get_tree().process_frame
+        await get_tree().process_frame
+        if not await _save_clean_frame(output + "/shore_phase_%02d.png" % i):
+            return {}
+    var original_cull_mask := camera.cull_mask
+    camera.cull_mask = 2
+    swash_material.set_shader_parameter("debug_foam_mask", true)
+    var mask_phases := [0.25, 2.4, 4.4]
+    for i in mask_phases.size():
+        time = mask_phases[i]
+        _sync_water_materials()
+        await get_tree().process_frame
+        await get_tree().process_frame
+        if not await _save_clean_frame(output + "/foam_mask_%02d.png" % i):
+            return {}
+    camera.cull_mask = original_cull_mask
+    swash_material.set_shader_parameter("debug_foam_mask", false)
+    time = 1.7
+    _sync_water_materials()
+    sea.visible = false
+    swash.visible = false
+    if not await _save_clean_frame(output + "/09_seafloor_diagnostic.png"):
+        return {}
+    sea.visible = true
+    swash.visible = true
+    camera.projection = Camera3D.PROJECTION_PERSPECTIVE
+    camera.fov = 44.0
+    camera.position = Vector3(-2.0, 6.5, 14.0)
+    camera.look_at(Vector3(4.0, 0.0, 4.0))
+    playing = true
+    await get_tree().create_timer(0.6).timeout
+    if not await _save_clean_frame(output + "/10_low_angle.png"):
+        return {}
+    var performance := await _measure_frames(5.0)
+    reset_study()
+    await get_tree().create_timer(1.2).timeout
+    if not _check(not camera_override and camera.projection == Camera3D.PROJECTION_ORTHOGONAL and camera_mix <= 0.01, "diagnostic camera must restore normal controls"):
+        return {}
+    return performance
 
 
 func _check(condition: bool, message: String) -> bool:
