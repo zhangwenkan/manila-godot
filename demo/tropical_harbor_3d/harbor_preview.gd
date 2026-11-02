@@ -34,6 +34,9 @@ var _capture_started := 0
 var _samples: Array[float] = []
 var _sampling := false
 var _last_sample_usec := 0
+var _focused_samples := 0
+var _minimized_samples := 0
+var _capture_frames: Array[Dictionary] = []
 
 
 func _ready() -> void:
@@ -468,7 +471,12 @@ func _unhandled_key_input(event: InputEvent) -> void:
 func _process(delta: float) -> void:
     if _sampling:
         var now := Time.get_ticks_usec()
-        _samples.append(float(now - _last_sample_usec) / 1000.0)
+        if _last_sample_usec > 0:
+            _samples.append(float(now - _last_sample_usec) / 1000.0)
+            if get_window().has_focus():
+                _focused_samples += 1
+            if DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_MINIMIZED:
+                _minimized_samples += 1
         _last_sample_usec = now
     _update_camera(delta)
     if playing:
@@ -599,8 +607,9 @@ func _run_capture() -> void:
         "frames": Engine.get_frames_drawn(),
         "boat_asset": ResourceLoader.exists("res://assets/test_boat.glb"),
         "controls": "viewport mouse press/release: pause/resume, near view, stop/wake decay, endpoint restart, reset/wide view",
-        "frame_timing": {"method": "monotonic process-to-process milliseconds; no screenshot or recording during measurement; includes VSync and desktop scheduling", "overview": overview_performance, "near": near_performance, "low": low_performance},
-        "visual_acceptance": "awaiting user"
+        "frame_timing": {"method": "five monotonic wall-clock seconds; process intervals, not GPU timings; separate drawn-frame and window-state counts; includes VSync and desktop scheduling", "overview": overview_performance, "near": near_performance, "low": low_performance},
+        "frame_captures": _capture_frames,
+        "visual_acceptance": "functional capture does not determine visual acceptance"
     }
     var file := FileAccess.open(output + "/result.json", FileAccess.WRITE)
     if file == null:
@@ -745,11 +754,22 @@ func _click_button(button: Button) -> bool:
 
 
 func _measure_frames(seconds: float) -> Dictionary:
+    # Drain screenshot readback before sampling. Simulation timers are not wall clocks.
+    await get_tree().process_frame
+    await get_tree().process_frame
     _samples.clear()
-    _last_sample_usec = Time.get_ticks_usec()
+    _focused_samples = 0
+    _minimized_samples = 0
+    _last_sample_usec = 0
+    var started := Time.get_ticks_usec()
+    var start_time := time
+    var drawn_start := Engine.get_frames_drawn()
     _sampling = true
-    await get_tree().create_timer(seconds).timeout
+    while Time.get_ticks_usec() - started < seconds * 1000000.0:
+        await get_tree().process_frame
     _sampling = false
+    var wall_seconds := float(Time.get_ticks_usec() - started) / 1000000.0
+    var drawn_frames := Engine.get_frames_drawn() - drawn_start
     var sorted := _samples.duplicate()
     sorted.sort()
     if sorted.is_empty():
@@ -761,7 +781,21 @@ func _measure_frames(seconds: float) -> Dictionary:
         if value > 33.333:
             slow += 1
     var mean := total / sorted.size()
-    return {"frames": sorted.size(), "mean_ms": mean, "p95_ms": sorted[int(ceil(sorted.size() * 0.95)) - 1], "max_ms": sorted.back(), "over_33ms": slow, "mean_fps": 1000.0 / mean}
+    var p95: float = sorted[int(ceil(sorted.size() * 0.95)) - 1]
+    var focus_fraction := float(_focused_samples) / sorted.size()
+    var flags: Array[String] = []
+    if focus_fraction < 0.95:
+        flags.append("window_not_focused")
+    if _minimized_samples > 0:
+        flags.append("window_minimized")
+    if drawn_frames < sorted.size() * 0.95:
+        flags.append("process_frames_without_draws")
+    if p95 > 33.333 or sorted.back() > 100.0:
+        flags.append("frame_time_spikes")
+    return {"frames": sorted.size(), "mean_ms": mean, "p95_ms": p95, "max_ms": sorted.back(), "over_33ms": slow, "mean_fps": 1000.0 / mean,
+        "wall_seconds": wall_seconds, "simulation_seconds": time - start_time, "drawn_frames": drawn_frames, "drawn_fps": drawn_frames / wall_seconds,
+        "focus_fraction": focus_fraction, "minimized_frames": _minimized_samples, "flags": flags,
+        "status": "no_flag_in_this_sample" if flags.is_empty() else "review_required"}
 
 
 func _run_demo() -> void:
@@ -789,9 +823,27 @@ func _save_clean_frame(path: String) -> bool:
 
 
 func _save_frame(path: String) -> bool:
-    await RenderingServer.frame_post_draw
+    # A hidden window may keep processing without drawing. Do not let readback
+    # waits move the boat to its endpoint or advance a fixed diagnostic phase.
+    var was_playing := playing
+    var frame_time := time
+    var frame_position := boat.position
+    var frame_rotation := boat.rotation
+    var started := Time.get_ticks_usec()
+    playing = false
+    while true:
+        while DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_MINIMIZED:
+            await get_tree().process_frame
+        await RenderingServer.frame_post_draw
+        if DisplayServer.window_get_mode() != DisplayServer.WINDOW_MODE_MINIMIZED:
+            break
     var image := get_viewport().get_texture().get_image()
-    if image == null or image.is_empty() or image.save_png(path) != OK:
+    var saved := image != null and not image.is_empty() and image.save_png(path) == OK
+    playing = was_playing
+    if not _check(time == frame_time and boat.position == frame_position and boat.rotation == frame_rotation, "frame capture must freeze water and boat"):
+        return false
+    _capture_frames.append({"file": path.get_file(), "wall_ms": float(Time.get_ticks_usec() - started) / 1000.0, "study_time": frame_time, "frozen": true})
+    if not saved:
         push_error("WATER_STUDY_FAIL: could not save " + path)
         get_tree().quit(2)
         return false

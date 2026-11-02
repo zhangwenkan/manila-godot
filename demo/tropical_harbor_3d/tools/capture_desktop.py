@@ -56,6 +56,14 @@ if not args.demo:
     if any(not (output / name).is_file() or (output / name).stat().st_size == 0 for name in required):
         sys.exit('CAPTURE_FAILED: output files missing or empty')
     result = json.loads((output / 'result.json').read_text(encoding='utf-8'))
+    png_names = {name for name in required if name.endswith('.png')}
+    frame_captures = result.get('frame_captures', [])
+    if ({item['file'] for item in frame_captures} != png_names
+            or not all(item.get('frozen') is True for item in frame_captures)):
+        sys.exit('CAPTURE_FAILED: missing frozen-frame checks')
+    if any(result['frame_timing'][view].get('wall_seconds', 0) < 5.0
+           for view in ('overview', 'near', 'low')):
+        sys.exit('CAPTURE_FAILED: insufficient wall-clock measurement duration')
     if any(result['frame_timing'][view].get('frames', 0) < 30 for view in ('overview', 'near', 'low')):
         sys.exit('CAPTURE_FAILED: insufficient frame samples')
     if result.get('study_version') != 2 or result.get('contact_objects') != 8:
@@ -72,6 +80,8 @@ if not args.demo:
         if name.endswith('.png'):
             with Image.open(output / name) as image:
                 image.load()
+                if image.size != tuple(map(int, args.resolution.split('x'))):
+                    sys.exit('CAPTURE_FAILED: screenshot size does not match requested window')
                 if name.startswith('shore_phase_'):
                     phase_images.append(image.convert('RGB'))
                 elif name.startswith('foam_mask_'):
@@ -88,3 +98,7 @@ if not args.demo:
     print('SHORE_PHASE_PIXEL_CHANGES', differences, '(change check only, not visual acceptance)')
     print('OUTPUT', output)
     print(json.dumps(result['frame_timing'], indent=2))
+    flagged = {view: result['frame_timing'][view]['flags'] for view in ('overview', 'near', 'low')
+               if result['frame_timing'][view]['flags']}
+    print('FUNCTIONAL_CAPTURE_PASS: controls and frozen images checked; not visual or performance acceptance')
+    print('TIMING_REVIEW_REQUIRED' if flagged else 'TIMING_NO_FLAGS_IN_THIS_SAMPLE', json.dumps(flagged))
