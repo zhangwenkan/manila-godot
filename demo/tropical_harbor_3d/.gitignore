@@ -2,3 +2,4 @@
 captures/
 *.avi
 *.blend1
+__pycache__/
