@@ -1,9 +1,9 @@
 extends RefCounted
 
-const WATER_SHADER = preload("res://materials/tropical_water.gdshader")
-const SAND_SHADER = preload("res://materials/sand.gdshader")
-const NOISE = preload("res://assets/water_noise.png")
-const SWASH_SHADER = preload("res://materials/shore_swash.gdshader")
+const WATER_SHADER = preload("res://demo/tropical_harbor_3d/materials/tropical_water.gdshader")
+const SAND_SHADER = preload("res://demo/tropical_harbor_3d/materials/sand.gdshader")
+const NOISE = preload("res://demo/tropical_harbor_3d/assets/water_noise.png")
+const SWASH_SHADER = preload("res://demo/tropical_harbor_3d/materials/shore_swash.gdshader")
 const COAST_SHAPE := Vector4(8.0, 2.0, 0.6, 0.0)
 const BAY_SHAPE := Vector4(-2.5, 3.6, 2.2, 0.85)
 const WASH_PERIOD := 4.8
@@ -52,10 +52,8 @@ func _mat(hex: String, roughness: float = 0.85) -> StandardMaterial3D:
 
 func _build_environment() -> void:
     var environment := Environment.new()
-    environment.background_mode = Environment.BG_COLOR
-    environment.background_color = Color("a8c2c3")
-    environment.ambient_light_source = Environment.AMBIENT_SOURCE_COLOR
-    environment.ambient_light_color = Color("d1dfda")
+    environment.background_mode = Environment.BG_SKY
+    environment.ambient_light_source = Environment.AMBIENT_SOURCE_SKY
     environment.ambient_light_energy = 0.42
     environment.reflected_light_source = Environment.REFLECTION_SOURCE_SKY
     var sky := Sky.new()
@@ -66,13 +64,15 @@ func _build_environment() -> void:
     sky_mat.ground_horizon_color = Color("bdccc4")
     sky.sky_material = sky_mat
     environment.sky = sky
-    environment.tonemap_mode = Environment.TONE_MAPPER_FILMIC
+    environment.tonemap_mode = Environment.TONE_MAPPER_ACES
     environment.tonemap_exposure = 1.0
     environment.ssao_enabled = true
     environment.ssao_radius = 1.25
     environment.ssao_intensity = 1.3
     environment.ssao_light_affect = 0.1
     environment.glow_enabled = false
+    environment.volumetric_fog_enabled = false
+    environment.sdfgi_enabled = false
     var world_environment := WorldEnvironment.new()
     world_environment.environment = environment
     add_child(world_environment)
@@ -81,12 +81,14 @@ func _build_environment() -> void:
     sun.rotation_degrees = Vector3(-48, -145, 0)
     sun.light_color = Color("fff0d6")
     sun.light_energy = 1.05
-    sun.light_angular_distance = 1.6
+    sun.light_angular_distance = 0.85
     sun.shadow_enabled = true
     sun.directional_shadow_max_distance = 100.0
     sun.shadow_bias = 0.04
-    sun.shadow_normal_bias = 1.0
+    sun.shadow_normal_bias = 0.6
     add_child(sun)
+    RenderingServer.directional_shadow_atlas_set_size(4096, true)
+    RenderingServer.directional_soft_shadow_filter_set_quality(RenderingServer.SHADOW_QUALITY_SOFT_HIGH)
 
 
 func _build_water() -> void:

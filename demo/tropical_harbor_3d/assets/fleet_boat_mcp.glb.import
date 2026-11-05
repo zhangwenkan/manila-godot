@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://dub7ppw4cghl7"
-path="res://.godot/imported/fleet_boat_mcp.glb-f6b7effaba9e1a93a9273e8e5131fd1d.scn"
+path="res://.godot/imported/fleet_boat_mcp.glb-d3479ba416aa758f2e9c8fdf8fda36b3.scn"
 
 [deps]
 
-source_file="res://assets/fleet_boat_mcp.glb"
-dest_files=["res://.godot/imported/fleet_boat_mcp.glb-f6b7effaba9e1a93a9273e8e5131fd1d.scn"]
+source_file="res://demo/tropical_harbor_3d/assets/fleet_boat_mcp.glb"
+dest_files=["res://.godot/imported/fleet_boat_mcp.glb-d3479ba416aa758f2e9c8fdf8fda36b3.scn"]
 
 [params]
 

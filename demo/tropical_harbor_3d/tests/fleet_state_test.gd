@@ -1,6 +1,6 @@
 extends SceneTree
 
-const STATE = preload("res://fleet/fleet_state.gd")
+const STATE = preload("res://demo/tropical_harbor_3d/fleet/fleet_state.gd")
 var checks := 0
 var failures := 0
 

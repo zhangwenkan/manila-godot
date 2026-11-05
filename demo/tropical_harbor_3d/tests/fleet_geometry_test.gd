@@ -1,9 +1,9 @@
 extends SceneTree
 
-const STATE = preload("res://fleet/fleet_state.gd")
-const SHIP = preload("res://ships/ship_view.gd")
-const PIER = preload("res://environment/pier_builder.gd")
-const ENVIRONMENT = preload("res://environment/harbor_environment.gd")
+const STATE = preload("res://demo/tropical_harbor_3d/fleet/fleet_state.gd")
+const SHIP = preload("res://demo/tropical_harbor_3d/ships/ship_view.gd")
+const PIER = preload("res://demo/tropical_harbor_3d/environment/pier_builder.gd")
+const ENVIRONMENT = preload("res://demo/tropical_harbor_3d/environment/harbor_environment.gd")
 var checks := 0
 var failures := 0
 

@@ -1,7 +1,7 @@
 shader_type spatial;
 render_mode blend_mix, depth_draw_never, cull_disabled;
 
-#include "res://materials/shore_common.gdshaderinc"
+#include "res://demo/tropical_harbor_3d/materials/shore_common.gdshaderinc"
 
 uniform bool debug_foam_mask = false;
 uniform vec3 foam_color : source_color = vec3(0.91, 0.94, 0.86);

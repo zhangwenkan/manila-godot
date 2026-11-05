@@ -1,13 +1,13 @@
 extends Node3D
 
-const ENVIRONMENT = preload("res://environment/harbor_environment.gd")
-const STATE = preload("res://fleet/fleet_state.gd")
-const SHIP = preload("res://ships/ship_view.gd")
-const CAMERA = preload("res://fleet/fleet_camera.gd")
-const UI = preload("res://ui/fleet_interaction.gd")
-const PIER = preload("res://environment/pier_builder.gd")
-const WATER = preload("res://materials/fleet_water.gdshader")
-const REFLECTION = preload("res://environment/water_reflection.gd")
+const ENVIRONMENT = preload("res://demo/tropical_harbor_3d/environment/harbor_environment.gd")
+const STATE = preload("res://demo/tropical_harbor_3d/fleet/fleet_state.gd")
+const SHIP = preload("res://demo/tropical_harbor_3d/ships/ship_view.gd")
+const CAMERA = preload("res://demo/tropical_harbor_3d/fleet/fleet_camera.gd")
+const UI = preload("res://demo/tropical_harbor_3d/ui/fleet_interaction.gd")
+const PIER = preload("res://demo/tropical_harbor_3d/environment/pier_builder.gd")
+const WATER = preload("res://demo/tropical_harbor_3d/materials/fleet_water.gdshader")
+const REFLECTION = preload("res://demo/tropical_harbor_3d/environment/water_reflection.gd")
 
 var state := STATE.new()
 var environment: RefCounted
@@ -59,7 +59,7 @@ func _ready() -> void:
     ui.build(self)
     for arg in OS.get_cmdline_user_args():
         if arg == "--art-preview":
-            var art := load("res://tools/art_preview.gd").new() as Node
+            var art := load("res://demo/tropical_harbor_3d/tools/art_preview.gd").new() as Node
             add_child(art)
             art.run.call_deferred(self)
             return
@@ -67,13 +67,13 @@ func _ready() -> void:
             test_mode = true
     if test_mode:
         started = Time.get_ticks_msec()
-        var runner := load("res://tests/fleet_capture.gd").new() as Node
+        var runner := load("res://demo/tropical_harbor_3d/tests/fleet_capture.gd").new() as Node
         add_child(runner)
         runner.run.call_deferred(self)
 
 
 func configure_art_shadows() -> void:
-    # Fleet-only art candidate; leave the original water demo's lighting unchanged.
+    # Same values as harbor_environment._build_environment(); kept for art_preview A/B frames.
     var sun := get_node("WarmAfternoon") as DirectionalLight3D
     sun.light_angular_distance = 0.85
     sun.directional_shadow_max_distance = 100.0
@@ -149,6 +149,14 @@ func overview() -> void:
     ui.refresh()
 
 
+func view_piers() -> void:
+    overview()
+    camera_override = true
+    camera.position = Vector3(15, 12.55, 23.4)
+    camera.look_at(Vector3(7, 0.55, 9.4))
+    camera.size = 8.2
+
+
 func toggle_pause() -> void:
     paused = not paused
     ui.refresh()
@@ -178,6 +186,7 @@ func _unhandled_input(event: InputEvent) -> void:
     if event is InputEventKey and event.pressed and not event.echo:
         match event.keycode:
             KEY_V: overview()
+            KEY_P: view_piers()
             KEY_SPACE: toggle_pause()
             KEY_ESCAPE: get_tree().quit()
     if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:

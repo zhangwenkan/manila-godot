@@ -1,7 +1,7 @@
 shader_type spatial;
 render_mode cull_disabled;
 
-#include "res://materials/shore_common.gdshaderinc"
+#include "res://demo/tropical_harbor_3d/materials/shore_common.gdshaderinc"
 
 varying vec3 world_position;
 varying vec3 vertex_tint;

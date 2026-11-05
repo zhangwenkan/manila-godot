@@ -11,6 +11,7 @@ import sys
 
 sys.stdout.reconfigure(encoding='utf-8', errors='replace')
 ROOT = Path(__file__).resolve().parents[1]
+PROJECT = ROOT.parents[1]
 parser = ArgumentParser(description=__doc__)
 parser.add_argument('--resolution', default='1600x900', choices=('1600x900', '1200x675'))
 args = parser.parse_args()
@@ -26,7 +27,7 @@ log.parent.mkdir(exist_ok=True)
 ignore = log.parent / '.gdignore'
 if not ignore.exists():
     ignore.write_text('# Local graphical evidence, not runtime resources.\n', encoding='utf-8')
-command = [str(engine), '--path', str(ROOT), 'res://fleet_harbor.tscn', '--resolution', args.resolution,
+command = [str(engine), '--path', str(PROJECT), '--resolution', args.resolution,
            '--', '--fleet-capture', '--output=' + output.as_posix()]
 with log.open('x', encoding='utf-8') as stream:
     process = subprocess.Popen(command, stdout=stream, stderr=subprocess.STDOUT)

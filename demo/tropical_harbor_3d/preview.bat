@@ -1,5 +1,5 @@
 @echo off
 setlocal
-rem Runs the independent water study, then closes automatically.
-python "%~dp0tools\capture_desktop.py" --demo
+rem Captures the root project's single main scene, then closes automatically.
+python "%~dp0tools\capture_art.py"
 exit /b %errorlevel%

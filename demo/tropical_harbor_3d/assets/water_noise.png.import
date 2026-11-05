@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cat3j6wfkh5gm"
-path="res://.godot/imported/water_noise.png-d235efada02bfc595e23ef7859bb349e.ctex"
+path="res://.godot/imported/water_noise.png-894f42c0a088ff5bc81a199d37bcc4c7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/water_noise.png"
-dest_files=["res://.godot/imported/water_noise.png-d235efada02bfc595e23ef7859bb349e.ctex"]
+source_file="res://demo/tropical_harbor_3d/assets/water_noise.png"
+dest_files=["res://.godot/imported/water_noise.png-894f42c0a088ff5bc81a199d37bcc4c7.ctex"]
 
 [params]
 

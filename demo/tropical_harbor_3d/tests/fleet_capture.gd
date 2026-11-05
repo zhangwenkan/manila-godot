@@ -1,6 +1,6 @@
 extends Node
 
-const STATE = preload("res://fleet/fleet_state.gd")
+const STATE = preload("res://demo/tropical_harbor_3d/fleet/fleet_state.gd")
 var harbor: Node3D
 var output := ""
 var checks := 0
@@ -179,14 +179,14 @@ func run(scene: Node3D) -> void:
     harbor.ui.visible = false
     if not await capture("08_fleet_water_no_wake"):
         return
-    harbor.environment.water_material.shader = load("res://materials/tropical_water.gdshader")
+    harbor.environment.water_material.shader = load("res://demo/tropical_harbor_3d/materials/tropical_water.gdshader")
     harbor.environment.water_material.set_shader_parameter("wake_strength", 0.0)
     harbor.environment.set_contacts(harbor.environment.contact_objects, 10)
     # Contact-free comparison excludes the deliberately different pier contact capacity.
     harbor.environment.water_material.set_shader_parameter("contact_count", 0)
     if not await capture("09_reference_water_no_wake"):
         return
-    harbor.environment.water_material.shader = load("res://materials/fleet_water.gdshader")
+    harbor.environment.water_material.shader = load("res://demo/tropical_harbor_3d/materials/fleet_water.gdshader")
     harbor.environment.water_material.set_shader_parameter("contact_count", 0)
     if not await capture("10_fleet_water_contact_free"):
         return

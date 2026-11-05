@@ -75,12 +75,22 @@ func run(scene: Node3D) -> void:
     harbor.camera.update_view(harbor.ships, 0, true)
     if not await capture("08_godot_overview"):
         return
+    harbor.ui.visible = true
+    if not await capture("09_main_entry"):
+        return
     var file := FileAccess.open(output + "/art_result.json", FileAccess.WRITE)
     if file == null:
         push_error("ART_PREVIEW: cannot save result")
         get_tree().quit(2)
         return
-    file.store_string(JSON.stringify({"frames": frames, "purpose": "visual art review only", "visual_accepted": false}, "  "))
+    file.store_string(JSON.stringify({
+        "frames": frames,
+        "main_scene": ProjectSettings.get_setting("application/run/main_scene"),
+        "loaded_scene": harbor.scene_file_path,
+        "materials": wood_material_report(),
+        "purpose": "visual art review only",
+        "visual_accepted": false,
+    }, "  "))
     file.close()
     print("ART_PREVIEW_SAVED frames=", frames.size(), " output=", output)
     get_tree().quit()
@@ -90,6 +100,29 @@ func frame(target: Vector3, offset: Vector3, size_: float) -> void:
     harbor.camera.position = target + offset
     harbor.camera.look_at(target)
     harbor.camera.size = size_
+
+
+func wood_material_report() -> Array[Dictionary]:
+    var result: Array[Dictionary] = []
+    var seen: Dictionary = {}
+    for item in harbor.find_children("*", "MeshInstance3D", true, false):
+        var mesh := item as MeshInstance3D
+        if mesh.mesh == null:
+            continue
+        for surface in mesh.mesh.get_surface_count():
+            var material := mesh.get_active_material(surface) as StandardMaterial3D
+            if material == null or material.albedo_texture == null or seen.has(material.resource_name):
+                continue
+            seen[material.resource_name] = true
+            result.append({
+                "name": material.resource_name,
+                "albedo": material.albedo_texture.resource_path,
+                "normal": material.normal_texture.resource_path if material.normal_texture != null else "",
+                "normal_enabled": material.normal_enabled,
+                "roughness": material.roughness,
+                "specular": material.metallic_specular,
+            })
+    return result
 
 
 func diagnose(kind: String, boat: Node3D, sun: DirectionalLight3D, world: Environment) -> void:

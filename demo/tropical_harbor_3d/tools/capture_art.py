@@ -10,6 +10,7 @@ import sys
 
 sys.stdout.reconfigure(encoding='utf-8', errors='replace')
 root = Path(__file__).resolve().parents[1]
+project = root.parents[1]
 candidates = [os.environ.get('GODOT_EXE'), shutil.which('godot'),
               str(Path.home() / 'Desktop/Godot_v4.6.1-stable_win64.exe')]
 engine = next((p for p in candidates if p and Path(p).is_file()), None)
@@ -22,8 +23,8 @@ user = ['--art-preview', '--art-output=' + output.as_posix()]
 if mode == 'diagnose':
     user.append('--art-diagnose=hull')
 commands = [
-    ('import', [engine, '--headless', '--path', str(root), '--editor', '--import', '--quit'], 90),
-    ('preview', [engine, '--path', str(root), 'res://fleet_harbor.tscn', '--resolution', '1600x900',
+    ('import', [engine, '--headless', '--path', str(project), '--editor', '--import', '--quit'], 120),
+    ('preview', [engine, '--path', str(project), '--resolution', '1600x900',
                  '--'] + user, 70),
 ]
 for label, command, timeout in commands:

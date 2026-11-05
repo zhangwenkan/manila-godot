@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://c0wwbrc2jg1mi"
-path="res://.godot/imported/pier_broken_mcp.glb-ac318872c9ce4bece0332464c2d1e116.scn"
+path="res://.godot/imported/pier_broken_mcp.glb-0fd5c307707d29524fe559158d752d30.scn"
 
 [deps]
 
-source_file="res://assets/pier_broken_mcp.glb"
-dest_files=["res://.godot/imported/pier_broken_mcp.glb-ac318872c9ce4bece0332464c2d1e116.scn"]
+source_file="res://demo/tropical_harbor_3d/assets/pier_broken_mcp.glb"
+dest_files=["res://.godot/imported/pier_broken_mcp.glb-0fd5c307707d29524fe559158d752d30.scn"]
 
 [params]
 

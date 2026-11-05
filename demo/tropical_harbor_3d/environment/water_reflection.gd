@@ -1,6 +1,6 @@
 extends Node
 
-const CLIP = preload("res://materials/fleet_reflect_clip.gdshader")
+const CLIP = preload("res://demo/tropical_harbor_3d/materials/fleet_reflect_clip.gdshader")
 const LAYER_BIT := 4
 
 var viewport: SubViewport

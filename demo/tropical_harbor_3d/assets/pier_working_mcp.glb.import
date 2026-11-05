@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://wq13k17gnnqc"
-path="res://.godot/imported/pier_working_mcp.glb-8c3b769f2c24b5fbc8d40092f500d834.scn"
+path="res://.godot/imported/pier_working_mcp.glb-0a3a0a4979d8b2cdad01f80fc35c405e.scn"
 
 [deps]
 
-source_file="res://assets/pier_working_mcp.glb"
-dest_files=["res://.godot/imported/pier_working_mcp.glb-8c3b769f2c24b5fbc8d40092f500d834.scn"]
+source_file="res://demo/tropical_harbor_3d/assets/pier_working_mcp.glb"
+dest_files=["res://.godot/imported/pier_working_mcp.glb-0a3a0a4979d8b2cdad01f80fc35c405e.scn"]
 
 [params]
 

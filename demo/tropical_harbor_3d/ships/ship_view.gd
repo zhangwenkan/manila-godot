@@ -1,9 +1,8 @@
 extends Node3D
 
-const GEOMETRY = preload("res://ships/cargo_factory.gd")
-const STATE = preload("res://fleet/fleet_state.gd")
-const BOAT = preload("res://assets/fleet_boat_mcp.glb")
-const WETNESS = preload("res://materials/fleet_hull_wet.gdshader")
+const GEOMETRY = preload("res://demo/tropical_harbor_3d/ships/cargo_factory.gd")
+const STATE = preload("res://demo/tropical_harbor_3d/fleet/fleet_state.gd")
+const BOAT = preload("res://demo/tropical_harbor_3d/assets/fleet_boat_mcp.glb")
 # Replacement models use feet at Y=0 and face -Z; these are maximum body envelopes.
 const PAWN_SIZE := Vector3(0.42, 0.90, 0.38)
 const DECK_HEIGHT := 0.28
@@ -32,8 +31,9 @@ func build(data: Dictionary) -> void:
     ship_id = data.ship_id
     cargo_id = data.cargo_id
     name = "Ship%d" % ship_id
-    add_child(BOAT.instantiate())
-    _apply_wetness()
+    var hull := BOAT.instantiate()
+    add_child(hull)
+    _tune_boat_wood(hull)
     cargo_root = GEOMETRY.make(cargo_id)
     cargo_root.position = Vector3(0, DECK_HEIGHT, 0)
     add_child(cargo_root)
@@ -169,15 +169,26 @@ func _float_on_water(time_: float) -> void:
     rotation.z = clampf(atan2(heights[2] - heights[3], 1.44) * 0.55, -0.05, 0.05)
 
 
-func _apply_wetness() -> void:
-    var overlay := ShaderMaterial.new()
-    overlay.shader = WETNESS
-    overlay.render_priority = 1
-    for item in find_children("*", "MeshInstance3D", true, false):
+func _tune_boat_wood(root: Node) -> void:
+    var tuned: Dictionary = {}
+    for item in root.find_children("*", "MeshInstance3D", true, false):
         var mesh := item as MeshInstance3D
-        if cargo_root != null and cargo_root.is_ancestor_of(mesh):
+        if mesh.mesh == null:
             continue
-        mesh.material_overlay = overlay
+        for surf in mesh.mesh.get_surface_count():
+            var src := mesh.get_active_material(surf)
+            if src == null or not (src is StandardMaterial3D):
+                continue
+            if not tuned.has(src):
+                var wood := (src as StandardMaterial3D).duplicate() as StandardMaterial3D
+                wood.vertex_color_use_as_albedo = false
+                wood.metallic = 0.0
+                wood.roughness = 0.90
+                wood.metallic_specular = 0.2
+                wood.texture_filter = BaseMaterial3D.TEXTURE_FILTER_LINEAR_WITH_MIPMAPS_ANISOTROPIC
+                wood.albedo_color = Color.WHITE
+                tuned[src] = wood
+            mesh.set_surface_override_material(surf, tuned[src])
 
 
 func envelope_points() -> Array[Vector3]:

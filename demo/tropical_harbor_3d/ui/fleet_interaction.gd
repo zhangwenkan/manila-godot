@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-const STATE = preload("res://fleet/fleet_state.gd")
+const STATE = preload("res://demo/tropical_harbor_3d/fleet/fleet_state.gd")
 var harbor: Node3D
 var root: Control
 var ship_buttons: Array[Button] = []
@@ -33,6 +33,9 @@ func build(owner_: Node3D) -> void:
     overview = _button("总览", harbor.overview)
     overview.tooltip_text = "返回三船总览 · V"
     top.add_child(overview)
+    var piers := _button("栈桥", harbor.view_piers)
+    piers.tooltip_text = "查看栈桥 · P"
+    top.add_child(piers)
     for i in 3:
         var button := _button("", harbor.select_ship.bind(i))
         top.add_child(button)
