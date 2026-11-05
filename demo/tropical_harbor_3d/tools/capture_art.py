@@ -22,9 +22,27 @@ output.mkdir(parents=True, exist_ok=False)
 user = ['--art-preview', '--art-output=' + output.as_posix()]
 if mode == 'diagnose':
     user.append('--art-diagnose=hull')
+elif mode in ('water-profile', 'water-profile-diagnose', 'water-profile-compare'):
+    profile_mode = mode.removeprefix('water-profile').lstrip('-') or 'views'
+    user.append('--water-profile=' + profile_mode)
+    if profile_mode == 'compare':
+        if len(sys.argv) < 4:
+            sys.exit('Pass resolution and a saved baseline source directory for comparison.')
+        user.append('--profile-baseline=' + Path(sys.argv[3]).resolve().as_posix())
+elif mode in ('water', 'water-diagnose'):
+    user.append('--water-review')
+    if mode == 'water-diagnose':
+        user.append('--water-diagnose')
+elif mode in ('reference-stills', 'reference-idle', 'reference-sail', 'reference-detail', 'reference-reflection'):
+    user.append('--reference-review=' + mode.removeprefix('reference-'))
+elif mode != 'preview':
+    sys.exit('Unknown art mode: ' + mode)
+resolution = sys.argv[2] if len(sys.argv) > 2 else '1600x900'
+if resolution not in ('1600x900', '2560x1440'):
+    sys.exit('Resolution must be 1600x900 or 2560x1440')
 commands = [
     ('import', [engine, '--headless', '--path', str(project), '--editor', '--import', '--quit'], 120),
-    ('preview', [engine, '--path', str(project), '--resolution', '1600x900',
+    ('preview', [engine, '--path', str(project), '--resolution', resolution,
                  '--'] + user, 70),
 ]
 for label, command, timeout in commands:

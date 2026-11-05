@@ -34,11 +34,13 @@ vec2 cell_hash(vec2 p) {
         dot(p, vec2(269.5, 183.3)))) * 43758.5453);
 }
 
-// Soft cell boundaries, not opaque white foam. Evaluated on the sea floor.
+// Curved, softly focused light on the sea floor; shadows remain on top of it.
 float sand_light_pattern(vec2 p, float t) {
-    vec2 drift = vec2(sin(p.y * 0.71 + t * 0.21), cos(p.x * 0.63 - t * 0.17)) * 0.32;
-    drift += texture(water_noise, p * 0.006 + vec2(t * 0.0004, -t * 0.0003)).rg * 0.50;
-    vec2 q = p * 0.37 + drift;
+    vec2 drift = vec2(sin(p.y * 0.72 + p.x * 0.31 + t * 0.23),
+        cos(p.x * 0.68 - p.y * 0.27 - t * 0.19)) * 0.28;
+    drift += vec2(sin(p.x * 1.28 + p.y * 1.52 - t * 0.24),
+        cos(p.y * 1.41 - p.x * 1.35 + t * 0.22)) * 0.11;
+    vec2 q = p * 0.46 + drift + vec2(t * 0.018, -t * 0.011);
     vec2 cell = floor(q);
     vec2 f = fract(q);
     float first = 8.0;
@@ -57,26 +59,28 @@ float sand_light_pattern(vec2 p, float t) {
             }
         }
     }
-    return 1.0 - smoothstep(0.025, 0.19, sqrt(second) - sqrt(first));
+    float focus = texture(water_noise, p * 0.025 + vec2(t * 0.0007, 0.0)).r;
+    float line = 1.0 - smoothstep(0.008, 0.18, sqrt(second) - sqrt(first));
+    return line * smoothstep(0.36, 0.70, focus);
 }
 
 // x: foam coverage, y: thin water coverage. Both follow the same advancing front.
 vec2 swash_coverage(vec2 p, float offset, float t) {
     float phase = wash_phase(p.y, t);
     float noise = texture(water_noise, p * vec2(0.065, 0.080) + vec2(-t * 0.0024, t * 0.0018)).b;
-    float front = wash_front(phase) + (texture(water_noise, p * 0.23).r - 0.5) * 0.12;
+    float front = wash_front(phase) + (texture(water_noise, p * 0.10).r - 0.5) * 0.14;
     float aa = max(fwidth(offset), 0.008);
     float behind = front - offset;
     float wet = smoothstep(-aa, aa * 2.0, behind);
     float envelope = pow(max(sin(phase * 3.14159265), 0.0), 0.65);
-    float width = 0.12 + envelope * 0.86;
+    float width = 0.10 + envelope * 0.36;
     float band = wet * (1.0 - smoothstep(width * 0.60, width, behind));
-    float threshold = 0.40 + smoothstep(0.45, 0.97, phase) * 0.26;
+    float threshold = 0.46 + smoothstep(0.45, 0.97, phase) * 0.23;
     float holes = smoothstep(threshold - 0.04, threshold + 0.06, noise);
-    float lip = 1.0 - smoothstep(aa, aa + 0.030, abs(behind));
+    float lip = 1.0 - smoothstep(aa * 0.5, aa + 0.014, abs(behind));
     float remnant = (1.0 - smoothstep(0.05, 0.22, abs(offset - 0.48)))
         * smoothstep(0.55, 0.68, phase) * (1.0 - smoothstep(0.68, 0.98, phase))
         * smoothstep(0.52, 0.70, noise) * 0.45;
-    float foam = max(lip * (0.40 + envelope * 0.45), band * holes * envelope);
+    float foam = max(lip * (0.28 + envelope * 0.38), band * holes * envelope * 0.78);
     return vec2(max(foam, remnant), wet);
 }

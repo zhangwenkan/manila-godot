@@ -33,6 +33,8 @@ func run(scene: Node3D) -> void:
         return
     if not check_overview():
         return
+    if not check_reflection_alignment():
+        return
     if not await click_ship(0):
         return
     if not await click_slot(3):
@@ -84,6 +86,8 @@ func run(scene: Node3D) -> void:
     if not await click_button(harbor.ui.ship_buttons[1]):
         return
     if not await click_slot(2):
+        return
+    if not check_reflection_alignment():
         return
     harbor.get_window().size = original_size
     await wait(1.0)
@@ -175,24 +179,36 @@ func run(scene: Node3D) -> void:
     harbor.camera.frame_points(points, 0, true, 70)
     if not await capture("07_timber_and_broken_pier"):
         return
-    # Same fleet scene at zero wake: compare only the shader implementation.
+    # Check the active water: paused frames must hold, and a wake must only
+    # change water around its boat. The retired study shader is not a baseline.
+    harbor.overview()
+    harbor.camera.update_view(harbor.ships, 0, true)
+    harbor.camera_override = true
     harbor.ui.visible = false
     if not await capture("08_fleet_water_no_wake"):
         return
-    harbor.environment.water_material.shader = load("res://demo/tropical_harbor_3d/materials/tropical_water.gdshader")
-    harbor.environment.water_material.set_shader_parameter("wake_strength", 0.0)
-    harbor.environment.set_contacts(harbor.environment.contact_objects, 10)
-    # Contact-free comparison excludes the deliberately different pier contact capacity.
-    harbor.environment.water_material.set_shader_parameter("contact_count", 0)
-    if not await capture("09_reference_water_no_wake"):
+    if not await capture("09_fleet_water_paused_repeat"):
         return
-    harbor.environment.water_material.shader = load("res://demo/tropical_harbor_3d/materials/fleet_water.gdshader")
-    harbor.environment.water_material.set_shader_parameter("contact_count", 0)
-    if not await capture("10_fleet_water_contact_free"):
+    harbor.ships[1].wake = 1.0
+    if not await capture("10_fleet_water_single_wake"):
         return
+    harbor.ships[1].wake = 0.0
+    if not await capture("14_fleet_water_wake_cleared"):
+        return
+    # A generous screen-space bound around the chosen boat, bow and trailing water.
+    var wake_min := Vector2(INF, INF)
+    var wake_max := Vector2(-INF, -INF)
+    for x in [-5.0, 5.0]:
+        for z in [-3.5, 12.0]:
+            var point: Vector2 = harbor.camera.unproject_position(
+                harbor.ships[1].to_global(Vector3(x, 0.0, z)))
+            wake_min = wake_min.min(point)
+            wake_max = wake_max.max(point)
     var result := {"checks": checks, "frames": captures, "timing": timing,
         "renderer": RenderingServer.get_current_rendering_method(), "resolution": [original_size.x, original_size.y],
-        "contact_count": 14, "scope": "fleet spatial and interaction validation, not complete game rules",
+        "contact_count": harbor.environment.water_material.get_shader_parameter("contact_count"),
+        "wake_bounds": [wake_min.x - 4, wake_min.y - 4, wake_max.x + 4, wake_max.y + 4],
+        "scope": "fleet spatial, interaction and active-water regression, not complete game rules",
         "visual_acceptance": false, "pressure_fixture": [0, 7, 14]}
     var file := FileAccess.open(output + "/result.json", FileAccess.WRITE)
     if not verify(file != null, "result file"):
@@ -247,6 +263,9 @@ func capture(name_: String) -> bool:
     var size_: float = harbor.camera.size
     harbor.capture_lock = true
     harbor.sync_water()
+    # Let render-thread material updates settle without advancing the simulation.
+    for i in 3:
+        await get_tree().process_frame
     while true:
         while DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_MINIMIZED:
             await get_tree().process_frame
@@ -319,6 +338,33 @@ func check_overview() -> bool:
         for point in ship.envelope_points():
             if not verify(visible.has_point(harbor.camera.unproject_position(point)), "ship clipped in overview"):
                 return false
+    return true
+
+
+func check_reflection_alignment() -> bool:
+    # A point reflected below y=0 must land at the same screen position as the
+    # corresponding point in the mirror camera after the horizontal UV flip.
+    # Check both camera types and call again after changing the window aspect.
+    var camera: Camera3D = harbor.camera
+    var original_projection := camera.projection
+    var screen: Vector2 = camera.get_viewport().get_visible_rect().size
+    for projection in [Camera3D.PROJECTION_ORTHOGONAL, Camera3D.PROJECTION_PERSPECTIVE]:
+        camera.projection = projection
+        harbor.reflection.sync()
+        var mirror: Camera3D = harbor.reflection.camera
+        var mirror_size := Vector2(harbor.reflection.viewport.size)
+        for ship in harbor.ships:
+            var above: Vector3 = ship.global_position + Vector3(0.6, 0.9, -0.8)
+            var below := Vector3(above.x, -above.y, above.z)
+            var expected: Vector2 = camera.unproject_position(below)
+            var uv := mirror.unproject_position(above) / mirror_size
+            var actual := Vector2(1.0 - uv.x, uv.y) * screen
+            if not verify(actual.distance_to(expected) < 2.0, "object reflection alignment after projection/aspect change"):
+                camera.projection = original_projection
+                harbor.reflection.sync()
+                return false
+    camera.projection = original_projection
+    harbor.reflection.sync()
     return true
 
 

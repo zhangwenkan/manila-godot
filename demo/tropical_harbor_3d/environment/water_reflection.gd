@@ -7,6 +7,7 @@ var viewport: SubViewport
 var camera: Camera3D
 var main: Camera3D
 var clip_shader: Shader
+var enabled := false
 
 
 func setup(root: Node3D, main_camera: Camera3D) -> void:
@@ -15,11 +16,11 @@ func setup(root: Node3D, main_camera: Camera3D) -> void:
     clip_shader = CLIP
     viewport = SubViewport.new()
     viewport.name = "WaterReflection"
-    viewport.size = Vector2i(640, 360)
+    viewport.size = Vector2i(512, 288)
     viewport.transparent_bg = true
     viewport.own_world_3d = false
     viewport.world_3d = root.get_world_3d()
-    viewport.render_target_update_mode = SubViewport.UPDATE_ALWAYS
+    viewport.render_target_update_mode = SubViewport.UPDATE_DISABLED
     viewport.msaa_3d = Viewport.MSAA_2X
     viewport.handle_input_locally = false
     viewport.gui_disable_input = true
@@ -33,13 +34,24 @@ func setup(root: Node3D, main_camera: Camera3D) -> void:
     camera.near = 0.05
     camera.far = 250.0
     camera.current = true
+    # A separate sky resource is required: sharing its radiance cache between
+    # the main ACES view and the linear reflection view makes lighting alternate.
+    var environment := root.get_world_3d().environment.duplicate(true) as Environment
+    environment.background_mode = Environment.BG_CLEAR_COLOR
+    environment.ssao_enabled = false
+    environment.glow_enabled = false
+    environment.tonemap_mode = Environment.TONE_MAPPER_LINEAR
+    camera.environment = environment
     viewport.add_child(camera)
 
 
 func add_subject(node: Node) -> void:
+    # The proxies own these materials. Keeping the cache local lets completed
+    # voyages release their ships and textures when the scene rebuilds them.
+    var materials: Dictionary = {}
     for item in node.find_children("*", "MeshInstance3D", true, false):
         var mesh := item as MeshInstance3D
-        if mesh.layers == 1 << LAYER_BIT:
+        if mesh.mesh == null or mesh.layers == 1 << LAYER_BIT:
             continue
         var label := str(mesh.name).to_lower()
         if "fiber" in label:
@@ -49,10 +61,20 @@ func add_subject(node: Node) -> void:
         proxy.mesh = mesh.mesh
         proxy.layers = 1 << LAYER_BIT
         proxy.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
-        var material := ShaderMaterial.new()
-        material.shader = clip_shader
-        material.set_shader_parameter("albedo_tint", _tint(mesh))
-        proxy.material_override = material
+        for surface in mesh.mesh.get_surface_count():
+            var source := mesh.get_active_material(surface)
+            if not materials.has(source):
+                var material := ShaderMaterial.new()
+                material.shader = clip_shader
+                if source is StandardMaterial3D:
+                    var standard := source as StandardMaterial3D
+                    material.set_shader_parameter("albedo_tint", standard.albedo_color)
+                    material.set_shader_parameter("use_vertex_color", standard.vertex_color_use_as_albedo)
+                    if standard.albedo_texture != null:
+                        material.set_shader_parameter("albedo_texture", standard.albedo_texture)
+                        material.set_shader_parameter("use_albedo_texture", true)
+                materials[source] = material
+            proxy.set_surface_override_material(surface, materials[source])
         mesh.add_child(proxy)
 
 
@@ -61,13 +83,24 @@ func texture() -> ViewportTexture:
 
 
 func set_enabled(value: bool) -> void:
+    enabled = value
     viewport.render_target_update_mode = SubViewport.UPDATE_ALWAYS if value else SubViewport.UPDATE_DISABLED
 
 
 func sync() -> void:
-    if viewport.render_target_update_mode == SubViewport.UPDATE_DISABLED:
+    if not enabled:
         return
+    # Preserve screen-space alignment for both reference perspective views and
+    # the orthographic gameplay camera, including window aspect changes.
+    var size := main.get_viewport().get_visible_rect().size
+    var target_size := Vector2i(512, maxi(128, roundi(512.0 * size.y / maxf(size.x, 1.0))))
+    if viewport.size != target_size:
+        viewport.size = target_size
+    camera.projection = main.projection
+    camera.keep_aspect = main.keep_aspect
+    camera.fov = main.fov
     camera.size = main.size
+    camera.near = main.near
     camera.far = main.far
     var src := main.global_transform
     var origin := src.origin
@@ -77,12 +110,3 @@ func sync() -> void:
     var up := Vector3(basis.y.x, -basis.y.y, basis.y.z)
     var forward := Vector3(basis.z.x, -basis.z.y, basis.z.z)
     camera.global_transform = Transform3D(Basis(right, up, forward).orthonormalized(), origin)
-
-
-func _tint(mesh: MeshInstance3D) -> Color:
-    var material := mesh.material_override
-    if material == null:
-        material = mesh.get_active_material(0)
-    if material is StandardMaterial3D:
-        return (material as StandardMaterial3D).albedo_color
-    return Color.WHITE

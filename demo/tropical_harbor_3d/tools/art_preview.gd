@@ -27,6 +27,19 @@ func run(scene: Node3D) -> void:
     harbor.ui.visible = false
     harbor.camera_override = true
     harbor.get_window().grab_focus()
+    for arg in OS.get_cmdline_user_args():
+        if arg.begins_with("--water-profile="):
+            var profiler := load("res://demo/tropical_harbor_3d/tools/water_profile.gd").new() as RefCounted
+            await profiler.run(self, arg.trim_prefix("--water-profile="))
+            return
+    for arg in OS.get_cmdline_user_args():
+        if arg.begins_with("--reference-review="):
+            var review := load("res://demo/tropical_harbor_3d/tools/reference_review.gd").new() as RefCounted
+            await review.run(self, arg.trim_prefix("--reference-review="))
+            return
+    if "--water-review" in OS.get_cmdline_user_args():
+        await review_water()
+        return
     var boat: Node3D = harbor.ships[0]
     boat.position = Vector3(-3.0, 0, 4)
     boat.cargo_root.visible = false
@@ -100,6 +113,66 @@ func frame(target: Vector3, offset: Vector3, size_: float) -> void:
     harbor.camera.position = target + offset
     harbor.camera.look_at(target)
     harbor.camera.size = size_
+
+
+func review_water() -> void:
+    harbor.capture_lock = true
+    harbor.camera.update_view(harbor.ships, 0, true)
+    if not await capture("water_01_overview"):
+        return
+    var material: ShaderMaterial = harbor.environment.water_material
+    if "--water-diagnose" in OS.get_cmdline_user_args():
+        material.set_shader_parameter("glint_strength", 0.0)
+        if not await capture("water_no_custom_glint"):
+            return
+        material.set_shader_parameter("glint_strength", 1.0)
+        material.set_shader_parameter("sky_reflection_strength", 0.0)
+        if not await capture("water_no_sky_reflection"):
+            return
+        material.set_shader_parameter("sky_reflection_strength", 1.0)
+    frame(Vector3(3.0, 0.0, -2.5), Vector3(8, 15, 14), 13.0)
+    if not await capture("water_02_shallows"):
+        return
+    frame(Vector3(7.0, 0.55, 9.4), Vector3(8, 12, 14), 8.2)
+    if not await capture("water_03_piers"):
+        return
+    var boat: Node3D = harbor.ships[0]
+    frame(boat.position + Vector3(0, 0.20, 0), Vector3(5, 7, -7), 6.0)
+    if not await capture("water_04_boat"):
+        return
+    # Orthographic rays need to begin above the water, even at the image bottom.
+    frame(Vector3(1.0, 0, 2), Vector3(5, 3, 9) * 6.0, 12.0)
+    if not await capture("water_05_low_angle"):
+        return
+    if "--water-diagnose" in OS.get_cmdline_user_args():
+        var sun := harbor.get_node("WarmAfternoon") as DirectionalLight3D
+        sun.shadow_enabled = false
+        if not await capture("water_low_no_shadow"):
+            return
+        sun.shadow_enabled = true
+        material.set_shader_parameter("sky_reflection_strength", 0.0)
+        if not await capture("water_low_no_sky"):
+            return
+        material.set_shader_parameter("sky_reflection_strength", 1.0)
+        harbor.get_node("CurvedSandBank").visible = false
+        if not await capture("water_low_no_sand"):
+            return
+        harbor.get_node("CurvedSandBank").visible = true
+        harbor.environment.sea.visible = false
+        harbor.environment.swash.visible = false
+        if not await capture("water_low_seabed_only"):
+            return
+        finish({"kind": "water diagnostics", "main_scene": harbor.scene_file_path})
+        return
+    frame(Vector3(2.0, 0.0, -1.5), Vector3(8, 15, 14), 16.0)
+    for i in 48:
+        harbor.time = 1.7 + float(i) * 0.10
+        for ship in harbor.ships:
+            ship.advance(0.0, harbor.time)
+        if not await capture("water_motion_%02d" % i):
+            return
+    finish({"kind": "water", "main_scene": harbor.scene_file_path,
+        "motion_step_seconds": 0.10, "motion_frames": 48})
 
 
 func wood_material_report() -> Array[Dictionary]:
@@ -209,9 +282,9 @@ func sample(name_: String, boat: Node3D, water_time: float, boat_time: float, bo
     return await capture(name_, true)
 
 
-func capture(name_: String, crop_center: bool = false) -> bool:
+func capture(name_: String, crop_center: bool = false, settle_frames: int = 10) -> bool:
     harbor.sync_water()
-    for i in 10:
+    for i in settle_frames:
         await get_tree().process_frame
     await RenderingServer.frame_post_draw
     var image := get_viewport().get_texture().get_image()

@@ -54,7 +54,7 @@ func _build_environment() -> void:
     var environment := Environment.new()
     environment.background_mode = Environment.BG_SKY
     environment.ambient_light_source = Environment.AMBIENT_SOURCE_SKY
-    environment.ambient_light_energy = 0.42
+    environment.ambient_light_energy = 0.34
     environment.reflected_light_source = Environment.REFLECTION_SOURCE_SKY
     var sky := Sky.new()
     var sky_mat := ProceduralSkyMaterial.new()
@@ -70,6 +70,9 @@ func _build_environment() -> void:
     environment.ssao_radius = 1.25
     environment.ssao_intensity = 1.3
     environment.ssao_light_affect = 0.1
+    # Retain contact shading at a lower sampling cost; higher AO sample counts dominated
+    # the integrated GPU without adding useful detail to the open water.
+    configure_ambient_occlusion()
     environment.glow_enabled = false
     environment.volumetric_fog_enabled = false
     environment.sdfgi_enabled = false
@@ -78,9 +81,11 @@ func _build_environment() -> void:
     add_child(world_environment)
     var sun := DirectionalLight3D.new()
     sun.name = "WarmAfternoon"
-    sun.rotation_degrees = Vector3(-48, -145, 0)
-    sun.light_color = Color("fff0d6")
-    sun.light_energy = 1.05
+    # Side light separates the timber faces and places the sun path beside the
+    # harbor in the elevated gameplay and reference views.
+    sun.rotation_degrees = Vector3(-55, 135, 0)
+    sun.light_color = Color("fff8eb")
+    sun.light_energy = 1.12
     sun.light_angular_distance = 0.85
     sun.shadow_enabled = true
     sun.directional_shadow_max_distance = 100.0
@@ -89,6 +94,10 @@ func _build_environment() -> void:
     add_child(sun)
     RenderingServer.directional_shadow_atlas_set_size(4096, true)
     RenderingServer.directional_soft_shadow_filter_set_quality(RenderingServer.SHADOW_QUALITY_SOFT_HIGH)
+
+
+func configure_ambient_occlusion() -> void:
+    RenderingServer.environment_set_ssao_quality(RenderingServer.ENV_SSAO_QUALITY_VERY_LOW, true, 0.5, 2, 50.0, 300.0)
 
 
 func _build_water() -> void:
@@ -125,7 +134,8 @@ func wave_height(x: float, z: float, t: float) -> float:
     var dist := maxf(_shore(z) - x, 0.0)
     var amount := smoothstep(1.0, 5.0, dist)
     return (sin(x * 0.66 + z * 0.43 + t * 0.72) * 0.025
-        + sin(z * 1.15 - x * 0.28 + t * 0.93) * 0.016) * amount
+        + sin(z * 1.15 - x * 0.28 + t * 0.93) * 0.016
+        + sin(x * 0.28 + z * 0.19 + t * 0.64) * 0.035) * amount
 
 
 func _sand_height(offset: float, z: float) -> float:
@@ -172,6 +182,9 @@ func _build_sand() -> void:
     sand_material.shader = SAND_SHADER
     _configure_shore_material(sand_material)
     land.material_override = sand_material
+    # This bank is monotonic toward shore. It receives boat/pier shadows, but
+    # does not need to redraw its entire seabed into every sun shadow cascade.
+    land.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
     add_child(land)
 
 

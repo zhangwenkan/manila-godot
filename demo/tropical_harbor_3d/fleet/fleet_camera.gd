@@ -1,5 +1,7 @@
 extends Camera3D
 
+const OVERVIEW_OFFSET := Vector3(-20, 46, 24)
+
 var focus_ship := -1
 var settled := false
 var target_position := Vector3.ZERO
@@ -11,13 +13,13 @@ func _ready() -> void:
     keep_aspect = Camera3D.KEEP_HEIGHT
     near = 0.2
     far = 250.0
-    position = Vector3(15, 27, 33)
+    position = OVERVIEW_OFFSET
     look_at(Vector3.ZERO)
     make_current()
 
 
 func update_view(ships: Array, delta: float, snap: bool = false) -> void:
-    var offset := Vector3(12, 30, -33) if focus_ship >= 0 else Vector3(15, 27, 33)
+    var offset := Vector3(12, 30, -33) if focus_ship >= 0 else OVERVIEW_OFFSET
     var desired := Basis.looking_at(-offset.normalized())
     var rotation_weight := 1.0 if snap else 1.0 - exp(-delta * 7.0)
     global_basis = global_basis.slerp(desired, rotation_weight).orthonormalized()
@@ -27,11 +29,11 @@ func update_view(ships: Array, delta: float, snap: bool = false) -> void:
     else:
         for ship in ships:
             points.append_array(ship.envelope_points())
-        # Stable voyage-wide framing: camera changes never compress logical progress.
-        for x in [-7.0, 3.0]:
-            for z in [-16.0, 15.5]:
-                points.append(Vector3(x, 0, z))
-        points.append(Vector3(11.0, 1.5, 7.0))
+        # Fit the current fleet and harbor, expanding smoothly as ships separate.
+        # Empty portions of the full route should not shrink the opening view.
+        for x in [2.2, 11.4]:
+            for z in [5.8, 12.8]:
+                points.append(Vector3(x, 1.6, z))
     frame_points(points, delta, snap, 170.0 if focus_ship >= 0 else 80.0)
 
 

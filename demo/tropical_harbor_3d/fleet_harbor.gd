@@ -46,7 +46,7 @@ func _ready() -> void:
     reflection = REFLECTION.new()
     add_child(reflection)
     reflection.setup(self, camera)
-    reflection.set_enabled(false)
+    reflection.set_enabled(true)
     rng.randomize()
     state.start_voyage(["jade", "silk", "ginseng"], [0, 4, 5])
     rebuild_ships()

@@ -135,20 +135,28 @@ func travel_to(target: Vector3, arrived: bool) -> void:
 
 func advance(delta: float, time_: float) -> void:
     moving = not waypoints.is_empty()
+    var wake_target := 0.0
     if moving:
         var target := waypoints[0]
         var flat := Vector3(position.x, 0, position.z)
-        var next := flat.move_toward(target, delta * 2.0)
-        var direction := next - flat
+        var direction := target - flat
+        var speed := 2.0
         if direction.length_squared() > 0.000001:
-            rotation.y = lerp_angle(rotation.y, atan2(-direction.x, -direction.z), minf(1, delta * 5))
+            var heading := atan2(-direction.x, -direction.z)
+            rotation.y = rotate_toward(rotation.y, heading, delta * deg_to_rad(75.0))
+            # Slow into a large turn instead of sliding at full speed while
+            # the bow still points away from the destination.
+            var alignment := cos(angle_difference(rotation.y, heading))
+            speed *= lerpf(0.15, 1.0, smoothstep(0.1, 0.9, alignment))
+        var next := flat.move_toward(target, delta * speed)
         position.x = next.x
         position.z = next.z
+        wake_target = speed / 2.0
         if next.distance_to(target) < 0.001:
             waypoints.pop_front()
     elif position.z < -11.0:
         rotation.y = lerp_angle(rotation.y, 0, minf(1, delta * 4))
-    wake = move_toward(wake, 1.0 if moving else 0.0, delta * 0.8)
+    wake = move_toward(wake, wake_target, delta * 0.8)
     _float_on_water(time_)
 
 
