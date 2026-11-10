@@ -27,6 +27,14 @@ func run(scene: Node3D) -> void:
     harbor.ui.visible = false
     harbor.camera_override = true
     harbor.get_window().grab_focus()
+    if "--terminal-life-review" in OS.get_cmdline_user_args() or "--terminal-life-perf" in OS.get_cmdline_user_args():
+        var life_review := load("res://demo/tropical_harbor_3d/tools/terminal_life_review.gd").new() as RefCounted
+        await life_review.run(self, "--terminal-life-perf" in OS.get_cmdline_user_args())
+        return
+    if "--coast-review" in OS.get_cmdline_user_args():
+        var coast_review := load("res://demo/tropical_harbor_3d/tools/coast_review.gd").new() as RefCounted
+        await coast_review.run(self)
+        return
     for arg in OS.get_cmdline_user_args():
         if arg.begins_with("--water-profile="):
             var profiler := load("res://demo/tropical_harbor_3d/tools/water_profile.gd").new() as RefCounted

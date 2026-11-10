@@ -1,0 +1,4 @@
+{
+  "tool": "execute_blender_code",
+  "code": "import bpy,json\nfrom mathutils import Vector\nbpy.context.view_layer.update()\nns=bpy.app.driver_namespace['terminal_craft']\nfor name in ['LandingDeck','Terminal deck 00 0','Terminal Berth 0 coil Working mooring coil','Terminal load pile 0 0']:\n o=bpy.data.objects.get(name)\n if o:\n  print(name,'props',dict(o.items()),'matrix',list(o.matrix_world))\n  if o.type=='MESH':print('UV',len(o.data.uv_layers), 'first', [tuple(v.uv) for v in o.data.uv_layers[0].data[:8]])\nprint('TEXTS',[(t.name,len(t.as_string())) for t in bpy.data.texts])\nprint('WOOD_MATS',[(m.name,dict(m.items())) for m in bpy.data.materials if 'Timber' in m.name or m.name=='PierWood_Lit'])"
+}

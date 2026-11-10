@@ -28,6 +28,10 @@ func run(scene: Node3D) -> void:
     if not verify(DirAccess.make_dir_recursive_absolute(output) == OK, "cannot create output directory"):
         return
     await wait(1.2)
+    if not check_arrival_landing():
+        return
+    if not check_arrival_routes():
+        return
     await fixture(["jade", "silk", "ginseng"], [3, 3, 3])
     if not await capture("01_parallel_overview"):
         return
@@ -182,7 +186,13 @@ func run(scene: Node3D) -> void:
     # Check the active water: paused frames must hold, and a wake must only
     # change water around its boat. The retired study shader is not a baseline.
     harbor.overview()
+    # Keep this water fixture's established framing as inland buildings are added.
+    # The full harbor overview is checked separately above, with its real landmarks.
+    var town_landmarks: Array[Vector3] = harbor.camera.harbor_points
+    var no_landmarks: Array[Vector3] = []
+    harbor.camera.harbor_points = no_landmarks
     harbor.camera.update_view(harbor.ships, 0, true)
+    harbor.camera.harbor_points = town_landmarks
     harbor.camera_override = true
     harbor.ui.visible = false
     if not await capture("08_fleet_water_no_wake"):
@@ -326,10 +336,109 @@ func click_slot(index: int) -> bool:
     var ship: Node3D = harbor.ships[harbor.selected]
     var point: Vector2 = harbor.camera.unproject_position(ship.slot_areas[index].global_position + Vector3(0, 0.20, 0))
     var hit: Dictionary = harbor.pick(point)
+    if hit.is_empty() or hit.ship_id != harbor.selected or hit.slot_id != index:
+        var origin: Vector3 = harbor.camera.project_ray_origin(point)
+        var ray := PhysicsRayQueryParameters3D.create(origin, origin + harbor.camera.project_ray_normal(point) * 250, 7)
+        ray.collide_with_areas = true
+        var detail: Dictionary = harbor.get_world_3d().direct_space_state.intersect_ray(ray)
+        print("SLOT_DIAGNOSTIC index=", index, " point=", point, " selected=", harbor.selected,
+            " camera=", harbor.camera.position, " collider=", detail.get("collider"), " hit=", hit)
+        await capture("failure_slot_hit")
     if not verify(not hit.is_empty() and hit.ship_id == harbor.selected and hit.slot_id == index, "moving 3D slot hit: " + str(index)):
         return false
     await click(point)
     return verify(harbor.ui.selected_slot == index, "slot click must select before dispatch")
+
+
+func check_arrival_landing() -> bool:
+    var landing := harbor.get_node("TimberPiers/ArrivalLanding") as Node3D
+    var deck := landing.find_child("ArrivalOriginalDeck", true, false) as MeshInstance3D
+    if not verify(deck != null, "arrival uses the original timber bridge deck"):
+        return false
+    var bounds: AABB = deck.global_transform * deck.mesh.get_aabb()
+    if not verify(bounds.size.z > 7.7 and bounds.size.x > 2.0 and bounds.size.x < 2.2,
+            "one long bridge extends from the terminal toward the sea"):
+        return false
+    if not verify(absf(bounds.position.z - STATE.LAYOUT.APRON_FRONT_Z) < .03 and absf(bounds.end.y - .913) < .02,
+            "original bridge meets the terminal apron without a gap or step"):
+        return false
+    var material := deck.get_active_material(0) as StandardMaterial3D
+    if not verify(material != null and material.albedo_texture != null and material.normal_texture != null
+            and material.roughness_texture != null and material.resource_name == "PierWood_Lit",
+            "arrival bridge retains the refined original pier material and all surface maps"):
+        return false
+    for i in 3:
+        var at := Vector3(STATE.LAYOUT.BERTH_X[i], 0, STATE.LAYOUT.BERTH_Z)
+        if not verify(at.x - .95 > STATE.LAYOUT.LANDING_BOUNDS.end.x + .2,
+                "all three berths are on the open-water side of the long bridge"):
+            return false
+        if not verify(at.z - 2.3672 > STATE.LAYOUT.APRON_FRONT_Z + .35, "bow clears the terminal apron"):
+            return false
+        var post := landing.get_node("PortPost" + "ABC"[i]) as Marker3D
+        if not verify(is_equal_approx(post.global_position.x, at.x)
+                and post.global_position.z < STATE.LAYOUT.APRON_FRONT_Z - .6,
+                "each A/B/C pawn anchor is on the apron behind its berth"):
+            return false
+        var bed: float = harbor.environment._sand_height(at.x - harbor.environment._shore(at.z), at.z)
+        if not verify(bed < -0.65, "arrival berth has enough water below the hull"):
+            return false
+    var piles := 0
+    for item in landing.find_children("WaterPile*", "MeshInstance3D", true, false):
+        var mesh := item as MeshInstance3D
+        var at: Vector3 = mesh.global_position
+        var bed: float = harbor.environment._sand_height(at.x - harbor.environment._shore(at.z), at.z)
+        var box: AABB = mesh.global_transform * mesh.mesh.get_aabb()
+        if not verify(box.position.y < bed - 0.15, "landing piles reach below the seabed"):
+            return false
+        piles += 1
+    return verify(piles == 8, "original long bridge has eight round support piles")
+
+
+func check_arrival_routes() -> bool:
+    # Exercise the real steering from every sailing lane to every berth, at
+    # both a distant and the nearest possible not-yet-arrived position.
+    var sample := harbor.SHIP.new() as Node3D
+    var safe := true
+    for lane in STATE.LANES:
+        for berth in 3:
+            for progress in [5, 13]:
+                sample.position = Vector3(lane, 0, STATE.START_Z - progress * STATE.STEP)
+                sample.rotation = Vector3.ZERO
+                var target := Vector3(STATE.LAYOUT.BERTH_X[berth], 0, STATE.LAYOUT.BERTH_Z)
+                sample.travel_to(target, true)
+                var steps := 0
+                while not sample.waypoints.is_empty() and steps < 2000:
+                    sample.advance(.025, steps * .025)
+                    var hull := PackedVector2Array()
+                    for corner in [Vector3(-1.0, 0, -2.5), Vector3(1.0, 0, -2.5), Vector3(1.0, 0, 2.5), Vector3(-1.0, 0, 2.5)]:
+                        var p: Vector3 = sample.position + Basis(Vector3.UP, sample.rotation.y) * corner
+                        hull.append(Vector2(p.x, p.z))
+                        if p.z <= STATE.LAYOUT.APRON_FRONT_Z + .12:
+                            safe = false
+                    for box in [STATE.LAYOUT.LANDING_BOUNDS]:
+                        var deck := PackedVector2Array([Vector2(box.position.x, box.position.z), Vector2(box.end.x, box.position.z),
+                            Vector2(box.end.x, box.end.z), Vector2(box.position.x, box.end.z)])
+                        if not Geometry2D.intersect_polygons(hull, deck).is_empty():
+                            safe = false
+                    steps += 1
+                if not verify(safe and sample.waypoints.is_empty() and Vector2(sample.position.x, sample.position.z).distance_to(Vector2(target.x, target.z)) < .01,
+                        "swept hull clears the left bridge and apron: lane %s to berth %d, progress %d" % [lane, berth, progress]):
+                    sample.free()
+                    return false
+                sample.travel_to(target, true)
+                if not verify(sample.waypoints.is_empty(), "a berthed ship stays docked on later dice rolls"):
+                    sample.free()
+                    return false
+    sample.free()
+    # Empty berths are legitimate outcomes; the view must not manufacture arrivals.
+    for expected in range(4):
+        var state := STATE.new()
+        state.start_voyage(["jade", "silk", "ginseng"], [3, 3, 3])
+        for roll in 3:
+            state.roll([6 if expected > 0 else 1, 6 if expected > 1 else 1, 6 if expected > 2 else 1])
+        if not verify(state.next_berth == expected, "voyage can finish with %d occupied berths" % expected):
+            return false
+    return true
 
 
 func check_overview() -> bool:

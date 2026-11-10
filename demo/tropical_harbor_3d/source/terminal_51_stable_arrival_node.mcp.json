@@ -1,0 +1,4 @@
+{
+  "tool": "execute_blender_code",
+  "code": "import bpy\nfrom pathlib import Path\nc=bpy.data.collections['Arrival_Bridge_Export'];c.hide_viewport=False;c.hide_render=False\nobj=next(o for o in c.objects if o.name.startswith('LandingDeck'));obj.name='ArrivalOriginalDeck'\nbpy.ops.object.select_all(action='DESELECT')\nfor o in c.objects:o.select_set(True)\nbpy.context.view_layer.objects.active=obj\nroot=Path(bpy.data.filepath).parent.parent\nbpy.ops.export_scene.gltf(filepath=str(root/'assets/harbor_landing_mcp.glb'),export_format='GLB',use_selection=True,export_apply=True,export_tangents=True,export_vertex_color='NONE',export_animations=False)\nbpy.ops.object.select_all(action='DESELECT');c.hide_viewport=True;c.hide_render=True;bpy.ops.wm.save_as_mainfile(filepath=bpy.data.filepath)\nprint('STABLE_DECK_NODE',obj.name)"
+}

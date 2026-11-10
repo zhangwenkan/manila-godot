@@ -1,0 +1,4 @@
+{
+  "tool": "execute_blender_code",
+  "code": "import bpy,json\nfrom mathutils import Vector\nfor cn in ['Harbor_Arrival_Landing','Terminal_Craft','Pier_Working']:\n c=bpy.data.collections[cn];print('COLLECTION',cn,len(c.objects))\n for o in c.objects:\n  if cn=='Terminal_Craft' and not any(s in o.name.lower() for s in ['berth','deck','apron','platform']):continue\n  if cn=='Pier_Working' and not any(s in o.name.lower() for s in ['deck','beam','pile']):continue\n  ps=[o.matrix_world@Vector(v) for v in o.bound_box]\n  print(o.name,'dims',tuple(round(v,3) for v in o.dimensions),'loc',tuple(round(v,3) for v in o.location),'bounds',tuple(round(min(p[k] for p in ps),3) for k in range(3)),tuple(round(max(p[k] for p in ps),3) for k in range(3)),'mats',[m.name for m in o.data.materials] if o.type=='MESH' else [])\nprint('NS',list(bpy.app.driver_namespace['terminal_craft'].keys()))"
+}

@@ -102,11 +102,11 @@ void fragment() {
     NORMAL = normalize(mat3(VIEW_MATRIX) * mix(wave_normal, calm_normal, open_water));
     glint_style = smoothstep(0.25, 1.5, bed_depth);
     // Crossing height fields change the reflecting facets, not a painted white pattern.
-    vec2 ripple_a = p * 0.075 + vec2(-t * 0.009, t * 0.0048);
+    vec2 ripple_a = p * 0.055 + vec2(-t * 0.0066, t * 0.0035);
     vec2 rotated_p = vec2(p.x * 0.8 - p.y * 0.6, p.x * 0.6 + p.y * 0.8);
-    vec2 ripple_b = rotated_p * 0.052 + vec2(t * 0.0043, t * 0.0070) + vec2(0.37, 0.71);
-    vec2 slope_a = ripple_gradient(ripple_a) * (0.075 * 0.32);
-    vec2 slope_b = ripple_gradient(ripple_b) * (0.052 * 0.42);
+    vec2 ripple_b = rotated_p * 0.038 + vec2(t * 0.0031, t * 0.0051) + vec2(0.37, 0.71);
+    vec2 slope_a = ripple_gradient(ripple_a) * (0.055 * 0.44);
+    vec2 slope_b = ripple_gradient(ripple_b) * (0.038 * 0.58);
     vec2 slope = slope_a + vec2(slope_b.x * 0.8 + slope_b.y * 0.6,
         -slope_b.x * 0.6 + slope_b.y * 0.8);
     slope *= 0.28;
@@ -119,7 +119,7 @@ void fragment() {
     vec3 pixel_dx = dFdx(sparkle_normal);
     vec3 pixel_dy = dFdy(sparkle_normal);
     float slope_variance = dot(pixel_dx, pixel_dx) + dot(pixel_dy, pixel_dy);
-    sparkle_power = 4500.0 / (1.0 + 600.0 * slope_variance);
+    sparkle_power = 3400.0 / (1.0 + 600.0 * slope_variance);
     // A finite reflection eye gives an orthographic view a localized sun path.
     // Keep its distance stable when switching overview / close-up camera positions.
     vec3 camera_axis = INV_VIEW_MATRIX[2].xyz;
@@ -127,7 +127,7 @@ void fragment() {
         * (CAMERA_POSITION_WORLD.y / max(camera_axis.y, 0.15));
     vec3 reflection_eye = water_focus + camera_axis * 32.0;
     glint_view = normalize(mat3(VIEW_MATRIX) * (reflection_eye - world_position));
-    glint_breakup = smoothstep(0.30, 0.66,
+    glint_breakup = smoothstep(0.40, 0.70,
         texture(water_noise, p * 0.085 + vec2(-t * 0.003, t * 0.002)).r);
 
     // Reverse Z: farther samples are smaller. Use the farthest neighbor so a hull
@@ -144,20 +144,11 @@ void fragment() {
     vec3 bottom_world = (INV_VIEW_MATRIX * vec4(bottom_view.xyz, 1.0)).xyz;
     vec3 surface_view = (VIEW_MATRIX * vec4(world_position, 1.0)).xyz;
     float sampled_thickness = clamp(world_position.y - bottom_world.y, 0.0, 35.0);
-    float lateral = length(bottom_world.xz - world_position.xz);
-    // A thin sample is either the hull under this pixel, or a silhouette
-    // neighbor that grazed the hull. Keep the short column when we are
-    // actually looking through water at the object; only the leftover
-    // silhouette uses bed depth so the rim does not become a sparkling film.
-    float near_object = 1.0 - smoothstep(0.55, 1.35, sampled_thickness);
-    float object_hit = (1.0 - smoothstep(0.14, 0.62, lateral)) * near_object;
     float contact = max(hull_field(p), pile_field(p));
-    float over_object = contact
-        * near_object * (1.0 - smoothstep(0.12, 0.48, lateral));
-    float ray_vertical = max(abs(dot(VIEW, mat3(VIEW_MATRIX) * vec3(0.0, 1.0, 0.0))), 0.15);
-    float path_length = mix(clamp(length(bottom_view.xyz - surface_view), 0.0, 65.0),
-        clamp(bed_depth / ray_vertical, 0.0, 65.0),
-        object_hit * (1.0 - over_object));
+    // Use the actual ray to submerged geometry. A footprint projected onto the
+    // surface misses submerged hulls/piles at grazing angles and creates a cuff.
+    float short_column = 1.0 - smoothstep(0.08, 0.65, sampled_thickness);
+    float path_length = clamp(length(bottom_view.xyz - surface_view), 0.0, 65.0);
     if (far_depth < 0.000001) {
         path_length = 65.0;
     }
@@ -173,7 +164,9 @@ void fragment() {
     float absorption = mix(0.24, 0.40, smoothstep(2.0, 10.0, bed_depth));
     float opacity = 1.0 - exp(-path_length * absorption);
     float fresnel = pow(1.0 - clamp(dot(NORMAL, VIEW), 0.0, 1.0), 5.0);
-    opacity = clamp(opacity + fresnel * 0.30, 0.035, 0.98);
+    // A grazing view of submerged timber must not turn the short water column
+    // into an opaque cyan cuff. Reserve the extra surface haze for open water.
+    opacity = clamp(opacity + fresnel * 0.30 * (1.0 - short_column), 0.015, 0.98);
 
     float waterline = contact * (1.0 - contact) * 4.0;
     waterline = clamp(waterline, 0.0, 1.0);
@@ -219,7 +212,8 @@ void fragment() {
     }
     ALPHA = mix(opacity, 0.97, foam) * smoothstep(0.0, 0.18, dist);
     ROUGHNESS = mix(mix(0.24, 0.34, open_water), 0.85, foam);
-    SPECULAR = mix(0.50, 0.24, open_water * (1.0 - foam)) * sky_reflection_strength;
+    SPECULAR = mix(0.50, 0.24, open_water * (1.0 - foam)) * sky_reflection_strength
+        * mix(1.0, 0.12, short_column);
     METALLIC = 0.0;
 }
 
@@ -232,7 +226,7 @@ void light() {
     DIFFUSE_LIGHT += LIGHT_COLOR * surface_light * diffuse / 3.14159265;
     vec3 halfway = normalize(LIGHT + glint_view);
     float sparkle = pow(max(dot(sparkle_normal, halfway), 0.0), sparkle_power);
-    sparkle *= (sparkle_power / 4500.0) * mix(0.20, 0.30, glint_style) * glint_breakup;
+    sparkle *= (sparkle_power / 3400.0) * mix(0.18, 0.25, glint_style) * glint_breakup;
     sparkle *= (1.0 - hull_contact) * glint_strength;
     SPECULAR_LIGHT += LIGHT_COLOR * ATTENUATION * sparkle * (1.0 - foam_coverage);
 }

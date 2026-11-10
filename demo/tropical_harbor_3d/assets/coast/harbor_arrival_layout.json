@@ -1,0 +1,20 @@
+{
+  "bridge_center_world": [
+    -6.65,
+    0,
+    -15.67
+  ],
+  "reused_collection": "Pier_Working",
+  "editable_components": 109,
+  "plank_count": 28,
+  "support_piles": 8,
+  "source_material": "PierWood_Lit",
+  "berth_x": [
+    -4.15,
+    -0.85,
+    2.45
+  ],
+  "berth_z": -16.6,
+  "above_water_geometry_uv_preserved": true,
+  "underwater_piles_extended_with_physical_uv_repeats": true
+}

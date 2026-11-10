@@ -1,0 +1,4 @@
+{
+  "code": "import bpy,inspect\nns=bpy.app.driver_namespace['terminal_craft']\nexec(r'''\nprint('PNG_SIGNATURE',inspect.signature(png))\nprint('TEXTURE_SIGNATURE',inspect.signature(textured_material))\nc.hide_viewport=False\nbpy.context.view_layer.update()\nfor o in c.objects:\n if o.name.startswith('Terminal Berth'):\n  pts=[o.matrix_world@Vector(p) for p in o.bound_box]\n  print(o.name,tuple(round(v,3) for v in o.location),tuple(round(min(p[i] for p in pts),3) for i in range(3)),tuple(round(max(p[i] for p in pts),3) for i in range(3)))\nprint('LONG_MATS',[m.name for m in bpy.data.materials if 'TerminalTimber' in m.name])\n''',dict(ns,inspect=inspect))",
+  "tool": "execute_blender_code"
+}

@@ -22,6 +22,9 @@ func run(preview: Node, mode: String) -> void:
     harbor.capture_lock = true
     harbor.configure_art_shadows()
     pier = harbor.get_node("TimberPiers/WorkingPier") as Node3D
+    if mode == "layout":
+        await layout_review()
+        return
     if mode == "stills":
         harbor.camera.update_view(harbor.ships, 0, true)
         if not await shot("current_00_native", "Current default layout and camera"):
@@ -37,6 +40,33 @@ func run(preview: Node, mode: String) -> void:
         await reflection_review()
     else:
         await motion(mode)
+
+
+func layout_review() -> void:
+    harbor.camera.update_view(harbor.ships, 0, true)
+    if not await shot("layout_01_departure", "Default opening fleet and shore piers"):
+        return
+    harbor.view_landing()
+    if not await shot("layout_02_landing", "Permanent arrival landing connected to the shore"):
+        return
+    for i in 3:
+        var data: Dictionary = harbor.state.ships[i]
+        data.arrived = true
+        data.progress = 14
+        data.berth = i
+        harbor.ships[i].position = harbor.state.world_position(data)
+        harbor.ships[i].rotation = Vector3.ZERO
+        harbor.ships[i].advance(0.0, harbor.time)
+    harbor.camera.update_view(harbor.ships, 0, true)
+    if not await shot("layout_03_arrived", "Three boats at the real destination berths; default overview camera"):
+        return
+    host.frame(Vector3(-3.0, 0.4, -14.8), Vector3(-10, 13, 14), 14.0)
+    if not await shot("layout_04_berths", "Bow clearance, deep piles and timber deck at berth"):
+        return
+    host.frame(Vector3(1.0, 0, -3.5), Vector3(-25, 55, 31), 40.0)
+    if not await shot("layout_05_full_route", "Whole harbor for layout review only; normal overview follows the fleet"):
+        return
+    finish("layout")
 
 
 func camera(target: Vector3, span: float, azimuth: float = -90.0) -> void:
@@ -213,7 +243,7 @@ func finish(mode: String) -> void:
         "window": vec2(Vector2(harbor.get_window().size)),
         "shots": shots, "samples": samples, "motion_step_seconds": STEP,
         "comparison_pitch_degrees": PITCH, "comparison_fov_degrees": FOV,
-        "temporary_placement_only": true, "light_and_materials_unchanged": mode != "detail" and mode != "reflection",
+        "temporary_placement_only": mode != "layout", "light_and_materials_unchanged": mode != "detail" and mode != "reflection",
         "diagnostic_overrides": mode == "detail" or mode == "reflection",
         "camera_match": "visual approximation; reference camera calibration unavailable"})
 

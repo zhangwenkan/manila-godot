@@ -29,39 +29,17 @@ float wash_front(float phase) {
     return -0.92 + 1.60 * pow(max(sin(phase * 3.14159265), 0.0), 0.9);
 }
 
-vec2 cell_hash(vec2 p) {
-    return fract(sin(vec2(dot(p, vec2(127.1, 311.7)),
-        dot(p, vec2(269.5, 183.3)))) * 43758.5453);
-}
-
-// Curved, softly focused light on the sea floor; shadows remain on top of it.
+// Broken, drifting light arcs on the sea floor. Avoid closed Voronoi cells:
+// a continuous cell border reads as a fixed net stretched over the seabed.
 float sand_light_pattern(vec2 p, float t) {
-    vec2 drift = vec2(sin(p.y * 0.72 + p.x * 0.31 + t * 0.23),
-        cos(p.x * 0.68 - p.y * 0.27 - t * 0.19)) * 0.28;
-    drift += vec2(sin(p.x * 1.28 + p.y * 1.52 - t * 0.24),
-        cos(p.y * 1.41 - p.x * 1.35 + t * 0.22)) * 0.11;
-    vec2 q = p * 0.46 + drift + vec2(t * 0.018, -t * 0.011);
-    vec2 cell = floor(q);
-    vec2 f = fract(q);
-    float first = 8.0;
-    float second = 8.0;
-    for (int y = -1; y <= 1; y++) {
-        for (int x = -1; x <= 1; x++) {
-            vec2 offset = vec2(float(x), float(y));
-            vec2 seed = cell_hash(cell + offset);
-            vec2 point = offset + 0.5 + 0.30 * sin(seed * 6.2831853 + t * 0.19) - f;
-            float d = dot(point, point);
-            if (d < first) {
-                second = first;
-                first = d;
-            } else {
-                second = min(second, d);
-            }
-        }
-    }
-    float focus = texture(water_noise, p * 0.025 + vec2(t * 0.0007, 0.0)).r;
-    float line = 1.0 - smoothstep(0.008, 0.18, sqrt(second) - sqrt(first));
-    return line * smoothstep(0.36, 0.70, focus);
+    vec2 drift = vec2(sin(p.y * 0.42 + t * 0.20), cos(p.x * 0.37 - t * 0.17)) * 0.009;
+    vec3 field = texture(water_noise, p * 0.048 + drift + vec2(t * 0.002, -t * 0.0013)).rgb;
+    float distance_to_arc = abs(field.g - 0.49);
+    float aa = max(fwidth(distance_to_arc), 0.004);
+    float arc = 1.0 - smoothstep(0.012, 0.038 + aa, distance_to_arc);
+    float fragment = smoothstep(0.38, 0.64, field.b);
+    float focus = texture(water_noise, p * 0.018 + vec2(t * 0.0007, 0.0)).r;
+    return arc * fragment * smoothstep(0.36, 0.68, focus);
 }
 
 // x: foam coverage, y: thin water coverage. Both follow the same advancing front.

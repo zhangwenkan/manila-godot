@@ -1,0 +1,1 @@
+{"tool":"execute_blender_code","code":"import bpy,json\nc=bpy.data.collections['Harbor_Arrival_Landing'];o=c.objects.get('LandingDeck')\nprint(json.dumps({'exists':bool(o),'verts':len(o.data.vertices) if o else None,'polys':len(o.data.polygons) if o else None,'custom':dict(o.items()) if o else None,'dims':list(o.dimensions) if o else None},ensure_ascii=False))\n"}

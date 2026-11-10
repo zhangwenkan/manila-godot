@@ -1,0 +1,4 @@
+{
+  "code": "import bpy\nfrom mathutils import Vector\nc=bpy.data.collections['Pier_Working'];c.hide_viewport=False;bpy.context.view_layer.update()\nfor o in c.objects:\n if not o.name.startswith(('Deck pin','WaterPile','Pile crown')):\n  pts=[o.matrix_world@Vector(v) for v in o.bound_box]\n  print(o.name,len(o.data.vertices) if o.type=='MESH' else o.type,tuple(round(min(p[i] for p in pts),3) for i in range(3)),tuple(round(max(p[i] for p in pts),3) for i in range(3)))\nprint('PIER_ATTRIBUTES',[key for key in bpy.data.objects['WaterPile_-1_0'].keys()])",
+  "tool": "execute_blender_code"
+}

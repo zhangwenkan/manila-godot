@@ -1,0 +1,4 @@
+{
+  "tool": "execute_blender_code",
+  "code": "import bpy\nns=bpy.app.driver_namespace['terminal_craft']\nfrom collections import Counter\nobs=[o for o in ns['c'].objects if o.type=='MESH' and o.data.materials and o.data.materials[0].name=='HarborCraft_TerminalTimber_deck']\nprint('DECK',len(obs))\nfor o in obs[:12]: print(o.name,tuple(o.location),tuple(o.dimensions),len(o.data.vertices),[u.name for u in o.data.uv_layers])\nprint('ALL DECK NAMES',[o.name for o in obs])\nprint('role counts',Counter(o.data.materials[0].name for o in ns['c'].objects if o.type=='MESH' and o.data.materials))\n"
+}

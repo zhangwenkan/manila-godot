@@ -7,9 +7,10 @@ const CARGO := {
     "jade": {"label": "玉石", "glyph": "玉", "color": Color("76b89a"), "costs": [3, 4, 5, 5]}
 }
 const PLAYER_COLORS := [Color("d67558"), Color("5b91c0"), Color("d4b758")]
-const LANES := [-6.0, -2.7, 0.6]
-const START_Z := 10.0
-const STEP := 1.4
+const LAYOUT = preload("res://demo/tropical_harbor_3d/environment/harbor_layout.gd")
+const LANES := LAYOUT.LANES
+const START_Z := LAYOUT.START_Z
+const STEP := LAYOUT.STEP
 
 var ships: Array[Dictionary] = []
 var players: Array[Dictionary] = []
@@ -113,5 +114,5 @@ func roll(dice: Array) -> String:
 
 func world_position(ship: Dictionary) -> Vector3:
     if ship.arrived:
-        return Vector3(LANES[ship.berth], 0.0, -13.4)
+        return Vector3(LAYOUT.BERTH_X[ship.berth], 0.0, LAYOUT.BERTH_Z)
     return Vector3(LANES[ship.ship_id], 0.0, START_Z - ship.progress * STEP)

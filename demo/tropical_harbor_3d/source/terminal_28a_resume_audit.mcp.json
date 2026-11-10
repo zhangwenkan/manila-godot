@@ -1,0 +1,4 @@
+{
+  "code": "import bpy\nns=bpy.app.driver_namespace['terminal_craft']\nprint('state',len(ns['c'].objects),[(k,type(ns.get(k)).__name__) for k in ['block','timber','png','iron_work','iron_plate','worn_section']], 'wood',len(ns.get('crane_wood',[])))\nprint('plates',[o.name for o in ns['c'].objects if 'mast strap' in o.name])",
+  "tool": "execute_blender_code"
+}

@@ -20,6 +20,7 @@ var pawn_roots: Array[Node3D] = []
 var selected := false
 var wake := 0.0
 var moving := false
+var docking := false
 var waypoints: Array[Vector3] = []
 var selected_slot := -1
 var hull_area: Area3D
@@ -128,8 +129,15 @@ func set_selected(value: bool, slot: int = -1) -> void:
 
 func travel_to(target: Vector3, arrived: bool) -> void:
     waypoints.clear()
-    if arrived and position.z > -11.0:
-        waypoints.append(Vector3(position.x, 0, -11.0))
+    docking = arrived
+    if Vector3(position.x, 0, position.z).distance_to(target) < .01:
+        return
+    if arrived:
+        # Change berth lanes outside the left bridge tip, then enter parallel
+        # to the bridge. Turning in place below keeps the stern clear as well.
+        waypoints.append(Vector3(position.x, 0, STATE.LAYOUT.DOCK_ENTRY_Z))
+        if absf(position.x - target.x) > .01:
+            waypoints.append(Vector3(target.x, 0, STATE.LAYOUT.DOCK_ENTRY_Z))
     waypoints.append(target)
 
 
@@ -148,6 +156,8 @@ func advance(delta: float, time_: float) -> void:
             # the bow still points away from the destination.
             var alignment := cos(angle_difference(rotation.y, heading))
             speed *= lerpf(0.15, 1.0, smoothstep(0.1, 0.9, alignment))
+            if docking and absf(angle_difference(rotation.y, heading)) > deg_to_rad(2.0):
+                speed = 0.0
         var next := flat.move_toward(target, delta * speed)
         position.x = next.x
         position.z = next.z
@@ -191,7 +201,8 @@ func _tune_boat_wood(root: Node) -> void:
                 var wood := (src as StandardMaterial3D).duplicate() as StandardMaterial3D
                 wood.vertex_color_use_as_albedo = false
                 wood.metallic = 0.0
-                wood.roughness = 0.90
+                # Authored roughness maps contain absolute local surface values.
+                wood.roughness = 1.0 if wood.roughness_texture != null else 0.90
                 wood.metallic_specular = 0.2
                 wood.texture_filter = BaseMaterial3D.TEXTURE_FILTER_LINEAR_WITH_MIPMAPS_ANISOTROPIC
                 wood.albedo_color = Color.WHITE

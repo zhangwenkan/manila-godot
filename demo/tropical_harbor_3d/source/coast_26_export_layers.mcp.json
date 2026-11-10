@@ -1,0 +1,1 @@
+{"tool":"execute_blender_code","code":"import bpy, json\nns=bpy.app.driver_namespace['harbor_craft']\nleft=[o.name for o in ns['c'].objects if o.type=='MESH' and o.data.materials and o.data.materials[0].name=='HarborCraft_Timber']\nassert not left, ('Unmapped timber',left)\nns['export_asset']()\nprint('LAYERED_ASSET_EXPORTED')\n"}

@@ -1,0 +1,4 @@
+{
+  "code": "import bpy\nfrom mathutils import Vector\nc=bpy.data.collections['Terminal_Craft']\nfor o in c.objects:\n if any(s in o.name for s in ['Gallery substrate','Gallery slate','Pennant bearer','suspension tab']):\n  if 'Gallery slate' in o.name and not o.name.endswith(('001','008','036','044')):continue\n  pts=[o.matrix_world@Vector(v) for v in o.bound_box]\n  print(o.name,tuple(round(min(v[k] for v in pts),3) for k in range(3)),tuple(round(max(v[k] for v in pts),3) for k in range(3)))",
+  "tool": "execute_blender_code"
+}

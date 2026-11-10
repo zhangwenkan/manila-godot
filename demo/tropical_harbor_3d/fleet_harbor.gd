@@ -8,6 +8,7 @@ const UI = preload("res://demo/tropical_harbor_3d/ui/fleet_interaction.gd")
 const PIER = preload("res://demo/tropical_harbor_3d/environment/pier_builder.gd")
 const WATER = preload("res://demo/tropical_harbor_3d/materials/fleet_water.gdshader")
 const REFLECTION = preload("res://demo/tropical_harbor_3d/environment/water_reflection.gd")
+const COAST = preload("res://demo/tropical_harbor_3d/environment/coastal_town.gd")
 
 var state := STATE.new()
 var environment: RefCounted
@@ -23,6 +24,8 @@ var camera_override := false
 var test_mode := false
 var started := 0
 var rng := RandomNumberGenerator.new()
+var inspection_dragging := false
+var coast: RefCounted
 
 
 func _ready() -> void:
@@ -37,12 +40,16 @@ func _ready() -> void:
     environment._build_contact_stones()
     var pier := PIER.new()
     pier.build(self, environment)
+    coast = COAST.new()
+    coast.build(self)
     var contacts: PackedVector4Array = environment.contact_objects.duplicate()
     contacts.append_array(pier.contacts)
     environment.set_contacts(contacts, 32)
     camera = CAMERA.new()
     camera.name = "FleetCamera"
     add_child(camera)
+    camera.ground_sample = Callable(self, "inspection_ground")
+    camera.harbor_points = coast.landmarks
     reflection = REFLECTION.new()
     add_child(reflection)
     reflection.setup(self, camera)
@@ -53,6 +60,7 @@ func _ready() -> void:
     var piers := get_node_or_null("TimberPiers")
     if piers != null:
         reflection.add_subject(piers)
+    reflection.add_subject(coast.root)
     environment.water_material.set_shader_parameter("reflection_tex", reflection.texture())
     ui = UI.new()
     add_child(ui)
@@ -84,6 +92,8 @@ func configure_art_shadows() -> void:
 
 func rebuild_ships() -> void:
     selected = -1
+    inspection_dragging = false
+    camera.leave_inspection()
     camera.focus_ship = -1
     for ship in ships:
         remove_child(ship)
@@ -134,11 +144,15 @@ func select_ship(index: int) -> void:
     ui.selected_slot = -1
     ui.info = false
     for i in 3:
-        ships[i].set_selected(i == index)
+        ships[i].set_selected(i == index and not camera.inspecting)
+    if camera.inspecting:
+        camera.update_view(ships, 0, true)
     ui.refresh()
 
 
 func overview() -> void:
+    inspection_dragging = false
+    camera.leave_inspection()
     selected = -1
     camera.focus_ship = -1
     camera_override = false
@@ -149,12 +163,54 @@ func overview() -> void:
     ui.refresh()
 
 
+func toggle_inspection() -> void:
+    if camera.inspecting:
+        overview()
+        return
+    camera.inspect_ship(maxi(selected, 0))
+    select_ship(camera.focus_ship)
+
+
+func inspection_ground(at: Vector3) -> float:
+    return maxf(0.0, environment._sand_height(at.x - environment._shore(at.z), at.z))
+
+
+func _notification(what: int) -> void:
+    if what == NOTIFICATION_WM_WINDOW_FOCUS_OUT or what == NOTIFICATION_APPLICATION_FOCUS_OUT:
+        inspection_dragging = false
+
+
+func _input(event: InputEvent) -> void:
+    if not inspection_dragging:
+        return
+    if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_RIGHT and not event.pressed:
+        inspection_dragging = false
+    elif event is InputEventMouseMotion and camera.inspecting and not capture_lock:
+        camera.orbit(event.relative)
+        get_viewport().set_input_as_handled()
+
+
 func view_piers() -> void:
     overview()
     camera_override = true
     camera.position = Vector3(15, 12.55, 23.4)
     camera.look_at(Vector3(7, 0.55, 9.4))
     camera.size = 8.2
+
+
+func view_landing() -> void:
+    overview()
+    camera_override = true
+    camera.position = STATE.LAYOUT.TERMINAL_ORIGIN + Vector3(-17, 19, 27)
+    camera.look_at(STATE.LAYOUT.TERMINAL_ORIGIN + Vector3(1.5, 3.0, 3.5))
+    var points: Array[Vector3] = coast.landmarks.duplicate()
+    for lane in STATE.LAYOUT.BERTH_X:
+        for side in [-1.0, 1.0]:
+            points.append(Vector3(lane + side, 1.1, STATE.LAYOUT.BERTH_Z + 2.6))
+    for post in STATE.LAYOUT.PORT_POSTS:
+        points.append(post + Vector3(0, 1.2, 0))
+    points.append(STATE.LAYOUT.LANDING_BOUNDS.end)
+    camera.frame_points(points, 0, true)
 
 
 func toggle_pause() -> void:
@@ -187,8 +243,25 @@ func _unhandled_input(event: InputEvent) -> void:
         match event.keycode:
             KEY_V: overview()
             KEY_P: view_piers()
+            KEY_H: view_landing()
+            KEY_C: toggle_inspection()
+            KEY_1, KEY_2, KEY_3:
+                if camera.inspecting:
+                    select_ship(event.keycode - KEY_1)
             KEY_SPACE: toggle_pause()
-            KEY_ESCAPE: get_tree().quit()
+            KEY_ESCAPE:
+                if camera.inspecting:
+                    overview()
+                else:
+                    get_tree().quit()
+    if camera.inspecting and event is InputEventMouseButton:
+        if event.button_index == MOUSE_BUTTON_RIGHT:
+            inspection_dragging = event.pressed
+            get_viewport().set_input_as_handled()
+        elif event.pressed and event.button_index in [MOUSE_BUTTON_WHEEL_UP, MOUSE_BUTTON_WHEEL_DOWN]:
+            camera.zoom_inspection(-1.0 if event.button_index == MOUSE_BUTTON_WHEEL_UP else 1.0)
+            get_viewport().set_input_as_handled()
+        return
     if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
         var hit := pick(event.position)
         if hit.is_empty():
@@ -201,6 +274,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func sync_water() -> void:
+    coast.sync_life(time, not paused and not capture_lock)
     environment.sync_time(time)
     var positions := PackedVector4Array()
     var directions := PackedVector2Array()
@@ -229,4 +303,5 @@ func _process(delta: float) -> void:
             camera.update_view(ships, delta)
     sync_water()
     if ui != null:
+        coast.set_observing(camera.inspecting)
         ui.refresh()

@@ -22,7 +22,21 @@ output.mkdir(parents=True, exist_ok=False)
 user = ['--art-preview', '--art-output=' + output.as_posix()]
 if mode == 'diagnose':
     user.append('--art-diagnose=hull')
-elif mode in ('water-profile', 'water-profile-diagnose', 'water-profile-compare'):
+elif mode == 'coast':
+    user.append('--coast-review')
+elif mode == 'coast-light':
+    user.extend(['--coast-review', '--coast-light-study'])
+elif mode == 'surface':
+    user.extend(['--coast-review', '--surface-review'])
+elif mode in ('terminal', 'terminal-structure'):
+    user.extend(['--coast-review', '--terminal-review'])
+    if mode == 'terminal-structure':
+        user.append('--terminal-structure')
+elif mode == 'terminal-life':
+    user.append('--terminal-life-review')
+elif mode == 'terminal-life-perf':
+    user.append('--terminal-life-perf')
+elif mode in ('water-profile', 'water-profile-diagnose', 'water-profile-compare', 'water-profile-stability'):
     profile_mode = mode.removeprefix('water-profile').lstrip('-') or 'views'
     user.append('--water-profile=' + profile_mode)
     if profile_mode == 'compare':
@@ -33,7 +47,7 @@ elif mode in ('water', 'water-diagnose'):
     user.append('--water-review')
     if mode == 'water-diagnose':
         user.append('--water-diagnose')
-elif mode in ('reference-stills', 'reference-idle', 'reference-sail', 'reference-detail', 'reference-reflection'):
+elif mode in ('reference-stills', 'reference-idle', 'reference-sail', 'reference-detail', 'reference-reflection', 'reference-layout'):
     user.append('--reference-review=' + mode.removeprefix('reference-'))
 elif mode != 'preview':
     sys.exit('Unknown art mode: ' + mode)

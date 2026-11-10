@@ -1,0 +1,4 @@
+{
+  "code": "import bpy\nfrom mathutils import Vector\nc=bpy.data.collections['Pier_Working'];c.hide_viewport=False\nfor o in c.objects:o.hide_set(False)\nbpy.context.view_layer.update()\nfor o in c.objects:\n if o.name.startswith(('Deck','WaterPile','Pile')):\n  if 'pin' in o.name:continue\n  pts=[o.matrix_world@Vector(v) for v in o.bound_box]\n  print(o.name,'local',tuple(round(v,4) for v in o.location),'bounds',tuple(round(min(p[i] for p in pts),4) for i in range(3)),tuple(round(max(p[i] for p in pts),4) for i in range(3)),'uv',[(u.name) for u in o.data.uv_layers], 'mats',[m.name for m in o.data.materials])\nprint('MATERIAL',[(n.type,n.image.name if n.type=='TEX_IMAGE' and n.image else '') for n in bpy.data.materials['PierWood_Lit'].node_tree.nodes])",
+  "tool": "execute_blender_code"
+}

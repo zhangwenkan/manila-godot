@@ -1,0 +1,4 @@
+{
+  "code": "import bpy\nfrom mathutils import Vector\nfor name in ['WaterPile_-1_0','Walkboard_00']:\n o=bpy.data.objects[name];print(name,len(o.data.vertices),len(o.data.polygons),len(o.modifiers));print('verts',[(v.index,tuple(round(c,3) for c in v.co)) for v in list(o.data.vertices)[:18]]);print('polys',[(tuple(p.vertices),tuple(round(c,3) for c in p.normal)) for p in list(o.data.polygons)[:4]]);print('uv',[(li,tuple(round(c,4) for c in o.data.uv_layers[0].data[li].uv)) for li in range(min(16,len(o.data.loops)))])",
+  "tool": "execute_blender_code"
+}

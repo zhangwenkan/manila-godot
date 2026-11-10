@@ -18,6 +18,8 @@ var selected_slot := -1
 var message_until := 0
 var message := ""
 var info := false
+var inspect_button: Button
+var observation_hint: Label
 
 
 func build(owner_: Node3D) -> void:
@@ -36,6 +38,12 @@ func build(owner_: Node3D) -> void:
     var piers := _button("栈桥", harbor.view_piers)
     piers.tooltip_text = "查看栈桥 · P"
     top.add_child(piers)
+    var landing := _button("到港码头", harbor.view_landing)
+    landing.tooltip_text = "查看三船到港码头 · H"
+    top.add_child(landing)
+    inspect_button = _button("近船观察", harbor.toggle_inspection)
+    inspect_button.tooltip_text = "低角度观察当前船只 · C"
+    top.add_child(inspect_button)
     for i in 3:
         var button := _button("", harbor.select_ship.bind(i))
         top.add_child(button)
@@ -67,6 +75,15 @@ func build(owner_: Node3D) -> void:
     identity.add_theme_constant_override("shadow_offset_y", 2)
     identity.add_theme_font_size_override("font_size", 17)
     root.add_child(identity)
+    observation_hint = Label.new()
+    observation_hint.set_anchors_and_offsets_preset(Control.PRESET_CENTER_BOTTOM)
+    observation_hint.position = Vector2(-260, -54)
+    observation_hint.text = "右键拖动环绕 · 滚轮缩放 · 1 / 2 / 3 换船 · V 返回全港"
+    observation_hint.add_theme_font_size_override("font_size", 16)
+    observation_hint.add_theme_color_override("font_shadow_color", Color("193d3e"))
+    observation_hint.add_theme_constant_override("shadow_offset_y", 2)
+    observation_hint.mouse_filter = Control.MOUSE_FILTER_IGNORE
+    root.add_child(observation_hint)
     detail = PanelContainer.new()
     detail.set_anchors_and_offsets_preset(Control.PRESET_CENTER_BOTTOM)
     detail.offset_left = -255
@@ -153,6 +170,9 @@ func refresh() -> void:
         return
     var state: RefCounted = harbor.state
     var moving: bool = harbor.is_moving()
+    var observing: bool = harbor.camera.inspecting
+    inspect_button.text = "返回全港" if observing else "近船观察"
+    observation_hint.visible = observing
     for i in 3:
         var data: Dictionary = state.ships[i]
         var cargo: Dictionary = STATE.CARGO[data.cargo_id]
@@ -167,7 +187,9 @@ func refresh() -> void:
     restart.visible = state.rolls >= 3
     restart.disabled = moving
     pause_button.text = "▶" if harbor.paused else "Ⅱ"
-    detail.visible = harbor.selected >= 0 or info
+    detail.visible = not observing and (harbor.selected >= 0 or info)
+    if observing:
+        return
     if info:
         title.text = "三船空间与派遣验证"
         status.text = "点船近看，点岗位后确认。V 总览，空格暂停。\n仅含船上派遣与三次骰子，未接入整局规则。"

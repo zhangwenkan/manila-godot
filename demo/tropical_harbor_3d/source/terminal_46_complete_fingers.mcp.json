@@ -1,0 +1,4 @@
+{
+  "code": "import bpy\nns=bpy.app.driver_namespace['terminal_craft'];fn=bpy.app.driver_namespace['terminal_fingers']\nexec(r'''\nbuild_finger(1);build_finger(2);export_fingers()\n''',fn)\nexec(r'''\n# Correct A's Blender Y placement to the actual -13.75 world-Z bridge head.\nfor o in c.objects:\n if o.name.startswith('Terminal Berth 0 sign') or o.name=='Terminal Berth A lettering':o.location.y+=3.75\nplace_berth_props(1);place_berth_props(2)\nfor i in [1,2]:\n for o in c.objects:\n  if o.name.startswith('Terminal Berth '+str(i)+' sign') or o.name=='Terminal Berth '+'ABC'[i]+' lettering':o.location.y+=3.75\nbpy.context.view_layer.update();export_terminal_live()\nprint('NAVY_AND_THREE_FINGERS_COMPLETE')\n''',ns)",
+  "tool": "execute_blender_code"
+}

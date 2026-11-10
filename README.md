@@ -7,7 +7,7 @@
 唯一主场景为 `demo/tropical_harbor_3d/fleet_harbor.tscn`，水、船、正常栈桥、破桥和交互都在此入口。原来的独立水体工程已并入根工程。历史角色和 UI 文件保留为开发资料，不是当前入口。
 
 - 点击船只或顶部货物按钮查看船只，点击空位派遣船员。
-- **栈桥 / P** 查看栈桥；**总览 / V** 返回港口；**空格** 暂停；**Esc** 退出。
+- **栈桥 / P** 查看栈桥；**到港码头 / H** 查看三船泊位；**总览 / V** 返回船队；**空格** 暂停；**Esc** 退出。
 - `python demo/tropical_harbor_3d/tools/capture_art.py`：从同一主场景生成限时美术截图。
 - `python demo/tropical_harbor_3d/tools/capture_art.py water`：从同一入口检查水体总览、浅水、桥桩、船边、低角度，并保存覆盖一个岸浪周期的 48 帧动画素材。`water-diagnose` 可分别关闭高光、天空反射、阴影和海床定位问题。
 - `python demo/tropical_harbor_3d/tools/capture_fleet.py`：从同一主场景检查已有交互并截图。
@@ -36,3 +36,13 @@
 根工程 F5 复查显示新版画面，持续运行后用 F8 结束，日志无错误或警告。第一次编辑器预览曾因 D3D12 设备丢失（0x887a0005）发生原生崩溃，复查未复现，原因尚未确定；两次日志保存在上述对照目录。当前无残留游戏预览进程。船桥模型比例未改，视觉效果仍待用户确认。
 
 新增检查仍走唯一主场景：`python demo/tropical_harbor_3d/tools/capture_art.py reference-reflection` 查看倒影及暂停稳定性；`python demo/tropical_harbor_3d/tools/capture_art.py water-profile` 采样总览和近景；`water-profile-compare 1600x900 demo/tropical_harbor_3d/captures/water_optimization_20261105/before_source` 可与此次本地保存的基线进行交替对照。
+
+2026-11-09 补齐上次中断的水体与到港布局验证：[截图对照与记录](demo/tropical_harbor_3d/captures/water_finish_20261106/index.html)。焦散改为断续光弧，波光减少碎白点；薄水层按真实穿水距离计算，减弱船沿、桥桩的亮青色水线。正式航线终点加入约 18.2 × 3.4 米的三泊位码头，使用已批准木构件，14 根支撑桩延伸至海床以下；总览相机随船队移动到到港区域。码头资产在上次会话通过 Blender MCP 完成，本次未操作用户正在编辑的其他 Blender 项目。
+
+移除 Windows 的 D3D12 强制设置，使用默认 Vulkan，作为之前 F5 嵌入预览反复出现设备丢失的规避措施；尚不能据此断言驱动问题已彻底修复。倒影纹理两轴均限制为 512 像素，小于 64 像素的窗口暂停更新。最终 Vulkan 运行通过 231 项交互、反射和泊位检查，单船尾流区域外变化为 0；暂停重复最大差异 1/255，清除尾流后仅一个不透明桥桩边缘像素差异 6/255。截图检查允许最多 8 个像素出现不超过 8/255 的差异，详细阈值见原始结果。另通过 24 次窗口尺寸切换和 4 次船队重建，暂停对照最大差异 1/255。
+
+1600×900、持续聚焦的各 5 秒采样：总览平均 19.90 ms / p95 24.04 ms，近景平均 16.70 ms / p95 18.65 ms；不同日期、渲染驱动和系统负载的数据不直接用于计算提升。根工程 Vulkan 编辑器启动正常；桌面控制工具不可用，实际 F5 → 到港码头 → V → F8 由用户执行并确认切换正常，结束后无本项目游戏预览进程。状态逻辑沿用此前 452 项检查结果，本次未重跑。此记录完成的是本批验证，视觉仍需用户验收，完整港口场景尚在制作中。
+
+新增检查：`python demo/tropical_harbor_3d/tools/capture_art.py reference-layout` 采集出发、到港码头、三船到港、泊位近景和全航线；`python demo/tropical_harbor_3d/tools/capture_art.py water-profile-stability` 检查实际窗口缩放与船队重建，均限时退出。
+
+后续 Blender 工作必须使用独立进程、未占用的独立 MCP 端口和本项目文件，先核对连接目标；子代理不能隔离同一 Blender 会话。

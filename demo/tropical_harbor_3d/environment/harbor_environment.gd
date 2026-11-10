@@ -4,8 +4,9 @@ const WATER_SHADER = preload("res://demo/tropical_harbor_3d/materials/tropical_w
 const SAND_SHADER = preload("res://demo/tropical_harbor_3d/materials/sand.gdshader")
 const NOISE = preload("res://demo/tropical_harbor_3d/assets/water_noise.png")
 const SWASH_SHADER = preload("res://demo/tropical_harbor_3d/materials/shore_swash.gdshader")
-const COAST_SHAPE := Vector4(8.0, 2.0, 0.6, 0.0)
-const BAY_SHAPE := Vector4(-2.5, 3.6, 2.2, 0.85)
+const LAYOUT = preload("res://demo/tropical_harbor_3d/environment/harbor_layout.gd")
+const COAST_SHAPE := LAYOUT.COAST_SHAPE
+const BAY_SHAPE := LAYOUT.BAY_SHAPE
 const WASH_PERIOD := 4.8
 
 var root: Node3D
@@ -53,8 +54,10 @@ func _mat(hex: String, roughness: float = 0.85) -> StandardMaterial3D:
 func _build_environment() -> void:
     var environment := Environment.new()
     environment.background_mode = Environment.BG_SKY
-    environment.ambient_light_source = Environment.AMBIENT_SOURCE_SKY
-    environment.ambient_light_energy = 0.34
+    environment.ambient_light_source = Environment.AMBIENT_SOURCE_COLOR
+    environment.ambient_light_color = Color("c0c4c1")
+    environment.ambient_light_energy = 0.42
+    environment.ambient_light_sky_contribution = 0.0
     environment.reflected_light_source = Environment.REFLECTION_SOURCE_SKY
     var sky := Sky.new()
     var sky_mat := ProceduralSkyMaterial.new()
@@ -67,11 +70,11 @@ func _build_environment() -> void:
     environment.tonemap_mode = Environment.TONE_MAPPER_ACES
     environment.tonemap_exposure = 1.0
     environment.ssao_enabled = true
-    environment.ssao_radius = 1.25
-    environment.ssao_intensity = 1.3
+    environment.ssao_radius = 0.45
+    environment.ssao_intensity = 0.85
     environment.ssao_light_affect = 0.1
-    # Retain contact shading at a lower sampling cost; higher AO sample counts dominated
-    # the integrated GPU without adding useful detail to the open water.
+    # Short-range occlusion separates joinery and grounded props without darkening
+    # entire walls. The sample quality is checked with the actual harbor loaded.
     configure_ambient_occlusion()
     environment.glow_enabled = false
     environment.volumetric_fog_enabled = false
@@ -81,23 +84,23 @@ func _build_environment() -> void:
     add_child(world_environment)
     var sun := DirectionalLight3D.new()
     sun.name = "WarmAfternoon"
-    # Side light separates the timber faces and places the sun path beside the
-    # harbor in the elevated gameplay and reference views.
-    sun.rotation_degrees = Vector3(-55, 135, 0)
+    # Light the seaward facade obliquely: the roof, front and side retain different
+    # values, while the overhangs and joinery cast real directional shadows.
+    sun.rotation_degrees = Vector3(-48, -65, 0)
     sun.light_color = Color("fff8eb")
-    sun.light_energy = 1.12
-    sun.light_angular_distance = 0.85
+    sun.light_energy = 1.0
+    sun.light_angular_distance = 1.0
     sun.shadow_enabled = true
     sun.directional_shadow_max_distance = 100.0
     sun.shadow_bias = 0.04
     sun.shadow_normal_bias = 0.6
     add_child(sun)
-    RenderingServer.directional_shadow_atlas_set_size(4096, true)
+    RenderingServer.directional_shadow_atlas_set_size(8192, true)
     RenderingServer.directional_soft_shadow_filter_set_quality(RenderingServer.SHADOW_QUALITY_SOFT_HIGH)
 
 
 func configure_ambient_occlusion() -> void:
-    RenderingServer.environment_set_ssao_quality(RenderingServer.ENV_SSAO_QUALITY_VERY_LOW, true, 0.5, 2, 50.0, 300.0)
+    RenderingServer.environment_set_ssao_quality(RenderingServer.ENV_SSAO_QUALITY_MEDIUM, true, 0.5, 2, 50.0, 300.0)
 
 
 func _build_water() -> void:

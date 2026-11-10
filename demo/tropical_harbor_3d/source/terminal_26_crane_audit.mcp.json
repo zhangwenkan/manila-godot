@@ -1,0 +1,4 @@
+{
+  "tool": "execute_blender_code",
+  "code": "import bpy,json\nfrom mathutils import Vector\nns=bpy.app.driver_namespace['terminal_craft']\nfor ob in ns['c'].objects:\n if 'Crane' in ob.name or 'Winch' in ob.name or ('shaped verge' in ob.name and 'Entry' in ob.name):\n  print(ob.name, 'verts',len(ob.data.vertices),'loc',tuple(ob.location),'dims',tuple(ob.dimensions),'mats',[m.name for m in ob.data.materials], 'uv',[(u.name,u.active_render) for u in ob.data.uv_layers], 'indices',list(set(p.material_index for p in ob.data.polygons)))\n  if 'shaped verge' in ob.name:\n   print('UV first',[(p.index,[tuple(ob.data.uv_layers[0].data[i].uv) for i in p.loop_indices]) for p in list(ob.data.polygons)[:3]], 'spec',ns['weather_specs'].get(ob.name))\nprint('iron nodes',[(n.type,n.name, n.image.name if n.type=='TEX_IMAGE' and n.image else '') for n in ns['iron'].node_tree.nodes])\n"
+}

@@ -1,11 +1,18 @@
 extends Camera3D
 
 const OVERVIEW_OFFSET := Vector3(-20, 46, 24)
+const LAYOUT = preload("res://demo/tropical_harbor_3d/environment/harbor_layout.gd")
 
 var focus_ship := -1
 var settled := false
 var target_position := Vector3.ZERO
 var target_size := 30.0
+var inspecting := false
+var orbit_yaw := -48.0
+var orbit_pitch := 20.0
+var orbit_distance := 11.5
+var ground_sample: Callable
+var harbor_points: Array[Vector3] = []
 
 
 func _ready() -> void:
@@ -19,7 +26,13 @@ func _ready() -> void:
 
 
 func update_view(ships: Array, delta: float, snap: bool = false) -> void:
-    var offset := Vector3(12, 30, -33) if focus_ship >= 0 else OVERVIEW_OFFSET
+    if inspecting and focus_ship >= 0 and focus_ship < ships.size():
+        _update_inspection(ships[focus_ship], delta, snap)
+        return
+    projection = Camera3D.PROJECTION_ORTHOGONAL
+    # Approach selected boats from the open water so the terminal roof cannot
+    # hide a berthed hull or intercept clicks on its crew slots.
+    var offset := Vector3(-12, 30, 24) if focus_ship >= 0 else OVERVIEW_OFFSET
     var desired := Basis.looking_at(-offset.normalized())
     var rotation_weight := 1.0 if snap else 1.0 - exp(-delta * 7.0)
     global_basis = global_basis.slerp(desired, rotation_weight).orthonormalized()
@@ -27,14 +40,63 @@ func update_view(ships: Array, delta: float, snap: bool = false) -> void:
     if focus_ship >= 0 and focus_ship < ships.size():
         points.append_array(ships[focus_ship].envelope_points())
     else:
+        var fleet_center_z := 0.0
         for ship in ships:
             points.append_array(ship.envelope_points())
-        # Fit the current fleet and harbor, expanding smoothly as ships separate.
-        # Empty portions of the full route should not shrink the opening view.
-        for x in [2.2, 11.4]:
-            for z in [5.8, 12.8]:
-                points.append(Vector3(x, 1.6, z))
+            fleet_center_z += ship.global_position.z
+        fleet_center_z /= maxf(ships.size(), 1)
+        points.append_array(LAYOUT.overview_landmarks(fleet_center_z))
+        points.append_array(harbor_points)
     frame_points(points, delta, snap, 170.0 if focus_ship >= 0 else 80.0)
+
+
+func inspect_ship(index: int) -> void:
+    inspecting = true
+    focus_ship = index
+    projection = Camera3D.PROJECTION_PERSPECTIVE
+    fov = 45.0
+
+
+func leave_inspection() -> void:
+    inspecting = false
+    projection = Camera3D.PROJECTION_ORTHOGONAL
+
+
+func orbit(relative: Vector2) -> void:
+    orbit_yaw = wrapf(orbit_yaw - relative.x * 0.22, -180.0, 180.0)
+    orbit_pitch = clampf(orbit_pitch + relative.y * 0.18, 12.0, 65.0)
+
+
+func zoom_inspection(direction: float) -> void:
+    orbit_distance = clampf(orbit_distance * exp(direction * 0.10), 7.0, 24.0)
+
+
+func _update_inspection(ship: Node3D, delta: float, snap: bool) -> void:
+    # Follow the voyage, while allowing the hull to float independently of the eye.
+    var target := Vector3(ship.global_position.x, 0.45, ship.global_position.z)
+    var yaw := deg_to_rad(orbit_yaw)
+    var pitch := deg_to_rad(orbit_pitch)
+    var offset := Vector3(sin(yaw) * cos(pitch), sin(pitch), cos(yaw) * cos(pitch)) * orbit_distance
+    var desired := target + offset
+    if ground_sample.is_valid():
+        desired.y = maxf(desired.y, float(ground_sample.call(desired)) + 0.8)
+    var query := PhysicsRayQueryParameters3D.create(target, desired, 4)
+    var hit := get_world_3d().direct_space_state.intersect_ray(query)
+    if not hit.is_empty():
+        desired = hit.position + hit.normal * 0.45
+    var weight := 1.0 if snap else 1.0 - exp(-delta * 9.0)
+    # Check the final smoothed position too: orbiting must not cut through a pier.
+    var candidate := global_position.lerp(desired, weight)
+    query.to = candidate
+    hit = get_world_3d().direct_space_state.intersect_ray(query)
+    if not hit.is_empty():
+        candidate = hit.position + hit.normal * 0.45
+    if ground_sample.is_valid():
+        candidate.y = maxf(candidate.y, float(ground_sample.call(candidate)) + 0.8)
+    global_position = candidate
+    look_at(target)
+    target_position = desired
+    settled = global_position.distance_to(desired) < 0.03
 
 
 func frame_points(points: Array[Vector3], delta: float, snap: bool, bottom: float = 80.0) -> void:

@@ -20,6 +20,9 @@ func run(preview: Node, mode: String) -> void:
     if mode == "compare":
         await compare(viewport, sand)
         return
+    if mode == "stability":
+        await stability()
+        return
     var result: Dictionary = {}
     result["baseline"] = await measure(viewport)
     if not await host.capture("profile_baseline"):
@@ -63,6 +66,45 @@ func run(preview: Node, mode: String) -> void:
     host.finish({"kind": "water performance " + mode, "timing": result,
         "resolution": [harbor.get_window().size.x, harbor.get_window().size.y],
         "vsync": "disabled for this measurement process only", "seconds_per_probe": 2.0})
+
+
+func stability() -> void:
+    var window := harbor.get_window()
+    var original: Vector2i = window.size
+    var sizes: Array[Vector2i] = [Vector2i(1440, 810), Vector2i(1440, 745),
+        Vector2i(900, 900), Vector2i(675, 1000), Vector2i(1000, 625), Vector2i(1600, 900)]
+    var probes: Array[Dictionary] = []
+    for i in 24:
+        window.size = sizes[i % sizes.size()]
+        if i % 6 == 0:
+            harbor.new_voyage()
+        if i % 3 == 0:
+            harbor.view_piers()
+        else:
+            harbor.camera.focus_ship = 0 if i % 3 == 1 else -1
+            harbor.camera.update_view(harbor.ships, 0.0, true)
+        var started := Time.get_ticks_msec()
+        while Time.get_ticks_msec() - started < 350:
+            harbor.time += 1.0 / 60.0
+            for ship in harbor.ships:
+                ship.advance(1.0 / 60.0, harbor.time)
+            await host.get_tree().process_frame
+        var reflected: Vector2i = harbor.reflection.viewport.size
+        if reflected.x > 512 or reflected.y > 512 or reflected.x < 1 or reflected.y < 1:
+            push_error("WATER_STABILITY: reflection texture exceeded its budget")
+            host.get_tree().quit(2)
+            return
+        probes.append({"window": [window.size.x, window.size.y],
+            "reflection": [reflected.x, reflected.y], "voyage": harbor.state.voyage})
+    window.size = original
+    harbor.camera.focus_ship = -1
+    harbor.camera.update_view(harbor.ships, 0.0, true)
+    if not await host.capture("stability_final", false, 12):
+        return
+    if not await host.capture("stability_paused_repeat", false, 12):
+        return
+    host.finish({"kind": "bounded water resize and rebuild stability check", "probes": probes,
+        "note": "24 real window resizes, portrait and landscape, four voyage rebuilds; this cannot prove a driver crash is fixed."})
 
 
 func compare(viewport: RID, sand: MeshInstance3D) -> void:

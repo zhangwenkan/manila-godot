@@ -56,6 +56,11 @@ func add_subject(node: Node) -> void:
         var label := str(mesh.name).to_lower()
         if "fiber" in label:
             continue
+        # These authored meshes stay above the water; reuse their live shader so
+        # wind and flame do not become white, motionless shapes in reflections.
+        if label.begins_with("terminallive_flags_") or label.begins_with("terminallive_flame"):
+            mesh.layers |= 1 << LAYER_BIT
+            continue
         var proxy := MeshInstance3D.new()
         proxy.name = "ReflectProxy"
         proxy.mesh = mesh.mesh
@@ -93,7 +98,14 @@ func sync() -> void:
     # Preserve screen-space alignment for both reference perspective views and
     # the orthographic gameplay camera, including window aspect changes.
     var size := main.get_viewport().get_visible_rect().size
-    var target_size := Vector2i(512, maxi(128, roundi(512.0 * size.y / maxf(size.x, 1.0))))
+    # Resizing/minimizing an embedded game can briefly report a tiny width.
+    # Bound both axes instead of letting a fixed width create a huge texture.
+    if size.x < 64.0 or size.y < 64.0:
+        viewport.render_target_update_mode = SubViewport.UPDATE_DISABLED
+        return
+    viewport.render_target_update_mode = SubViewport.UPDATE_ALWAYS
+    var scale := 512.0 / maxf(size.x, size.y)
+    var target_size := Vector2i(maxi(1, roundi(size.x * scale)), maxi(1, roundi(size.y * scale)))
     if viewport.size != target_size:
         viewport.size = target_size
     camera.projection = main.projection

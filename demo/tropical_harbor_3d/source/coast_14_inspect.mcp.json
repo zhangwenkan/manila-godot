@@ -1,0 +1,1 @@
+{"tool":"execute_blender_code","code":"import bpy,json\nc=bpy.data.collections['Coast_CraftWarehouse']\nfor o in c.objects:\n    if 'stave 0' in o.name or 'Roof course -1 00 0' in o.name:\n        print(o.name,[(m.name) for m in o.data.materials], [tuple(x.uv) for x in list(o.data.uv_layers.active.data)[:8]], [tuple(p.normal) for p in list(o.data.polygons)[:2]])\n"}
