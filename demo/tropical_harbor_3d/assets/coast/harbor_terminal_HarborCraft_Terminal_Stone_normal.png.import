@@ -3,9 +3,10 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dvgr3b4sl4n8"
-path="res://.godot/imported/harbor_terminal_HarborCraft_Terminal_Stone_normal.png-66c656da72fdc40b5623afda7bda79f6.ctex"
+path.bptc="res://.godot/imported/harbor_terminal_HarborCraft_Terminal_Stone_normal.png-66c656da72fdc40b5623afda7bda79f6.bptc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
 }
 generator_parameters={
 "md5": "27b9538db90311a7e4cfa20a811c2ca2"
@@ -14,17 +15,17 @@ generator_parameters={
 [deps]
 
 source_file="res://demo/tropical_harbor_3d/assets/coast/harbor_terminal_HarborCraft_Terminal_Stone_normal.png"
-dest_files=["res://.godot/imported/harbor_terminal_HarborCraft_Terminal_Stone_normal.png-66c656da72fdc40b5623afda7bda79f6.ctex"]
+dest_files=["res://.godot/imported/harbor_terminal_HarborCraft_Terminal_Stone_normal.png-66c656da72fdc40b5623afda7bda79f6.bptc.ctex"]
 
 [params]
 
-compress/mode=0
-compress/high_quality=false
+compress/mode=2
+compress/high_quality=true
 compress/lossy_quality=0.7
 compress/uastc_level=0
 compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
-compress/normal_map=0
+compress/normal_map=1
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1

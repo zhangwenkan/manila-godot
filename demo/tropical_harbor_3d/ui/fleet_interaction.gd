@@ -4,6 +4,8 @@ const STATE = preload("res://demo/tropical_harbor_3d/fleet/fleet_state.gd")
 var harbor: Node3D
 var root: Control
 var ship_buttons: Array[Button] = []
+var ship_progress: Array[ProgressBar] = []
+var ship_captions: Array[Label] = []
 var slot_buttons: Array[Button] = []
 var overview: Button
 var roll_button: Button
@@ -32,25 +34,69 @@ func build(owner_: Node3D) -> void:
     top.position = Vector2(24, 20)
     top.add_theme_constant_override("separation", 8)
     root.add_child(top)
-    overview = _button("总览", harbor.overview)
-    overview.tooltip_text = "返回三船总览 · V"
+    overview = _button("航行画面" if harbor.camera.local_harbor else "总览", harbor.overview)
+    overview.tooltip_text = "返回当前航段 · V" if harbor.camera.local_harbor else "返回三船总览 · V"
     top.add_child(overview)
-    var piers := _button("栈桥", harbor.view_piers)
-    piers.tooltip_text = "查看栈桥 · P"
+    var piers := _button("沿岸" if harbor.camera.local_harbor else "栈桥", harbor.view_piers)
+    piers.tooltip_text = "查看沿岸区域 · P" if harbor.camera.local_harbor else "查看栈桥 · P"
     top.add_child(piers)
     var landing := _button("到港码头", harbor.view_landing)
     landing.tooltip_text = "查看三船到港码头 · H"
     top.add_child(landing)
     inspect_button = _button("近船观察", harbor.toggle_inspection)
-    inspect_button.tooltip_text = "低角度观察当前船只 · C"
+    inspect_button.tooltip_text = "观察当前船与附近环境 · C" if harbor.camera.local_harbor else "低角度观察当前船只 · C"
     top.add_child(inspect_button)
     for i in 3:
         var button := _button("", harbor.select_ship.bind(i))
-        top.add_child(button)
+        if harbor.camera.local_harbor:
+            var column := VBoxContainer.new()
+            column.custom_minimum_size.x = 155
+            column.add_theme_constant_override("separation", 3)
+            top.add_child(column)
+            column.add_child(button)
+            button.add_theme_color_override("font_disabled_color", Color("fff2d6"))
+            button.add_theme_stylebox_override("disabled", button.get_theme_stylebox("normal").duplicate())
+            var bar := ProgressBar.new()
+            bar.max_value = 14
+            bar.step = 0
+            bar.show_percentage = false
+            bar.custom_minimum_size.y = 7
+            bar.mouse_filter = Control.MOUSE_FILTER_IGNORE
+            var background := StyleBoxFlat.new()
+            background.bg_color = Color("153b40", .95)
+            background.set_corner_radius_all(3)
+            bar.add_theme_stylebox_override("background", background)
+            var fill := StyleBoxFlat.new()
+            fill.bg_color = STATE.CARGO[harbor.state.ships[i].cargo_id].color
+            fill.set_corner_radius_all(3)
+            bar.add_theme_stylebox_override("fill", fill)
+            column.add_child(bar)
+            ship_progress.append(bar)
+            var caption := Label.new()
+            caption.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+            caption.add_theme_font_size_override("font_size", 14)
+            caption.add_theme_color_override("font_color", Color("fff2d6"))
+            caption.add_theme_color_override("font_shadow_color", Color("193d3e"))
+            caption.add_theme_constant_override("shadow_offset_y", 2)
+            caption.mouse_filter = Control.MOUSE_FILTER_IGNORE
+            column.add_child(caption)
+            ship_captions.append(caption)
+        else:
+            top.add_child(button)
         ship_buttons.append(button)
+    if harbor.camera.local_harbor:
+        var labels := _button("区域标识", func(): harbor.blockout.set_labels(not harbor.blockout.labels_visible))
+        labels.tooltip_text = "显示或隐藏占位区域名称 · L"
+        top.add_child(labels)
+        var yards := _button("修船厂", harbor.view_shipyard)
+        yards.tooltip_text = "查看修船厂 · J；V 返回航行"
+        top.add_child(yards)
     var help := _button("?", _help)
     help.tooltip_text = "本阶段范围与操作"
     top.add_child(help)
+    for control in top.get_children():
+        if control is Button:
+            control.size_flags_vertical = Control.SIZE_SHRINK_BEGIN
     var actions := HBoxContainer.new()
     actions.set_anchors_and_offsets_preset(Control.PRESET_BOTTOM_RIGHT)
     actions.offset_left = -310
@@ -78,16 +124,16 @@ func build(owner_: Node3D) -> void:
     observation_hint = Label.new()
     observation_hint.set_anchors_and_offsets_preset(Control.PRESET_CENTER_BOTTOM)
     observation_hint.position = Vector2(-260, -54)
-    observation_hint.text = "右键拖动环绕 · 滚轮缩放 · 1 / 2 / 3 换船 · V 返回全港"
+    observation_hint.text = "1 / 2 / 3 看船 · V 当前航段 · L 区域名称" if harbor.camera.local_harbor else "右键拖动环绕 · 滚轮缩放 · 1 / 2 / 3 换船 · V 返回全港"
     observation_hint.add_theme_font_size_override("font_size", 16)
     observation_hint.add_theme_color_override("font_shadow_color", Color("193d3e"))
     observation_hint.add_theme_constant_override("shadow_offset_y", 2)
     observation_hint.mouse_filter = Control.MOUSE_FILTER_IGNORE
     root.add_child(observation_hint)
     detail = PanelContainer.new()
-    detail.set_anchors_and_offsets_preset(Control.PRESET_CENTER_BOTTOM)
-    detail.offset_left = -255
-    detail.offset_right = 255
+    detail.set_anchors_and_offsets_preset(Control.PRESET_BOTTOM_RIGHT if harbor.camera.local_harbor else Control.PRESET_CENTER_BOTTOM)
+    detail.offset_left = -535 if harbor.camera.local_harbor else -255
+    detail.offset_right = -25 if harbor.camera.local_harbor else 255
     detail.offset_top = -215
     detail.offset_bottom = -75
     var style := StyleBoxFlat.new()
@@ -171,12 +217,33 @@ func refresh() -> void:
     var state: RefCounted = harbor.state
     var moving: bool = harbor.is_moving()
     var observing: bool = harbor.camera.inspecting
-    inspect_button.text = "返回全港" if observing else "近船观察"
-    observation_hint.visible = observing
+    inspect_button.text = ("当前航段" if harbor.camera.focus_ship >= 0 else "关注当前船") if harbor.camera.local_harbor else ("返回全港" if observing else "近船观察")
+    inspect_button.tooltip_text = "观察船只与当前局部环境 · C" if harbor.camera.local_harbor else "低角度观察当前船只 · C"
+    observation_hint.visible = observing or (harbor.camera.local_harbor and harbor.selected < 0)
+    if harbor.camera.local_harbor:
+        observation_hint.text = "三船同步航行 · 顶部查看全部进度" if moving else "1 / 2 / 3 看船 · V 当前航段 · L 区域名称"
     for i in 3:
         var data: Dictionary = state.ships[i]
         var cargo: Dictionary = STATE.CARGO[data.cargo_id]
         ship_buttons[i].text = "%s  %s" % [cargo.glyph, "泊" if data.arrived else str(data.progress)]
+        if harbor.camera.local_harbor:
+            var ship: Node3D = harbor.ships[i]
+            var berthed: bool = ship.route_progress >= 14.0
+            var at_entry: bool = data.arrived and not ship.route_travelling and ship.route_progress >= harbor.ROUTE.ENTRY
+            ship_buttons[i].disabled = moving
+            if berthed:
+                ship_buttons[i].text = "%s · 泊位 %s" % [cargo.glyph, ["A", "B", "C"][data.berth]]
+            elif moving:
+                ship_buttons[i].text = "%s %.1f → %s" % [cargo.glyph, minf(ship.route_progress, 13.0), "港" if data.arrived else str(data.progress)]
+            ship_progress[i].value = 14 if berthed else minf(ship.route_progress, 13.0)
+            (ship_progress[i].get_theme_stylebox("fill") as StyleBoxFlat).bg_color = cargo.color
+            var activity := "已到港" if berthed else ("靠泊中" if at_entry else ("航行中" if ship.route_travelling else "停驻"))
+            if not berthed and harbor.paused and ship.route_travelling:
+                activity = "已暂停"
+            var in_view: bool = not harbor.camera.is_position_behind(ship.global_position) and get_viewport().get_visible_rect().grow(-12).has_point(harbor.camera.unproject_position(ship.global_position))
+            if not in_view:
+                activity += " · 屏外"
+            ship_captions[i].text = ("骰 %d · " % data.last_die if data.last_die > 0 else "") + activity
         ship_buttons[i].modulate = cargo.color.lightened(0.35) if harbor.selected == i else Color.WHITE
         ship_buttons[i].tooltip_text = "%s · %s" % [cargo.label, "到港" if data.arrived else "进度 %d" % data.progress]
     var player: Dictionary = state.players[state.current_player]
@@ -192,7 +259,7 @@ func refresh() -> void:
         return
     if info:
         title.text = "三船空间与派遣验证"
-        status.text = "点船近看，点岗位后确认。V 总览，空格暂停。\n仅含船上派遣与三次骰子，未接入整局规则。"
+        status.text = "点船查看，点岗位后确认。空格暂停。\n仅含船上派遣与三次骰子，未接入整局规则。"
         for button in slot_buttons:
             button.visible = false
         confirm.visible = false

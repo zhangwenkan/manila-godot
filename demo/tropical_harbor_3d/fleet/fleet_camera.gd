@@ -1,5 +1,7 @@
 extends Camera3D
 
+const ROUTE = preload("res://demo/tropical_harbor_3d/fleet/harbor_route.gd")
+
 const OVERVIEW_OFFSET := Vector3(-20, 46, 24)
 const LAYOUT = preload("res://demo/tropical_harbor_3d/environment/harbor_layout.gd")
 
@@ -13,6 +15,15 @@ var orbit_pitch := 20.0
 var orbit_distance := 11.5
 var ground_sample: Callable
 var harbor_points: Array[Vector3] = []
+var local_harbor := false
+# Kept for the archived layout comparison harness; player poses use ROUTE.
+var local_offset := Vector3(18, 28, 36)
+var local_fov := 48.0
+var shot_indices: Array[int] = []
+var framed_indices: Array[int] = []
+var auto_subject := 1
+var area_progress := -1.0
+var local_look := Vector3.ZERO
 
 
 func _ready() -> void:
@@ -26,6 +37,9 @@ func _ready() -> void:
 
 
 func update_view(ships: Array, delta: float, snap: bool = false) -> void:
+    if local_harbor:
+        _update_local_harbor(ships, delta, snap)
+        return
     if inspecting and focus_ship >= 0 and focus_ship < ships.size():
         _update_inspection(ships[focus_ship], delta, snap)
         return
@@ -50,6 +64,47 @@ func update_view(ships: Array, delta: float, snap: bool = false) -> void:
     frame_points(points, delta, snap, 170.0 if focus_ship >= 0 else 80.0)
 
 
+func _update_local_harbor(ships: Array, delta: float, snap: bool) -> void:
+    projection = Camera3D.PROJECTION_PERSPECTIVE
+    fov = local_fov
+    var indices: Array[int] = shot_indices.duplicate()
+    if indices.is_empty():
+        var primary := focus_ship if focus_ship >= 0 else auto_subject
+        primary = clampi(primary, 0, ships.size() - 1)
+        indices.append(primary)
+        if focus_ship < 0:
+            for i in ships.size():
+                # The shoreline composition can include all nearby lanes.
+                # Distant boats never change the fixed viewing scale.
+                if i != primary and absf(ships[i].route_progress - ships[primary].route_progress) <= 2.1:
+                    var candidate: Array[int] = indices.duplicate()
+                    candidate.append(i)
+                    var points: Array = []
+                    var headings: Array = []
+                    for j in candidate:
+                        points.append(ships[j].position)
+                        headings.append(ships[j].rotation.y)
+                    var screen := get_viewport().get_visible_rect().size
+                    if ROUTE.fits_local_shot(points, headings, ships[primary].route_progress, screen.x / screen.y, local_fov, get_world_3d().direct_space_state):
+                        indices.append(i)
+    framed_indices.assign(indices)
+    var progress: float = ships[indices[0]].route_progress
+    var center: Vector3 = ROUTE.framing_origin(ships[indices[0]].position, progress)
+    if area_progress >= 0:
+        progress = area_progress
+        center = ROUTE.center(progress) if progress < 14 else Vector3(-.85, 0, -16.6)
+    # Favor the waterfront beyond the boat, not the landward side of a roof.
+    var target := center + ROUTE.aim_offset(progress)
+    var offset := ROUTE.offset(progress)
+    var desired := target + offset
+    var weight := 1.0 if snap else 1.0 - exp(-delta * 5.0)
+    global_position = global_position.lerp(desired, weight)
+    local_look = target if snap else local_look.lerp(target, weight)
+    look_at(local_look)
+    target_position = desired
+    settled = global_position.distance_to(desired) < .04 and local_look.distance_to(target) < .04
+
+
 func inspect_ship(index: int) -> void:
     inspecting = true
     focus_ship = index
@@ -63,11 +118,15 @@ func leave_inspection() -> void:
 
 
 func orbit(relative: Vector2) -> void:
+    if local_harbor:
+        return
     orbit_yaw = wrapf(orbit_yaw - relative.x * 0.22, -180.0, 180.0)
     orbit_pitch = clampf(orbit_pitch + relative.y * 0.18, 12.0, 65.0)
 
 
 func zoom_inspection(direction: float) -> void:
+    if local_harbor:
+        return
     orbit_distance = clampf(orbit_distance * exp(direction * 0.10), 7.0, 24.0)
 
 

@@ -7,8 +7,9 @@ var frames: Array[String] = []
 
 
 func _process(_delta: float) -> void:
-    if started > 0 and Time.get_ticks_msec() - started > 50000:
-        push_error("ART_PREVIEW_TIMEOUT: 50-second limit")
+    var limit := 90000 if "--local-voyage-review" in OS.get_cmdline_user_args() else 50000
+    if started > 0 and Time.get_ticks_msec() - started > limit:
+        push_error("ART_PREVIEW_TIMEOUT: " + str(limit / 1000) + "-second limit")
         get_tree().quit(2)
 
 
@@ -27,6 +28,14 @@ func run(scene: Node3D) -> void:
     harbor.ui.visible = false
     harbor.camera_override = true
     harbor.get_window().grab_focus()
+    if "--shipyard-review" in OS.get_cmdline_user_args():
+        var review := load("res://demo/tropical_harbor_3d/tools/shipyard_review.gd").new() as RefCounted
+        await review.run(self)
+        return
+    if "--local-voyage-review" in OS.get_cmdline_user_args() or "--layout-review" in OS.get_cmdline_user_args():
+        var review := load("res://demo/tropical_harbor_3d/tools/local_voyage_review.gd").new() as RefCounted
+        await review.run(self)
+        return
     if "--terminal-life-review" in OS.get_cmdline_user_args() or "--terminal-life-perf" in OS.get_cmdline_user_args():
         var life_review := load("res://demo/tropical_harbor_3d/tools/terminal_life_review.gd").new() as RefCounted
         await life_review.run(self, "--terminal-life-perf" in OS.get_cmdline_user_args())

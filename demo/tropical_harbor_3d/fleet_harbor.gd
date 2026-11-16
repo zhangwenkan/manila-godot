@@ -9,6 +9,8 @@ const PIER = preload("res://demo/tropical_harbor_3d/environment/pier_builder.gd"
 const WATER = preload("res://demo/tropical_harbor_3d/materials/fleet_water.gdshader")
 const REFLECTION = preload("res://demo/tropical_harbor_3d/environment/water_reflection.gd")
 const COAST = preload("res://demo/tropical_harbor_3d/environment/coastal_town.gd")
+const BLOCKOUT = preload("res://demo/tropical_harbor_3d/environment/harbor_blockout.gd")
+const ROUTE = preload("res://demo/tropical_harbor_3d/fleet/harbor_route.gd")
 
 var state := STATE.new()
 var environment: RefCounted
@@ -26,9 +28,20 @@ var started := 0
 var rng := RandomNumberGenerator.new()
 var inspection_dragging := false
 var coast: RefCounted
+var blockout: Node3D
+var arrival_transition := false
+var arrival_elapsed := 0.0
+var arrival_cover: ColorRect
+var pending_berths: Array[int] = []
+var sailing_ships: Array[int] = []
+var sailing_targets: Dictionary = {}
+var shot_hold := 0.0
+var local_settling := false
 
 
 func _ready() -> void:
+    var args := OS.get_cmdline_user_args()
+    state.scenic_routes = not ("--fleet-capture" in args or "--art-preview" in args) or "--local-voyage-review" in args or "--layout-review" in args or "--shipyard-review" in args
     environment = ENVIRONMENT.new(self)
     environment.water_shader = WATER
     environment._build_environment()
@@ -40,14 +53,27 @@ func _ready() -> void:
     environment._build_contact_stones()
     var pier := PIER.new()
     pier.build(self, environment)
+    if state.scenic_routes:
+        get_node("TimberPiers/WorkingPier").position.z += 55.0
+        get_node("TimberPiers/BrokenPier").position.z += 55.0
+        for i in pier.contacts.size():
+            if pier.contacts[i].y > 0:
+                pier.contacts[i].y += 55.0
     coast = COAST.new()
     coast.build(self)
+    blockout = BLOCKOUT.new()
+    blockout.name = "HarborBlockout"
+    add_child(blockout)
+    blockout.build(state.scenic_routes)
     var contacts: PackedVector4Array = environment.contact_objects.duplicate()
     contacts.append_array(pier.contacts)
     environment.set_contacts(contacts, 32)
     camera = CAMERA.new()
     camera.name = "FleetCamera"
     add_child(camera)
+    # Historical capture fixtures retain their established camera, while F5
+    # and the new composition review exercise the proposed player view.
+    camera.local_harbor = state.scenic_routes
     camera.ground_sample = Callable(self, "inspection_ground")
     camera.harbor_points = coast.landmarks
     reflection = REFLECTION.new()
@@ -55,16 +81,25 @@ func _ready() -> void:
     reflection.setup(self, camera)
     reflection.set_enabled(true)
     rng.randomize()
-    state.start_voyage(["jade", "silk", "ginseng"], [0, 4, 5])
+    state.start_voyage(["jade", "silk", "ginseng"], [3, 3, 3])
     rebuild_ships()
     var piers := get_node_or_null("TimberPiers")
     if piers != null:
         reflection.add_subject(piers)
     reflection.add_subject(coast.root)
+    reflection.add_subject(blockout)
     environment.water_material.set_shader_parameter("reflection_tex", reflection.texture())
     ui = UI.new()
     add_child(ui)
     ui.build(self)
+    var transition_layer := CanvasLayer.new()
+    transition_layer.layer = 20
+    add_child(transition_layer)
+    arrival_cover = ColorRect.new()
+    arrival_cover.color = Color(0.025, .045, .055, 0)
+    arrival_cover.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+    arrival_cover.mouse_filter = Control.MOUSE_FILTER_IGNORE
+    transition_layer.add_child(arrival_cover)
     for arg in OS.get_cmdline_user_args():
         if arg == "--art-preview":
             var art := load("res://demo/tropical_harbor_3d/tools/art_preview.gd").new() as Node
@@ -91,10 +126,17 @@ func configure_art_shadows() -> void:
 
 
 func rebuild_ships() -> void:
+    local_settling = false
+    sailing_ships.clear()
+    sailing_targets.clear()
+    shot_hold = 0
     selected = -1
     inspection_dragging = false
     camera.leave_inspection()
     camera.focus_ship = -1
+    camera.shot_indices.clear()
+    camera.area_progress = -1
+    camera.auto_subject = 1
     for ship in ships:
         remove_child(ship)
         ship.queue_free()
@@ -105,6 +147,12 @@ func rebuild_ships() -> void:
         ship.build(data)
         ship.wave_sample = Callable(environment, "wave_height")
         ship.position = state.world_position(data)
+        if state.scenic_routes:
+            if not data.arrived:
+                ship.place_on_route(data.progress)
+            else:
+                ship.scenic_route = true
+                ship.route_progress = 14.5
         ships.append(ship)
         if reflection != null:
             reflection.add_subject(ship)
@@ -130,6 +178,10 @@ func roll_dice() -> void:
     var dice := [rng.randi_range(1, 6), rng.randi_range(1, 6), rng.randi_range(1, 6)]
     if not state.roll(dice).is_empty():
         return
+    if state.scenic_routes:
+        _start_parallel_sailing()
+        ui.refresh()
+        return
     for i in 3:
         var target: Vector3 = state.world_position(state.ships[i])
         if Vector3(ships[i].position.x, 0, ships[i].position.z).distance_to(target) > 0.01:
@@ -137,9 +189,66 @@ func roll_dice() -> void:
     ui.refresh()
 
 
+func _start_parallel_sailing() -> void:
+    var subject: int = camera.focus_ship if camera.focus_ship >= 0 else camera.auto_subject
+    overview()
+    sailing_ships.clear()
+    sailing_targets.clear()
+    for i in 3:
+        if ships[i].route_progress >= 14.0:
+            continue
+        var target: float = ROUTE.ENTRY if state.ships[i].arrived else state.ships[i].progress
+        if is_equal_approx(target, ships[i].route_progress):
+            continue
+        sailing_ships.append(i)
+        sailing_targets[i] = target
+    if sailing_ships.is_empty():
+        return
+    # Keep the viewed area for this roll. If its ship is already berthed,
+    # choose the middle-progress active ship before any movement starts.
+    if not subject in sailing_ships:
+        var ordered := sailing_ships.duplicate()
+        ordered.sort_custom(func(a, b): return ships[a].route_progress < ships[b].route_progress)
+        subject = ordered[ordered.size() / 2]
+    camera.auto_subject = subject
+    camera.shot_indices.assign([subject])
+    camera.area_progress = -1
+    camera_override = false
+    shot_hold = .6
+
+
+func _advance_local_sailing(delta: float) -> void:
+    if sailing_ships.is_empty():
+        return
+    if shot_hold > 0:
+        shot_hold = maxf(.001, shot_hold - delta)
+        if shot_hold <= .001 and camera.settled:
+            shot_hold = 0
+            var max_steps := 0.0
+            for i in sailing_ships:
+                max_steps = maxf(max_steps, absf(sailing_targets[i] - ships[i].route_progress))
+            var duration := 1.6 + max_steps * .45
+            # Shared interval: different dice change distance and speed,
+            # never the order in which boats are shown moving.
+            for i in sailing_ships:
+                ships[i].sail_route(sailing_targets[i], duration)
+                if state.ships[i].arrived:
+                    pending_berths.append(i)
+        return
+    for i in sailing_ships:
+        if ships[i].route_travelling:
+            return
+    sailing_ships.clear()
+    camera.shot_indices.clear()
+    local_settling = pending_berths.is_empty()
+
+
 func select_ship(index: int) -> void:
+    if state.scenic_routes and is_moving():
+        return
     selected = index
     camera.focus_ship = index
+    camera.area_progress = -1
     camera_override = false
     ui.selected_slot = -1
     ui.info = false
@@ -151,10 +260,13 @@ func select_ship(index: int) -> void:
 
 
 func overview() -> void:
+    if camera.local_harbor and is_moving():
+        return
     inspection_dragging = false
     camera.leave_inspection()
     selected = -1
     camera.focus_ship = -1
+    camera.area_progress = -1
     camera_override = false
     ui.selected_slot = -1
     ui.info = false
@@ -164,11 +276,32 @@ func overview() -> void:
 
 
 func toggle_inspection() -> void:
+    if camera.local_harbor:
+        if camera.focus_ship >= 0:
+            overview()
+        else:
+            select_ship(maxi(selected, 0))
+        return
     if camera.inspecting:
         overview()
         return
     camera.inspect_ship(maxi(selected, 0))
     select_ship(camera.focus_ship)
+
+
+func view_shipyard() -> void:
+    if not state.scenic_routes or is_moving():
+        return
+    var eye := Vector3(-5.5, 13, 51)
+    camera.leave_inspection()
+    camera_override = true
+    camera.projection = Camera3D.PROJECTION_PERSPECTIVE
+    camera.fov = 42
+    camera.position = eye
+    camera.look_at(blockout.get_node("RepairYard").global_position + Vector3(0, 2.5, 0))
+    ui.selected_slot = -1
+    ui.info = false
+    ui.refresh()
 
 
 func inspection_ground(at: Vector3) -> float:
@@ -191,6 +324,9 @@ func _input(event: InputEvent) -> void:
 
 
 func view_piers() -> void:
+    if camera.local_harbor:
+        view_local_area(5.6)
+        return
     overview()
     camera_override = true
     camera.position = Vector3(15, 12.55, 23.4)
@@ -199,6 +335,9 @@ func view_piers() -> void:
 
 
 func view_landing() -> void:
+    if camera.local_harbor:
+        view_local_area(14.5)
+        return
     overview()
     camera_override = true
     camera.position = STATE.LAYOUT.TERMINAL_ORIGIN + Vector3(-17, 19, 27)
@@ -213,12 +352,25 @@ func view_landing() -> void:
     camera.frame_points(points, 0, true)
 
 
+func view_local_area(progress: float) -> void:
+    if is_moving():
+        return
+    overview()
+    camera.area_progress = progress
+
+
 func toggle_pause() -> void:
     paused = not paused
     ui.refresh()
 
 
 func is_moving() -> bool:
+    if local_settling:
+        return true
+    if not sailing_ships.is_empty():
+        return true
+    if arrival_transition or not pending_berths.is_empty():
+        return true
     for ship in ships:
         if not ship.waypoints.is_empty():
             return true
@@ -245,8 +397,14 @@ func _unhandled_input(event: InputEvent) -> void:
             KEY_P: view_piers()
             KEY_H: view_landing()
             KEY_C: toggle_inspection()
+            KEY_L: blockout.set_labels(not blockout.labels_visible)
+            KEY_J:
+                view_shipyard()
+            KEY_B:
+                if not state.scenic_routes:
+                    blockout.set_western_land(not blockout.western_land)
             KEY_1, KEY_2, KEY_3:
-                if camera.inspecting:
+                if camera.inspecting or camera.local_harbor:
                     select_ship(event.keycode - KEY_1)
             KEY_SPACE: toggle_pause()
             KEY_ESCAPE:
@@ -299,9 +457,46 @@ func _process(delta: float) -> void:
             time += delta
             for ship in ships:
                 ship.advance(delta, time)
+            if camera.local_harbor:
+                _advance_local_sailing(delta)
+                _advance_arrival_transition(delta)
         if not camera_override:
             camera.update_view(ships, delta)
+            if local_settling and camera.settled:
+                local_settling = false
     sync_water()
     if ui != null:
-        coast.set_observing(camera.inspecting)
+        coast.set_observing(camera.inspecting or camera.local_harbor)
         ui.refresh()
+
+
+func _advance_arrival_transition(delta: float) -> void:
+    if pending_berths.is_empty():
+        return
+    if not arrival_transition:
+        if not sailing_ships.is_empty():
+            return
+        for ship in ships:
+            if not ship.waypoints.is_empty():
+                return
+        arrival_transition = true
+        arrival_elapsed = 0.0
+    var before := arrival_elapsed
+    # A stalled frame must not skip the opaque interval and expose a berth jump.
+    arrival_elapsed += minf(delta, .1)
+    var alpha := clampf(arrival_elapsed / .25, 0, 1) if arrival_elapsed < .45 else clampf((.75 - arrival_elapsed) / .30, 0, 1)
+    arrival_cover.color.a = alpha
+    if before < .3 and arrival_elapsed >= .3:
+        for i in pending_berths:
+            ships[i].position = state.world_position(state.ships[i])
+            ships[i].rotation = Vector3.ZERO
+            ships[i].wake = 0.0
+            ships[i].route_progress = 14.5
+        camera.auto_subject = pending_berths[-1]
+        if not camera_override:
+            camera.update_view(ships, 0, true)
+    if arrival_elapsed >= .75:
+        pending_berths.clear()
+        arrival_transition = false
+        arrival_cover.color.a = 0.0
+        local_settling = true

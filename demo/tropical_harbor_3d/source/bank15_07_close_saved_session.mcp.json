@@ -1,0 +1,3 @@
+{
+  "code": "import bpy\nassert not bpy.data.is_dirty, 'Unsaved changes remain'\ncraft=bpy.data.collections['Shipyard_COMBINED_Craft']\nassert craft.get('bank15_masonry') and craft.get('bank15_shore') and craft.get('bank15_lumber_beds')\nprint('B15_SAVED_SESSION_CLOSING',bpy.data.filepath)\nbpy.app.timers.register(lambda: bpy.ops.wm.quit_blender(), first_interval=1.0)\n"
+}

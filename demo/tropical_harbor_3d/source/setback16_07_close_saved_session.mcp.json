@@ -1,0 +1,3 @@
+{
+  "code": "import bpy,json,hashlib\nfrom pathlib import Path\nassert not bpy.data.is_dirty\nroot=Path(bpy.data.filepath).parents[1];cap=root/'captures/shipyard_setback_20261116'\nmanifest=json.loads((cap/'delivery_manifest.json').read_text(encoding='utf8'))\nfor row in manifest['files'][:2]:\n p=Path(row['path']);p=p if p.is_absolute() else root.parents[1]/p\n assert hashlib.sha256(p.read_bytes()).hexdigest()==row['sha256']\nprint('SETBACK16_FINAL_SAVED; source and GLB match delivery; closing owned isolated session')\nbpy.app.timers.register(lambda:bpy.ops.wm.quit_blender(),first_interval=1.0)\n"
+}

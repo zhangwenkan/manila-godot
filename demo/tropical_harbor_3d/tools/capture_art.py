@@ -1,4 +1,7 @@
-"""Short, bounded art-only preview; does not exercise gameplay or invoke Blender."""
+"""Bounded main-scene art capture; add --background for an invisible Windows desktop.
+
+Layout review also checks camera/arrival behavior. Visual acceptance is separate.
+"""
 from datetime import datetime
 from pathlib import Path
 import json
@@ -7,6 +10,7 @@ import re
 import shutil
 import subprocess
 import sys
+from capture_process import run_capture
 
 sys.stdout.reconfigure(encoding='utf-8', errors='replace')
 root = Path(__file__).resolve().parents[1]
@@ -16,12 +20,23 @@ candidates = [os.environ.get('GODOT_EXE'), shutil.which('godot'),
 engine = next((p for p in candidates if p and Path(p).is_file()), None)
 if not engine:
     sys.exit('Godot not found. Set GODOT_EXE.')
+background = '--background' in sys.argv
+if background:
+    sys.argv.remove('--background')
 mode = sys.argv[1] if len(sys.argv) > 1 else 'preview'
 output = root / 'captures' / ('art_' + datetime.now().strftime('%Y%m%d_%H%M%S_%f'))
 output.mkdir(parents=True, exist_ok=False)
 user = ['--art-preview', '--art-output=' + output.as_posix()]
 if mode == 'diagnose':
     user.append('--art-diagnose=hull')
+elif mode in ('shipyard', 'shipyard-sample', 'shipyard-compare', 'environment'):
+    user.append('--shipyard-review')
+    if mode == 'environment':
+        user.append('--coastal-environment-review')
+    if mode == 'shipyard-compare':
+        user.append('--shipyard-compare')
+    if mode == 'shipyard-sample':
+        user.append('--shipyard-sample')
 elif mode == 'coast':
     user.append('--coast-review')
 elif mode == 'coast-light':
@@ -32,6 +47,14 @@ elif mode in ('terminal', 'terminal-structure'):
     user.extend(['--coast-review', '--terminal-review'])
     if mode == 'terminal-structure':
         user.append('--terminal-structure')
+elif mode in ('layout', 'layout-motion', 'voyage', 'voyage-motion', 'voyage-frames', 'composition'):
+    user.append('--local-voyage-review')
+    if mode == 'composition':
+        user.append('--coastal-composition-study')
+    if mode == 'voyage-frames':
+        user.append('--local-voyage-frames')
+    if mode.endswith('-motion'):
+        user.append('--local-voyage-motion')
 elif mode == 'terminal-life':
     user.append('--terminal-life-review')
 elif mode == 'terminal-life-perf':
@@ -57,17 +80,14 @@ if resolution not in ('1600x900', '2560x1440'):
 commands = [
     ('import', [engine, '--headless', '--path', str(project), '--editor', '--import', '--quit'], 120),
     ('preview', [engine, '--path', str(project), '--resolution', resolution,
-                 '--'] + user, 70),
+                 '--'] + user, 110 if '--local-voyage-review' in user else 70),
 ]
 for label, command, timeout in commands:
     log = output / (label + '.log')
     with log.open('x', encoding='utf-8') as stream:
-        process = subprocess.Popen(command, stdout=stream, stderr=subprocess.STDOUT)
         try:
-            code = process.wait(timeout=timeout)
+            code = run_capture(command, stream, timeout, background=background)
         except subprocess.TimeoutExpired:
-            process.kill()
-            process.wait(timeout=10)
             sys.exit(f'ART_PREVIEW_TIMEOUT: {label}; {log}')
     text = log.read_text(encoding='utf-8', errors='replace')
     if code != 0 or re.search(r'\bERROR\b|SCRIPT ERROR', text):
@@ -76,4 +96,8 @@ for label, command, timeout in commands:
 result = json.loads((output / 'art_result.json').read_text(encoding='utf-8'))
 print('ART_PREVIEW_SAVED', len(result['frames']), 'images')
 print('OUTPUT', output)
-print('Art review only. No gameplay regression or visual acceptance claimed.')
+if mode in ('layout', 'voyage'):
+    print('LOCAL_NAVIGATION_CHECKS', result.get('checks', 0))
+    print('This checks the camera/navigation prototype, not the complete Manila rules or visual acceptance.')
+else:
+    print('Art review only. No gameplay regression or visual acceptance claimed.')

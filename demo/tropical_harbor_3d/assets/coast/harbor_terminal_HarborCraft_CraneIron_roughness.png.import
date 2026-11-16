@@ -3,9 +3,10 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://hak8wng0hobc"
-path="res://.godot/imported/harbor_terminal_HarborCraft_CraneIron_roughness.png-588b4ba1a9f948c6dfff9ca5493f7bec.ctex"
+path.bptc="res://.godot/imported/harbor_terminal_HarborCraft_CraneIron_roughness.png-588b4ba1a9f948c6dfff9ca5493f7bec.bptc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
 }
 generator_parameters={
 "md5": "45fcecf7c416795fc3cbdc41e55a4d04"
@@ -14,12 +15,12 @@ generator_parameters={
 [deps]
 
 source_file="res://demo/tropical_harbor_3d/assets/coast/harbor_terminal_HarborCraft_CraneIron_roughness.png"
-dest_files=["res://.godot/imported/harbor_terminal_HarborCraft_CraneIron_roughness.png-588b4ba1a9f948c6dfff9ca5493f7bec.ctex"]
+dest_files=["res://.godot/imported/harbor_terminal_HarborCraft_CraneIron_roughness.png-588b4ba1a9f948c6dfff9ca5493f7bec.bptc.ctex"]
 
 [params]
 
-compress/mode=0
-compress/high_quality=false
+compress/mode=2
+compress/high_quality=true
 compress/lossy_quality=0.7
 compress/uastc_level=0
 compress/rdo_quality_loss=0.0

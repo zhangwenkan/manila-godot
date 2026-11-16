@@ -1,0 +1,3 @@
+{
+  "code": "import bpy\nexec(\"\\nassert not bpy.data.is_dirty\\nbad=[name for name,value in before.items() if bpy.data.objects.get(name) is None or digest(bpy.data.objects[name])!=value]\\nassert not bad,bad[:15]\\nreport={'original_mesh_objects':len(before),'unchanged_objects':len(before),'unexpected_changes':bad,'new_craft_objects':len(craft.objects),'source_saved':not bpy.data.is_dirty}\\n(cap/'source_audit.json').write_text(json.dumps(report,indent=2),encoding='utf8');print('ENV16_ORIGINALS_UNCHANGED',len(before))\\n\",bpy.app.driver_namespace['env16'])"
+}

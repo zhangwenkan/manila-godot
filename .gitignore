@@ -2,6 +2,12 @@
 .godot/
 /android/
 
+# Blender editing sources and automatic backups stay local.
+# Runtime scenes use exported GLB assets; Blender import is disabled.
+*.blend
+*.blend[0-9]*
+*.blend.import
+
 # Project-local tool environments
 /tools/agent_sprite_forge/.venv/
 /tools/agent_sprite_forge/**/__pycache__/

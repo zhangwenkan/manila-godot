@@ -1,0 +1,1 @@
+{"code":"import bpy,json\nc=bpy.data.collections['Shipyard_COMBINED_Craft']\nprint(json.dumps({'pass_flag':c.get('stone15_split_faces'),'processed':[o.name for o in c.objects if o.get('stone15_split_face')],'first_bearing':[(o.name,len(o.data.vertices),len(o.data.polygons)) for o in c.objects if o.name=='M14 bearing course 0 0 0'],'disk_dirty':bpy.data.is_dirty}))\n"}

@@ -3,9 +3,10 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://btlh07uilciay"
-path="res://.godot/imported/harbor_terminal_HarborCraft_Terminal_Stone_roughness.png-e0728907b99eefe0772124584f1d700d.ctex"
+path.bptc="res://.godot/imported/harbor_terminal_HarborCraft_Terminal_Stone_roughness.png-e0728907b99eefe0772124584f1d700d.bptc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
 }
 generator_parameters={
 "md5": "846d5248446d4fd194b2c2af5087a3cf"
@@ -14,12 +15,12 @@ generator_parameters={
 [deps]
 
 source_file="res://demo/tropical_harbor_3d/assets/coast/harbor_terminal_HarborCraft_Terminal_Stone_roughness.png"
-dest_files=["res://.godot/imported/harbor_terminal_HarborCraft_Terminal_Stone_roughness.png-e0728907b99eefe0772124584f1d700d.ctex"]
+dest_files=["res://.godot/imported/harbor_terminal_HarborCraft_Terminal_Stone_roughness.png-e0728907b99eefe0772124584f1d700d.bptc.ctex"]
 
 [params]
 
-compress/mode=0
-compress/high_quality=false
+compress/mode=2
+compress/high_quality=true
 compress/lossy_quality=0.7
 compress/uastc_level=0
 compress/rdo_quality_loss=0.0

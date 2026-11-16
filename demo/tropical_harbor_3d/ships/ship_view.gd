@@ -1,5 +1,15 @@
 extends Node3D
 
+const ROUTE = preload("res://demo/tropical_harbor_3d/fleet/harbor_route.gd")
+var scenic_route := false
+var route_progress := 0.0
+var route_from := 0.0
+var route_to := 0.0
+var route_elapsed := 0.0
+var route_duration := 1.0
+var route_travelling := false
+
+
 const GEOMETRY = preload("res://demo/tropical_harbor_3d/ships/cargo_factory.gd")
 const STATE = preload("res://demo/tropical_harbor_3d/fleet/fleet_state.gd")
 const BOAT = preload("res://demo/tropical_harbor_3d/assets/fleet_boat_mcp.glb")
@@ -27,6 +37,39 @@ var hull_area: Area3D
 var cargo_root: Node3D
 var wave_sample: Callable
 
+
+func place_on_route(progress: float) -> void:
+    scenic_route = true
+    route_progress = progress
+    route_travelling = false
+    waypoints.clear()
+    position = ROUTE.point(ship_id, progress)
+    rotation.y = ROUTE.heading(ship_id, progress)
+
+
+func sail_route(progress: float, duration: float) -> void:
+    route_from = route_progress
+    route_to = progress
+    route_elapsed = 0.0
+    route_duration = duration
+    route_travelling = not is_equal_approx(route_from, route_to)
+    if route_travelling:
+        waypoints.assign([ROUTE.point(ship_id, progress)])
+
+
+func _advance_route(delta: float, time_: float) -> void:
+    moving = route_travelling
+    if route_travelling:
+        route_elapsed = minf(route_elapsed + delta, route_duration)
+        var phase := smoothstep(0, 1, route_elapsed / route_duration)
+        route_progress = lerpf(route_from, route_to, phase)
+        position = ROUTE.point(ship_id, route_progress)
+        rotation.y = ROUTE.heading(ship_id, route_progress)
+        if route_elapsed >= route_duration:
+            route_travelling = false
+            waypoints.clear()
+    wake = move_toward(wake, 1.0 if route_travelling else 0.0, delta * 1.4)
+    _float_on_water(time_)
 
 func build(data: Dictionary) -> void:
     ship_id = data.ship_id
@@ -142,6 +185,9 @@ func travel_to(target: Vector3, arrived: bool) -> void:
 
 
 func advance(delta: float, time_: float) -> void:
+    if scenic_route:
+        _advance_route(delta, time_)
+        return
     moving = not waypoints.is_empty()
     var wake_target := 0.0
     if moving:
@@ -200,12 +246,16 @@ func _tune_boat_wood(root: Node) -> void:
             if not tuned.has(src):
                 var wood := (src as StandardMaterial3D).duplicate() as StandardMaterial3D
                 wood.vertex_color_use_as_albedo = false
-                wood.metallic = 0.0
+                var authored_surface := src.resource_name.begins_with("SP13_")
+                if not authored_surface:
+                    wood.metallic = 0.0
                 # Authored roughness maps contain absolute local surface values.
                 wood.roughness = 1.0 if wood.roughness_texture != null else 0.90
-                wood.metallic_specular = 0.2
+                if not authored_surface:
+                    wood.metallic_specular = 0.2
                 wood.texture_filter = BaseMaterial3D.TEXTURE_FILTER_LINEAR_WITH_MIPMAPS_ANISOTROPIC
-                wood.albedo_color = Color.WHITE
+                if not authored_surface:
+                    wood.albedo_color = Color.WHITE
                 tuned[src] = wood
             mesh.set_surface_override_material(surf, tuned[src])
 

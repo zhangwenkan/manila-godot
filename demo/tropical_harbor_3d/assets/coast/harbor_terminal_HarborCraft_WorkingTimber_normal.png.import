@@ -3,9 +3,10 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ch530irgatwjb"
-path="res://.godot/imported/harbor_terminal_HarborCraft_WorkingTimber_normal.png-4efaa603d36b23889965984fd20b3949.ctex"
+path.bptc="res://.godot/imported/harbor_terminal_HarborCraft_WorkingTimber_normal.png-4efaa603d36b23889965984fd20b3949.bptc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
 }
 generator_parameters={
 "md5": "005ca125a5688bc596b0dc91982cc1f9"
@@ -14,17 +15,17 @@ generator_parameters={
 [deps]
 
 source_file="res://demo/tropical_harbor_3d/assets/coast/harbor_terminal_HarborCraft_WorkingTimber_normal.png"
-dest_files=["res://.godot/imported/harbor_terminal_HarborCraft_WorkingTimber_normal.png-4efaa603d36b23889965984fd20b3949.ctex"]
+dest_files=["res://.godot/imported/harbor_terminal_HarborCraft_WorkingTimber_normal.png-4efaa603d36b23889965984fd20b3949.bptc.ctex"]
 
 [params]
 
-compress/mode=0
-compress/high_quality=false
+compress/mode=2
+compress/high_quality=true
 compress/lossy_quality=0.7
 compress/uastc_level=0
 compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
-compress/normal_map=0
+compress/normal_map=1
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1

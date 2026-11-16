@@ -3,9 +3,10 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dpu8gtkm350ok"
-path="res://.godot/imported/harbor_terminal_HarborCraft_SeaWornSlate_roughness.png-6958307bc8ec25cc2e0904eff1c4f903.ctex"
+path.bptc="res://.godot/imported/harbor_terminal_HarborCraft_SeaWornSlate_roughness.png-6958307bc8ec25cc2e0904eff1c4f903.bptc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
 }
 generator_parameters={
 "md5": "5e0a8183dfff4d80f363277dedbe17ec"
@@ -14,12 +15,12 @@ generator_parameters={
 [deps]
 
 source_file="res://demo/tropical_harbor_3d/assets/coast/harbor_terminal_HarborCraft_SeaWornSlate_roughness.png"
-dest_files=["res://.godot/imported/harbor_terminal_HarborCraft_SeaWornSlate_roughness.png-6958307bc8ec25cc2e0904eff1c4f903.ctex"]
+dest_files=["res://.godot/imported/harbor_terminal_HarborCraft_SeaWornSlate_roughness.png-6958307bc8ec25cc2e0904eff1c4f903.bptc.ctex"]
 
 [params]
 
-compress/mode=0
-compress/high_quality=false
+compress/mode=2
+compress/high_quality=true
 compress/lossy_quality=0.7
 compress/uastc_level=0
 compress/rdo_quality_loss=0.0

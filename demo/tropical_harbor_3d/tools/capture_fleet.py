@@ -8,12 +8,14 @@ import re
 import shutil
 import subprocess
 import sys
+from capture_process import run_capture
 
 sys.stdout.reconfigure(encoding='utf-8', errors='replace')
 ROOT = Path(__file__).resolve().parents[1]
 PROJECT = ROOT.parents[1]
 parser = ArgumentParser(description=__doc__)
 parser.add_argument('--resolution', default='1600x900', choices=('1600x900', '1200x675'))
+parser.add_argument('--background', action='store_true', help='Render on an invisible Windows desktop without activating the user desktop')
 args = parser.parse_args()
 candidates = [os.environ.get('GODOT_EXE'), shutil.which('godot'),
               str(Path.home() / 'Desktop/Godot_v4.6.1-stable_win64.exe')]
@@ -30,12 +32,9 @@ if not ignore.exists():
 command = [str(engine), '--path', str(PROJECT), '--resolution', args.resolution,
            '--', '--fleet-capture', '--output=' + output.as_posix()]
 with log.open('x', encoding='utf-8') as stream:
-    process = subprocess.Popen(command, stdout=stream, stderr=subprocess.STDOUT)
     try:
-        code = process.wait(timeout=180)
+        code = run_capture(command, stream, 180, background=args.background)
     except subprocess.TimeoutExpired:
-        process.kill()
-        process.wait(timeout=10)
         sys.exit(f'FLEET_FAILED: external watchdog; log {log}')
 text = log.read_text(encoding='utf-8', errors='replace')
 print(text)

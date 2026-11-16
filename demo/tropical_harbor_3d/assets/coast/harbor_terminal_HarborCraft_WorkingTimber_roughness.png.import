@@ -3,9 +3,10 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cv6ijiwhvh702"
-path="res://.godot/imported/harbor_terminal_HarborCraft_WorkingTimber_roughness.png-0a1cfa880cf7348779b2b41aa742925b.ctex"
+path.bptc="res://.godot/imported/harbor_terminal_HarborCraft_WorkingTimber_roughness.png-0a1cfa880cf7348779b2b41aa742925b.bptc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
 }
 generator_parameters={
 "md5": "bcfb4b1092cf105fd7452b4f5dfcfe17"
@@ -14,12 +15,12 @@ generator_parameters={
 [deps]
 
 source_file="res://demo/tropical_harbor_3d/assets/coast/harbor_terminal_HarborCraft_WorkingTimber_roughness.png"
-dest_files=["res://.godot/imported/harbor_terminal_HarborCraft_WorkingTimber_roughness.png-0a1cfa880cf7348779b2b41aa742925b.ctex"]
+dest_files=["res://.godot/imported/harbor_terminal_HarborCraft_WorkingTimber_roughness.png-0a1cfa880cf7348779b2b41aa742925b.bptc.ctex"]
 
 [params]
 
-compress/mode=0
-compress/high_quality=false
+compress/mode=2
+compress/high_quality=true
 compress/lossy_quality=0.7
 compress/uastc_level=0
 compress/rdo_quality_loss=0.0

@@ -1,0 +1,1 @@
+{"code":"import bpy,json\nc=bpy.data.collections['Shipyard_COMBINED_Export']\nprint(json.dumps({'export':[{'name':o.name,'materials':[m.name if m else None for m in o.data.materials],'slots':[s.material.name if s.material else None for s in o.material_slots]} for o in c.objects],'selected':len(bpy.context.selected_objects),'materialcount':len(bpy.data.materials)}))\n"}

@@ -8,6 +8,7 @@ const CARGO := {
 }
 const PLAYER_COLORS := [Color("d67558"), Color("5b91c0"), Color("d4b758")]
 const LAYOUT = preload("res://demo/tropical_harbor_3d/environment/harbor_layout.gd")
+const ROUTE = preload("res://demo/tropical_harbor_3d/fleet/harbor_route.gd")
 const LANES := LAYOUT.LANES
 const START_Z := LAYOUT.START_Z
 const STEP := LAYOUT.STEP
@@ -18,6 +19,7 @@ var current_player := 0
 var rolls := 0
 var voyage := 0
 var next_berth := 0
+var scenic_routes := false
 
 
 func _init() -> void:
@@ -115,4 +117,6 @@ func roll(dice: Array) -> String:
 func world_position(ship: Dictionary) -> Vector3:
     if ship.arrived:
         return Vector3(LAYOUT.BERTH_X[ship.berth], 0.0, LAYOUT.BERTH_Z)
+    if scenic_routes:
+        return ROUTE.point(ship.ship_id, ship.progress)
     return Vector3(LANES[ship.ship_id], 0.0, START_Z - ship.progress * STEP)

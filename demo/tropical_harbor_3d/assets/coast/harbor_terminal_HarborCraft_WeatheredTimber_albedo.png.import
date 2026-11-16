@@ -3,9 +3,10 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ce725xmt41x6i"
-path="res://.godot/imported/harbor_terminal_HarborCraft_WeatheredTimber_albedo.png-bd211c6129b274d7426a53f603d0ee32.ctex"
+path.bptc="res://.godot/imported/harbor_terminal_HarborCraft_WeatheredTimber_albedo.png-bd211c6129b274d7426a53f603d0ee32.bptc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
 }
 generator_parameters={
 "md5": "788a5e4e55595686dcef4b1326cc29f8"
@@ -14,12 +15,12 @@ generator_parameters={
 [deps]
 
 source_file="res://demo/tropical_harbor_3d/assets/coast/harbor_terminal_HarborCraft_WeatheredTimber_albedo.png"
-dest_files=["res://.godot/imported/harbor_terminal_HarborCraft_WeatheredTimber_albedo.png-bd211c6129b274d7426a53f603d0ee32.ctex"]
+dest_files=["res://.godot/imported/harbor_terminal_HarborCraft_WeatheredTimber_albedo.png-bd211c6129b274d7426a53f603d0ee32.bptc.ctex"]
 
 [params]
 
-compress/mode=0
-compress/high_quality=false
+compress/mode=2
+compress/high_quality=true
 compress/lossy_quality=0.7
 compress/uastc_level=0
 compress/rdo_quality_loss=0.0

@@ -93,7 +93,15 @@ func _materials(instance: Node) -> void:
                         material.metallic_specular = 0.16
                     "HarborCraft_WorkingTimber":
                         material.metallic_specular = 0.20
-                    "HarborCraft_CraneForgedIron", "HarborCraft_AnchorWeatheredIron":
+                    "HarborCraft_T13_ApronTimber", "HarborCraft_T13_EntryWood":
+                        material.vertex_color_use_as_albedo = true
+                        material.metallic_specular = 0.16
+                    "HarborCraft_M13_SecondaryTimber":
+                        material.metallic_specular = 0.18
+                    "HarborCraft_M13_QuayMasonry", "HarborCraft_M13_QuayPaving":
+                        material.vertex_color_use_as_albedo = true
+                        material.metallic_specular = 0.22
+                    "HarborCraft_CraneForgedIron", "HarborCraft_AnchorWeatheredIron", "HarborCraft_T13_PostIron":
                         material.metallic = 0.45
                         material.metallic_specular = 0.32
                     "HarborCraft_LanternAgedBrass", "HarborCraft_LanternBurner":

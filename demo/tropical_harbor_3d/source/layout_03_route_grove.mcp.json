@@ -1,0 +1,4 @@
+{
+  "tool": "execute_blender_code",
+  "code": "import bpy\nns=bpy.app.driver_namespace['harbor_layout_study']\nexec(r'''\nassert 'Layout_route_grove' not in bpy.data.collections\nstart('route_grove')\nfor i,(x,z,s) in enumerate([(16,69,.95),(19,64,1.2),(16,56,1.0),(18,50,1.25),(15,44,.9),(19,39,1.0),(17,24,1.2),(20,19,1.05),(18,11,.9)]):\n tree('coastal grove '+str(i),x,z,.8,s)\n# Small backshore paths connect the placeholder neighborhoods.\nfor z in [57,34,12]:\n box('backshore path '+str(z),(13,.84,z),(5,.035,8),'sand')\nexport('route_grove')\nbpy.ops.wm.save_as_mainfile(filepath=bpy.data.filepath)\nprint('LOCAL_ROUTE_GROVE_READY')\n''',ns)\n"
+}

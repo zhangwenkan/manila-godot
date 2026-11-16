@@ -1,0 +1,3 @@
+{
+  "code": "import bpy\nassert not bpy.data.is_dirty, 'Refusing to close a session with unsaved changes'\nassert bpy.data.collections['Shipyard_COMBINED_Craft'].get('stone15_split_faces')\nprint('S15_SAVED_SESSION_CLOSING',bpy.data.filepath)\nbpy.app.timers.register(lambda: bpy.ops.wm.quit_blender(), first_interval=1.0)\n"
+}
