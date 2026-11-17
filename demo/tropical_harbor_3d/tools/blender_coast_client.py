@@ -17,12 +17,15 @@ async def main():
     parser.add_argument('action', choices=['list', 'info', 'execute', 'screenshot'])
     parser.add_argument('--payload', type=Path)
     parser.add_argument('--pid', type=int, required=True)
+    parser.add_argument('--port', type=int, default=9878)
+    parser.add_argument('--expected-file', type=Path, default=EXPECTED)
+    parser.add_argument('--unsaved-file', action='store_true', help='Only for a verified fresh isolated session')
     args = parser.parse_args()
     env = dict(os.environ)
     env.pop('PYTHONHOME', None)
     env.pop('PYTHONPATH', None)
     env['BLENDER_HOST'] = '127.0.0.1'
-    env['BLENDER_PORT'] = '9878'
+    env['BLENDER_PORT'] = str(args.port)
     server = StdioServerParameters(command='D:/一些好玩的例子/blender-mcp/.venv/Scripts/python.exe',
                                   args=['-m', 'blender_mcp.server'], env=env)
     async with stdio_client(server) as (reader, writer):
@@ -34,7 +37,8 @@ async def main():
                 return
             guard = ('import bpy, os\nfrom pathlib import Path\n'
                      f'assert os.getpid() == {args.pid}, "Unexpected Blender process"\n'
-                     f'assert Path(bpy.data.filepath).resolve() == Path({str(EXPECTED)!r}).resolve(), "Unexpected Blender file"\n')
+                     + ('assert bpy.data.filepath == "", "Expected a fresh unsaved file"\n' if args.unsaved_file else
+                        f'assert Path(bpy.data.filepath).resolve() == Path({str(args.expected_file)!r}).resolve(), "Unexpected Blender file"\n'))
             if args.action == 'info':
                 code = guard + 'print({"pid":os.getpid(),"file":bpy.data.filepath,"collections":[(c.name,len(c.objects)) for c in bpy.data.collections],"materials":[m.name for m in bpy.data.materials]})'
             else:

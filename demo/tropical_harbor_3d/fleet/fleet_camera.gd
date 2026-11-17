@@ -16,6 +16,7 @@ var orbit_distance := 11.5
 var ground_sample: Callable
 var harbor_points: Array[Vector3] = []
 var local_harbor := false
+var reference_art := false
 # Kept for the archived layout comparison harness; player poses use ROUTE.
 var local_offset := Vector3(18, 28, 36)
 var local_fov := 48.0
@@ -85,7 +86,8 @@ func _update_local_harbor(ships: Array, delta: float, snap: bool) -> void:
                         points.append(ships[j].position)
                         headings.append(ships[j].rotation.y)
                     var screen := get_viewport().get_visible_rect().size
-                    if ROUTE.fits_local_shot(points, headings, ships[primary].route_progress, screen.x / screen.y, local_fov, get_world_3d().direct_space_state):
+                    var fits := _fits_reference(points, headings, ships[primary].route_progress, screen.x / screen.y) if reference_art else ROUTE.fits_local_shot(points, headings, ships[primary].route_progress, screen.x / screen.y, local_fov, get_world_3d().direct_space_state)
+                    if fits:
                         indices.append(i)
     framed_indices.assign(indices)
     var progress: float = ships[indices[0]].route_progress
@@ -96,6 +98,9 @@ func _update_local_harbor(ships: Array, delta: float, snap: bool) -> void:
     # Favor the waterfront beyond the boat, not the landward side of a roof.
     var target := center + ROUTE.aim_offset(progress)
     var offset := ROUTE.offset(progress)
+    if reference_art:
+        target = center + Vector3(4.8, 1.0, -1.7)
+        offset = Vector3(-10.0, 17.0, 19.0)
     var desired := target + offset
     var weight := 1.0 if snap else 1.0 - exp(-delta * 5.0)
     global_position = global_position.lerp(desired, weight)
@@ -110,6 +115,26 @@ func inspect_ship(index: int) -> void:
     focus_ship = index
     projection = Camera3D.PROJECTION_PERSPECTIVE
     fov = 45.0
+
+
+func _fits_reference(points: Array, headings: Array, progress: float, aspect: float) -> bool:
+    var offset := Vector3(-10.0, 17.0, 19.0)
+    var eye := ROUTE.framing_origin(points[0], progress) + Vector3(4.8, 1.0, -1.7) + offset
+    var view_basis := Basis.looking_at(-offset.normalized())
+    var vertical := tan(deg_to_rad(local_fov) * .5)
+    for i in points.size():
+        var turn := Basis(Vector3.UP, headings[i])
+        for x in [-1.05, 1.05]:
+            for y in [-.4, 2.2]:
+                for z in [-2.55, 2.55]:
+                    var relative: Vector3 = points[i] + turn * Vector3(x, y, z) - eye
+                    var depth := -relative.dot(view_basis.z)
+                    if depth <= 0 or absf(relative.dot(view_basis.x)) > depth * vertical * aspect * .90 or absf(relative.dot(view_basis.y)) > depth * vertical * .82:
+                        return false
+        var ray := PhysicsRayQueryParameters3D.create(eye, points[i] + Vector3(0, .5, 0), 4)
+        if not get_world_3d().direct_space_state.intersect_ray(ray).is_empty():
+            return false
+    return true
 
 
 func leave_inspection() -> void:

@@ -2,6 +2,7 @@ extends Node3D
 
 const ROUTE = preload("res://demo/tropical_harbor_3d/fleet/harbor_route.gd")
 var scenic_route := false
+var reference_art := false
 var route_progress := 0.0
 var route_from := 0.0
 var route_to := 0.0
@@ -75,20 +76,24 @@ func build(data: Dictionary) -> void:
     ship_id = data.ship_id
     cargo_id = data.cargo_id
     name = "Ship%d" % ship_id
-    var hull := BOAT.instantiate()
+    var hull := (load("res://demo/tropical_harbor_3d/assets/reference/boat.glb") as PackedScene).instantiate() if reference_art else BOAT.instantiate()
     add_child(hull)
-    _tune_boat_wood(hull)
-    cargo_root = GEOMETRY.make(cargo_id)
-    cargo_root.position = Vector3(0, DECK_HEIGHT, 0)
+    if not reference_art:
+        _tune_boat_wood(hull)
+    cargo_root = (load("res://demo/tropical_harbor_3d/assets/reference/cargo_" + cargo_id + ".glb") as PackedScene).instantiate() if reference_art else GEOMETRY.make(cargo_id)
+    cargo_root.position = Vector3.ZERO if reference_art else Vector3(0, DECK_HEIGHT, 0)
     add_child(cargo_root)
     hull_area = _area(self, Vector3(0, 0.30, 0), Vector3(1.9, 0.65, 4.7), 1, -1)
     var flag_mat := StandardMaterial3D.new()
     flag_mat.albedo_color = STATE.CARGO[cargo_id].color
-    GEOMETRY.box(self, Vector3(0.14, 0.97, 1.91), Vector3(0.26, 0.16, 0.018), flag_mat)
+    if not reference_art:
+        GEOMETRY.box(self, Vector3(0.14, 0.97, 1.91), Vector3(0.26, 0.16, 0.018), flag_mat)
     for i in data.slots.size():
         var anchor := Node3D.new()
         anchor.name = "CrewAnchor%d" % i
         anchor.position = SLOT_POINTS[i]
+        if reference_art:
+            anchor.position = Vector3(-.62 if i % 2 == 0 else .62, .45, -.55 if i < 2 else .52)
         add_child(anchor)
         slot_roots.append(anchor)
         var pawn := Node3D.new()
@@ -263,7 +268,7 @@ func _tune_boat_wood(root: Node) -> void:
 func envelope_points() -> Array[Vector3]:
     var result: Array[Vector3] = []
     for x in [-1.0, 1.0]:
-        for y in [-0.35, DECK_HEIGHT + PAWN_SIZE.y + 0.05]:
+        for y in [-0.35, 2.2 if reference_art else DECK_HEIGHT + PAWN_SIZE.y + 0.05]:
             for z in [-2.5, 2.5]:
                 result.append(to_global(Vector3(x, y, z)))
     return result

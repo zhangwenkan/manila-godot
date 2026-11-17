@@ -27,7 +27,11 @@ mode = sys.argv[1] if len(sys.argv) > 1 else 'preview'
 output = root / 'captures' / ('art_' + datetime.now().strftime('%Y%m%d_%H%M%S_%f'))
 output.mkdir(parents=True, exist_ok=False)
 user = ['--art-preview', '--art-output=' + output.as_posix()]
-if mode == 'diagnose':
+if mode in ('rebuild', 'rebuild-sample'):
+    user.extend(['--reference-rebuild', '--local-voyage-review'])
+    if mode == 'rebuild-sample':
+        user.append('--reference-rebuild-sample')
+elif mode == 'diagnose':
     user.append('--art-diagnose=hull')
 elif mode in ('shipyard', 'shipyard-sample', 'shipyard-compare', 'environment'):
     user.append('--shipyard-review')
@@ -96,7 +100,7 @@ for label, command, timeout in commands:
 result = json.loads((output / 'art_result.json').read_text(encoding='utf-8'))
 print('ART_PREVIEW_SAVED', len(result['frames']), 'images')
 print('OUTPUT', output)
-if mode in ('layout', 'voyage'):
+if mode in ('layout', 'voyage', 'rebuild'):
     print('LOCAL_NAVIGATION_CHECKS', result.get('checks', 0))
     print('This checks the camera/navigation prototype, not the complete Manila rules or visual acceptance.')
 else:

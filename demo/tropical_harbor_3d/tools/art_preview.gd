@@ -28,6 +28,10 @@ func run(scene: Node3D) -> void:
     harbor.ui.visible = false
     harbor.camera_override = true
     harbor.get_window().grab_focus()
+    if "--reference-rebuild" in OS.get_cmdline_user_args():
+        var review := load("res://demo/tropical_harbor_3d/tools/reference_rebuild_review.gd").new() as RefCounted
+        await review.run(self)
+        return
     if "--shipyard-review" in OS.get_cmdline_user_args():
         var review := load("res://demo/tropical_harbor_3d/tools/shipyard_review.gd").new() as RefCounted
         await review.run(self)

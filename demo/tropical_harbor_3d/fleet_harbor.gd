@@ -37,12 +37,16 @@ var sailing_ships: Array[int] = []
 var sailing_targets: Dictionary = {}
 var shot_hold := 0.0
 var local_settling := false
+var reference_art := true
 
 
 func _ready() -> void:
     var args := OS.get_cmdline_user_args()
+    reference_art = not ("--art-preview" in args or "--fleet-capture" in args or "--fleet-demo" in args) or "--reference-rebuild" in args
     state.scenic_routes = not ("--fleet-capture" in args or "--art-preview" in args) or "--local-voyage-review" in args or "--layout-review" in args or "--shipyard-review" in args
-    environment = ENVIRONMENT.new(self)
+    if reference_art:
+        state.scenic_routes = true
+    environment = load("res://demo/tropical_harbor_3d/environment/reference_environment.gd").new(self) if reference_art else ENVIRONMENT.new(self)
     environment.water_shader = WATER
     environment._build_environment()
     if not "--art-preview" in OS.get_cmdline_user_args():
@@ -52,19 +56,26 @@ func _ready() -> void:
     environment._build_swash()
     environment._build_contact_stones()
     var pier := PIER.new()
-    pier.build(self, environment)
-    if state.scenic_routes:
+    if not reference_art:
+        pier.build(self, environment)
+    if state.scenic_routes and not reference_art:
         get_node("TimberPiers/WorkingPier").position.z += 55.0
         get_node("TimberPiers/BrokenPier").position.z += 55.0
         for i in pier.contacts.size():
             if pier.contacts[i].y > 0:
                 pier.contacts[i].y += 55.0
-    coast = COAST.new()
+    coast = load("res://demo/tropical_harbor_3d/environment/reference_coast.gd").new() if reference_art else COAST.new()
     coast.build(self)
     blockout = BLOCKOUT.new()
     blockout.name = "HarborBlockout"
     add_child(blockout)
-    blockout.build(state.scenic_routes)
+    if reference_art:
+        var yard_anchor := Node3D.new()
+        yard_anchor.name = "RepairYard"
+        yard_anchor.position = Vector3(13, 0, 34)
+        blockout.add_child(yard_anchor)
+    else:
+        blockout.build(state.scenic_routes)
     var contacts: PackedVector4Array = environment.contact_objects.duplicate()
     contacts.append_array(pier.contacts)
     environment.set_contacts(contacts, 32)
@@ -74,6 +85,7 @@ func _ready() -> void:
     # Historical capture fixtures retain their established camera, while F5
     # and the new composition review exercise the proposed player view.
     camera.local_harbor = state.scenic_routes
+    camera.reference_art = reference_art
     camera.ground_sample = Callable(self, "inspection_ground")
     camera.harbor_points = coast.landmarks
     reflection = REFLECTION.new()
@@ -144,6 +156,7 @@ func rebuild_ships() -> void:
     for data in state.ships:
         var ship := SHIP.new()
         add_child(ship)
+        ship.reference_art = reference_art
         ship.build(data)
         ship.wave_sample = Callable(environment, "wave_height")
         ship.position = state.world_position(data)
