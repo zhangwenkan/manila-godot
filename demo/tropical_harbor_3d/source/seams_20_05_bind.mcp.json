@@ -1,0 +1,1 @@
+{"code": "import bpy\nexec(\"\"\"\nm=terrain.data.materials[0];nodes=m.node_tree.nodes;vc=nodes.new('ShaderNodeVertexColor');vc.layer_name='BankBlend';m.node_tree.links.new(vc.outputs['Color'],nodes.get('Principled BSDF').inputs['Base Color'])\nprint('BANK_COLOR_BOUND')\n\"\"\",bpy.app.driver_namespace['seams20'])\n"}

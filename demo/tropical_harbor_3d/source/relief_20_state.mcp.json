@@ -1,0 +1,1 @@
+{"code": "import bpy\nexec(\"print('STATE',len(moved),len(terrain.data.vertices),bpy.data.is_dirty,len(patches) if 'patches' in globals() else 'no_turf')\",bpy.app.driver_namespace['relief20'])"}

@@ -91,7 +91,7 @@ func _update_local_harbor(ships: Array, delta: float, snap: bool) -> void:
                         indices.append(i)
     framed_indices.assign(indices)
     var progress: float = ships[indices[0]].route_progress
-    var center: Vector3 = ROUTE.framing_origin(ships[indices[0]].position, progress)
+    var center: Vector3 = _reference_origin(ships[indices[0]].position, progress) if reference_art else ROUTE.framing_origin(ships[indices[0]].position, progress)
     if area_progress >= 0:
         progress = area_progress
         center = ROUTE.center(progress) if progress < 14 else Vector3(-.85, 0, -16.6)
@@ -99,8 +99,8 @@ func _update_local_harbor(ships: Array, delta: float, snap: bool) -> void:
     var target := center + ROUTE.aim_offset(progress)
     var offset := ROUTE.offset(progress)
     if reference_art:
-        target = center + Vector3(4.8, 1.0, -1.7)
-        offset = Vector3(-10.0, 17.0, 19.0)
+        target = center + _reference_aim(progress)
+        offset = _reference_offset(progress)
     var desired := target + offset
     var weight := 1.0 if snap else 1.0 - exp(-delta * 5.0)
     global_position = global_position.lerp(desired, weight)
@@ -118,8 +118,8 @@ func inspect_ship(index: int) -> void:
 
 
 func _fits_reference(points: Array, headings: Array, progress: float, aspect: float) -> bool:
-    var offset := Vector3(-10.0, 17.0, 19.0)
-    var eye := ROUTE.framing_origin(points[0], progress) + Vector3(4.8, 1.0, -1.7) + offset
+    var offset := _reference_offset(progress)
+    var eye := _reference_origin(points[0], progress) + _reference_aim(progress) + offset
     var view_basis := Basis.looking_at(-offset.normalized())
     var vertical := tan(deg_to_rad(local_fov) * .5)
     for i in points.size():
@@ -135,6 +135,24 @@ func _fits_reference(points: Array, headings: Array, progress: float, aspect: fl
         if not get_world_3d().direct_space_state.intersect_ray(ray).is_empty():
             return false
     return true
+
+
+func _reference_aim(progress: float) -> Vector3:
+    # Opening fleet and working harbor share a composed local view. Once the
+    # approach ends, bring the nearby street into view without showing the map.
+    return Vector3(12, 2, -1).lerp(Vector3(7, 2, -1), smoothstep(3.5, 6.0, progress))
+
+
+func _reference_origin(subject: Vector3, progress: float) -> Vector3:
+    if progress >= 14.0:
+        return subject
+    # Leave room for the subject on the widest seaward lane without changing
+    # the viewing scale when the other boats are far ahead or behind.
+    return Vector3(lerpf(ROUTE.center(progress).x, subject.x, .65), subject.y, subject.z)
+
+
+func _reference_offset(progress: float) -> Vector3:
+    return Vector3(-12, 22, 22).lerp(Vector3(-20, 21, 14), smoothstep(3.5, 6.0, progress))
 
 
 func leave_inspection() -> void:

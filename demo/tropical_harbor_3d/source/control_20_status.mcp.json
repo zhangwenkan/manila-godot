@@ -1,0 +1,1 @@
+{"code": "print(bpy.data.is_dirty, [(o.name,len(o.data.vertices)) for o in bpy.data.collections['Reference_Terrain'].objects], len(bpy.data.collections))"}

@@ -1,0 +1,1 @@
+{"code": "import bpy\nexec(\"print('OUTER',[(z,d,round(old_ground(shore(z)+d,z),2),round(ground(shore(z)+d,z),2)) for z in [-70,-40,-30,-10,0,82,90,100] for d in [0,10,30,60,120]])\\n\",bpy.app.driver_namespace['redesign20'])"}

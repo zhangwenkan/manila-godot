@@ -1,0 +1,1 @@
+{"code": "import bpy\nexec(\"export_collection('Reference_Coast','coast.glb')\",bpy.app.driver_namespace['redesign20'])"}

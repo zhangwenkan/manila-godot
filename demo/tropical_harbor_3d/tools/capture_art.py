@@ -27,10 +27,14 @@ mode = sys.argv[1] if len(sys.argv) > 1 else 'preview'
 output = root / 'captures' / ('art_' + datetime.now().strftime('%Y%m%d_%H%M%S_%f'))
 output.mkdir(parents=True, exist_ok=False)
 user = ['--art-preview', '--art-output=' + output.as_posix()]
-if mode in ('rebuild', 'rebuild-sample'):
+if mode in ('rebuild', 'rebuild-sample', 'rebuild-composition', 'rebuild-clay'):
     user.extend(['--reference-rebuild', '--local-voyage-review'])
     if mode == 'rebuild-sample':
         user.append('--reference-rebuild-sample')
+    if mode == 'rebuild-composition':
+        user.append('--reference-composition-study')
+    if mode == 'rebuild-clay':
+        user.append('--reference-landform-clay')
 elif mode == 'diagnose':
     user.append('--art-diagnose=hull')
 elif mode in ('shipyard', 'shipyard-sample', 'shipyard-compare', 'environment'):

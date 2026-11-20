@@ -7,7 +7,9 @@ from pathlib import Path
 
 expected = Path(__file__).with_name('reference_harbor_mcp.blend').resolve()
 assert not bpy.data.filepath or Path(bpy.data.filepath).resolve() == expected, 'Refusing an unrelated Blender file'
-spec = importlib.util.spec_from_file_location('manila_reference_mcp', 'D:/一些好玩的例子/blender-mcp/addon.py')
+addon_path = os.environ.get('BLENDER_MCP_ADDON', 'D:/一些好玩的例子/blender-mcp/addon.py')
+assert Path(addon_path).is_file(), 'Set BLENDER_MCP_ADDON to the installed Blender MCP addon.py'
+spec = importlib.util.spec_from_file_location('manila_reference_mcp', addon_path)
 addon = importlib.util.module_from_spec(spec)
 sys.modules[spec.name] = addon
 spec.loader.exec_module(addon)

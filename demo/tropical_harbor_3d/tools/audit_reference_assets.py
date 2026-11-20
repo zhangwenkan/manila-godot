@@ -1,10 +1,14 @@
 """Read-only audit of the reference harbor's exported GLB assets."""
 from pathlib import Path
+import argparse
 import hashlib
 import json
 import struct
 
 ART = Path(__file__).resolve().parents[1]
+parser = argparse.ArgumentParser(description=__doc__)
+parser.add_argument("--output", type=Path, default=ART / "captures/reference_rebuild_20261116")
+args = parser.parse_args()
 results = []
 for path in sorted((ART / "assets/reference").glob("*.glb")):
     blob = path.read_bytes()
@@ -24,8 +28,10 @@ for path in sorted((ART / "assets/reference").glob("*.glb")):
         "bytes": len(blob), "meshes": len(doc["meshes"]), "triangles": triangles,
         "materials": len(doc.get("materials", [])), "images": len(doc.get("images", [])),
     })
-assert len(results) == 10, "All ten runtime exports must be present"
-target = ART / "captures/reference_rebuild_20261116"
-target.mkdir(exist_ok=True)
+expected = {"boat", "cargo_ginseng", "cargo_jade", "cargo_nutmeg", "cargo_silk",
+            "coast", "town", "cargo_port", "foliage", "ocean", "rocks", "terrain"}
+assert {Path(row["file"]).stem for row in results} == expected, "Runtime export set must match the harbor assembly"
+target = args.output
+target.mkdir(parents=True, exist_ok=True)
 (target / "asset_audit.json").write_text(json.dumps(results, indent=2), encoding="utf-8")
 print(json.dumps(results, indent=2))

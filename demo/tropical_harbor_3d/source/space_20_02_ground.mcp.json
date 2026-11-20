@@ -1,0 +1,1 @@
+{"code": "import bpy\nexec(compile((__import__('pathlib').Path(bpy.data.filepath).parent/'space_20_02_ground.py').read_text(encoding='utf8'),'space_20_02_ground.py','exec'),bpy.app.driver_namespace['space20'])"}

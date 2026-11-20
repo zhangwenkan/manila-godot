@@ -130,7 +130,7 @@ func _ready() -> void:
 func configure_art_shadows() -> void:
     # Same values as harbor_environment._build_environment(); kept for art_preview A/B frames.
     var sun := get_node("WarmAfternoon") as DirectionalLight3D
-    sun.light_angular_distance = 0.85
+    sun.light_angular_distance = 0.0 if reference_art else 0.85
     sun.directional_shadow_max_distance = 100.0
     sun.shadow_normal_bias = 0.6
     RenderingServer.directional_shadow_atlas_set_size(4096, true)

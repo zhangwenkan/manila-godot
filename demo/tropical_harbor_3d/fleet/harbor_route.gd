@@ -1,8 +1,8 @@
 extends RefCounted
 
 # Scene presentation only; rule progress and berth allocation remain in FleetState.
-const START_Z := 66.0
-const STEP := 5.7
+const START_Z := 76.0
+const STEP := 6.45
 const ENTRY := 13.12
 const LIGHTHOUSE_PROGRESS := 7.5
 
@@ -10,7 +10,9 @@ const LIGHTHOUSE_PROGRESS := 7.5
 static func center(progress: float) -> Vector3:
     # Approach the waterfront gently from open water, then run alongside it.
     # The bow follows this real bend instead of being turned for the camera.
-    return Vector3(-6.0 + 3.0 * smoothstep(0.0, 6.0, progress), 0, START_Z - STEP * progress)
+    var pier_clearance := 2.2 * smoothstep(3.0, 5.0, progress) * (1.0 - smoothstep(10.5, 13.0, progress))
+    return Vector3(lerpf(-28.0, -3.0, smoothstep(0.0, 4.2, progress)) - pier_clearance, 0,
+        START_Z - STEP * progress + 4.0 * (1.0 - smoothstep(3.0, 6.0, progress)))
 
 
 static func spacing(progress: float) -> float:
@@ -18,7 +20,9 @@ static func spacing(progress: float) -> float:
 
 
 static func point(lane: int, progress: float) -> Vector3:
-    return center(progress) + Vector3((lane - 1) * spacing(progress), 0, 0)
+    var forward := (center(progress + .01) - center(progress - .01)).normalized()
+    var across := Vector3(-forward.z, 0, forward.x)
+    return center(progress) + across * ((lane - 1) * spacing(progress))
 
 
 static func heading(lane: int, progress: float) -> float:

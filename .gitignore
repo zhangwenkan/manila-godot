@@ -13,3 +13,6 @@
 /tools/agent_sprite_forge/**/__pycache__/
 /generated/agent_sprite_forge/.cache/
 /generated/agent_sprite_forge/tmp/
+
+# Private chat inventory used by the local handoff exporter.
+/tools/codex_handoff_ui_threads.json

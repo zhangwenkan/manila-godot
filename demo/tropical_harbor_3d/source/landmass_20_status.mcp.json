@@ -1,0 +1,1 @@
+{"code": "print(bpy.data.is_dirty, len(bpy.data.collections), bpy.data.filepath)"}

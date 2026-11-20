@@ -1,0 +1,1 @@
+{"code": "import bpy\nexec(\"export_collection('Reference_Town','town.glb')\\nbpy.ops.wm.save_as_mainfile(filepath=str(ROOT/'source/reference_harbor_mcp.blend'))\\nprint('TOWN_REFINEMENT_STAGE_EXPORTED')\",bpy.app.driver_namespace['refine20'])"}

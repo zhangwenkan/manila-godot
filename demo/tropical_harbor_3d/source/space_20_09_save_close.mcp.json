@@ -1,0 +1,1 @@
+{"code": "import bpy\nbpy.ops.wm.save_as_mainfile(filepath=bpy.data.filepath)\nprint('SPACE20_FINAL_SAVED',bpy.data.filepath,'dirty',bpy.data.is_dirty)\ndef close_space20_session():\n    bpy.ops.wm.quit_blender()\n    return None\nbpy.app.timers.register(close_space20_session,first_interval=3.0)\n"}

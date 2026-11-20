@@ -26,7 +26,7 @@ async def main():
     env.pop('PYTHONPATH', None)
     env['BLENDER_HOST'] = '127.0.0.1'
     env['BLENDER_PORT'] = str(args.port)
-    server = StdioServerParameters(command='D:/一些好玩的例子/blender-mcp/.venv/Scripts/python.exe',
+    server = StdioServerParameters(command=os.environ.get('BLENDER_MCP_PYTHON', 'D:/一些好玩的例子/blender-mcp/.venv/Scripts/python.exe'),
                                   args=['-m', 'blender_mcp.server'], env=env)
     async with stdio_client(server) as (reader, writer):
         async with ClientSession(reader, writer) as session:

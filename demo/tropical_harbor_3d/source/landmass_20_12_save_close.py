@@ -1,0 +1,5 @@
+(LOG/'authored_plan_final.json').write_text(json.dumps({'low_toe':LOW_TOE,'low_crown':LOW_TOP,'high_toe':HIGH_TOE,'high_crown':HIGH_TOP,'ramps':RAMPS,'vertices':len(terrain.data.vertices),'triangles':len(terrain.data.polygons)},indent=2),encoding='utf8')
+assert not any(c.name.startswith('D19_EXPORT') for c in bpy.data.collections)
+bpy.ops.wm.save_as_mainfile(filepath=str(ROOT/'source/harbor_landform_mass_mcp.blend'))
+print('SAVED_FINAL',os.getpid(),bpy.data.filepath,'dirty',bpy.data.is_dirty)
+bpy.app.timers.register(lambda: bpy.ops.wm.quit_blender(),first_interval=1.0)

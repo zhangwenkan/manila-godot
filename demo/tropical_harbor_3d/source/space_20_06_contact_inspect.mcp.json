@@ -1,0 +1,1 @@
+{"code": "import bpy\nexec(\"rows=[]\\nfor ob in coast.objects:\\n if ob.type!='MESH':continue\\n p=center(ob);z=-p.y\\n if 30<z<50 and 2<p.x<12 and max(ob.dimensions)<.35:\\n  gap=p.z-ground(p.x,z)\\n  if gap>.20:rows.append((ob.name,list(p),list(ob.dimensions),gap))\\nprint('SMALL_FLOATING',rows[:100])\\n\",bpy.app.driver_namespace['space20'])"}

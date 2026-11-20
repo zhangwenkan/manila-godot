@@ -1,0 +1,1 @@
+{"code":"import bpy\nexec(\"print('ROCKS',[(o.name,[round(v,2) for v in center(o)]) for o in rocks.objects if 38<-center(o).y<60]);print('SHRUBS',[(o.name,[round(v,2) for v in center(o)]) for o in fol.objects if o.name.startswith('S20_CourtyardShrub') and 38<-center(o).y<60])\",bpy.app.driver_namespace['control20'])"}

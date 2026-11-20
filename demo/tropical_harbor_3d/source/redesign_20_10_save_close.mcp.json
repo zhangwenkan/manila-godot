@@ -1,0 +1,1 @@
+{"code": "import bpy\nassert not bpy.data.is_dirty or bpy.data.filepath.endswith('harbor_landscape_redesign_mcp.blend')\nbpy.ops.wm.save_as_mainfile(filepath=bpy.data.filepath)\nprint('REDESIGN_SAVED',bpy.data.filepath,'DIRTY',bpy.data.is_dirty)\nbpy.app.timers.register(lambda: bpy.ops.wm.quit_blender(),first_interval=1.0)"}

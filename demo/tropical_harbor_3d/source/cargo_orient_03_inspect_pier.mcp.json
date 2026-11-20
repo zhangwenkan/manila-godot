@@ -1,0 +1,1 @@
+{"code": "import bpy\nexec(\"\\ncoast=bpy.data.collections['Reference_Coast']\\nfor ob in coast.objects:\\n if ob.name in pier_conflicts:print('CONFLICT_POS',ob.name,tuple(center_xy(ob)))\\nprint('PIER_FAMILIES',sorted(set(o.name.split('.')[0] for o in coast.objects if 'Pier' in o.name)))\\n\",bpy.app.driver_namespace['orient20'])"}

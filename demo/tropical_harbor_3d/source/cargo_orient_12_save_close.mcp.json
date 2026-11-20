@@ -1,0 +1,1 @@
+{"code": "import bpy\nbpy.ops.wm.save_as_mainfile(filepath=bpy.data.filepath)\nassert not bpy.data.is_dirty\nprint('SAVED_CLEAN_QUIT_SCHEDULED')\nbpy.app.timers.register(lambda: bpy.ops.wm.quit_blender(),first_interval=1.0)"}

@@ -1,0 +1,1 @@
+{"code": "import bpy\nbpy.ops.wm.save_as_mainfile(filepath=bpy.data.filepath)\nprint('SEAMS_FINAL_SAVED',bpy.data.filepath,bpy.data.is_dirty)\ndef close_seams_session():\n bpy.ops.wm.quit_blender()\n return None\nbpy.app.timers.register(close_seams_session,first_interval=2.0)\n"}
