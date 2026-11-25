@@ -69,12 +69,7 @@ func _ready() -> void:
     blockout = BLOCKOUT.new()
     blockout.name = "HarborBlockout"
     add_child(blockout)
-    if reference_art:
-        var yard_anchor := Node3D.new()
-        yard_anchor.name = "RepairYard"
-        yard_anchor.position = Vector3(13, 0, 34)
-        blockout.add_child(yard_anchor)
-    else:
+    if not reference_art:
         blockout.build(state.scenic_routes)
     var contacts: PackedVector4Array = environment.contact_objects.duplicate()
     contacts.append_array(pier.contacts)
@@ -259,6 +254,7 @@ func _advance_local_sailing(delta: float) -> void:
 func select_ship(index: int) -> void:
     if state.scenic_routes and is_moving():
         return
+    camera.end_pirate_event()
     selected = index
     camera.focus_ship = index
     camera.area_progress = -1
@@ -275,6 +271,7 @@ func select_ship(index: int) -> void:
 func overview() -> void:
     if camera.local_harbor and is_moving():
         return
+    camera.end_pirate_event()
     inspection_dragging = false
     camera.leave_inspection()
     selected = -1
@@ -306,12 +303,25 @@ func view_shipyard() -> void:
     if not state.scenic_routes or is_moving():
         return
     var eye := Vector3(-5.5, 13, 51)
-    camera.leave_inspection()
+    var target := Vector3.ZERO
+    if reference_art:
+        if not is_instance_valid(coast.shipyard):
+            return
+        # The imported meshes already contain their authored world placement.
+        target = coast.SHIPYARD_FOCUS + Vector3(0, 1.5, 0)
+        eye = target + Vector3(-22, 13, 18)
+    else:
+        var yard := blockout.get_node_or_null("RepairYard") as Node3D
+        if yard == null:
+            return
+        target = yard.global_position + Vector3(0, 2.5, 0)
+    overview()
     camera_override = true
     camera.projection = Camera3D.PROJECTION_PERSPECTIVE
     camera.fov = 42
     camera.position = eye
-    camera.look_at(blockout.get_node("RepairYard").global_position + Vector3(0, 2.5, 0))
+    camera.look_at(target)
+    camera.local_look = target
     ui.selected_slot = -1
     ui.info = false
     ui.refresh()

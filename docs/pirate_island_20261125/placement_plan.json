@@ -1,0 +1,235 @@
+{
+  "read_only_plan": true,
+  "created_local": "2026-11-25",
+  "coordinate_system": "Godot x,y,z; Blender x,y,z = Godot x,-z,y",
+  "center_godot": [
+    -17.5,
+    0,
+    -22
+  ],
+  "center_blender": [
+    -17.5,
+    22,
+    0
+  ],
+  "outer_radius_m": 6,
+  "mountain_maximum_height_m": 7.5,
+  "front_godot": [
+    -0.3420201433256687,
+    0,
+    0.9396926207859084
+  ],
+  "front_blender": [
+    -0.3420201433256687,
+    -0.9396926207859084,
+    0
+  ],
+  "rotation_y_from_local_plus_z_deg": -20,
+  "progress13_lane_centers": [
+    [
+      -7.400315889649043,
+      -7.853592513403056
+    ],
+    [
+      -3.0,
+      -7.8500000000000085
+    ],
+    [
+      1.4003158896490433,
+      -7.846407486596961
+    ]
+  ],
+  "navigation_sweep": [
+    {
+      "lane": 0,
+      "minimum_sampled_hull_to_island_disk_m": 8.11040821571093,
+      "at_progress": 13.12,
+      "boat_center_xz": [
+        -7.400210223825428,
+        -8.623999999999995
+      ],
+      "samples": 1313
+    },
+    {
+      "lane": 1,
+      "minimum_sampled_hull_to_island_disk_m": 11.265710990283605,
+      "at_progress": 13.12,
+      "boat_center_xz": [
+        -3.0,
+        -8.623999999999995
+      ],
+      "samples": 1313
+    },
+    {
+      "lane": 2,
+      "minimum_sampled_hull_to_island_disk_m": 14.876411512409625,
+      "at_progress": 13.12,
+      "boat_center_xz": [
+        1.400210223825428,
+        -8.623999999999995
+      ],
+      "samples": 1313
+    }
+  ],
+  "berthed_hull_clearance": [
+    {
+      "berth": 0,
+      "center": [
+        -4.15,
+        0,
+        -16.6
+      ],
+      "hull_to_island_disk_m": 6.625866306911378
+    },
+    {
+      "berth": 1,
+      "center": [
+        -0.85,
+        0,
+        -16.6
+      ],
+      "hull_to_island_disk_m": 9.858199771726927
+    },
+    {
+      "berth": 2,
+      "center": [
+        2.45,
+        0,
+        -16.6
+      ],
+      "hull_to_island_disk_m": 13.113673116384511
+    }
+  ],
+  "arrival_structure_aabb_to_disk_minimum_m": 4.202218577775474,
+  "terminal_overall_aabb_to_disk_minimum_m": 2.254,
+  "late_camera": {
+    "preserve_through_progress": 11.5,
+    "blend_until_progress": 13,
+    "fov_deg": 48,
+    "offset_godot": [
+      -20,
+      25,
+      24
+    ],
+    "target_at_progress13": [
+      -7,
+      2,
+      -15.35
+    ],
+    "target_at_arrival_14_5": [
+      -7,
+      2,
+      -20
+    ],
+    "arrival_eye": [
+      -27,
+      27,
+      4
+    ],
+    "progress13_eye": [
+      -27,
+      27,
+      8.65
+    ],
+    "recommendation": "Blend old target to fixed x=-7,y=2, z=ROUTE.center(progress).z-7.5 through progress13; from13 to14.5 ease target z -15.35 to -20; offset ease from existing to proposed; area_progress handling must use same plan."
+  },
+  "projection_1600x900_conservative_bounds": {
+    "progress13": {
+      "island": [
+        [
+          262,
+          641
+        ],
+        [
+          272,
+          631
+        ]
+      ],
+      "terminal": [
+        [
+          567,
+          952
+        ],
+        [
+          91,
+          465
+        ]
+      ],
+      "ships": [
+        [
+          854,
+          1159
+        ],
+        [
+          412,
+          663
+        ]
+      ]
+    },
+    "arrival": {
+      "island": [
+        [
+          310,
+          709
+        ],
+        [
+          320,
+          716
+        ]
+      ],
+      "terminal": [
+        [
+          629,
+          1038
+        ],
+        [
+          119,
+          522
+        ]
+      ],
+      "ships": [
+        [
+          846,
+          1089
+        ],
+        [
+          361,
+          555
+        ]
+      ]
+    }
+  },
+  "rules_local_reference": {
+    "second_sailing": "After second sailing ends exactly13: captain then second pirate may board an empty seat, or stay. Passing13 is arrival, not piracy.",
+    "third_sailing": "After third sailing ends exactly13 and pirates remain: plunder, original crew get no cargo dividend, remaining pirates share, captain chooses port or shipyard. If none remain, exact13 arrives normally.",
+    "pilot": "Pilot moves to exactly13 do not immediately trigger pirates.",
+    "implementation": "Current 3D FleetState only marks >13 as arrived; no pirate seat/event/settlement implementation. Old node_2d detects holds but explicitly unimplemented. Pixel demo simplified rules must not be imported as full rules."
+  },
+  "source_files": [
+    {
+      "path": "demo/tropical_harbor_3d/fleet/harbor_route.gd",
+      "sha256": "e250c3a7a35dc70fba1e4b78a5d29045ac28486f65db2c2d570c5dcd73361d6d"
+    },
+    {
+      "path": "demo/tropical_harbor_3d/fleet/fleet_camera.gd",
+      "sha256": "1e3533a5da9e7343b1dfc04132ad6597124296aa2e2a68e280f2cf2114f9c9c0"
+    },
+    {
+      "path": "demo/tropical_harbor_3d/fleet/fleet_state.gd",
+      "sha256": "396c9b15e320da391bcb12478d3748ef5fd3b91c6bb2ae3a2cbdbedf6c616c2e"
+    },
+    {
+      "path": "docs/manila-rules.md",
+      "sha256": "2e38f7f925dc9dde9f5d5f7ef49854b279f431b4b8d5c4aaa7bf1b61301e6fce"
+    },
+    {
+      "path": "node_2d.gd",
+      "sha256": "1f0f9c64a4a52a58725e9e2ff918c70894f3e4f97bdd90ad656880ed43189260"
+    }
+  ],
+  "limits": [
+    "No Blender opened, no scene or rules modified, no old realistic assets inspected.",
+    "Circle/OBB clearance and camera bounds are analytical planning, not actual mesh visibility verification.",
+    "Runtime must test actual GLB collision/silhouette, three channels, exact13 and arrival with final camera."
+  ]
+}

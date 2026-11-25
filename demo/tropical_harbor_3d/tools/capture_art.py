@@ -4,6 +4,9 @@ Layout review also checks camera/arrival behavior. Visual acceptance is separate
 rebuild-shore saves two gameplay, two shore detail and two town street views;
 it does not run navigation checks or performance sampling.
 rebuild-terminal reviews the current terminal and runs two bounded arrival cases.
+rebuild-pirate reviews the pirate island, route, real arrivals and explicit event camera.
+rebuild-shipyard reviews the current shipyard, view controls, routes and real arrivals.
+rebuild-lighthouse reviews the authored tower, ordinary cameras, routes and real arrivals.
 """
 from datetime import datetime
 from pathlib import Path
@@ -30,7 +33,7 @@ mode = sys.argv[1] if len(sys.argv) > 1 else 'preview'
 output = root / 'captures' / ('art_' + datetime.now().strftime('%Y%m%d_%H%M%S_%f'))
 output.mkdir(parents=True, exist_ok=False)
 user = ['--art-preview', '--art-output=' + output.as_posix()]
-if mode in ('rebuild', 'rebuild-sample', 'rebuild-composition', 'rebuild-clay', 'rebuild-shore', 'rebuild-terminal'):
+if mode in ('rebuild', 'rebuild-sample', 'rebuild-composition', 'rebuild-clay', 'rebuild-shore', 'rebuild-terminal', 'rebuild-pirate', 'rebuild-shipyard', 'rebuild-lighthouse'):
     user.extend(['--reference-rebuild', '--local-voyage-review'])
     if mode == 'rebuild-sample':
         user.append('--reference-rebuild-sample')
@@ -42,6 +45,12 @@ if mode in ('rebuild', 'rebuild-sample', 'rebuild-composition', 'rebuild-clay', 
         user.append('--reference-shore-sample')
     if mode == 'rebuild-terminal':
         user.append('--reference-terminal-sample')
+    if mode == 'rebuild-pirate':
+        user.append('--reference-pirate-sample')
+    if mode == 'rebuild-shipyard':
+        user.append('--reference-shipyard-sample')
+    if mode == 'rebuild-lighthouse':
+        user.append('--reference-lighthouse-sample')
 elif mode == 'diagnose':
     user.append('--art-diagnose=hull')
 elif mode in ('shipyard', 'shipyard-sample', 'shipyard-compare', 'environment'):
@@ -117,5 +126,14 @@ if mode in ('layout', 'voyage', 'rebuild'):
 elif mode == 'rebuild-terminal':
     print('TERMINAL_ARRIVAL_CHECKS', result.get('checks', 0))
     print('Current terminal views and two arrival cases only; run rebuild separately for full regression.')
+elif mode == 'rebuild-pirate':
+    print('PIRATE_ROUTE_ARRIVAL_CHECKS', result.get('checks', 0))
+    print('Current-island views, route clearance, real arrivals and explicit event camera; no visual acceptance claimed.')
+elif mode == 'rebuild-shipyard':
+    print('SHIPYARD_ROUTE_ARRIVAL_CHECKS', result.get('checks', 0))
+    print('Current shipyard, button/J/V controls, route clearance and real A/B/C arrivals; no repair gameplay or visual acceptance claimed.')
+elif mode == 'rebuild-lighthouse':
+    print('LIGHTHOUSE_ROUTE_ARRIVAL_CHECKS', result.get('checks', 0))
+    print('Authored lighthouse, normal cameras, actual geometry lane clearance and real A/B/C arrivals; no pilot rules or visual acceptance claimed.')
 else:
     print('Art review only. No gameplay regression or visual acceptance claimed.')

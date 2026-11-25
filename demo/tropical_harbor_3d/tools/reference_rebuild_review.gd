@@ -6,6 +6,18 @@ func run(preview: Node) -> void:
     harbor.capture_lock = true
     harbor.camera_override = false
     harbor.ui.visible = false
+    if "--reference-lighthouse-sample" in OS.get_cmdline_user_args():
+        var lighthouse_review := load("res://demo/tropical_harbor_3d/tools/reference_lighthouse_review.gd").new() as RefCounted
+        await lighthouse_review.run(preview)
+        return
+    if "--reference-shipyard-sample" in OS.get_cmdline_user_args():
+        var shipyard_review := load("res://demo/tropical_harbor_3d/tools/reference_shipyard_review.gd").new() as RefCounted
+        await shipyard_review.run(preview)
+        return
+    if "--reference-pirate-sample" in OS.get_cmdline_user_args():
+        var pirate_review := load("res://demo/tropical_harbor_3d/tools/reference_pirate_review.gd").new() as RefCounted
+        await pirate_review.run(preview)
+        return
     if "--reference-terminal-sample" in OS.get_cmdline_user_args():
         var terminal_review := load("res://demo/tropical_harbor_3d/tools/reference_terminal_review.gd").new() as RefCounted
         await terminal_review.run(preview)

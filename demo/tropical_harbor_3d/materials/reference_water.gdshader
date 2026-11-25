@@ -13,17 +13,33 @@ float coast(float z) {
     float t=clamp((z+18.7)/(-26.0+18.7),0.0,1.0);
     return 7.8+1.45*sin(z*.12)+.48*sin(z*.29)-21.0*t*t*(3.0-2.0*t);
 }
+float pirate_shore(vec2 world_xz) {
+    // Same authored outline and assembly transform as the new island shelf.
+    vec2 relative = world_xz - vec2(-17.5, -14.0);
+    // Inverse of the island's absolute 90-degree assembly yaw.
+    vec2 local = vec2(-relative.y, -relative.x);
+    float a = atan(local.y, local.x);
+    float front = max(0.0, -sin(a));
+    float radius = 5.25 + .36*sin(3.0*a+.4) + .24*cos(5.0*a) - 1.20*pow(front,14.0);
+    return length(local) - radius*.92;
+}
 void vertex() {
     wp=(MODEL_MATRIX*vec4(VERTEX,1.0)).xyz;
-    float strength=smoothstep(.4,4.0,coast(wp.z)-wp.x);
+    float strength=smoothstep(.4,4.0,min(coast(wp.z)-wp.x,pirate_shore(wp.xz)));
     VERTEX.y+=(sin(wp.x*.66+wp.z*.43+study_time*.72)*.025+sin(wp.z*1.15-wp.x*.28+study_time*.93)*.016+sin(wp.x*.28+wp.z*.19+study_time*.64)*.035)*strength;
     wp=(MODEL_MATRIX*vec4(VERTEX,1.0)).xyz;
 }
 void fragment() {
     float d=coast(wp.z)-wp.x;
+    // Beyond the authored mainland, the background is open sea. Keep the
+    // existing shore mask intact near the harbor and fade it out only far north.
+    float far_water=smoothstep(36.0,52.0,-wp.z);
+    d=mix(d,max(d,16.0),far_water);
+    float island_distance=pirate_shore(wp.xz);
     float noise=texture(water_noise,wp.xz*.085+vec2(study_time*.006,-study_time*.002)).r;
     float broad=texture(water_noise,wp.xz*.025+vec2(.1,.7)).g;
     float near_weight=1.0-smoothstep(2.0,15.0,d+broad*2.5);
+    near_weight=max(near_weight,(1.0-smoothstep(.1,3.5,island_distance))*.88);
     vec3 col=mix(deep_color,near_color,near_weight);
     col*=.94+.09*noise+.055*sin(wp.x*.85+wp.z*1.2+noise*3.0+study_time*.65);
     vec2 grad=vec2(cos(wp.x*.66+wp.z*.43+study_time*.72)*.0165-cos(wp.z*1.15-wp.x*.28+study_time*.93)*.00448,
@@ -37,6 +53,8 @@ void fragment() {
     float sparkle=streak*smoothstep(.91,.98,hash)*(.35+.3*sin(study_time+hash*20.0));
     float edge_width=.025+.025*noise;
     float foam=(1.0-smoothstep(edge_width,edge_width+.04,abs(d-.09-.045*sin(wp.z*1.7+study_time*.9))))*.65;
+    float island_foam=(1.0-smoothstep(.03,.13,abs(island_distance-.07-.035*sin(wp.z*2.1+study_time))))*.38;
+    foam=max(foam,island_foam);
     for(int i=0;i<3;i++){
         if(boats[i].w<0.0){continue;}
         vec2 stern=stern_directions[i];
@@ -54,5 +72,6 @@ void fragment() {
     EMISSION=foam_color*sparkle*.20;
     ROUGHNESS=.34;
     SPECULAR=.30;
-    ALPHA=mix(.78,.98,smoothstep(.2,4.0,d))*smoothstep(-.02,.14,d);
+    float shore_distance=min(d,island_distance);
+    ALPHA=mix(.78,.98,smoothstep(.2,4.0,shore_distance))*smoothstep(-.02,.14,shore_distance);
 }

@@ -59,6 +59,16 @@ func _build_water() -> void:
     water_material.set_shader_parameter("water_noise", NOISE)
     sea.material_override = water_material
     sea.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+    # The final island composition exposes water beyond the original north edge.
+    # Reuse the authored ocean tile at its exact border, with the same material.
+    var far_ocean := (load(ART + "ocean.glb") as PackedScene).instantiate() as Node3D
+    far_ocean.name = "ReferenceFarOcean"
+    far_ocean.position.z = -193.5
+    add_child(far_ocean)
+    for item in far_ocean.find_children("*", "MeshInstance3D", true, false):
+        var far_mesh := item as MeshInstance3D
+        far_mesh.material_override = water_material
+        far_mesh.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
 
 func _build_sand() -> void:
     var instance := (load(ART + "terrain.glb") as PackedScene).instantiate() as Node3D

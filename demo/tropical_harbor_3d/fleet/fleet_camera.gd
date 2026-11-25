@@ -26,6 +26,15 @@ var auto_subject := 1
 var area_progress := -1.0
 var local_look := Vector3.ZERO
 
+# Explicit cinematic camera only: gameplay rules decide when to begin/end it.
+# A token prevents an interrupted older event from ending a replacement event.
+var _pirate_event_serial := 0
+var _pirate_event_token := 0
+var _pirate_subject: Node3D
+var _pirate_island_center := Vector3.ZERO
+var _pirate_restore: Dictionary = {}
+const PIRATE_EVENT_OFFSET := Vector3(23, 26, 21)
+
 
 func _ready() -> void:
     projection = Camera3D.PROJECTION_ORTHOGONAL
@@ -38,6 +47,16 @@ func _ready() -> void:
 
 
 func update_view(ships: Array, delta: float, snap: bool = false) -> void:
+    if _pirate_event_token != 0:
+        if not _pirate_owner_unchanged():
+            # A new user focus/area/inspection request takes ownership immediately.
+            end_pirate_event(_pirate_event_token)
+        elif is_instance_valid(_pirate_subject) and _pirate_subject.is_inside_tree():
+            _update_pirate_event(delta, snap)
+            return
+        else:
+            # Removed targets interrupt safely and restore the prior camera owner.
+            end_pirate_event(_pirate_event_token)
     if local_harbor:
         _update_local_harbor(ships, delta, snap)
         return
@@ -63,6 +82,71 @@ func update_view(ships: Array, delta: float, snap: bool = false) -> void:
         points.append_array(LAYOUT.overview_landmarks(fleet_center_z))
         points.append_array(harbor_points)
     frame_points(points, delta, snap, 170.0 if focus_ship >= 0 else 80.0)
+
+
+func begin_pirate_event(subject: Node3D, island_center: Vector3 = Vector3(-17.5, 0, -14)) -> int:
+    if not local_harbor or not reference_art or not is_instance_valid(subject) or not subject.is_inside_tree():
+        return 0
+    if _pirate_event_token != 0 and not _pirate_owner_unchanged():
+        end_pirate_event(_pirate_event_token)
+    if _pirate_event_token == 0:
+        _pirate_restore = {
+            "focus_ship": focus_ship, "auto_subject": auto_subject,
+            "area_progress": area_progress, "shot_indices": shot_indices.duplicate(),
+            "framed_indices": framed_indices.duplicate(), "inspecting": inspecting,
+            "projection": projection, "fov": fov, "size": size,
+        }
+    _pirate_event_serial += 1
+    _pirate_event_token = _pirate_event_serial
+    _pirate_subject = subject
+    _pirate_island_center = island_center
+    settled = false
+    return _pirate_event_token
+
+
+func end_pirate_event(token: int = 0) -> bool:
+    if _pirate_event_token == 0 or (token != 0 and token != _pirate_event_token):
+        return false
+    if _pirate_owner_unchanged():
+        focus_ship = _pirate_restore.focus_ship
+        auto_subject = _pirate_restore.auto_subject
+        area_progress = _pirate_restore.area_progress
+        shot_indices.assign(_pirate_restore.shot_indices)
+        framed_indices.assign(_pirate_restore.framed_indices)
+        inspecting = _pirate_restore.inspecting
+        projection = _pirate_restore.projection
+        fov = _pirate_restore.fov
+        size = _pirate_restore.size
+    _pirate_event_token = 0
+    _pirate_subject = null
+    _pirate_restore.clear()
+    settled = false
+    return true
+
+
+func pirate_event_active() -> bool:
+    return _pirate_event_token != 0
+
+
+func _pirate_owner_unchanged() -> bool:
+    return focus_ship == _pirate_restore.focus_ship and auto_subject == _pirate_restore.auto_subject \
+        and is_equal_approx(area_progress, _pirate_restore.area_progress) \
+        and shot_indices == _pirate_restore.shot_indices and inspecting == _pirate_restore.inspecting
+
+
+func _update_pirate_event(delta: float, snap: bool) -> void:
+    projection = Camera3D.PROJECTION_PERSPECTIVE
+    fov = local_fov
+    var subject := _pirate_subject.global_position
+    subject.y = 0
+    var target := _pirate_island_center.lerp(subject, .52) + Vector3(0, 2, 0)
+    var desired := target + PIRATE_EVENT_OFFSET
+    var weight := 1.0 if snap else 1.0 - exp(-delta * 4.0)
+    global_position = global_position.lerp(desired, weight)
+    local_look = target if snap else local_look.lerp(target, weight)
+    look_at(local_look)
+    target_position = desired
+    settled = global_position.distance_to(desired) < .04 and local_look.distance_to(target) < .04
 
 
 func _update_local_harbor(ships: Array, delta: float, snap: bool) -> void:
@@ -95,6 +179,8 @@ func _update_local_harbor(ships: Array, delta: float, snap: bool) -> void:
     if area_progress >= 0:
         progress = area_progress
         center = ROUTE.center(progress) if progress < 14 else Vector3(-.85, 0, -16.6)
+        if reference_art:
+            center = _reference_origin(center, progress)
     # Favor the waterfront beyond the boat, not the landward side of a roof.
     var target := center + ROUTE.aim_offset(progress)
     var offset := ROUTE.offset(progress)
@@ -111,6 +197,7 @@ func _update_local_harbor(ships: Array, delta: float, snap: bool) -> void:
 
 
 func inspect_ship(index: int) -> void:
+    end_pirate_event()
     inspecting = true
     focus_ship = index
     projection = Camera3D.PROJECTION_PERSPECTIVE
@@ -140,22 +227,29 @@ func _fits_reference(points: Array, headings: Array, progress: float, aspect: fl
 func _reference_aim(progress: float) -> Vector3:
     # Opening fleet and working harbor share a composed local view. Once the
     # approach ends, bring the nearby street into view without showing the map.
-    return Vector3(12, 2, -1).lerp(Vector3(7, 2, -1), smoothstep(3.5, 6.0, progress))
+    var aim := Vector3(12, 2, -1).lerp(Vector3(7, 2, -1), smoothstep(3.5, 6.0, progress))
+    var late_weight := smoothstep(11.5, 13.0, progress)
+    var island_z := lerpf(-7.5, -3.4, smoothstep(13.0, 14.0, progress))
+    return aim.lerp(Vector3(7, 2, island_z), late_weight)
 
 
 func _reference_origin(subject: Vector3, progress: float) -> Vector3:
     if progress >= 14.0:
-        return subject
+        return Vector3(-14.0, subject.y, subject.z)
     # Leave room for the subject on the widest seaward lane without changing
     # the viewing scale when the other boats are far ahead or behind.
-    return Vector3(lerpf(ROUTE.center(progress).x, subject.x, .65), subject.y, subject.z)
+    var origin_x := lerpf(ROUTE.center(progress).x, subject.x, .65)
+    origin_x = lerpf(origin_x, -14.0, smoothstep(11.5, 13.0, progress))
+    return Vector3(origin_x, subject.y, subject.z)
 
 
 func _reference_offset(progress: float) -> Vector3:
-    return Vector3(-12, 22, 22).lerp(Vector3(-20, 21, 14), smoothstep(3.5, 6.0, progress))
+    var offset := Vector3(-12, 22, 22).lerp(Vector3(-20, 21, 14), smoothstep(3.5, 6.0, progress))
+    return offset.lerp(Vector3(-20, 25, 24), smoothstep(11.5, 13.0, progress))
 
 
 func leave_inspection() -> void:
+    end_pirate_event()
     inspecting = false
     projection = Camera3D.PROJECTION_ORTHOGONAL
 

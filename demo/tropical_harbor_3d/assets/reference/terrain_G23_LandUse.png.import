@@ -3,22 +3,23 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bk2b14eplqktu"
-path="res://.godot/imported/terrain_G23_LandUse.png-c8a173a09e49993770c345ee54f52afd.ctex"
+path.s3tc="res://.godot/imported/terrain_G23_LandUse.png-c8a173a09e49993770c345ee54f52afd.s3tc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
 }
 generator_parameters={
-"md5": "6024ff548332f2c0eb554cb844031180"
+"md5": "0c4a8b252615208077ce4ec3af81395d"
 }
 
 [deps]
 
 source_file="res://demo/tropical_harbor_3d/assets/reference/terrain_G23_LandUse.png"
-dest_files=["res://.godot/imported/terrain_G23_LandUse.png-c8a173a09e49993770c345ee54f52afd.ctex"]
+dest_files=["res://.godot/imported/terrain_G23_LandUse.png-c8a173a09e49993770c345ee54f52afd.s3tc.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0
@@ -40,4 +41,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=1
+detect_3d/compress_to=0
