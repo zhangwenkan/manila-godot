@@ -1,0 +1,15 @@
+{
+  "meta": null,
+  "content": [
+    {
+      "type": "text",
+      "text": "Code executed successfully: {\"blades\": [{\"object\": \"L24_GrassTuftClusters\", \"before\": 7590, \"after\": 7029, \"removed\": 561, \"regrounded\": 5712, \"max_root_gap\": -0.011999999999999567}, {\"object\": \"G23_RootedGrassMargins\", \"before\": 37288, \"after\": 27668, \"removed\": 9620, \"regrounded\": 24667, \"max_root_gap\": -0.011999999999999567}], \"fragments_removed_vertices\": 78, \"fragments_regrounded\": 28, \"visual_accepted\": false}\n",
+      "annotations": null,
+      "meta": null
+    }
+  ],
+  "structuredContent": {
+    "result": "Code executed successfully: {\"blades\": [{\"object\": \"L24_GrassTuftClusters\", \"before\": 7590, \"after\": 7029, \"removed\": 561, \"regrounded\": 5712, \"max_root_gap\": -0.011999999999999567}, {\"object\": \"G23_RootedGrassMargins\", \"before\": 37288, \"after\": 27668, \"removed\": 9620, \"regrounded\": 24667, \"max_root_gap\": -0.011999999999999567}], \"fragments_removed_vertices\": 78, \"fragments_regrounded\": 28, \"visual_accepted\": false}\n"
+  },
+  "isError": false
+}

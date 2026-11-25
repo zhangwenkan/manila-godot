@@ -1,0 +1,75 @@
+{
+  "coordinate_system": "Godot metres: route points are [x,z,height]; shore sections are [z,toe_x,bench_x,bench_height]",
+  "status": "Implementation control proposal, not visual approval. Sculpt actual connected roadbeds and broad grass banks; assess the resulting game views.",
+  "routes": [
+    {"name":"lower_trade_main","points":[[13.0,2.6,1.35],[12.95,7.0,1.35],[13.3,10.0,1.22],[13.65,12.5,1.10],[13.7,15.0,1.08],[13.7,18.0,1.10],[13.15,20.0,1.20]],"halfwidth":0.72,"shoulder_width":0.50,"kind":"path"},
+    {"name":"lower_seabreeze_market_main","points":[[13.15,20.0,1.20],[13.0,22.0,1.22],[12.95,24.0,1.22],[13.15,26.5,1.22],[13.4,28.5,1.24],[12.5,31.0,1.25],[11.8,33.2,1.30],[12.0,34.8,1.37],[11.0,37.0,1.56]],"halfwidth":0.70,"shoulder_width":0.55,"kind":"path"},
+    {"name":"lower_tavern_front","points":[[11.0,37.0,1.56],[10.0,38.5,1.65],[9.98,40.5,1.65],[10.2,42.4,1.63],[10.9,43.4,1.55],[11.8,44.4,1.40],[12.05,46.0,1.22]],"halfwidth":0.60,"shoulder_width":0.40,"kind":"path"},
+    {"name":"lower_diner_sari_main","points":[[12.05,46.0,1.22],[12.4,47.0,1.18],[12.55,49.0,1.18],[12.7,51.0,1.18],[13.0,53.0,1.16],[13.1,55.0,1.16],[13.2,57.0,1.18],[13.3,60.0,1.16],[13.5,62.0,1.15]],"halfwidth":0.72,"shoulder_width":0.55,"kind":"path"},
+    {"name":"lower_trade_pier_descent","points":[[12.95,7.0,1.35],[12.5,8.5,1.05],[11.7,9.5,0.63],[10.85,9.35,0.35]],"halfwidth":0.78,"shoulder_width":0.60,"kind":"path"},
+    {"name":"lower_work_pier_descent","points":[[12.0,34.8,1.37],[10.9,35.8,1.00],[9.6,36.8,0.60],[8.6,38.0,0.35]],"halfwidth":0.80,"shoulder_width":0.65,"kind":"path"},
+    {"name":"lower_trade_entry","points":[[12.95,7.135,1.35],[14.1,7.135,1.42],[14.72,7.135,1.575]],"halfwidth":0.66,"shoulder_width":0.30,"kind":"path"},
+    {"name":"lower_seabreeze_entry","points":[[12.95,23.858,1.22],[14.0,23.858,1.36],[14.38,23.858,1.445]],"halfwidth":0.66,"shoulder_width":0.30,"kind":"path"},
+    {"name":"lower_tavern_entry","points":[[9.98,40.786,1.65],[10.8,40.786,1.74],[11.38,40.786,1.875]],"halfwidth":0.65,"shoulder_width":0.25,"kind":"path"},
+    {"name":"lower_diner_entry","points":[[12.55,49.332,1.18],[13.15,49.332,1.30],[13.50,49.332,1.405]],"halfwidth":0.66,"shoulder_width":0.28,"kind":"path"},
+    {"name":"lower_sari_entry","points":[[13.2,57.124,1.18],[13.7,57.124,1.30],[13.98,57.124,1.405]],"halfwidth":0.66,"shoulder_width":0.28,"kind":"path"}
+  ],
+  "platforms": [
+    {"name":"lower_trade_court","polygon":[[12.6,4.1],[14.8,4.1],[14.8,9.7],[13.2,9.7],[12.6,8.7]],"height":1.35,"blend_width":0.60,"kind":"court"},
+    {"name":"lower_seabreeze_court","polygon":[[13.0,20.3],[15.6,20.3],[15.2,21.2],[14.9,26.8],[15.5,28.3],[13.2,28.3],[12.5,26.8],[12.3,22.0]],"height":1.22,"blend_width":0.70,"kind":"court"},
+    {"name":"lower_tavern_court","polygon":[[10.55,38.2],[11.4,38.2],[11.4,42.8],[10.9,43.4],[10.55,42.2]],"height":1.65,"blend_width":0.40,"kind":"court"},
+    {"name":"lower_diner_court","polygon":[[12.25,46.6],[13.6,46.6],[13.6,51.5],[12.4,51.5],[11.85,49.8],[11.85,47.5]],"height":1.18,"blend_width":0.65,"kind":"court"},
+    {"name":"lower_diner_north_seating","polygon":[[13.35,44.6],[15.2,44.6],[15.2,46.1],[13.35,46.1]],"height":1.24,"blend_width":0.60,"kind":"court"},
+    {"name":"lower_diner_sari_shared_saddle","polygon":[[13.2,51.7],[15.0,51.75],[17.7,52.1],[17.7,53.8],[15.9,54.5],[13.3,54.55],[12.55,53.5]],"height":1.16,"blend_width":1.00,"kind":"court"},
+    {"name":"lower_sari_court","polygon":[[13.0,55.0],[14.3,55.0],[14.3,59.5],[13.1,59.5],[12.7,58.0],[12.7,56.0]],"height":1.18,"blend_width":0.60,"kind":"court"}
+  ],
+  "shore_sections": [
+    [2.6,10.3,11.9,1.32],[7.0,10.5,11.9,1.32],[10.0,10.7,12.35,1.18],
+    [12.5,10.7,12.65,1.08],[15.0,10.5,12.65,1.08],[18.0,10.1,12.65,1.10],
+    [20.0,10.2,12.05,1.18],[23.0,10.2,12.15,1.20],[26.0,10.2,12.25,1.20],
+    [29.0,9.7,12.4,1.20],[32.0,8.3,10.9,1.22],[35.0,8.2,10.8,1.30],
+    [37.0,8.3,9.8,1.50],[39.0,8.6,9.25,1.60],[41.5,8.6,9.4,1.58],
+    [43.5,8.7,10.5,1.48],[46.0,10.1,11.35,1.18],[49.0,10.3,11.7,1.15],
+    [51.0,10.3,11.8,1.15],[53.0,10.3,12.1,1.16],[55.0,10.3,12.2,1.15],
+    [57.0,10.1,12.35,1.15],[60.0,10.3,12.45,1.13],[62.0,10.6,12.7,1.12]
+  ],
+  "implementation_rules": [
+    "Protect existing sand/sea floor at height <= 0.25 m; if a toe falls in that protected zone, fade the bank into existing ground rather than moving the protected vertex.",
+    "Sculpt road longitudinal grade and transverse bed first; derive surface roles from final geometry and use worn centers, rooted grass shoulders, isolated exposed soil, and sand only near the actual beach.",
+    "Main routes share exact junction endpoints. Union roadbeds at their junctions and blend grades; do not layer independent crossing strips.",
+    "Court masks must not repaint or flatten the short stair approaches. Entry approaches override general court grades outside protected stair/floor footprints.",
+    "All actual building floors, porch slabs, stair treads and foundation supports are protected. Entry endpoints stop before the lowest tread face; use the exact existing support heights at contacts.",
+    "Do not make an all-coast exposed brown soil apron. Broad banks carry grass down toward the beach, with local bare wear near real circulation and modest toe transitions.",
+    "Only two deliberate main beach descents: Trade pier at z9 and shared work-pier descent ending near z38. Connect the z38 and z43 piers by existing low beach circulation without painting another narrow dark road stripe.",
+    "Diner-Sari saddle requires actual terrain fill: current [13,53] is about 0.311 m, target 1.16 m. Fill and connect the two courts, retaining a grass bank beachward; do not leave a sand tongue between them.",
+    "Tavern frontage is spatially constrained by high porch over x10.74..11.24, z38.5..43.1. Retain one short explicit supporting cut bank beachward of the road around z38..42.7; do not claim this region is a broad gentle grass bank.",
+    "Reground whole semantic plant, furniture and supply groups after terrain deformation. Do not select objects solely by loose spatial bounding boxes."
+  ],
+  "cut_bank_regions": [{"name":"tavern_short_support","z_range":[38.0,42.7],"toe_x":8.6,"bench_x_range":[9.25,9.4],"bench_height_range":[1.58,1.65],"reason":"The existing high porch constrains lateral space. Use a short shaped earth/rock supporting bank with grass on its crown, not a repeated vertical wall."}],
+  "relocations": [
+    {"representative":"Town_TableTop","whole_group":"Diner north table and its chairs","target_xz":[14.3,45.3],"reason":"Clear the through lane and use the north side seating bay."},
+    {"representative":"Town_TableTop.001","whole_group":"Diner south table and its chairs","target_xz":[14.8,52.45],"reason":"Use the shared saddle side bay clear of the main road."},
+    {"representative":"Town_TableTop.002","whole_group":"Sea Breeze north table and its chairs","target_xz":[14.8,20.5],"reason":"Clear road at x13 and building frontage."},
+    {"representative":"Town_TableTop.003","whole_group":"Sea Breeze south table and its chairs","target_xz":[14.6,27.6],"reason":"Use a side bay beyond the building's z26.758 end."},
+    {"representative":"Town_MenuLeg","whole_group":"Sea Breeze menu frame, both legs and sign","target_xz":[15.7,28.1],"reason":"Clear through lane and seating approach."},
+    {"representative":"Town_MenuAFrame","whole_group":"Diner menu A-frame and sign","target_xz":[15.2,45.1],"reason":"Move alongside north seating bay."},
+    {"representative":"S20_fishing_Prop_Crate.013","whole_group":"Diner north supply crate stack and associated barrel","target_xz":[16.6,53.0],"associated_barrel_target_xz":[17.45,53.0],"reason":"Clear road and north seating; consolidate in the shared supply saddle. Check the neighboring tree at x18.316,z53.074 before final positioning."},
+    {"representative":"Palm_Trunk.004","whole_group":"Entire palm including trunk rings and all leaves","target_xz":[10.25,44.9],"reason":"Clear the Tavern-Diner turn; ground the complete tree after sculpting."},
+    {"representatives":["Bank_Boulder.015","Bank_Boulder.016"],"delta_xz":[-1.3,0.8],"reason":"Clear Trade route and pier junction; reembed into the beachward toe."},
+    {"representatives":["Bank_Boulder.004","Bank_Boulder.020","Bank_Boulder.021","Bank_Boulder.023","Bank_Boulder.024"],"delta_xz":[-1.2,1.2],"reason":"Clear the shared saddle and road; reembed the cluster into the shore toe without changing protected low sand."}
+  ],
+  "protected_entry_anchors": [
+    {"name":"Trade","lowest_step":"Town_Step.006","center_xz":[14.924,7.135],"bottom_height":1.575,"seaward_face_x":14.755},
+    {"name":"Sea Breeze","lowest_step":"Town_Step.004","center_xz":[14.590,23.858],"bottom_height":1.445,"seaward_face_x":14.418},
+    {"name":"Tavern","lowest_step":"Town_Step.002","center_xz":[11.642,40.786],"bottom_height":1.875,"seaward_face_x":11.422},
+    {"name":"Diner","lowest_step":"Town_Step.001","center_xz":[13.795,49.332],"bottom_height":1.405,"seaward_face_x":13.552},
+    {"name":"Sari","lowest_step":"Town_Step","center_xz":[14.178,57.124],"bottom_height":1.405,"seaward_face_x":14.011}
+  ],
+  "evidence": {
+    "baseline":"demo/tropical_harbor_3d/captures/terrain_structure_20261123/baseline.npz",
+    "objects":"demo/tropical_harbor_3d/captures/terrain_structure_20261123/objects_before.json",
+    "read_only_audit":"docs/reference_review_20261123/terrain_logic_lower_audit.md",
+    "current_heights_at_key_controls":[{"xz":[13,53],"current":0.311,"target":1.16},{"xz":[13,7],"current":1.35,"target":1.35},{"xz":[13,24],"current":1.185,"target":1.22},{"xz":[13,49],"current":1.202,"target":1.18}],
+    "shore_toes":"Hand-authored controls. Apply protected <=0.25 m rule during sculpt, and verify the actual terrain/view; these controls are not a claim of completed contact validation."
+  }
+}

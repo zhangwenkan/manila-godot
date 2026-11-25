@@ -1,0 +1,22 @@
+2026-11-24 00:07:11,600 - BlenderMCPServer - INFO - BlenderMCP server starting up
+2026-11-24 00:07:11,603 - BlenderMCPServer - INFO - Blender addon on disk is current (protocol 16).
+2026-11-24 00:07:11,605 - blender-mcp-telemetry - WARNING - Telemetry disabled via environment variable
+2026-11-24 00:07:11,608 - BlenderMCPServer - INFO - Connected to Blender at 127.0.0.1:9881
+2026-11-24 00:07:11,608 - BlenderMCPServer - INFO - Created new persistent connection to Blender
+2026-11-24 00:07:11,608 - BlenderMCPServer - INFO - Sending command: get_addon_info with params: None
+2026-11-24 00:07:11,608 - BlenderMCPServer - INFO - Command sent, waiting for response...
+2026-11-24 00:07:11,650 - BlenderMCPServer - INFO - Received complete response (465 bytes)
+2026-11-24 00:07:11,650 - BlenderMCPServer - INFO - Received 465 bytes of data
+2026-11-24 00:07:11,650 - BlenderMCPServer - INFO - Response parsed, status: success
+2026-11-24 00:07:11,650 - BlenderMCPServer - INFO - Blender addon up to date (protocol 16, addon [2, 0], Blender 5.3.0)
+2026-11-24 00:07:11,650 - BlenderMCPServer - INFO - Successfully connected to Blender on startup
+2026-11-24 00:07:11,655 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-11-24 00:07:11,656 - BlenderMCPServer - INFO - MCP client mcp 0.1.0: extensions=[], apps=False, openai_forms=False
+2026-11-24 00:07:11,658 - BlenderMCPServer - INFO - Sending command: execute_code with params: {'code': 'import bpy, os\nfrom pathlib import Path\nassert os.getpid() == 12164, "Wrong Blender PID"\nassert Path(bpy.data.filepath).resolve() == Path(\'F:/马尼拉godot/manila-godot/demo/tropical_harbor_3d/source/harbor_shore_control_mcp.blend\').resolve(), "Wrong Blender file"\nassert bpy.types.blendermcp_server.port == 9881, "Wrong Blender port"\n"""Run final read-only verification against the saved live source and exports."""\nimport bpy\nfrom pathlib import Path\nROOT = Path(bpy.data.filepath).parent.parent\nexec((ROOT / \'source/structure23_final_readonly.py\').read_text(encoding=\'utf8\'), globals())\nfinal_structure23_readonly(12164)\n'}
+2026-11-24 00:07:11,658 - BlenderMCPServer - INFO - Command sent, waiting for response...
+2026-11-24 00:07:18,304 - BlenderMCPServer - INFO - Received complete response (1602 bytes)
+2026-11-24 00:07:18,304 - BlenderMCPServer - INFO - Received 1602 bytes of data
+2026-11-24 00:07:18,305 - BlenderMCPServer - INFO - Response parsed, status: success
+2026-11-24 00:07:18,308 - mcp.server.lowlevel.server - INFO - Processing request of type ListToolsRequest
+2026-11-24 00:07:18,315 - BlenderMCPServer - INFO - Disconnecting from Blender on shutdown
+2026-11-24 00:07:18,315 - BlenderMCPServer - INFO - BlenderMCP server shut down

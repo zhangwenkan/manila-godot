@@ -1,0 +1,36 @@
+{
+  "status": "proposal_for_root_to_merge_before_manual_props_execution",
+  "platforms": [
+    {
+      "name": "lower_north_market_court",
+      "kind": "court",
+      "polygon": [[14.45,15.10],[15.75,15.05],[16.30,15.30],[16.30,17.75],[15.90,17.95],[14.45,17.95]],
+      "height": 1.45,
+      "blend_width": 0.65,
+      "notes": "Supports the complete second fish stall after Godot Z -1.5m. Keep main-route and north-ramp authored profiles dominant where the outer blend touches them. Existing footprint ground spans 1.267..1.741m; this is local <=0.30m cut / <=0.19m fill, not a high terrace relocation."
+    },
+    {
+      "name": "lower_seabreeze_north_court_corner",
+      "kind": "court",
+      "polygon": [[15.55,20.15],[16.28,20.20],[16.30,21.05],[15.55,21.05]],
+      "height": 1.445,
+      "blend_width": 0.45,
+      "notes": "Join this seamlessly into the existing restaurant north court polygon if preferred. Supports complete Town_Planter.005 at centre X15.95,Z20.65, clear of supply group ending X15.528 and foundation starting Z21.126. Current sampled planter footprint H1.362..1.509. This moves one planter off the rotated seating, without changing the building."
+    }
+  ],
+  "manual_placements": [
+    {"name":"second_fish_stall","baseline_group":"market_stall:Town_MarketPost.004","translation_godot_xz":[0,-1.5],"rotation_godot_xz_degrees":0},
+    {"name":"restaurant_north_seating","baseline_group":"seating:Town_TableLeg.008","pivot_godot_xz":[13.885,22.064],"translation_godot_xz":[0.55,-0.09],"rotation_godot_xz_degrees":90},
+    {"name":"restaurant_north_planter","baseline_group":"planter:Town_Planter.005","target_body_bounds_center_godot_xz":[15.95,20.65]},
+    {"name":"shore_net","baseline_group":"coast_prop:S20_NetPost","pivot_godot_xz":[8.044841766357422,41.97568702697754],"translation_godot_xz":[-0.25,-2.2],"rotation_godot_xz_degrees":90},
+    {"name":"shore_timber","baseline_group":"coast_prop:S20_StackBearers","pivot_godot_xz":[7.767475605010986,42.085968017578125],"translation_godot_xz":[-0.05,0.7],"rotation_godot_xz_degrees":90},
+    {"name":"shore_crate_a","body":"S20_fishing_Prop_Crate.002","target_body_bounds_center_godot_xz":[7.15,39.3],"components":"body, Frame005..008, Rail005..008, Diagonal003..004"},
+    {"name":"shore_crate_b","body":"S20_fishing_Prop_Crate.003","target_body_bounds_center_godot_xz":[7.15,40.35],"components":"body, Frame009..012, Rail009..012, Diagonal005..006"},
+    {"name":"shore_barrel","body":"S20_fishing_Prop_Barrel.001","target_body_bounds_center_godot_xz":[7.1,41.4],"components":"body, IronHoop001..002, Lid001"}
+  ],
+  "notes": [
+    "The +0.55m seating X translation, rather than the first +0.43m sketch, also clears the real restaurant awning post at X14.078..14.158,Z21.316..21.395. Actual live support hull checks remain required because world AABB exaggerates the rotated foundation corner.",
+    "Net new low footprint is X7.716..7.874,Z38.779..40.773 with current sampled H0.23994..0.24002. Timber is X7.487..7.947,Z41.893..43.679 with sampled H0.174..0.240.",
+    "Crate A/B and barrel move independently as complete assemblies; their old 26-component XY touching group is a cluster of three actual objects, not one rigid object. Their target sample ground spans respectively 0.173..0.240,0.165..0.240,0.144..0.238m. No additional beach platform is requested."
+  ]
+}

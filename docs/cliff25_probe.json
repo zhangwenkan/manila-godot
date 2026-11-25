@@ -1,0 +1,15 @@
+{
+  "meta": null,
+  "content": [
+    {
+      "type": "text",
+      "text": "Code executed successfully: {\"pid\": 9864, \"file\": \"F:\\\\\\u9a6c\\u5c3c\\u62c9godot\\\\manila-godot\\\\demo\\\\tropical_harbor_3d\\\\source\\\\harbor_shore_control_mcp.blend\", \"dirty\": true, \"background\": false, \"sha\": \"791081d9a9b653e63523396c660b636d53c4c191bc1301a2d093044d801973d2\", \"port\": 9881}\n",
+      "annotations": null,
+      "meta": null
+    }
+  ],
+  "structuredContent": {
+    "result": "Code executed successfully: {\"pid\": 9864, \"file\": \"F:\\\\\\u9a6c\\u5c3c\\u62c9godot\\\\manila-godot\\\\demo\\\\tropical_harbor_3d\\\\source\\\\harbor_shore_control_mcp.blend\", \"dirty\": true, \"background\": false, \"sha\": \"791081d9a9b653e63523396c660b636d53c4c191bc1301a2d093044d801973d2\", \"port\": 9881}\n"
+  },
+  "isError": false
+}

@@ -1,0 +1,15 @@
+{
+  "meta": null,
+  "content": [
+    {
+      "type": "text",
+      "text": "Code executed successfully: {\"pier_clearance_pass\": true, \"active_rocks\": 43, \"protected_zones\": 7, \"target_rocks_verified\": 2, \"failures\": [], \"dirty\": false}\n{\"integrity_pass\": true, \"technical_pass\": true, \"structural_failures\": [], \"integrity_failures\": [], \"manual_jobs\": 8, \"manual_components\": 146, \"unresolved_closures\": [{\"group\": \"seating:Town_TableLeg.008\", \"components\": 17, \"manual_components\": 17, \"verified_components\": 17, \"resolved_by_manual_jobs\": true, \"jobs\": [\"restaurant_north_seating\"]}, {\"group\": \"coast_prop:S20_NetPost\", \"components\": 23, \"manual_components\": 23, \"verified_components\": 23, \"resolved_by_manual_jobs\": true, \"jobs\": [\"shore_net\"]}, {\"group\": \"coast_prop:S20_StackBearers\", \"components\": 7, \"manual_components\": 7, \"verified_components\": 7, \"resolved_by_manual_jobs\": true, \"jobs\": [\"shore_timber\"]}, {\"group\": \"coast_prop:S20_fishing_Crate_Frame.005\", \"components\": 26, \"manual_components\": 26, \"verified_components\": 26, \"resolved_by_manual_jobs\": true, \"jobs\": [\"shore_crate_a\", \"shore_crate_b\", \"shore_barrel\"]}], \"dirty\": false, \"limitations\": [\"No actual pre-round file snapshot/hash for: fleet/harbor_route.gd, fleet/fleet_camera.gd, fleet/fleet_state.gd, fleet_harbor.gd, fleet_harbor.tscn, environment/reference_environment.gd, environment/harbor_environment.gd\"]}\n",
+      "annotations": null,
+      "meta": null
+    }
+  ],
+  "structuredContent": {
+    "result": "Code executed successfully: {\"pier_clearance_pass\": true, \"active_rocks\": 43, \"protected_zones\": 7, \"target_rocks_verified\": 2, \"failures\": [], \"dirty\": false}\n{\"integrity_pass\": true, \"technical_pass\": true, \"structural_failures\": [], \"integrity_failures\": [], \"manual_jobs\": 8, \"manual_components\": 146, \"unresolved_closures\": [{\"group\": \"seating:Town_TableLeg.008\", \"components\": 17, \"manual_components\": 17, \"verified_components\": 17, \"resolved_by_manual_jobs\": true, \"jobs\": [\"restaurant_north_seating\"]}, {\"group\": \"coast_prop:S20_NetPost\", \"components\": 23, \"manual_components\": 23, \"verified_components\": 23, \"resolved_by_manual_jobs\": true, \"jobs\": [\"shore_net\"]}, {\"group\": \"coast_prop:S20_StackBearers\", \"components\": 7, \"manual_components\": 7, \"verified_components\": 7, \"resolved_by_manual_jobs\": true, \"jobs\": [\"shore_timber\"]}, {\"group\": \"coast_prop:S20_fishing_Crate_Frame.005\", \"components\": 26, \"manual_components\": 26, \"verified_components\": 26, \"resolved_by_manual_jobs\": true, \"jobs\": [\"shore_crate_a\", \"shore_crate_b\", \"shore_barrel\"]}], \"dirty\": false, \"limitations\": [\"No actual pre-round file snapshot/hash for: fleet/harbor_route.gd, fleet/fleet_camera.gd, fleet/fleet_state.gd, fleet_harbor.gd, fleet_harbor.tscn, environment/reference_environment.gd, environment/harbor_environment.gd\"]}\n"
+  },
+  "isError": false
+}

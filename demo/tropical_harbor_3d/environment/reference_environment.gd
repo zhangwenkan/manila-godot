@@ -5,9 +5,24 @@ const REFERENCE_GROUND = preload("res://demo/tropical_harbor_3d/materials/landfo
 const ART := "res://demo/tropical_harbor_3d/assets/reference/"
 const RELIEF_HEIGHT_PATH := ART + "shore_relief_height.json"
 const GRASS_ALBEDO = preload(ART + "L24_Grass.png")
-const SOIL_ALBEDO = preload(ART + "L24_Earth.png")
+const SOIL_ALBEDO = preload(ART + "R27_Earth_Albedo.png")
+const SOIL_HEIGHT = preload(ART + "R27_Earth_Height.png")
 const PATH_ALBEDO = preload(ART + "L24_Path.png")
-const ROCK_ALBEDO = preload(ART + "L24_Rock.png")
+const ROCK_ALBEDO = preload(ART + "R27_Rock_Albedo.png")
+const ROCK_HEIGHT = preload(ART + "R27_Rock_Height.png")
+const GROUND_SURFACE_TEXTURES := {
+    "ground_land_use": ART + "G23_LandUse.png",
+    "ground_grass": ART + "G23_Grass.png",
+    "ground_rock": ART + "G23_Rock.png",
+    "ground_path": ART + "G23_Path.png",
+    "ground_soil": ART + "G23_Soil.png",
+    "ground_sand": ART + "G23_Sand.png",
+}
+const CLIFF_REGION_TEXTURES := {
+    "cliff_region_color": ART + "C25_CliffRegion_Color.png",
+    "cliff_region_height": ART + "C25_CliffRegion_Height.exr",
+}
+const GROUND_DETAIL_TEXTURE := ART + "C25_GroundDetail.png"
 
 var _relief_height_loaded := false
 var _relief_heights := PackedFloat32Array()
@@ -53,8 +68,13 @@ func _build_sand() -> void:
     sand_material.shader = REFERENCE_GROUND
     sand_material.set_shader_parameter("grass_albedo", GRASS_ALBEDO)
     sand_material.set_shader_parameter("soil_albedo", SOIL_ALBEDO)
+    sand_material.set_shader_parameter("soil_height", SOIL_HEIGHT)
     sand_material.set_shader_parameter("path_albedo", PATH_ALBEDO)
     sand_material.set_shader_parameter("rock_albedo", ROCK_ALBEDO)
+    sand_material.set_shader_parameter("rock_height", ROCK_HEIGHT)
+    _bind_ground_surfaces(sand_material)
+    _bind_cliff_region(sand_material)
+    _bind_ground_detail(sand_material)
     for item in instance.find_children("*", "MeshInstance3D", true, false):
         var mesh := item as MeshInstance3D
         # Authored grass, rock, path and soil weights share the same landform.
@@ -74,6 +94,65 @@ func _build_sand() -> void:
         collision.shape = mesh.mesh.create_trimesh_shape()
         body.add_child(collision)
     # Compatibility fields for the shared time/presentation interface.
+    if ResourceLoader.exists(ART + "ground_cover.glb"):
+        var ground_cover := (load(ART + "ground_cover.glb") as PackedScene).instantiate() as Node3D
+        ground_cover.name = "ReferenceGroundCover"
+        add_child(ground_cover)
+        for item in ground_cover.find_children("*", "MeshInstance3D", true, false):
+            var cover_mesh := item as MeshInstance3D
+            for surface in cover_mesh.mesh.get_surface_count():
+                var cover_material := StandardMaterial3D.new()
+                cover_material.vertex_color_use_as_albedo = true
+                cover_material.vertex_color_is_srgb = false
+                cover_material.roughness = 0.94
+                cover_material.metallic_specular = 0.10
+                cover_material.cull_mode = BaseMaterial3D.CULL_DISABLED
+                cover_mesh.set_surface_override_material(surface, cover_material)
+    # Exposed shoulders now belong to the continuous terrain. The intermediate
+    # ground_rock asset is archived and deliberately has no runtime instance.
+
+func _bind_ground_surfaces(material: ShaderMaterial) -> void:
+    # Enable the complete set together: no old regional rock style remains inside
+    # the new land-use map, and the same five surfaces continue beyond its bounds.
+    var textures: Dictionary = {}
+    for parameter in GROUND_SURFACE_TEXTURES:
+        var path: String = GROUND_SURFACE_TEXTURES[parameter]
+        if not ResourceLoader.exists(path):
+            return
+        var texture := load(path) as Texture2D
+        if texture == null:
+            return
+        textures[parameter] = texture
+    for parameter in textures:
+        material.set_shader_parameter(parameter, textures[parameter])
+    material.set_shader_parameter("ground_surface_enabled", true)
+
+func _bind_cliff_region(material: ShaderMaterial) -> void:
+    # This optional local pair never replaces the global land-use or surface set.
+    # Keep the flag off if either color or linear float height is unavailable.
+    material.set_shader_parameter("cliff_region_enabled", false)
+    var textures: Dictionary = {}
+    for parameter in CLIFF_REGION_TEXTURES:
+        var path: String = CLIFF_REGION_TEXTURES[parameter]
+        if not ResourceLoader.exists(path):
+            return
+        var texture := load(path) as Texture2D
+        if texture == null:
+            return
+        textures[parameter] = texture
+    for parameter in textures:
+        material.set_shader_parameter(parameter, textures[parameter])
+    material.set_shader_parameter("cliff_region_enabled", true)
+
+func _bind_ground_detail(material: ShaderMaterial) -> void:
+    material.set_shader_parameter("ground_detail_enabled", false)
+    if not ResourceLoader.exists(GROUND_DETAIL_TEXTURE):
+        return
+    var texture := load(GROUND_DETAIL_TEXTURE) as Texture2D
+    if texture == null:
+        return
+    material.set_shader_parameter("ground_detail_map", texture)
+    material.set_shader_parameter("ground_detail_enabled", true)
 
 func _build_swash() -> void:
     swash_material = ShaderMaterial.new()

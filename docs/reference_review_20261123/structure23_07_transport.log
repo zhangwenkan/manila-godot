@@ -1,0 +1,22 @@
+2026-11-23 23:12:56,183 - BlenderMCPServer - INFO - BlenderMCP server starting up
+2026-11-23 23:12:56,189 - BlenderMCPServer - INFO - Blender addon on disk is current (protocol 16).
+2026-11-23 23:12:56,190 - blender-mcp-telemetry - WARNING - Telemetry disabled via environment variable
+2026-11-23 23:12:56,194 - BlenderMCPServer - INFO - Connected to Blender at 127.0.0.1:9881
+2026-11-23 23:12:56,194 - BlenderMCPServer - INFO - Created new persistent connection to Blender
+2026-11-23 23:12:56,194 - BlenderMCPServer - INFO - Sending command: get_addon_info with params: None
+2026-11-23 23:12:56,194 - BlenderMCPServer - INFO - Command sent, waiting for response...
+2026-11-23 23:12:56,195 - BlenderMCPServer - INFO - Received complete response (465 bytes)
+2026-11-23 23:12:56,195 - BlenderMCPServer - INFO - Received 465 bytes of data
+2026-11-23 23:12:56,195 - BlenderMCPServer - INFO - Response parsed, status: success
+2026-11-23 23:12:56,195 - BlenderMCPServer - INFO - Blender addon up to date (protocol 16, addon [2, 0], Blender 5.3.0)
+2026-11-23 23:12:56,195 - BlenderMCPServer - INFO - Successfully connected to Blender on startup
+2026-11-23 23:12:56,201 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-11-23 23:12:56,201 - BlenderMCPServer - INFO - MCP client mcp 0.1.0: extensions=[], apps=False, openai_forms=False
+2026-11-23 23:12:56,204 - BlenderMCPServer - INFO - Sending command: execute_code with params: {'code': 'import bpy, os\nfrom pathlib import Path\nassert os.getpid() == 12164, "Wrong Blender PID"\nassert Path(bpy.data.filepath).resolve() == Path(\'F:/马尼拉godot/manila-godot/demo/tropical_harbor_3d/source/harbor_shore_control_mcp.blend\').resolve(), "Wrong Blender file"\nassert bpy.types.blendermcp_server.port == 9881, "Wrong Blender port"\n"""Read-only live geometry review; no mutations or exports."""\nimport bpy,json\nfrom pathlib import Path\nROOT=Path(bpy.data.filepath).parent.parent;LOG=ROOT/\'captures/terrain_structure_20261123\'\nexec((ROOT/\'source/structure23_audit.py\').read_text(encoding=\'utf8\'),globals())\nresult=audit_structure23_design(LOG/\'design.json\',12164)\nprint(json.dumps({\'status\':result.get(\'status\'),\'failures\':result.get(\'failures\'),\'incomplete\':result.get(\'incomplete\'),\'routes\':[{\'name\':r[\'name\'],\'cross\':r[\'cross_slope_deg\'],\'longitudinal\':r[\'longitudinal_slope_deg\'],\'height_error\':r[\'target_height_error_m\']} for r in result.get(\'routes\',[])]}))\nexec((ROOT/\'source/structure23_thresholds_readonly.py\').read_text(encoding=\'utf8\'),globals())\ninspect_structure23_thresholds(12164)\n'}
+2026-11-23 23:12:56,204 - BlenderMCPServer - INFO - Command sent, waiting for response...
+2026-11-23 23:12:59,446 - BlenderMCPServer - INFO - Received complete response (9569 bytes)
+2026-11-23 23:12:59,446 - BlenderMCPServer - INFO - Received 9569 bytes of data
+2026-11-23 23:12:59,447 - BlenderMCPServer - INFO - Response parsed, status: success
+2026-11-23 23:12:59,450 - mcp.server.lowlevel.server - INFO - Processing request of type ListToolsRequest
+2026-11-23 23:12:59,459 - BlenderMCPServer - INFO - Disconnecting from Blender on shutdown
+2026-11-23 23:12:59,459 - BlenderMCPServer - INFO - BlenderMCP server shut down

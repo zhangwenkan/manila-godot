@@ -1,0 +1,295 @@
+{
+  "title": "Rosie entrance and tavern side/rear route suggestions",
+  "created_local": "2026-11-23T18:20:44.631944+08:00",
+  "coordinate_system": "Godot XZ planar coordinates, meters; Godot Y is terrain height. Blender (x,y,z) maps to Godot (x,z,-y).",
+  "read_only_study": true,
+  "visual_reference": "captures/art_20261123_181222_602214/terrace_cross_street.png and 02_town_waterfront.png",
+  "terrain_sha256": "ecdcd164216b2d4a70b2f49fad8325c59219d68e11558bb8dce93de20d95f770",
+  "terrain_file_mtime_local": "2026-11-23T18:20:21.603667+08:00",
+  "obstacle_bbox_order": [
+    "x_min",
+    "x_max",
+    "z_min",
+    "z_max"
+  ],
+  "evidence": [
+    "Current exported town/coast/rocks GLB transformed world positions for tables, supplies and rocks.",
+    "Current foliage GLB low vertices for seaward palm.",
+    "Conservative gap rock/shrub boxes from captures/rock_earth_rebuild_20261121/obstructions.json; actual exported rock faces are slightly inside these boxes.",
+    "Current terrain GLB triangle barycentric height samples; this does not inspect newly unsaved Blender changes."
+  ],
+  "routes": [
+    {
+      "name": "rosie_door_inner_entry",
+      "status": "recommended_short_piece",
+      "points_xz": [
+        [
+          12.1,
+          49.34
+        ],
+        [
+          13.0,
+          49.36
+        ],
+        [
+          13.55,
+          49.37
+        ]
+      ],
+      "full_width_m": [
+        1.1,
+        1.05,
+        1.0
+      ],
+      "requires_grading": "Only final contact must follow parent step-grounding result; existing interior ground is about 1.18.",
+      "scope_notes": [
+        "Passes between the two table-chair groups.",
+        "Stop at the approach to Town_Step.001; do not paint up the vertical riser.",
+        "This short piece does not by itself connect a lower public lane."
+      ],
+      "sampled_centerline_heights_m": [
+        1.1675,
+        1.18,
+        1.18
+      ],
+      "sampled_height_status": "Actual exported terrain triangles at recorded SHA-256; source may subsequently be edited by parent."
+    },
+    {
+      "name": "tavern_rear_short_access",
+      "status": "conditional_short_piece",
+      "points_xz": [
+        [
+          16.8,
+          40.0
+        ],
+        [
+          16.8,
+          41.2
+        ],
+        [
+          16.85,
+          42.0
+        ],
+        [
+          16.9,
+          42.5
+        ]
+      ],
+      "full_width_m": [
+        0.7,
+        0.7,
+        0.7,
+        0.7
+      ],
+      "requires_grading": "Current centerline height is approximately 1.65; inspect cross-slope and foundation edge before forming a narrow service path.",
+      "scope_notes": [
+        "Rear/east side, between tavern footing and cliff.",
+        "Stop before z43.0 because the downstream shrub and boulder corridor narrows.",
+        "This is rear access only, not a certified rear-to-Rosie through-route.",
+        "Only extend if actual visible need justifies this narrow path."
+      ],
+      "sampled_centerline_heights_m": [
+        1.65,
+        1.65,
+        1.6543,
+        1.6657
+      ],
+      "sampled_height_status": "Actual exported terrain triangles at recorded SHA-256; source may subsequently be edited by parent."
+    },
+    {
+      "name": "tavern_rosie_gap_west_pocket",
+      "status": "conditional_side_pocket_not_through_route",
+      "points_xz": [
+        [
+          13.0,
+          43.65
+        ],
+        [
+          14.15,
+          43.75
+        ],
+        [
+          14.4,
+          44.35
+        ],
+        [
+          14.45,
+          45.05
+        ],
+        [
+          14.45,
+          46.0
+        ]
+      ],
+      "full_width_m": [
+        0.8,
+        0.8,
+        0.75,
+        0.7,
+        0.7
+      ],
+      "requires_grading": "Yes. The pocket drops below the tavern and rises again toward Rosie; centerline heights are evidence, not target grades. Resolve into a deliberate small ramp/landing before road masking.",
+      "scope_notes": [
+        "Runs west of the gap boulders and east of the Rosie left supply pile.",
+        "At z45.6-46.4, keep path west edge greater than x14.05 to clear the barrel at x13.857.",
+        "At z43.4-45.2, keep east edge less than x14.85 to leave clearance from the boulders starting near x15.10.",
+        "End on the near/north side of Rosie. Do not continue straight through its footprint.",
+        "The start should join an actual tavern side landing; it is not an invented rear doorway."
+      ],
+      "sampled_centerline_heights_m": [
+        1.3031,
+        1.169,
+        0.9465,
+        1.0324,
+        1.1802
+      ],
+      "sampled_height_status": "Actual exported terrain triangles at recorded SHA-256; source may subsequently be edited by parent."
+    },
+    {
+      "name": "rosie_lower_approach_probe",
+      "status": "hold_until_grade_design",
+      "points_xz": [
+        [
+          11.0,
+          49.3
+        ],
+        [
+          11.5,
+          49.32
+        ],
+        [
+          12.1,
+          49.34
+        ]
+      ],
+      "full_width_m": [
+        1.0,
+        1.05,
+        1.1
+      ],
+      "requires_grading": "Yes; current height climbs about 0.64 m in 1.10 m. This cannot be accepted by material painting alone.",
+      "scope_notes": [
+        "No table/chair conflict along this central-door axis.",
+        "Requires a designed ramp or actual steps before joining the short entry.",
+        "Do not expand the earth-colored mask into the full terrace as a substitute for the connection."
+      ],
+      "sampled_centerline_heights_m": [
+        0.5321,
+        0.9036,
+        1.1675
+      ],
+      "sampled_height_status": "Actual exported terrain triangles at recorded SHA-256; source may subsequently be edited by parent."
+    }
+  ],
+  "obstacles": [
+    {
+      "name": "rosie_left_supply",
+      "bbox_xz": [
+        12.233,
+        13.857,
+        45.625,
+        46.411
+      ]
+    },
+    {
+      "name": "rosie_left_menu_board",
+      "bbox_xz": [
+        12.679,
+        12.909,
+        46.412,
+        47.211
+      ]
+    },
+    {
+      "name": "rosie_near_table_chairs",
+      "bbox_xz": [
+        11.91,
+        13.687,
+        47.437,
+        48.189
+      ]
+    },
+    {
+      "name": "rosie_far_table_chairs",
+      "bbox_xz": [
+        12.399,
+        14.176,
+        50.701,
+        51.452
+      ]
+    },
+    {
+      "name": "rosie_far_supply",
+      "bbox_xz": [
+        16.87,
+        18.518,
+        51.865,
+        52.735
+      ]
+    },
+    {
+      "name": "rosie_moved_supply",
+      "bbox_xz": [
+        18.203,
+        19.848,
+        53.009,
+        53.791
+      ]
+    },
+    {
+      "name": "gap_boulder_008_conservative",
+      "bbox_xz": [
+        15.099,
+        16.201,
+        43.317,
+        44.283
+      ]
+    },
+    {
+      "name": "gap_boulder_007_conservative",
+      "bbox_xz": [
+        15.162,
+        16.238,
+        44.015,
+        45.185
+      ]
+    },
+    {
+      "name": "gap_boulder_025_conservative",
+      "bbox_xz": [
+        16.597,
+        18.003,
+        44.835,
+        46.165
+      ]
+    },
+    {
+      "name": "gap_shrub_036",
+      "bbox_xz": [
+        15.393,
+        16.607,
+        43.132,
+        44.268
+      ]
+    },
+    {
+      "name": "gap_shrub_038",
+      "bbox_xz": [
+        16.72,
+        17.48,
+        44.845,
+        45.555
+      ]
+    },
+    {
+      "name": "seaward_palm_low_trunk",
+      "bbox_xz": [
+        10.28,
+        10.663,
+        43.746,
+        44.187
+      ]
+    }
+  ],
+  "decision": "Recommend the Rosie interior door approach first. Treat the tavern rear stub and west gap pocket as conditional narrow connections, and do not claim a complete rear through-route without a new clearance/grade design. No asset moves were performed or assumed in this read-only suggestion."
+}

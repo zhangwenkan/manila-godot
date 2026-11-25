@@ -1,0 +1,15 @@
+{
+  "meta": null,
+  "content": [
+    {
+      "type": "text",
+      "text": "Code executed successfully: {\"routes\": 15, \"platforms\": 22, \"map_size\": 2048, \"geometry_driven_shore_and_slope\": true, \"path_elevation_clipping\": false, \"source_image_packed\": true, \"cliff_contacts\": {\"isolated_grass_pixels_removed\": 146, \"thin_cliff_grass_pixels_removed\": 833, \"cliff_grass_area_m2\": 0.9246940612792969}, \"visual_accepted\": false}\n{\"apply\": true, \"groups\": 235, \"components\": 2163, \"relocated\": 69, \"unresolved\": [\"seating:Town_TableLeg.008\", \"coast_prop:S20_NetPost\", \"coast_prop:S20_StackBearers\", \"coast_prop:S20_fishing_Crate_Frame.005\"], \"report\": \"F:\\\\马尼拉godot\\\\manila-godot\\\\demo\\\\tropical_harbor_3d\\\\captures\\\\terrain_structure_20261123\\\\props.json\"}\n{\"jobs\": 8, \"components\": 146, \"applied\": true, \"problems\": []}\n{\"blades\": [{\"object\": \"L24_GrassTuftClusters\", \"before\": 7590, \"after\": 7027, \"removed\": 563, \"regrounded\": 5710, \"max_root_gap\": -0.011999999999999567}, {\"object\": \"G23_RootedGrassMargins\", \"before\": 37288, \"after\": 27711, \"removed\": 9577, \"regrounded\": 24710, \"max_root_gap\": -0.011999999999999567}], \"fragments_removed_vertices\": 91, \"fragments_regrounded\": 27, \"visual_accepted\": false}\n{\"status\": \"completed\", \"failures\": [], \"incomplete\": []}\nSURFACE_AND_CONTACTS_COMPLETE\n",
+      "annotations": null,
+      "meta": null
+    }
+  ],
+  "structuredContent": {
+    "result": "Code executed successfully: {\"routes\": 15, \"platforms\": 22, \"map_size\": 2048, \"geometry_driven_shore_and_slope\": true, \"path_elevation_clipping\": false, \"source_image_packed\": true, \"cliff_contacts\": {\"isolated_grass_pixels_removed\": 146, \"thin_cliff_grass_pixels_removed\": 833, \"cliff_grass_area_m2\": 0.9246940612792969}, \"visual_accepted\": false}\n{\"apply\": true, \"groups\": 235, \"components\": 2163, \"relocated\": 69, \"unresolved\": [\"seating:Town_TableLeg.008\", \"coast_prop:S20_NetPost\", \"coast_prop:S20_StackBearers\", \"coast_prop:S20_fishing_Crate_Frame.005\"], \"report\": \"F:\\\\马尼拉godot\\\\manila-godot\\\\demo\\\\tropical_harbor_3d\\\\captures\\\\terrain_structure_20261123\\\\props.json\"}\n{\"jobs\": 8, \"components\": 146, \"applied\": true, \"problems\": []}\n{\"blades\": [{\"object\": \"L24_GrassTuftClusters\", \"before\": 7590, \"after\": 7027, \"removed\": 563, \"regrounded\": 5710, \"max_root_gap\": -0.011999999999999567}, {\"object\": \"G23_RootedGrassMargins\", \"before\": 37288, \"after\": 27711, \"removed\": 9577, \"regrounded\": 24710, \"max_root_gap\": -0.011999999999999567}], \"fragments_removed_vertices\": 91, \"fragments_regrounded\": 27, \"visual_accepted\": false}\n{\"status\": \"completed\", \"failures\": [], \"incomplete\": []}\nSURFACE_AND_CONTACTS_COMPLETE\n"
+  },
+  "isError": false
+}

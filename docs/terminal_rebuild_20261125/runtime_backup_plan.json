@@ -1,0 +1,39 @@
+{
+  "basis": "Current reference runtime only; no previous realistic terminal assets inspected.",
+  "snapshot_before_edit": [
+    "project.godot",
+    "demo/tropical_harbor_3d/fleet_harbor.tscn",
+    "demo/tropical_harbor_3d/fleet_harbor.gd",
+    "demo/tropical_harbor_3d/fleet/fleet_state.gd",
+    "demo/tropical_harbor_3d/fleet/harbor_route.gd",
+    "demo/tropical_harbor_3d/fleet/fleet_camera.gd",
+    "demo/tropical_harbor_3d/ships/ship_view.gd",
+    "demo/tropical_harbor_3d/environment/harbor_layout.gd",
+    "demo/tropical_harbor_3d/environment/reference_coast.gd",
+    "demo/tropical_harbor_3d/environment/reference_environment.gd",
+    "demo/tropical_harbor_3d/materials/landform_mass.gdshader",
+    "demo/tropical_harbor_3d/materials/reference_water.gdshader",
+    "demo/tropical_harbor_3d/tools/art_preview.gd",
+    "demo/tropical_harbor_3d/tools/reference_rebuild_review.gd",
+    "demo/tropical_harbor_3d/tools/local_voyage_review.gd",
+    "demo/tropical_harbor_3d/tools/capture_art.py",
+    "demo/tropical_harbor_3d/tools/capture_process.py"
+  ],
+  "expected_authorized_edits": [
+    "demo/tropical_harbor_3d/environment/reference_coast.gd",
+    "demo/tropical_harbor_3d/tools/reference_rebuild_review.gd",
+    "demo/tropical_harbor_3d/tools/capture_art.py"
+  ],
+  "protected_assets_expected": [
+    "terrain.glb", "town.glb", "cargo_port.glb", "boat.glb", "ocean.glb", "rocks.glb",
+    "shore_relief_height.json", "G23_Grass.png", "G23_LandUse.png", "G23_Path.png", "G23_Rock.png",
+    "G23_Sand.png", "G23_Soil.png", "C25_CliffRegion_Color.png", "C25_CliffRegion_Height.exr", "C25_GroundDetail.png"
+  ],
+  "conditional_scoped_changes": [
+    "coast.glb: archive targeted terminal huts only; preserve platform, left bridge and other coast components",
+    "foliage.glb: only if new terminal footprint genuinely requires local whole-tree relocation; report exact groups",
+    "ground_cover.glb: only if new terminal footprint genuinely requires local clearing; no environment redesign"
+  ],
+  "source_and_session": "Root agent snapshots current C25 source and asserts new owned Blender process, path and free MCP port before authoring.",
+  "status": "Plan only; no runtime files edited and no Blender/Godot process started by this agent."
+}

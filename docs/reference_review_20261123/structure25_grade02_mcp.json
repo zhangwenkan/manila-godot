@@ -1,0 +1,15 @@
+{
+  "meta": null,
+  "content": [
+    {
+      "type": "text",
+      "text": "Code executed successfully: {\"source_baseline\": \"grade.npz\", \"actual_full_triangle_constraints\": 4084, \"triangles_by_area\": {\"lower_trade_pier_descent\": 266, \"lower_work_pier_descent\": 150, \"north_lower_upper_ramp\": 462, \"lower_market_side_court\": 146, \"trade_pier_sand_landing\": 48}, \"iterations\": 81, \"max_gradient_excess\": 8.643171029998342e-07, \"changed_vertices\": 115, \"max_height_change_m\": 2.3495776056152646, \"limits_unchanged\": true, \"visual_accepted\": false}\n{\"status\": \"completed\", \"failures\": [], \"incomplete\": []}\n",
+      "annotations": null,
+      "meta": null
+    }
+  ],
+  "structuredContent": {
+    "result": "Code executed successfully: {\"source_baseline\": \"grade.npz\", \"actual_full_triangle_constraints\": 4084, \"triangles_by_area\": {\"lower_trade_pier_descent\": 266, \"lower_work_pier_descent\": 150, \"north_lower_upper_ramp\": 462, \"lower_market_side_court\": 146, \"trade_pier_sand_landing\": 48}, \"iterations\": 81, \"max_gradient_excess\": 8.643171029998342e-07, \"changed_vertices\": 115, \"max_height_change_m\": 2.3495776056152646, \"limits_unchanged\": true, \"visual_accepted\": false}\n{\"status\": \"completed\", \"failures\": [], \"incomplete\": []}\n"
+  },
+  "isError": false
+}

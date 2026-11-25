@@ -1,0 +1,528 @@
+{
+  "title": "Read-only semantic triage of ground contacts",
+  "created_local": "2026-11-23T18:32:30.629462+08:00",
+  "report_coordinate_note": "contacts_current.center = [Godot x, Godot z, Godot y]; door_hut_contacts.center_godot = ordinary [x,y,z]. Positive gap means air, negative means buried.",
+  "scope": "Read-only JSON/GLB analysis only; no Blender MCP or object changes.",
+  "report_count": 586,
+  "groups": [
+    {
+      "anchor": "Palm_Trunk.010",
+      "status": "needs_root_level_review",
+      "group_members": [
+        "Palm_Trunk.010",
+        "D19_Palm_FrondRachis.080",
+        "D19_Palm_FrondRachis.081",
+        "D19_Palm_FrondRachis.082",
+        "D19_Palm_FrondRachis.083",
+        "D19_Palm_FrondRachis.084",
+        "D19_Palm_FrondRachis.085",
+        "D19_Palm_FrondRachis.086",
+        "D19_Palm_FrondRachis.087",
+        "D19_Palm_FrondLeaflets.080",
+        "D19_Palm_FrondLeaflets.081",
+        "D19_Palm_FrondLeaflets.082",
+        "D19_Palm_FrondLeaflets.083",
+        "D19_Palm_FrondLeaflets.084",
+        "D19_Palm_FrondLeaflets.085",
+        "D19_Palm_FrondLeaflets.086",
+        "D19_Palm_FrondLeaflets.087",
+        "Palm_Coconut.030",
+        "Palm_Coconut.031",
+        "Palm_Coconut.032",
+        "D19_Palm_GrowthRing.120",
+        "D19_Palm_GrowthRing.121",
+        "D19_Palm_GrowthRing.122",
+        "D19_Palm_GrowthRing.123",
+        "D19_Palm_GrowthRing.124",
+        "D19_Palm_GrowthRing.125",
+        "D19_Palm_GrowthRing.126",
+        "D19_Palm_GrowthRing.127",
+        "D19_Palm_GrowthRing.128",
+        "D19_Palm_GrowthRing.129",
+        "D19_Palm_GrowthRing.130",
+        "D19_Palm_GrowthRing.131"
+      ],
+      "center_xzy_report": [
+        12.10848617553711,
+        19.297691345214844,
+        2.798863410949707
+      ],
+      "reported_bbox_gap_m": [
+        -0.9258501529693604,
+        -0.0874178409576416
+      ],
+      "old_bbox_gap_m": [
+        -0.07717156410217285,
+        -0.07018303871154785
+      ],
+      "ground_change_m": [
+        0.0171966552734375,
+        0.8486785888671875
+      ],
+      "reason": "Real lowest trunk ring is now buried about 0.265-0.636 m. The report bbox exaggerates to 0.926 m because the palm leans.",
+      "recommended_handling": "Use actual root ring, preserve roughly 0.07-0.08 m embedded root, move the entire palm assembly once. Uneven ground around the ring makes a single bbox-derived shift invalid.",
+      "actual_root_check": {
+        "root_center_godot": [
+          12.36514,
+          0.28486,
+          19.0
+        ],
+        "ground_at_root_center": 0.71099,
+        "actual_root_gap_m": [
+          -0.63586,
+          -0.26532
+        ]
+      }
+    },
+    {
+      "anchor": "Tree_Trunk.035",
+      "status": "needs_regrounding",
+      "group_members": [
+        "Tree_Trunk.035",
+        "Tree_Branch.175",
+        "Tree_Branch.176",
+        "Tree_Branch.177",
+        "Tree_Branch.178",
+        "Tree_Branch.179",
+        "D19_Tree_Crown.210",
+        "D19_Tree_Crown.211",
+        "D19_Tree_Crown.212",
+        "D19_Tree_Crown.213",
+        "D19_Tree_Crown.214",
+        "D19_Tree_Crown.215"
+      ],
+      "center_xzy_report": [
+        18.59443473815918,
+        19.982158660888672,
+        2.2697157859802246
+      ],
+      "reported_bbox_gap_m": [
+        -0.21881794929504395,
+        -0.19173359870910645
+      ],
+      "old_bbox_gap_m": [
+        -0.1027977466583252,
+        -0.1006309986114502
+      ],
+      "ground_change_m": [
+        0.0889739990234375,
+        0.1180572509765625
+      ],
+      "reason": "Actual root ring is now buried 0.175-0.208 m; old intended embed was about 0.10 m.",
+      "recommended_handling": "Reground full tree group from trunk root, likely about +0.09 to +0.11 m after current-source confirmation. Do not ground branches/crowns independently.",
+      "actual_root_check": {
+        "root_center_godot": [
+          18.55641,
+          1.13081,
+          20.0
+        ],
+        "ground_at_root_center": 1.32255,
+        "actual_root_gap_m": [
+          -0.20824,
+          -0.17523
+        ]
+      }
+    },
+    {
+      "anchor": "S20_CourtyardShrub.020",
+      "status": "needs_root_review",
+      "group_members": [
+        "S20_CourtyardShrub.020"
+      ],
+      "center_xzy_report": [
+        19.142589569091797,
+        19.805221557617188,
+        1.5051405429840088
+      ],
+      "reported_bbox_gap_m": [
+        -0.40101778507232666,
+        -0.1848083734512329
+      ],
+      "old_bbox_gap_m": [
+        -0.49192965030670166,
+        -0.08986055850982666
+      ],
+      "ground_change_m": [
+        -0.10402679443359375,
+        0.188323974609375
+      ],
+      "reason": "Low shrub is more deeply embedded after grade changes; its intended original insertion was generally around 0.10 m.",
+      "recommended_handling": "Use actual low vertices and local support, keeping a planted base. Bbox spans include slope corners, so do not shift by worst gap; .020 and .023 already had uneven embedding before this turn."
+    },
+    {
+      "anchor": "S20_CourtyardShrub.021",
+      "status": "needs_root_review",
+      "group_members": [
+        "S20_CourtyardShrub.021"
+      ],
+      "center_xzy_report": [
+        19.523542404174805,
+        20.712007522583008,
+        1.3712512254714966
+      ],
+      "reported_bbox_gap_m": [
+        -0.4211822748184204,
+        -0.1977783441543579
+      ],
+      "old_bbox_gap_m": [
+        -0.14622652530670166,
+        -0.10000002384185791
+      ],
+      "ground_change_m": [
+        0.0977783203125,
+        0.27495574951171875
+      ],
+      "reason": "Low shrub is more deeply embedded after grade changes; its intended original insertion was generally around 0.10 m.",
+      "recommended_handling": "Use actual low vertices and local support, keeping a planted base. Bbox spans include slope corners, so do not shift by worst gap; .020 and .023 already had uneven embedding before this turn."
+    },
+    {
+      "anchor": "S20_CourtyardShrub.022",
+      "status": "needs_root_review",
+      "group_members": [
+        "S20_CourtyardShrub.022"
+      ],
+      "center_xzy_report": [
+        18.781484603881836,
+        20.433828353881836,
+        1.371251106262207
+      ],
+      "reported_bbox_gap_m": [
+        -0.2560821771621704,
+        -0.1935364007949829
+      ],
+      "old_bbox_gap_m": [
+        -0.10051119327545166,
+        -0.10000002384185791
+      ],
+      "ground_change_m": [
+        0.093536376953125,
+        0.15557098388671875
+      ],
+      "reason": "Low shrub is more deeply embedded after grade changes; its intended original insertion was generally around 0.10 m.",
+      "recommended_handling": "Use actual low vertices and local support, keeping a planted base. Bbox spans include slope corners, so do not shift by worst gap; .020 and .023 already had uneven embedding before this turn."
+    },
+    {
+      "anchor": "S20_CourtyardShrub.023",
+      "status": "needs_root_review",
+      "group_members": [
+        "S20_CourtyardShrub.023"
+      ],
+      "center_xzy_report": [
+        19.502399444580078,
+        19.962221145629883,
+        1.4236727952957153
+      ],
+      "reported_bbox_gap_m": [
+        -0.3735443353652954,
+        -0.21592867374420166
+      ],
+      "old_bbox_gap_m": [
+        -0.3121734857559204,
+        -0.04757845401763916
+      ],
+      "ground_change_m": [
+        0.05281829833984375,
+        0.24677276611328125
+      ],
+      "reason": "Low shrub is more deeply embedded after grade changes; its intended original insertion was generally around 0.10 m.",
+      "recommended_handling": "Use actual low vertices and local support, keeping a planted base. Bbox spans include slope corners, so do not shift by worst gap; .020 and .023 already had uneven embedding before this turn."
+    },
+    {
+      "anchor": "Town_Planter.007",
+      "status": "needs_ground_support_check",
+      "group_members": [
+        "Town_Planter.007",
+        "Town_PlanterBand.014",
+        "Town_PlanterBand.015",
+        "Town_PlanterLeaf.126",
+        "Town_PlanterLeaf.127",
+        "Town_PlanterLeaf.128",
+        "Town_PlanterLeaf.129",
+        "Town_PlanterLeaf.130",
+        "Town_PlanterLeaf.131",
+        "Town_PlanterLeaf.132",
+        "Town_PlanterLeaf.133",
+        "Town_PlanterLeaf.134",
+        "Town_PlanterLeaf.135",
+        "Town_PlanterLeaf.136",
+        "Town_PlanterLeaf.137",
+        "Town_PlanterLeaf.138",
+        "Town_PlanterLeaf.139",
+        "Town_PlanterLeaf.140",
+        "Town_PlanterLeaf.141",
+        "Town_PlanterLeaf.142",
+        "Town_PlanterLeaf.143"
+      ],
+      "center_xzy_report": [
+        23.357622146606445,
+        13.244742393493652,
+        4.444364547729492
+      ],
+      "reported_bbox_gap_m": [
+        0.07628154754638672,
+        0.22692394256591797
+      ],
+      "old_bbox_gap_m": [
+        0.17883586883544922,
+        0.22692394256591797
+      ],
+      "ground_change_m": [
+        0.0,
+        0.150115966796875
+      ],
+      "reason": "Original town planter helper creates a ground box at local z=0 with bands/leaves; these four are ground planters, not the TravelOffice upper window boxes. Current runtime center ray found no support mesh below the box. The .008 and .012 downslope corners gained about 0.27/0.29 m air gaps.",
+      "recommended_handling": "Treat each box + 2 bands + 18 leaves as one assembly. Inspect all base corners; .008/.012 need a level small support patch or lateral reposition, not a blind vertical drop into the high edge. .007/.011 residual gaps predate this turn and were partially reduced by grading."
+    },
+    {
+      "anchor": "Town_Planter.008",
+      "status": "needs_ground_support_check",
+      "group_members": [
+        "Town_Planter.008",
+        "Town_PlanterBand.016",
+        "Town_PlanterBand.017",
+        "Town_PlanterLeaf.144",
+        "Town_PlanterLeaf.145",
+        "Town_PlanterLeaf.146",
+        "Town_PlanterLeaf.147",
+        "Town_PlanterLeaf.148",
+        "Town_PlanterLeaf.149",
+        "Town_PlanterLeaf.150",
+        "Town_PlanterLeaf.151",
+        "Town_PlanterLeaf.152",
+        "Town_PlanterLeaf.153",
+        "Town_PlanterLeaf.154",
+        "Town_PlanterLeaf.155",
+        "Town_PlanterLeaf.156",
+        "Town_PlanterLeaf.157",
+        "Town_PlanterLeaf.158",
+        "Town_PlanterLeaf.159",
+        "Town_PlanterLeaf.160",
+        "Town_PlanterLeaf.161"
+      ],
+      "center_xzy_report": [
+        23.09204864501953,
+        16.23296546936035,
+        4.444364547729492
+      ],
+      "reported_bbox_gap_m": [
+        0.11920452117919922,
+        0.5460538864135742
+      ],
+      "old_bbox_gap_m": [
+        0.18820476531982422,
+        0.2782011032104492
+      ],
+      "ground_change_m": [
+        -0.267852783203125,
+        0.09716033935546875
+      ],
+      "reason": "Original town planter helper creates a ground box at local z=0 with bands/leaves; these four are ground planters, not the TravelOffice upper window boxes. Current runtime center ray found no support mesh below the box. The .008 and .012 downslope corners gained about 0.27/0.29 m air gaps.",
+      "recommended_handling": "Treat each box + 2 bands + 18 leaves as one assembly. Inspect all base corners; .008/.012 need a level small support patch or lateral reposition, not a blind vertical drop into the high edge. .007/.011 residual gaps predate this turn and were partially reduced by grading."
+    },
+    {
+      "anchor": "Town_Planter.011",
+      "status": "needs_ground_support_check",
+      "group_members": [
+        "Town_Planter.011",
+        "Town_PlanterBand.022",
+        "Town_PlanterBand.023",
+        "Town_PlanterLeaf.198",
+        "Town_PlanterLeaf.199",
+        "Town_PlanterLeaf.200",
+        "Town_PlanterLeaf.201",
+        "Town_PlanterLeaf.202",
+        "Town_PlanterLeaf.203",
+        "Town_PlanterLeaf.204",
+        "Town_PlanterLeaf.205",
+        "Town_PlanterLeaf.206",
+        "Town_PlanterLeaf.207",
+        "Town_PlanterLeaf.208",
+        "Town_PlanterLeaf.209",
+        "Town_PlanterLeaf.210",
+        "Town_PlanterLeaf.211",
+        "Town_PlanterLeaf.212",
+        "Town_PlanterLeaf.213",
+        "Town_PlanterLeaf.214",
+        "Town_PlanterLeaf.215"
+      ],
+      "center_xzy_report": [
+        23.275426864624023,
+        26.81679916381836,
+        4.753098011016846
+      ],
+      "reported_bbox_gap_m": [
+        0.15160894393920898,
+        0.303494930267334
+      ],
+      "old_bbox_gap_m": [
+        0.23633337020874023,
+        0.303494930267334
+      ],
+      "ground_change_m": [
+        0.0,
+        0.08472442626953125
+      ],
+      "reason": "Original town planter helper creates a ground box at local z=0 with bands/leaves; these four are ground planters, not the TravelOffice upper window boxes. Current runtime center ray found no support mesh below the box. The .008 and .012 downslope corners gained about 0.27/0.29 m air gaps.",
+      "recommended_handling": "Treat each box + 2 bands + 18 leaves as one assembly. Inspect all base corners; .008/.012 need a level small support patch or lateral reposition, not a blind vertical drop into the high edge. .007/.011 residual gaps predate this turn and were partially reduced by grading."
+    },
+    {
+      "anchor": "Town_Planter.012",
+      "status": "needs_ground_support_check",
+      "group_members": [
+        "Town_Planter.012",
+        "Town_PlanterBand.024",
+        "Town_PlanterBand.025",
+        "Town_PlanterLeaf.216",
+        "Town_PlanterLeaf.217",
+        "Town_PlanterLeaf.218",
+        "Town_PlanterLeaf.219",
+        "Town_PlanterLeaf.220",
+        "Town_PlanterLeaf.221",
+        "Town_PlanterLeaf.222",
+        "Town_PlanterLeaf.223",
+        "Town_PlanterLeaf.224",
+        "Town_PlanterLeaf.225",
+        "Town_PlanterLeaf.226",
+        "Town_PlanterLeaf.227",
+        "Town_PlanterLeaf.228",
+        "Town_PlanterLeaf.229",
+        "Town_PlanterLeaf.230",
+        "Town_PlanterLeaf.231",
+        "Town_PlanterLeaf.232",
+        "Town_PlanterLeaf.233"
+      ],
+      "center_xzy_report": [
+        22.51262092590332,
+        30.027429580688477,
+        4.753098011016846
+      ],
+      "reported_bbox_gap_m": [
+        0.22737646102905273,
+        0.5529379844665527
+      ],
+      "old_bbox_gap_m": [
+        0.25459814071655273,
+        0.26102209091186523
+      ],
+      "ground_change_m": [
+        -0.29276275634765625,
+        0.0272216796875
+      ],
+      "reason": "Original town planter helper creates a ground box at local z=0 with bands/leaves; these four are ground planters, not the TravelOffice upper window boxes. Current runtime center ray found no support mesh below the box. The .008 and .012 downslope corners gained about 0.27/0.29 m air gaps.",
+      "recommended_handling": "Treat each box + 2 bands + 18 leaves as one assembly. Inspect all base corners; .008/.012 need a level small support patch or lateral reposition, not a blind vertical drop into the high edge. .007/.011 residual gaps predate this turn and were partially reduced by grading."
+    },
+    {
+      "anchor": "S20_grill_Prop_Barrel.007",
+      "status": "minor_new_burial",
+      "group_members": [
+        "S20_grill_Prop_Barrel.007",
+        "S20_grill_Barrel_IronHoop.014",
+        "S20_grill_Barrel_IronHoop.015",
+        "S20_grill_Barrel_Lid.007"
+      ],
+      "center_xzy_report": [
+        17.405929565429688,
+        20.100000381469727,
+        1.6084917783737183
+      ],
+      "reported_bbox_gap_m": [
+        -0.05190277099609375,
+        -0.00702667236328125
+      ],
+      "old_bbox_gap_m": [
+        0.0052337646484375,
+        0.0082855224609375
+      ],
+      "ground_change_m": [
+        0.01226043701171875,
+        0.0601806640625
+      ],
+      "reason": "Bottom went from 5-8 mm above ground to 7-52 mm buried.",
+      "recommended_handling": "Minor full-assembly adjustment only if visible; retain hoop/lid relative heights. Nearby rope coil already touches at one root sample and is not evidence of a serious new gap."
+    },
+    {
+      "anchor": "Prop_Barrel.012",
+      "status": "existing_severe_burial",
+      "group_members": [
+        "Prop_Barrel.012",
+        "Barrel_IronHoop.024",
+        "Barrel_IronHoop.025",
+        "Barrel_Lid.012"
+      ],
+      "center_xzy_report": [
+        24.039697647094727,
+        13.775777816772461,
+        3.55889892578125
+      ],
+      "reported_bbox_gap_m": [
+        -0.9126701354980469,
+        -0.7248191833496094
+      ],
+      "old_bbox_gap_m": [
+        -0.7188682556152344,
+        -0.7181663513183594
+      ],
+      "ground_change_m": [
+        0.00665283203125,
+        0.19434356689453125
+      ],
+      "reason": "Entire old barrel is below terrain, including lid by 0.210-0.378 m; old bottom was already buried about 0.718 m.",
+      "recommended_handling": "Check whether this is a retired/hidden or intentionally occluded prop; if active and wanted, reposition the complete barrel on current land. Do not attribute the whole defect to this turn."
+    },
+    {
+      "anchor": "Prop_Crate.016",
+      "status": "existing_cross_slope_support_problem",
+      "group_members": [
+        "Prop_Crate.016",
+        "Crate_Frame.064",
+        "Crate_Frame.065",
+        "Crate_Frame.066",
+        "Crate_Frame.067",
+        "Crate_Rail.064",
+        "Crate_Rail.065",
+        "Crate_Rail.066",
+        "Crate_Rail.067",
+        "Crate_Diagonal.032",
+        "Crate_Diagonal.033"
+      ],
+      "center_xzy_report": [
+        20.011629104614258,
+        38.570011138916016,
+        3.705956220626831
+      ],
+      "reported_bbox_gap_m": [
+        -0.37938499450683594,
+        0.7417621612548828
+      ],
+      "old_bbox_gap_m": [
+        -0.4265575408935547,
+        0.7217426300048828
+      ],
+      "ground_change_m": [
+        -0.04717254638671875,
+        0.111328125
+      ],
+      "reason": "Base simultaneously floats up to 0.742 m and intersects terrain by 0.379 m. This existed previously, with old range -0.427 to +0.722 m.",
+      "recommended_handling": "Inspect whether active. If retained, requires a small landing or side relocation to usable ground; a single vertical translation cannot satisfy both sides."
+    }
+  ],
+  "grass": {
+    "candidates": 375,
+    "path_weight_over_035": 315,
+    "rock_weight_over_06": 0,
+    "eligible_off_path": 60,
+    "off_path_air_over_005": 14,
+    "off_path_buried_over_008": 30,
+    "handling": "First remove/relocate clusters intersecting authored path or bare-rock masks. Reground only remaining real grass roots, not leaf tips."
+  },
+  "do_not_reground_from_terrain_gap": [
+    "Town_TableTop.002/.003: no changed-ground table legs were reported. Top itself is not support.",
+    "Town_TavernBarrel and hoops/lid: belongs to tavern porch assembly, check porch support before any move.",
+    "Town_Threshold and Town_TavernPorchBoard: architectural height, not independent ground props.",
+    "Town_Floor and Hut_Floor: floor gap alone is not a floating-building defect; use stilts/foundations/entry contacts.",
+    "All roof tiles, doors, windows, wall clapboards, crown and frond pieces: excluded from independent terrain snapping.",
+    "Bank_Boulder rocks: intentional terrain insertion; bottom bbox cannot establish a defect."
+  ],
+  "hut_entry_companion": "captures/rock_path_sample_20261123/hut_entry_ground_readonly.json",
+  "group_name_caution": "Group ranges are derived from original creation sequence; confirm existence and spatial association before selecting or moving. Never replay previous grounding scripts."
+}

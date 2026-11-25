@@ -1,0 +1,15 @@
+{
+  "meta": null,
+  "content": [
+    {
+      "type": "text",
+      "text": "Code executed successfully: {\"apply\": true, \"groups\": 235, \"components\": 2163, \"relocated\": 68, \"unresolved\": [\"seating:Town_TableLeg.008\", \"coast_prop:S20_NetPost\", \"coast_prop:S20_StackBearers\", \"coast_prop:S20_fishing_Crate_Frame.005\"], \"report\": \"F:\\\\马尼拉godot\\\\manila-godot\\\\demo\\\\tropical_harbor_3d\\\\captures\\\\terrain_structure_20261123\\\\props.json\"}\n",
+      "annotations": null,
+      "meta": null
+    }
+  ],
+  "structuredContent": {
+    "result": "Code executed successfully: {\"apply\": true, \"groups\": 235, \"components\": 2163, \"relocated\": 68, \"unresolved\": [\"seating:Town_TableLeg.008\", \"coast_prop:S20_NetPost\", \"coast_prop:S20_StackBearers\", \"coast_prop:S20_fishing_Crate_Frame.005\"], \"report\": \"F:\\\\马尼拉godot\\\\manila-godot\\\\demo\\\\tropical_harbor_3d\\\\captures\\\\terrain_structure_20261123\\\\props.json\"}\n"
+  },
+  "isError": false
+}

@@ -1,0 +1,109 @@
+{
+  "recorded_at": "2026-11-25T19:02:36.183358+08:00",
+  "read_only_hash_inventory": true,
+  "files": [
+    {
+      "path": "project.godot",
+      "exists": true,
+      "bytes": 905,
+      "sha256": "e5278b02dda2e60257171c11d7f55e67bda3621d0893128ef09330f2742b3a77"
+    },
+    {
+      "path": "demo/tropical_harbor_3d/fleet_harbor.tscn",
+      "exists": true,
+      "bytes": 190,
+      "sha256": "e89f1fd52e40107a692731fa2a1522fb9a5540c161d27c62ddbf132f8496fc15"
+    },
+    {
+      "path": "demo/tropical_harbor_3d/fleet_harbor.gd",
+      "exists": true,
+      "bytes": 18815,
+      "sha256": "f79c208b590b519377395b421434633805ac5f1b8f178e97fad759a6796f7acf"
+    },
+    {
+      "path": "demo/tropical_harbor_3d/fleet/fleet_state.gd",
+      "exists": true,
+      "bytes": 4418,
+      "sha256": "396c9b15e320da391bcb12478d3748ef5fd3b91c6bb2ae3a2cbdbedf6c616c2e"
+    },
+    {
+      "path": "demo/tropical_harbor_3d/fleet/harbor_route.gd",
+      "exists": true,
+      "bytes": 3810,
+      "sha256": "e250c3a7a35dc70fba1e4b78a5d29045ac28486f65db2c2d570c5dcd73361d6d"
+    },
+    {
+      "path": "demo/tropical_harbor_3d/fleet/fleet_camera.gd",
+      "exists": true,
+      "bytes": 10478,
+      "sha256": "1e3533a5da9e7343b1dfc04132ad6597124296aa2e2a68e280f2cf2114f9c9c0"
+    },
+    {
+      "path": "demo/tropical_harbor_3d/ships/ship_view.gd",
+      "exists": true,
+      "bytes": 11290,
+      "sha256": "743a128846de4311cf9ffdd6a6f606add57ec74aa3a4847463e5c8b0ce5bcef6"
+    },
+    {
+      "path": "demo/tropical_harbor_3d/environment/harbor_layout.gd",
+      "exists": true,
+      "bytes": 2661,
+      "sha256": "afc746aae88c4270909af24f3675b148c8c270875cc354cc9b340e6460e7889b"
+    },
+    {
+      "path": "demo/tropical_harbor_3d/environment/reference_coast.gd",
+      "exists": true,
+      "bytes": 2231,
+      "sha256": "3de067a1c2746c106a3ca5ddcedd0631569b26a93e9470d0bd9e31ba61795247"
+    },
+    {
+      "path": "demo/tropical_harbor_3d/environment/reference_environment.gd",
+      "exists": true,
+      "bytes": 10215,
+      "sha256": "6c020bf2ef7b61813a3a748d88937a8129efcfde207ecde5f411604aeb66a6f8"
+    },
+    {
+      "path": "demo/tropical_harbor_3d/materials/landform_mass.gdshader",
+      "exists": true,
+      "bytes": 14283,
+      "sha256": "4778dd896e99dffe528d04f1073feef9d14776f4e642516b1362514e8bdf5ced"
+    },
+    {
+      "path": "demo/tropical_harbor_3d/materials/reference_water.gdshader",
+      "exists": true,
+      "bytes": 3169,
+      "sha256": "0e9dc71d573335ba48c2779a738fc4d939c3f2f3ee6c87aa8c1193402986f498"
+    },
+    {
+      "path": "demo/tropical_harbor_3d/tools/art_preview.gd",
+      "exists": true,
+      "bytes": 14324,
+      "sha256": "4bd8b7804291d95d096b7509eccb7c65a13f74b5b34d966a65f953cfe7cec202"
+    },
+    {
+      "path": "demo/tropical_harbor_3d/tools/reference_rebuild_review.gd",
+      "exists": true,
+      "bytes": 11467,
+      "sha256": "0b38beb617eed505c93874c1f9c5381604ddf4a734326be8295344933f0b993e"
+    },
+    {
+      "path": "demo/tropical_harbor_3d/tools/local_voyage_review.gd",
+      "exists": true,
+      "bytes": 21506,
+      "sha256": "80f7c64aa83fc611b16eafdd454fe34093fc2e13ba01f8050ac130a8ce82c832"
+    },
+    {
+      "path": "demo/tropical_harbor_3d/tools/capture_art.py",
+      "exists": true,
+      "bytes": 5406,
+      "sha256": "0facdf1b77cf478d1c9206f00bff4756b7f634f0df51bda1a0f17779640983ab"
+    },
+    {
+      "path": "demo/tropical_harbor_3d/tools/capture_process.py",
+      "exists": true,
+      "bytes": 6115,
+      "sha256": "e840bcbc8d8a87e9d49e2242fef744e7e37ae96d6d37c0ebd43f55d6046b6d31"
+    }
+  ],
+  "note": "Hash inventory only, not a byte-copy backup. No runtime code edited."
+}

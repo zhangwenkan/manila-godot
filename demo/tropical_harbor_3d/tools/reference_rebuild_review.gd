@@ -6,8 +6,15 @@ func run(preview: Node) -> void:
     harbor.capture_lock = true
     harbor.camera_override = false
     harbor.ui.visible = false
+    if "--reference-terminal-sample" in OS.get_cmdline_user_args():
+        var terminal_review := load("res://demo/tropical_harbor_3d/tools/reference_terminal_review.gd").new() as RefCounted
+        await terminal_review.run(preview)
+        return
     var clay_review := "--reference-landform-clay" in OS.get_cmdline_user_args()
     if clay_review and not prepare_landform_clay():
+        return
+    if "--reference-shore-sample" in OS.get_cmdline_user_args():
+        await reference_shore_sample()
         return
     if "--reference-composition-study" in OS.get_cmdline_user_args():
         await reference_composition_study()
@@ -149,6 +156,36 @@ func run(preview: Node) -> void:
             return
     var timing := await measure_local_view()
     host.finish({"kind": "reference harbor runtime verification", "checks": checks, "observations": observations, "timing": timing})
+
+
+func reference_shore_sample() -> void:
+    # Six existing poses for surface review; no navigation or timing checks.
+    for stage in [{"id": "02_town_waterfront", "p": 5.6}, {"id": "03_mid_coast", "p": 7.5}]:
+        fixture([stage.p, stage.p, stage.p])
+        for data in harbor.state.ships:
+            for slot in data.slots:
+                slot.owner = -1
+            harbor.ships[data.ship_id].sync_crew(data)
+        await host.get_tree().physics_frame
+        if not await host.capture(stage.id):
+            return
+    fixture([3, 3, 3])
+    for data in harbor.state.ships:
+        for slot in data.slots:
+            slot.owner = -1
+        harbor.ships[data.ship_id].sync_crew(data)
+    harbor.camera_override = true
+    for view in [
+            {"id": "terrace_cross_street", "eye": Vector3(7, 7, 48), "target": Vector3(24, 4, 44)},
+            {"id": "shore_grass_bank", "eye": Vector3(-2, 6, 60), "target": Vector3(15, 1.5, 54)},
+            {"id": "town_civic_street", "eye": Vector3(-2, 13, 43), "target": Vector3(19, 4, 29)},
+            {"id": "town_market_chapel", "eye": Vector3(-4, 12, 26), "target": Vector3(20, 4, 15)}]:
+        harbor.camera.position = view.eye
+        harbor.camera.look_at(view.target)
+        if not await host.capture(view.id):
+            return
+    host.finish({"kind": "reference shore surface sample", "checks": 0,
+        "screenshots_only": true, "visual_accepted": false})
 
 
 func prepare_landform_clay() -> bool:

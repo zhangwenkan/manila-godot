@@ -1,0 +1,27 @@
+2026-11-25 14:34:54,402 - BlenderMCPServer - INFO - BlenderMCP server starting up
+2026-11-25 14:34:54,407 - BlenderMCPServer - INFO - Blender addon on disk is current (protocol 16).
+2026-11-25 14:34:54,407 - blender-mcp-telemetry - WARNING - Telemetry disabled via environment variable
+2026-11-25 14:34:54,415 - BlenderMCPServer - INFO - Connected to Blender at 127.0.0.1:9881
+2026-11-25 14:34:54,415 - BlenderMCPServer - INFO - Created new persistent connection to Blender
+2026-11-25 14:34:54,415 - BlenderMCPServer - INFO - Sending command: get_addon_info with params: None
+2026-11-25 14:34:54,415 - BlenderMCPServer - INFO - Command sent, waiting for response...
+2026-11-25 14:34:54,425 - BlenderMCPServer - INFO - Received complete response (465 bytes)
+2026-11-25 14:34:54,425 - BlenderMCPServer - INFO - Received 465 bytes of data
+2026-11-25 14:34:54,425 - BlenderMCPServer - INFO - Response parsed, status: success
+2026-11-25 14:34:54,425 - BlenderMCPServer - INFO - Blender addon up to date (protocol 16, addon [2, 0], Blender 5.3.0)
+2026-11-25 14:34:54,425 - BlenderMCPServer - INFO - Successfully connected to Blender on startup
+2026-11-25 14:34:54,430 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-11-25 14:34:54,430 - BlenderMCPServer - INFO - MCP client mcp 0.1.0: extensions=[], apps=False, openai_forms=False
+2026-11-25 14:34:54,435 - BlenderMCPServer - INFO - Sending command: execute_code with params: {'code': 'import bpy, os\nfrom pathlib import Path\nassert os.getpid() == 28032, "Wrong Blender PID"\nassert Path(bpy.data.filepath).resolve() == Path(\'F:/马尼拉godot/manila-godot/demo/tropical_harbor_3d/source/harbor_shore_control_mcp.blend\').resolve(), "Wrong Blender file"\nassert bpy.types.blendermcp_server.port == 9881, "Wrong Blender port"\n"""Grade and inspect before touching surface images or prop placement."""\nimport bpy\nfrom pathlib import Path\nROOT=Path(bpy.data.filepath).parent.parent\nfor name in [\'structure23_05_prepare.py\',\'structure23_01_grade.py\',\'structure23_10_slope_cleanup.py\']:\n    exec(compile((ROOT/\'source\'/name).read_text(encoding=\'utf8\'),name,\'exec\'),globals())\n'}
+2026-11-25 14:34:54,435 - BlenderMCPServer - INFO - Command sent, waiting for response...
+2026-11-25 14:35:01,723 - BlenderMCPServer - INFO - Received complete response (1687 bytes)
+2026-11-25 14:35:01,723 - BlenderMCPServer - INFO - Received 1687 bytes of data
+2026-11-25 14:35:01,723 - BlenderMCPServer - INFO - Response parsed, status: success
+2026-11-25 14:35:01,725 - BlenderMCPServer - INFO - Sending command: get_telemetry_consent with params: None
+2026-11-25 14:35:01,725 - BlenderMCPServer - INFO - Command sent, waiting for response...
+2026-11-25 14:35:01,730 - BlenderMCPServer - INFO - Received complete response (51 bytes)
+2026-11-25 14:35:01,731 - BlenderMCPServer - INFO - Received 51 bytes of data
+2026-11-25 14:35:01,731 - BlenderMCPServer - INFO - Response parsed, status: success
+2026-11-25 14:35:01,734 - mcp.server.lowlevel.server - INFO - Processing request of type ListToolsRequest
+2026-11-25 14:35:01,741 - BlenderMCPServer - INFO - Disconnecting from Blender on shutdown
+2026-11-25 14:35:01,742 - BlenderMCPServer - INFO - BlenderMCP server shut down

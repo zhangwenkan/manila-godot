@@ -1,0 +1,15 @@
+{
+  "meta": null,
+  "content": [
+    {
+      "type": "text",
+      "text": "Code executed successfully: {\"changed_vertices\": 13625, \"max_raise\": 3.270511729963994, \"max_lower\": 1.8052635561559618, \"fixed_vertices\": 11971, \"fixed_supports\": [\"Hut_Floor.007\", \"Hut_Floor.008\", \"Hut_Floor.010\", \"Hut_Floor.012\", \"Hut_Floor.013\", \"Hut_Floor.014\", \"Hut_Floor.015\", \"Town_Floor\", \"Town_Floor.001\", \"Town_Floor.002\", \"Town_Floor.003\", \"Town_Floor.004\", \"Town_Floor.005\", \"Town_Floor.006\", \"Town_Floor.007\", \"Town_Floor.008\", \"Town_TavernPorchBoard\", \"Town_TavernPorchBoard.001\", \"Town_TavernPorchBoard.002\", \"Town_TavernPorchBoard.003\", \"Town_TavernPorchBoard.004\", \"Town_TavernPorchBoard.005\", \"Town_TavernPorchBoard.006\", \"Town_TavernPorchBoard.007\", \"Town_TavernPorchBoard.008\", \"Town_TavernPorchBoard.009\", \"Town_TavernPorchBoard.010\", \"Town_TavernPorchBoard.011\", \"Town_TavernPorchBoard.012\"], \"routes\": 15, \"platforms\": 13, \"vertices\": 66230, \"triangles\": 114226, \"fixed_boundary_and_seafloor\": true, \"visual_accepted\": false}\n",
+      "annotations": null,
+      "meta": null
+    }
+  ],
+  "structuredContent": {
+    "result": "Code executed successfully: {\"changed_vertices\": 13625, \"max_raise\": 3.270511729963994, \"max_lower\": 1.8052635561559618, \"fixed_vertices\": 11971, \"fixed_supports\": [\"Hut_Floor.007\", \"Hut_Floor.008\", \"Hut_Floor.010\", \"Hut_Floor.012\", \"Hut_Floor.013\", \"Hut_Floor.014\", \"Hut_Floor.015\", \"Town_Floor\", \"Town_Floor.001\", \"Town_Floor.002\", \"Town_Floor.003\", \"Town_Floor.004\", \"Town_Floor.005\", \"Town_Floor.006\", \"Town_Floor.007\", \"Town_Floor.008\", \"Town_TavernPorchBoard\", \"Town_TavernPorchBoard.001\", \"Town_TavernPorchBoard.002\", \"Town_TavernPorchBoard.003\", \"Town_TavernPorchBoard.004\", \"Town_TavernPorchBoard.005\", \"Town_TavernPorchBoard.006\", \"Town_TavernPorchBoard.007\", \"Town_TavernPorchBoard.008\", \"Town_TavernPorchBoard.009\", \"Town_TavernPorchBoard.010\", \"Town_TavernPorchBoard.011\", \"Town_TavernPorchBoard.012\"], \"routes\": 15, \"platforms\": 13, \"vertices\": 66230, \"triangles\": 114226, \"fixed_boundary_and_seafloor\": true, \"visual_accepted\": false}\n"
+  },
+  "isError": false
+}

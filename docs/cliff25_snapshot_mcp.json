@@ -1,0 +1,15 @@
+{
+  "meta": null,
+  "content": [
+    {
+      "type": "text",
+      "text": "Code executed successfully: {\"pid\": 9864, \"port\": 9881, \"file\": \"F:\\\\\\u9a6c\\u5c3c\\u62c9godot\\\\manila-godot\\\\demo\\\\tropical_harbor_3d\\\\source\\\\harbor_shore_control_mcp.blend\", \"dirty\": true, \"vertices\": 66230, \"triangles\": 114226, \"active_objects\": 7824, \"backup_files\": 36, \"source_sha256\": \"791081d9a9b653e63523396c660b636d53c4c191bc1301a2d093044d801973d2\", \"blender\": \"5.3.0\"}\n",
+      "annotations": null,
+      "meta": null
+    }
+  ],
+  "structuredContent": {
+    "result": "Code executed successfully: {\"pid\": 9864, \"port\": 9881, \"file\": \"F:\\\\\\u9a6c\\u5c3c\\u62c9godot\\\\manila-godot\\\\demo\\\\tropical_harbor_3d\\\\source\\\\harbor_shore_control_mcp.blend\", \"dirty\": true, \"vertices\": 66230, \"triangles\": 114226, \"active_objects\": 7824, \"backup_files\": 36, \"source_sha256\": \"791081d9a9b653e63523396c660b636d53c4c191bc1301a2d093044d801973d2\", \"blender\": \"5.3.0\"}\n"
+  },
+  "isError": false
+}

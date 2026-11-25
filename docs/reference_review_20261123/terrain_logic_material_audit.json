@@ -1,0 +1,7131 @@
+{
+  "purpose": "Locate actual geometry/material disagreements, not accept road centerline connectivity",
+  "visual_acceptance": false,
+  "assets_modified": false,
+  "game_or_blender_launched": false,
+  "grade_matches_exported_terrain": true,
+  "terrain_sha256": "79b85e2ba688f292bf63421dc70ff9fe3cf89537ddbb7218a5559fafa1e66863",
+  "method": "Exact barycentric triangle height/plane gradient. Sample final NPZ occupancy bilinearly. Path footprint means largest of grass/rock/path/soil/sand before shader edge sharpening. The 30/45 degree bins only locate candidate visual problems, not legal/walkability/visual pass criteria.",
+  "route_envelope_note": "21 lateral samples span +/-1.25 nominal route halfwidth, at <=.12m stations; clinic uses .70m override. Scope outside the 3 road23 rectangles still uses G23 old width fields. Region scans measure actual path-leading area independently of nominal routes.",
+  "regions": [
+    {
+      "name": "trade",
+      "bounds_xz": [
+        10,
+        9,
+        15.8,
+        20.5
+      ],
+      "grid_interval_m": 0.1,
+      "path_area_approx_m2": 15.94,
+      "path_face_slope_deg": {
+        "min": 0.0,
+        "median": 14.359139,
+        "p95": 41.595449,
+        "max": 47.564363
+      },
+      "path_area_over_30_deg_m2": 2.44,
+      "path_area_over_45_deg_m2": 0.03,
+      "sand_height_m": {
+        "min": 0.149823,
+        "median": 0.349979,
+        "p95": 0.598054,
+        "max": 1.037153
+      },
+      "sand_face_slope_deg": {
+        "min": 0.0,
+        "median": 5.927956,
+        "p95": 19.767932,
+        "max": 49.532745
+      },
+      "soil_face_slope_deg": {
+        "min": 1.988307,
+        "median": 39.605953,
+        "p95": 49.949216,
+        "max": 51.810777
+      },
+      "rock_face_slope_deg": {
+        "min": 67.63749,
+        "median": 76.79054,
+        "p95": 82.542621,
+        "max": 82.542621
+      },
+      "road23_scope_range": {
+        "min": 0.0,
+        "median": 1.0,
+        "p95": 1.0,
+        "max": 1.0
+      },
+      "steep_path_locations": [
+        {
+          "xz": [
+            13.55,
+            18.35
+          ],
+          "height_m": 0.747785,
+          "face_slope_deg": 47.564363,
+          "occupancy_interpolated_normal_y_angle_deg": 40.876617,
+          "weights_grass_rock_path_soil_sand": [
+            0.064895,
+            0.0,
+            0.709545,
+            0.22543,
+            0.00013
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            0.0,
+            0.0,
+            0.3297480046749115,
+            0.6702520251274109
+          ],
+          "road23_scope": 1.0,
+          "triangle": 38076
+        },
+        {
+          "xz": [
+            13.75,
+            15.45
+          ],
+          "height_m": 0.947748,
+          "face_slope_deg": 44.82874,
+          "occupancy_interpolated_normal_y_angle_deg": 27.50247,
+          "weights_grass_rock_path_soil_sand": [
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            0.5027490258216858,
+            0.0,
+            0.020526999607682228,
+            0.4767250120639801
+          ],
+          "road23_scope": 1.0,
+          "triangle": 35485
+        },
+        {
+          "xz": [
+            13.25,
+            19.25
+          ],
+          "height_m": 1.146178,
+          "face_slope_deg": 44.310439,
+          "occupancy_interpolated_normal_y_angle_deg": 26.659797,
+          "weights_grass_rock_path_soil_sand": [
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            0.6699100136756897,
+            0.0,
+            0.0006280000088736415,
+            0.3294619917869568
+          ],
+          "road23_scope": 1.0,
+          "triangle": 38650
+        },
+        {
+          "xz": [
+            13.65,
+            17.65
+          ],
+          "height_m": 0.778074,
+          "face_slope_deg": 43.729096,
+          "occupancy_interpolated_normal_y_angle_deg": 40.165149,
+          "weights_grass_rock_path_soil_sand": [
+            0.035151,
+            0.0,
+            0.743457,
+            0.221382,
+            9e-06
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            0.0,
+            0.0,
+            0.32162800431251526,
+            0.6783729791641235
+          ],
+          "road23_scope": 1.0,
+          "triangle": 37212
+        },
+        {
+          "xz": [
+            13.65,
+            16.95
+          ],
+          "height_m": 0.737689,
+          "face_slope_deg": 42.735032,
+          "occupancy_interpolated_normal_y_angle_deg": 38.88393,
+          "weights_grass_rock_path_soil_sand": [
+            0.076277,
+            0.0,
+            0.756048,
+            0.167566,
+            0.000108
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            0.010095000267028809,
+            0.0,
+            0.4887920022010803,
+            0.5011129975318909
+          ],
+          "road23_scope": 1.0,
+          "triangle": 36636
+        },
+        {
+          "xz": [
+            13.65,
+            14.65
+          ],
+          "height_m": 0.730215,
+          "face_slope_deg": 40.900759,
+          "occupancy_interpolated_normal_y_angle_deg": 25.483981,
+          "weights_grass_rock_path_soil_sand": [
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            0.8770909905433655,
+            0.0,
+            0.06402599811553955,
+            0.058883000165224075
+          ],
+          "road23_scope": 1.0,
+          "triangle": 34621
+        },
+        {
+          "xz": [
+            13.55,
+            16.15
+          ],
+          "height_m": 0.685051,
+          "face_slope_deg": 40.726689,
+          "occupancy_interpolated_normal_y_angle_deg": 33.691942,
+          "weights_grass_rock_path_soil_sand": [
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            0.15870100259780884,
+            0.0,
+            0.19890600442886353,
+            0.6423929929733276
+          ],
+          "road23_scope": 1.0,
+          "triangle": 36060
+        },
+        {
+          "xz": [
+            12.35,
+            20.35
+          ],
+          "height_m": 1.149125,
+          "face_slope_deg": 38.714291,
+          "occupancy_interpolated_normal_y_angle_deg": 28.936386,
+          "weights_grass_rock_path_soil_sand": [
+            0.439946,
+            0.0,
+            0.553268,
+            0.0,
+            0.006786
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            0.9967129826545715,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "road23_scope": 1.0,
+          "triangle": 39797
+        }
+      ],
+      "steep_sand_locations": [
+        {
+          "xz": [
+            12.05,
+            10.25
+          ],
+          "height_m": 0.755981,
+          "face_slope_deg": 49.532745,
+          "occupancy_interpolated_normal_y_angle_deg": 36.71829,
+          "weights_grass_rock_path_soil_sand": [
+            0.115597,
+            0.0,
+            0.0,
+            0.390291,
+            0.494113
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            0.051993999630212784,
+            0.0,
+            0.0,
+            0.5512710213661194
+          ],
+          "road23_scope": 1.0,
+          "triangle": 30574
+        },
+        {
+          "xz": [
+            11.45,
+            20.25
+          ],
+          "height_m": 0.411115,
+          "face_slope_deg": 41.100258,
+          "occupancy_interpolated_normal_y_angle_deg": 24.934269,
+          "weights_grass_rock_path_soil_sand": [
+            0.488614,
+            0.0,
+            0.0,
+            0.0,
+            0.511386
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            0.6569110155105591,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "road23_scope": 1.0,
+          "triangle": 39792
+        },
+        {
+          "xz": [
+            10.95,
+            9.15
+          ],
+          "height_m": 0.415516,
+          "face_slope_deg": 40.32641,
+          "occupancy_interpolated_normal_y_angle_deg": 35.273019,
+          "weights_grass_rock_path_soil_sand": [
+            0.0,
+            0.0,
+            0.0,
+            0.266101,
+            0.733899
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            0.0,
+            0.0,
+            0.0,
+            0.3175089955329895
+          ],
+          "road23_scope": 0.017341,
+          "triangle": 29704
+        },
+        {
+          "xz": [
+            11.45,
+            19.45
+          ],
+          "height_m": 0.382561,
+          "face_slope_deg": 36.905968,
+          "occupancy_interpolated_normal_y_angle_deg": 20.783138,
+          "weights_grass_rock_path_soil_sand": [
+            0.108283,
+            0.0,
+            0.0,
+            0.0,
+            0.891717
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            0.3354310095310211,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "road23_scope": 1.0,
+          "triangle": 38928
+        },
+        {
+          "xz": [
+            11.35,
+            10.05
+          ],
+          "height_m": 0.468458,
+          "face_slope_deg": 36.868209,
+          "occupancy_interpolated_normal_y_angle_deg": 31.071294,
+          "weights_grass_rock_path_soil_sand": [
+            0.0,
+            0.0,
+            0.0,
+            0.487199,
+            0.512801
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            0.0,
+            0.0,
+            0.0,
+            0.5628849864006042
+          ],
+          "road23_scope": 1.0,
+          "triangle": 30571
+        }
+      ]
+    },
+    {
+      "name": "grill",
+      "bounds_xz": [
+        10,
+        20.5,
+        15.4,
+        28
+      ],
+      "grid_interval_m": 0.1,
+      "path_area_approx_m2": 14.83,
+      "path_face_slope_deg": {
+        "min": 0.0,
+        "median": 6.332095,
+        "p95": 39.121921,
+        "max": 49.130549
+      },
+      "path_area_over_30_deg_m2": 1.81,
+      "path_area_over_45_deg_m2": 0.26,
+      "sand_height_m": {
+        "min": 0.267522,
+        "median": 0.349881,
+        "p95": 0.426868,
+        "max": 0.480396
+      },
+      "sand_face_slope_deg": {
+        "min": 0.0,
+        "median": 3.625696,
+        "p95": 22.420189,
+        "max": 34.296149
+      },
+      "soil_face_slope_deg": {
+        "min": 12.334176,
+        "median": 29.742676,
+        "p95": 46.482741,
+        "max": 49.869944
+      },
+      "rock_face_slope_deg": null,
+      "road23_scope_range": {
+        "min": 0.0,
+        "median": 1.0,
+        "p95": 1.0,
+        "max": 1.0
+      },
+      "steep_path_locations": [
+        {
+          "xz": [
+            12.55,
+            25.05
+          ],
+          "height_m": 1.124541,
+          "face_slope_deg": 49.130549,
+          "occupancy_interpolated_normal_y_angle_deg": 31.464941,
+          "weights_grass_rock_path_soil_sand": [
+            0.121111,
+            0.0,
+            0.62493,
+            0.253843,
+            0.000116
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          "road23_scope": 1.0,
+          "triangle": 44119
+        },
+        {
+          "xz": [
+            12.45,
+            20.95
+          ],
+          "height_m": 0.851146,
+          "face_slope_deg": 47.313678,
+          "occupancy_interpolated_normal_y_angle_deg": 41.204131,
+          "weights_grass_rock_path_soil_sand": [
+            0.005638,
+            0.0,
+            0.993679,
+            0.000676,
+            8e-06
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            0.7410460114479065,
+            0.0,
+            0.0,
+            0.2581619918346405
+          ],
+          "road23_scope": 0.879977,
+          "triangle": 40374
+        },
+        {
+          "xz": [
+            12.55,
+            21.95
+          ],
+          "height_m": 0.909786,
+          "face_slope_deg": 47.131628,
+          "occupancy_interpolated_normal_y_angle_deg": 41.027858,
+          "weights_grass_rock_path_soil_sand": [
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            0.011633999645709991,
+            0.0,
+            0.0,
+            0.9883660078048706
+          ],
+          "road23_scope": 1.0,
+          "triangle": 41238
+        },
+        {
+          "xz": [
+            12.35,
+            22.75
+          ],
+          "height_m": 0.842656,
+          "face_slope_deg": 40.811413,
+          "occupancy_interpolated_normal_y_angle_deg": 32.663409,
+          "weights_grass_rock_path_soil_sand": [
+            0.0,
+            0.0,
+            0.902627,
+            0.097373,
+            0.0
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            0.004437999799847603,
+            0.0,
+            0.0,
+            0.9955620169639587
+          ],
+          "road23_scope": 1.0,
+          "triangle": 41813
+        },
+        {
+          "xz": [
+            12.75,
+            25.95
+          ],
+          "height_m": 1.199214,
+          "face_slope_deg": 38.793113,
+          "occupancy_interpolated_normal_y_angle_deg": 21.196731,
+          "weights_grass_rock_path_soil_sand": [
+            0.200681,
+            0.0,
+            0.628356,
+            0.169545,
+            0.001418
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            0.7580959796905518,
+            0.0,
+            0.000547999981790781,
+            0.2413560003042221
+          ],
+          "road23_scope": 1.0,
+          "triangle": 44986
+        },
+        {
+          "xz": [
+            12.95,
+            23.85
+          ],
+          "height_m": 1.180556,
+          "face_slope_deg": 31.116818,
+          "occupancy_interpolated_normal_y_angle_deg": 19.156054,
+          "weights_grass_rock_path_soil_sand": [
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            0.6666669845581055,
+            0.0,
+            0.0,
+            0.33333298563957214
+          ],
+          "road23_scope": 1.0,
+          "triangle": 42969
+        },
+        {
+          "xz": [
+            12.95,
+            26.75
+          ],
+          "height_m": 1.179251,
+          "face_slope_deg": 30.644275,
+          "occupancy_interpolated_normal_y_angle_deg": 17.983818,
+          "weights_grass_rock_path_soil_sand": [
+            0.031297,
+            0.0,
+            0.863215,
+            0.104019,
+            0.001469
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            0.49682700634002686,
+            0.0,
+            0.16170500218868256,
+            0.3414680063724518
+          ],
+          "road23_scope": 1.0,
+          "triangle": 45563
+        },
+        {
+          "xz": [
+            12.95,
+            23.05
+          ],
+          "height_m": 1.170837,
+          "face_slope_deg": 29.982224,
+          "occupancy_interpolated_normal_y_angle_deg": 18.77234,
+          "weights_grass_rock_path_soil_sand": [
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            0.6666669845581055,
+            0.0,
+            0.0,
+            0.33333298563957214
+          ],
+          "road23_scope": 1.0,
+          "triangle": 42105
+        }
+      ],
+      "steep_sand_locations": [
+        {
+          "xz": [
+            11.75,
+            22.75
+          ],
+          "height_m": 0.459258,
+          "face_slope_deg": 34.296149,
+          "occupancy_interpolated_normal_y_angle_deg": 25.513807,
+          "weights_grass_rock_path_soil_sand": [
+            0.0,
+            0.0,
+            0.0,
+            0.341832,
+            0.658168
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            0.1849759966135025,
+            0.0,
+            0.0,
+            0.8150240182876587
+          ],
+          "road23_scope": 1.0,
+          "triangle": 41811
+        },
+        {
+          "xz": [
+            12.15,
+            21.45
+          ],
+          "height_m": 0.419515,
+          "face_slope_deg": 33.996459,
+          "occupancy_interpolated_normal_y_angle_deg": 23.831646,
+          "weights_grass_rock_path_soil_sand": [
+            0.282326,
+            0.0,
+            0.0,
+            0.111105,
+            0.606568
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            0.9759889841079712,
+            0.0,
+            0.0,
+            0.020253000780940056
+          ],
+          "road23_scope": 1.0,
+          "triangle": 40660
+        },
+        {
+          "xz": [
+            11.65,
+            26.05
+          ],
+          "height_m": 0.456549,
+          "face_slope_deg": 33.630118,
+          "occupancy_interpolated_normal_y_angle_deg": 24.336669,
+          "weights_grass_rock_path_soil_sand": [
+            0.008738,
+            0.0,
+            0.0,
+            0.332376,
+            0.658886
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            0.33218100666999817,
+            0.0,
+            0.0,
+            0.6678190231323242
+          ],
+          "road23_scope": 1.0,
+          "triangle": 44979
+        },
+        {
+          "xz": [
+            11.65,
+            24.45
+          ],
+          "height_m": 0.453895,
+          "face_slope_deg": 32.35049,
+          "occupancy_interpolated_normal_y_angle_deg": 23.913789,
+          "weights_grass_rock_path_soil_sand": [
+            0.0,
+            0.0,
+            0.0,
+            0.317693,
+            0.682307
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            0.36156100034713745,
+            0.0,
+            0.0,
+            0.6384389996528625
+          ],
+          "road23_scope": 1.0,
+          "triangle": 43538
+        },
+        {
+          "xz": [
+            11.65,
+            25.15
+          ],
+          "height_m": 0.474365,
+          "face_slope_deg": 29.360349,
+          "occupancy_interpolated_normal_y_angle_deg": 23.361023,
+          "weights_grass_rock_path_soil_sand": [
+            0.0,
+            0.0,
+            0.0,
+            0.436448,
+            0.563552
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            0.5459110140800476,
+            0.0,
+            0.0,
+            0.4540889859199524
+          ],
+          "road23_scope": 1.0,
+          "triangle": 44114
+        }
+      ]
+    },
+    {
+      "name": "clinic",
+      "bounds_xz": [
+        20.5,
+        29,
+        25.6,
+        34.2
+      ],
+      "grid_interval_m": 0.1,
+      "path_area_approx_m2": 12.88,
+      "path_face_slope_deg": {
+        "min": 0.0,
+        "median": 18.921634,
+        "p95": 57.940688,
+        "max": 73.597581
+      },
+      "path_area_over_30_deg_m2": 3.55,
+      "path_area_over_45_deg_m2": 1.69,
+      "sand_height_m": null,
+      "sand_face_slope_deg": null,
+      "soil_face_slope_deg": null,
+      "rock_face_slope_deg": {
+        "min": 14.478941,
+        "median": 58.332222,
+        "p95": 71.897359,
+        "max": 72.139456
+      },
+      "road23_scope_range": {
+        "min": 0.00046,
+        "median": 1.0,
+        "p95": 1.0,
+        "max": 1.0
+      },
+      "steep_path_locations": [
+        {
+          "xz": [
+            23.55,
+            32.15
+          ],
+          "height_m": 3.178557,
+          "face_slope_deg": 73.597581,
+          "occupancy_interpolated_normal_y_angle_deg": 40.077556,
+          "weights_grass_rock_path_soil_sand": [
+            0.141513,
+            0.0,
+            0.857655,
+            0.0,
+            0.000832
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "road23_scope": 1.0,
+          "triangle": 50534
+        },
+        {
+          "xz": [
+            24.35,
+            31.25
+          ],
+          "height_m": 3.657603,
+          "face_slope_deg": 69.233446,
+          "occupancy_interpolated_normal_y_angle_deg": 46.282635,
+          "weights_grass_rock_path_soil_sand": [
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            0.18130500614643097,
+            0.0,
+            0.8186950087547302,
+            0.0
+          ],
+          "road23_scope": 1.0,
+          "triangle": 49673
+        },
+        {
+          "xz": [
+            22.85,
+            32.35
+          ],
+          "height_m": 2.544329,
+          "face_slope_deg": 67.588097,
+          "occupancy_interpolated_normal_y_angle_deg": 40.756255,
+          "weights_grass_rock_path_soil_sand": [
+            0.177311,
+            0.0,
+            0.822445,
+            0.0,
+            0.000244
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "road23_scope": 1.0,
+          "triangle": 50529
+        },
+        {
+          "xz": [
+            23.45,
+            31.05
+          ],
+          "height_m": 3.673797,
+          "face_slope_deg": 64.302071,
+          "occupancy_interpolated_normal_y_angle_deg": 35.692136,
+          "weights_grass_rock_path_soil_sand": [
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            0.052404001355171204,
+            0.0,
+            0.94759601354599,
+            0.0
+          ],
+          "road23_scope": 1.0,
+          "triangle": 49379
+        },
+        {
+          "xz": [
+            21.95,
+            30.55
+          ],
+          "height_m": 4.332099,
+          "face_slope_deg": 62.674326,
+          "occupancy_interpolated_normal_y_angle_deg": 32.023313,
+          "weights_grass_rock_path_soil_sand": [
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "road23_scope": 1.0,
+          "triangle": 49081
+        },
+        {
+          "xz": [
+            22.15,
+            31.45
+          ],
+          "height_m": 3.776216,
+          "face_slope_deg": 58.234524,
+          "occupancy_interpolated_normal_y_angle_deg": 36.314006,
+          "weights_grass_rock_path_soil_sand": [
+            0.228476,
+            0.0,
+            0.769625,
+            0.0,
+            0.001899
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "road23_scope": 1.0,
+          "triangle": 49947
+        },
+        {
+          "xz": [
+            22.65,
+            30.45
+          ],
+          "height_m": 4.501889,
+          "face_slope_deg": 57.538345,
+          "occupancy_interpolated_normal_y_angle_deg": 28.401623,
+          "weights_grass_rock_path_soil_sand": [
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "road23_scope": 1.0,
+          "triangle": 49084
+        },
+        {
+          "xz": [
+            20.65,
+            33.85
+          ],
+          "height_m": 1.862195,
+          "face_slope_deg": 51.147067,
+          "occupancy_interpolated_normal_y_angle_deg": 36.369271,
+          "weights_grass_rock_path_soil_sand": [
+            0.091598,
+            0.0,
+            0.908402,
+            0.0,
+            0.0
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "road23_scope": 0.134949,
+          "triangle": 51958
+        }
+      ],
+      "steep_sand_locations": []
+    },
+    {
+      "name": "diner",
+      "bounds_xz": [
+        10.8,
+        45,
+        14.8,
+        53.5
+      ],
+      "grid_interval_m": 0.1,
+      "path_area_approx_m2": 10.87,
+      "path_face_slope_deg": {
+        "min": 0.0,
+        "median": 3.698987,
+        "p95": 46.860865,
+        "max": 53.338768
+      },
+      "path_area_over_30_deg_m2": 1.72,
+      "path_area_over_45_deg_m2": 0.82,
+      "sand_height_m": {
+        "min": 0.25844,
+        "median": 0.331027,
+        "p95": 0.722128,
+        "max": 0.876999
+      },
+      "sand_face_slope_deg": {
+        "min": 0.24511,
+        "median": 13.071806,
+        "p95": 48.30507,
+        "max": 59.011809
+      },
+      "soil_face_slope_deg": {
+        "min": 14.504074,
+        "median": 32.407993,
+        "p95": 38.549509,
+        "max": 39.507999
+      },
+      "rock_face_slope_deg": null,
+      "road23_scope_range": {
+        "min": 0.0,
+        "median": 0.0,
+        "p95": 0.0,
+        "max": 0.0
+      },
+      "steep_path_locations": [
+        {
+          "xz": [
+            13.75,
+            52.55
+          ],
+          "height_m": 0.568322,
+          "face_slope_deg": 53.338768,
+          "occupancy_interpolated_normal_y_angle_deg": 41.249483,
+          "weights_grass_rock_path_soil_sand": [
+            0.028616,
+            0.0,
+            0.87873,
+            0.009329,
+            0.083325
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            0.2903589904308319,
+            0.0,
+            0.041499000042676926,
+            0.07840199768543243
+          ],
+          "road23_scope": 0.0,
+          "triangle": 95638
+        },
+        {
+          "xz": [
+            12.15,
+            45.15
+          ],
+          "height_m": 0.815079,
+          "face_slope_deg": 51.381814,
+          "occupancy_interpolated_normal_y_angle_deg": 45.2928,
+          "weights_grass_rock_path_soil_sand": [
+            0.416497,
+            0.0,
+            0.511967,
+            0.040532,
+            0.031004
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            0.8651379942893982,
+            0.0,
+            0.04053699970245361,
+            0.06099599972367287
+          ],
+          "road23_scope": 0.0,
+          "triangle": 94276
+        },
+        {
+          "xz": [
+            12.65,
+            52.35
+          ],
+          "height_m": 0.740466,
+          "face_slope_deg": 50.119313,
+          "occupancy_interpolated_normal_y_angle_deg": 48.381065,
+          "weights_grass_rock_path_soil_sand": [
+            0.251678,
+            0.0,
+            0.423543,
+            0.02842,
+            0.296359
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            0.4419960081577301,
+            0.0,
+            0.07190699875354767,
+            0.04255799949169159
+          ],
+          "road23_scope": 0.0,
+          "triangle": 96590
+        },
+        {
+          "xz": [
+            12.85,
+            45.15
+          ],
+          "height_m": 0.837663,
+          "face_slope_deg": 45.884157,
+          "occupancy_interpolated_normal_y_angle_deg": 38.306046,
+          "weights_grass_rock_path_soil_sand": [
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            0.9588339924812317,
+            0.0,
+            0.03512100130319595,
+            0.0
+          ],
+          "road23_scope": 0.0,
+          "triangle": 96656
+        },
+        {
+          "xz": [
+            13.25,
+            52.05
+          ],
+          "height_m": 1.054207,
+          "face_slope_deg": 45.28319,
+          "occupancy_interpolated_normal_y_angle_deg": 33.733429,
+          "weights_grass_rock_path_soil_sand": [
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            0.5769839882850647,
+            0.0,
+            0.09309899806976318,
+            0.029347000643610954
+          ],
+          "road23_scope": 0.0,
+          "triangle": 95888
+        },
+        {
+          "xz": [
+            13.15,
+            48.45
+          ],
+          "height_m": 1.309572,
+          "face_slope_deg": 38.487767,
+          "occupancy_interpolated_normal_y_angle_deg": 27.161238,
+          "weights_grass_rock_path_soil_sand": [
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            0.8600000143051147,
+            0.0,
+            0.14000000059604645,
+            0.0
+          ],
+          "road23_scope": 0.0,
+          "triangle": 95261
+        },
+        {
+          "xz": [
+            13.25,
+            49.15
+          ],
+          "height_m": 1.335589,
+          "face_slope_deg": 35.870066,
+          "occupancy_interpolated_normal_y_angle_deg": 20.672087,
+          "weights_grass_rock_path_soil_sand": [
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            0.8600000143051147,
+            0.0,
+            0.14000000059604645,
+            0.0
+          ],
+          "road23_scope": 0.0,
+          "triangle": 95466
+        },
+        {
+          "xz": [
+            11.55,
+            48.65
+          ],
+          "height_m": 0.953858,
+          "face_slope_deg": 34.786397,
+          "occupancy_interpolated_normal_y_angle_deg": 32.53075,
+          "weights_grass_rock_path_soil_sand": [
+            0.378307,
+            0.0,
+            0.618626,
+            0.003067,
+            0.0
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            0.9113029837608337,
+            0.0,
+            0.06300999969244003,
+            0.02568800002336502
+          ],
+          "road23_scope": 0.0,
+          "triangle": 94741
+        }
+      ],
+      "steep_sand_locations": [
+        {
+          "xz": [
+            14.35,
+            52.65
+          ],
+          "height_m": 0.578097,
+          "face_slope_deg": 59.011809,
+          "occupancy_interpolated_normal_y_angle_deg": 52.694054,
+          "weights_grass_rock_path_soil_sand": [
+            0.140048,
+            0.0,
+            0.0,
+            0.036003,
+            0.823949
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            0.22339800000190735,
+            0.0,
+            0.02481899969279766,
+            0.06489399820566177
+          ],
+          "road23_scope": 0.0,
+          "triangle": 101991
+        },
+        {
+          "xz": [
+            12.35,
+            52.45
+          ],
+          "height_m": 0.618499,
+          "face_slope_deg": 49.539268,
+          "occupancy_interpolated_normal_y_angle_deg": 48.076906,
+          "weights_grass_rock_path_soil_sand": [
+            0.371807,
+            0.0,
+            0.0,
+            0.054967,
+            0.573226
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            0.36496999859809875,
+            0.0,
+            0.05941399931907654,
+            0.05036599934101105
+          ],
+          "road23_scope": 0.0,
+          "triangle": 94209
+        },
+        {
+          "xz": [
+            11.65,
+            52.35
+          ],
+          "height_m": 0.538139,
+          "face_slope_deg": 46.947333,
+          "occupancy_interpolated_normal_y_angle_deg": 38.27476,
+          "weights_grass_rock_path_soil_sand": [
+            0.229655,
+            0.0,
+            0.0,
+            0.125738,
+            0.644607
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            0.27343499660491943,
+            0.0,
+            0.044512998312711716,
+            0.08746100217103958
+          ],
+          "road23_scope": 0.0,
+          "triangle": 94695
+        },
+        {
+          "xz": [
+            11.55,
+            51.45
+          ],
+          "height_m": 0.747427,
+          "face_slope_deg": 42.100307,
+          "occupancy_interpolated_normal_y_angle_deg": 40.789427,
+          "weights_grass_rock_path_soil_sand": [
+            0.430799,
+            0.0,
+            0.0,
+            0.115815,
+            0.453386
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            0.3875409960746765,
+            0.0,
+            0.06123200058937073,
+            0.11661600321531296
+          ],
+          "road23_scope": 0.0,
+          "triangle": 94704
+        },
+        {
+          "xz": [
+            13.35,
+            52.65
+          ],
+          "height_m": 0.42916,
+          "face_slope_deg": 39.868995,
+          "occupancy_interpolated_normal_y_angle_deg": 34.067945,
+          "weights_grass_rock_path_soil_sand": [
+            0.091804,
+            0.0,
+            0.424973,
+            0.042684,
+            0.440538
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            0.1265619993209839,
+            0.0,
+            0.019176000729203224,
+            0.07551500201225281
+          ],
+          "road23_scope": 0.0,
+          "triangle": 95883
+        }
+      ]
+    },
+    {
+      "name": "sari",
+      "bounds_xz": [
+        10.5,
+        53.5,
+        15.5,
+        62.5
+      ],
+      "grid_interval_m": 0.1,
+      "path_area_approx_m2": 13.79,
+      "path_face_slope_deg": {
+        "min": 0.0,
+        "median": 2.851856,
+        "p95": 37.028831,
+        "max": 60.819682
+      },
+      "path_area_over_30_deg_m2": 1.13,
+      "path_area_over_45_deg_m2": 0.25,
+      "sand_height_m": {
+        "min": 0.2403,
+        "median": 0.344551,
+        "p95": 0.56142,
+        "max": 1.000492
+      },
+      "sand_face_slope_deg": {
+        "min": 0.383371,
+        "median": 12.659803,
+        "p95": 70.761983,
+        "max": 72.554517
+      },
+      "soil_face_slope_deg": {
+        "min": 9.8179,
+        "median": 16.281766,
+        "p95": 33.615587,
+        "max": 40.297994
+      },
+      "rock_face_slope_deg": null,
+      "road23_scope_range": {
+        "min": 0.0,
+        "median": 0.0,
+        "p95": 0.0,
+        "max": 0.0
+      },
+      "steep_path_locations": [
+        {
+          "xz": [
+            14.25,
+            62.45
+          ],
+          "height_m": 0.995286,
+          "face_slope_deg": 60.819682,
+          "occupancy_interpolated_normal_y_angle_deg": 46.995875,
+          "weights_grass_rock_path_soil_sand": [
+            0.130133,
+            0.0,
+            0.796717,
+            0.0,
+            0.07315
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            0.8259999752044678,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "road23_scope": 0.0,
+          "triangle": 102003
+        },
+        {
+          "xz": [
+            14.15,
+            54.15
+          ],
+          "height_m": 0.758526,
+          "face_slope_deg": 53.934089,
+          "occupancy_interpolated_normal_y_angle_deg": 50.201923,
+          "weights_grass_rock_path_soil_sand": [
+            0.305351,
+            0.0,
+            0.604295,
+            0.073741,
+            0.016613
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            0.7444220185279846,
+            0.0,
+            0.013302999548614025,
+            0.1529799997806549
+          ],
+          "road23_scope": 0.0,
+          "triangle": 102050
+        },
+        {
+          "xz": [
+            13.45,
+            54.35
+          ],
+          "height_m": 0.64217,
+          "face_slope_deg": 42.366725,
+          "occupancy_interpolated_normal_y_angle_deg": 39.016848,
+          "weights_grass_rock_path_soil_sand": [
+            0.005034,
+            0.0,
+            0.992904,
+            0.000123,
+            0.001939
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            0.7942870259284973,
+            0.0,
+            0.0024900001008063555,
+            0.02864000014960766
+          ],
+          "road23_scope": 0.0,
+          "triangle": 95866
+        },
+        {
+          "xz": [
+            14.75,
+            61.95
+          ],
+          "height_m": 1.055528,
+          "face_slope_deg": 39.280257,
+          "occupancy_interpolated_normal_y_angle_deg": 22.680387,
+          "weights_grass_rock_path_soil_sand": [
+            0.293384,
+            0.0,
+            0.566785,
+            0.0,
+            0.139831
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            0.5999900102615356,
+            0.0,
+            0.2151859998703003,
+            0.0
+          ],
+          "road23_scope": 0.0,
+          "triangle": 102192
+        },
+        {
+          "xz": [
+            12.75,
+            56.05
+          ],
+          "height_m": 1.134206,
+          "face_slope_deg": 36.853916,
+          "occupancy_interpolated_normal_y_angle_deg": 18.444999,
+          "weights_grass_rock_path_soil_sand": [
+            0.306811,
+            0.0,
+            0.693189,
+            0.0,
+            0.0
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "road23_scope": 0.0,
+          "triangle": 96552
+        },
+        {
+          "xz": [
+            14.65,
+            60.15
+          ],
+          "height_m": 1.028997,
+          "face_slope_deg": 31.99338,
+          "occupancy_interpolated_normal_y_angle_deg": 21.993854,
+          "weights_grass_rock_path_soil_sand": [
+            0.250463,
+            0.0,
+            0.749537,
+            0.0,
+            0.0
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "road23_scope": 0.0,
+          "triangle": 102368
+        },
+        {
+          "xz": [
+            13.15,
+            54.95
+          ],
+          "height_m": 1.032732,
+          "face_slope_deg": 30.56168,
+          "occupancy_interpolated_normal_y_angle_deg": 29.126514,
+          "weights_grass_rock_path_soil_sand": [
+            0.163051,
+            0.0,
+            0.836949,
+            0.0,
+            0.0
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "road23_scope": 0.0,
+          "triangle": 95417
+        },
+        {
+          "xz": [
+            14.25,
+            60.85
+          ],
+          "height_m": 1.095489,
+          "face_slope_deg": 29.49433,
+          "occupancy_interpolated_normal_y_angle_deg": 18.427247,
+          "weights_grass_rock_path_soil_sand": [
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            0.9973099827766418,
+            0.0,
+            0.002047999994829297,
+            0.0
+          ],
+          "road23_scope": 0.0,
+          "triangle": 102013
+        }
+      ],
+      "steep_sand_locations": [
+        {
+          "xz": [
+            15.35,
+            62.45
+          ],
+          "height_m": 0.283904,
+          "face_slope_deg": 72.554517,
+          "occupancy_interpolated_normal_y_angle_deg": 64.508651,
+          "weights_grass_rock_path_soil_sand": [
+            0.113942,
+            0.0,
+            0.0,
+            0.0,
+            0.886058
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            0.11111100018024445,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "road23_scope": 0.0,
+          "triangle": 103064
+        },
+        {
+          "xz": [
+            14.65,
+            62.45
+          ],
+          "height_m": 0.491755,
+          "face_slope_deg": 70.761983,
+          "occupancy_interpolated_normal_y_angle_deg": 64.036282,
+          "weights_grass_rock_path_soil_sand": [
+            0.199254,
+            0.0,
+            0.0,
+            0.0,
+            0.800746
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            0.3861660063266754,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "road23_scope": 0.0,
+          "triangle": 102354
+        },
+        {
+          "xz": [
+            14.35,
+            53.65
+          ],
+          "height_m": 0.415161,
+          "face_slope_deg": 33.212169,
+          "occupancy_interpolated_normal_y_angle_deg": 20.572579,
+          "weights_grass_rock_path_soil_sand": [
+            0.214154,
+            0.0,
+            0.12203,
+            0.008997,
+            0.65482
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            0.3063890039920807,
+            0.0,
+            0.0018149999668821692,
+            0.020878000184893608
+          ],
+          "road23_scope": 0.0,
+          "triangle": 102054
+        },
+        {
+          "xz": [
+            13.05,
+            54.15
+          ],
+          "height_m": 0.46713,
+          "face_slope_deg": 31.54511,
+          "occupancy_interpolated_normal_y_angle_deg": 29.190967,
+          "weights_grass_rock_path_soil_sand": [
+            0.299019,
+            0.0,
+            0.318787,
+            0.054244,
+            0.327949
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            0.6812499761581421,
+            0.0,
+            0.0,
+            0.06365299969911575
+          ],
+          "road23_scope": 0.0,
+          "triangle": 95424
+        },
+        {
+          "xz": [
+            12.15,
+            54.15
+          ],
+          "height_m": 0.419747,
+          "face_slope_deg": 28.653529,
+          "occupancy_interpolated_normal_y_angle_deg": 25.267928,
+          "weights_grass_rock_path_soil_sand": [
+            0.410773,
+            0.0,
+            0.0,
+            0.093883,
+            0.495344
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            0.5687360167503357,
+            0.0,
+            0.0,
+            0.09551700204610825
+          ],
+          "road23_scope": 0.0,
+          "triangle": 94422
+        }
+      ]
+    },
+    {
+      "name": "school",
+      "bounds_xz": [
+        18,
+        53.5,
+        24.5,
+        65
+      ],
+      "grid_interval_m": 0.1,
+      "path_area_approx_m2": 0.0,
+      "path_face_slope_deg": null,
+      "path_area_over_30_deg_m2": 0.0,
+      "path_area_over_45_deg_m2": 0.0,
+      "sand_height_m": null,
+      "sand_face_slope_deg": null,
+      "soil_face_slope_deg": null,
+      "rock_face_slope_deg": {
+        "min": 11.887079,
+        "median": 61.815641,
+        "p95": 70.657284,
+        "max": 81.282876
+      },
+      "road23_scope_range": {
+        "min": 0.0,
+        "median": 0.0,
+        "p95": 0.0,
+        "max": 0.0
+      },
+      "steep_path_locations": [],
+      "steep_sand_locations": []
+    }
+  ],
+  "routes": [
+    {
+      "name": "lower_lane",
+      "diagnostic_envelope_halfwidth_m": 0.775,
+      "length_m": 22.418948,
+      "samples": 4284,
+      "path_dominant_samples": 2576,
+      "path_dominant_fraction": 0.601307,
+      "path_face_slope_deg": {
+        "min": 0.0,
+        "median": 5.828887,
+        "p95": 38.771825,
+        "max": 49.979581
+      },
+      "path_cross_slope_deg": {
+        "min": 0.0,
+        "median": 2.77179,
+        "p95": 35.853978,
+        "max": 49.139465
+      },
+      "path_longitudinal_slope_deg": {
+        "min": 0.0,
+        "median": 1.947515,
+        "p95": 21.968427,
+        "max": 39.59696
+      },
+      "path_samples_face_slope_over_30_deg": 380,
+      "path_samples_face_slope_over_45_deg": 40,
+      "nominal_width_side_height_difference_m": {
+        "min": 0.000155,
+        "median": 0.144888,
+        "p95": 0.723254,
+        "max": 0.855171
+      },
+      "center_path_weight": {
+        "min": 0.0,
+        "median": 1.0,
+        "p95": 1.0,
+        "max": 1.0
+      },
+      "scope_range": {
+        "min": 0.0,
+        "median": 0.0,
+        "p95": 1.0,
+        "max": 1.0
+      },
+      "steep_path_locations": [
+        {
+          "xz": [
+            11.394667,
+            36.627779
+          ],
+          "height_m": 1.37525,
+          "face_slope_deg": 49.979581,
+          "occupancy_interpolated_normal_y_angle_deg": 41.165357,
+          "weights_grass_rock_path_soil_sand": [
+            0.314066,
+            0.0,
+            0.407536,
+            0.207547,
+            0.070851
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            0.46804600954055786,
+            0.0,
+            0.0,
+            0.3946619927883148
+          ],
+          "road23_scope": 0.0,
+          "triangle": 94851
+        },
+        {
+          "xz": [
+            12.459626,
+            21.047792
+          ],
+          "height_m": 0.781933,
+          "face_slope_deg": 47.313678,
+          "occupancy_interpolated_normal_y_angle_deg": 40.420254,
+          "weights_grass_rock_path_soil_sand": [
+            0.000287,
+            0.0,
+            0.999581,
+            0.000131,
+            0.0
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            0.7410460114479065,
+            0.0,
+            0.0,
+            0.2581619918346405
+          ],
+          "road23_scope": 0.981346,
+          "triangle": 40374
+        },
+        {
+          "xz": [
+            12.423155,
+            21.825157
+          ],
+          "height_m": 0.731966,
+          "face_slope_deg": 47.131628,
+          "occupancy_interpolated_normal_y_angle_deg": 42.96551,
+          "weights_grass_rock_path_soil_sand": [
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            0.011633999645709991,
+            0.0,
+            0.0,
+            0.9883660078048706
+          ],
+          "road23_scope": 1.0,
+          "triangle": 41238
+        },
+        {
+          "xz": [
+            12.541035,
+            24.971393
+          ],
+          "height_m": 1.107088,
+          "face_slope_deg": 46.468071,
+          "occupancy_interpolated_normal_y_angle_deg": 31.68739,
+          "weights_grass_rock_path_soil_sand": [
+            0.086873,
+            0.0,
+            0.667577,
+            0.24548,
+            6.9e-05
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          "road23_scope": 1.0,
+          "triangle": 43830
+        },
+        {
+          "xz": [
+            12.280677,
+            22.477091
+          ],
+          "height_m": 0.780366,
+          "face_slope_deg": 40.811413,
+          "occupancy_interpolated_normal_y_angle_deg": 38.51544,
+          "weights_grass_rock_path_soil_sand": [
+            0.0,
+            0.0,
+            0.552207,
+            0.447793,
+            0.0
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            0.004437999799847603,
+            0.0,
+            0.0,
+            0.9955620169639587
+          ],
+          "road23_scope": 1.0,
+          "triangle": 41813
+        },
+        {
+          "xz": [
+            12.188889,
+            36.635963
+          ],
+          "height_m": 1.498469,
+          "face_slope_deg": 39.80399,
+          "occupancy_interpolated_normal_y_angle_deg": 28.485863,
+          "weights_grass_rock_path_soil_sand": [
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            0.5313220024108887,
+            0.0,
+            0.0,
+            0.46867799758911133
+          ],
+          "road23_scope": 0.0,
+          "triangle": 94577
+        }
+      ],
+      "center_path_under_050_locations": [
+        {
+          "xz": [
+            8.207143,
+            39.064286
+          ],
+          "height_m": 0.24,
+          "face_slope_deg": 0.0,
+          "occupancy_interpolated_normal_y_angle_deg": 2.888529,
+          "weights_grass_rock_path_soil_sand": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "road23_scope": 0.0,
+          "triangle": 90385
+        },
+        {
+          "xz": [
+            8.85,
+            38.85
+          ],
+          "height_m": 0.306705,
+          "face_slope_deg": 7.217409,
+          "occupancy_interpolated_normal_y_angle_deg": 15.998111,
+          "weights_grass_rock_path_soil_sand": [
+            0.0,
+            0.0,
+            0.000453,
+            0.006508,
+            0.993039
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            0.0,
+            0.0,
+            0.0,
+            0.02783600054681301
+          ],
+          "road23_scope": 0.0,
+          "triangle": 90967
+        },
+        {
+          "xz": [
+            9.433333,
+            38.433333
+          ],
+          "height_m": 0.917194,
+          "face_slope_deg": 53.830937,
+          "occupancy_interpolated_normal_y_angle_deg": 50.664947,
+          "weights_grass_rock_path_soil_sand": [
+            0.0,
+            0.0,
+            0.111382,
+            0.103346,
+            0.785272
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            0.0,
+            0.0,
+            0.0,
+            0.2846840023994446
+          ],
+          "road23_scope": 0.0,
+          "triangle": 91570
+        }
+      ]
+    },
+    {
+      "name": "chapel_ramp",
+      "diagnostic_envelope_halfwidth_m": 0.75,
+      "length_m": 16.21351,
+      "samples": 3276,
+      "path_dominant_samples": 2366,
+      "path_dominant_fraction": 0.722222,
+      "path_face_slope_deg": {
+        "min": 0.0,
+        "median": 11.511989,
+        "p95": 50.044544,
+        "max": 67.860822
+      },
+      "path_cross_slope_deg": {
+        "min": 0.0,
+        "median": 0.223054,
+        "p95": 40.651932,
+        "max": 65.092757
+      },
+      "path_longitudinal_slope_deg": {
+        "min": 0.0,
+        "median": 6.571786,
+        "p95": 36.699097,
+        "max": 67.859979
+      },
+      "path_samples_face_slope_over_30_deg": 237,
+      "path_samples_face_slope_over_45_deg": 147,
+      "nominal_width_side_height_difference_m": {
+        "min": 0.00013,
+        "median": 0.022376,
+        "p95": 0.631199,
+        "max": 0.71808
+      },
+      "center_path_weight": {
+        "min": 0.602863,
+        "median": 1.0,
+        "p95": 1.0,
+        "max": 1.0
+      },
+      "scope_range": {
+        "min": 0.0,
+        "median": 0.0,
+        "p95": 1.0,
+        "max": 1.0
+      },
+      "steep_path_locations": [
+        {
+          "xz": [
+            23.75719,
+            19.408079
+          ],
+          "height_m": 3.646414,
+          "face_slope_deg": 67.860822,
+          "occupancy_interpolated_normal_y_angle_deg": 44.175596,
+          "weights_grass_rock_path_soil_sand": [
+            0.066089,
+            0.0,
+            0.933911,
+            0.0,
+            0.0
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "road23_scope": 0.0,
+          "triangle": 39004
+        },
+        {
+          "xz": [
+            23.032763,
+            19.055557
+          ],
+          "height_m": 2.661508,
+          "face_slope_deg": 67.310404,
+          "occupancy_interpolated_normal_y_angle_deg": 44.947302,
+          "weights_grass_rock_path_soil_sand": [
+            0.344397,
+            0.0,
+            0.655603,
+            0.0,
+            0.0
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "road23_scope": 0.0,
+          "triangle": 38712
+        },
+        {
+          "xz": [
+            22.627397,
+            16.736605
+          ],
+          "height_m": 4.012705,
+          "face_slope_deg": 65.487067,
+          "occupancy_interpolated_normal_y_angle_deg": 37.167124,
+          "weights_grass_rock_path_soil_sand": [
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "road23_scope": 0.0,
+          "triangle": 36693
+        },
+        {
+          "xz": [
+            23.276028,
+            17.001433
+          ],
+          "height_m": 3.748451,
+          "face_slope_deg": 59.806772,
+          "occupancy_interpolated_normal_y_angle_deg": 46.021647,
+          "weights_grass_rock_path_soil_sand": [
+            0.139383,
+            0.0,
+            0.860617,
+            0.0,
+            0.0
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            0.7070950269699097,
+            0.0,
+            0.2929050028324127,
+            0.0
+          ],
+          "road23_scope": 0.0,
+          "triangle": 36696
+        },
+        {
+          "xz": [
+            24.375,
+            18.569714
+          ],
+          "height_m": 3.590903,
+          "face_slope_deg": 59.349815,
+          "occupancy_interpolated_normal_y_angle_deg": 38.313611,
+          "weights_grass_rock_path_soil_sand": [
+            0.063852,
+            0.0,
+            0.936148,
+            0.0,
+            0.0
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            0.9946399927139282,
+            0.0,
+            0.00535999983549118,
+            0.0
+          ],
+          "road23_scope": 0.0,
+          "triangle": 38145
+        },
+        {
+          "xz": [
+            24.084083,
+            17.2843
+          ],
+          "height_m": 3.362254,
+          "face_slope_deg": 58.113042,
+          "occupancy_interpolated_normal_y_angle_deg": 35.969701,
+          "weights_grass_rock_path_soil_sand": [
+            0.14466,
+            0.0,
+            0.85534,
+            0.0,
+            0.0
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            0.10387299954891205,
+            0.0,
+            0.8961269855499268,
+            0.0
+          ],
+          "road23_scope": 0.0,
+          "triangle": 36990
+        }
+      ],
+      "center_path_under_050_locations": []
+    },
+    {
+      "name": "clinic_ramp",
+      "diagnostic_envelope_halfwidth_m": 0.875,
+      "length_m": 15.701392,
+      "samples": 3087,
+      "path_dominant_samples": 2468,
+      "path_dominant_fraction": 0.799482,
+      "path_face_slope_deg": {
+        "min": 0.0,
+        "median": 12.549238,
+        "p95": 57.009303,
+        "max": 73.597581
+      },
+      "path_cross_slope_deg": {
+        "min": 0.0,
+        "median": 1.756591,
+        "p95": 52.474851,
+        "max": 71.34339
+      },
+      "path_longitudinal_slope_deg": {
+        "min": 0.0,
+        "median": 8.05349,
+        "p95": 39.063013,
+        "max": 73.040381
+      },
+      "path_samples_face_slope_over_30_deg": 483,
+      "path_samples_face_slope_over_45_deg": 237,
+      "nominal_width_side_height_difference_m": {
+        "min": 0.000114,
+        "median": 0.288139,
+        "p95": 0.786195,
+        "max": 1.126577
+      },
+      "center_path_weight": {
+        "min": 1.0,
+        "median": 1.0,
+        "p95": 1.0,
+        "max": 1.0
+      },
+      "scope_range": {
+        "min": 0.0,
+        "median": 0.940131,
+        "p95": 1.0,
+        "max": 1.0
+      },
+      "steep_path_locations": [
+        {
+          "xz": [
+            23.662789,
+            32.127547
+          ],
+          "height_m": 3.177749,
+          "face_slope_deg": 73.597581,
+          "occupancy_interpolated_normal_y_angle_deg": 41.955259,
+          "weights_grass_rock_path_soil_sand": [
+            0.003482,
+            0.0,
+            0.996475,
+            0.0,
+            4.3e-05
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "road23_scope": 1.0,
+          "triangle": 50534
+        },
+        {
+          "xz": [
+            22.954632,
+            32.371656
+          ],
+          "height_m": 2.501356,
+          "face_slope_deg": 71.680611,
+          "occupancy_interpolated_normal_y_angle_deg": 39.083102,
+          "weights_grass_rock_path_soil_sand": [
+            0.033934,
+            0.0,
+            0.965882,
+            0.0,
+            0.000184
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "road23_scope": 1.0,
+          "triangle": 50531
+        },
+        {
+          "xz": [
+            24.299043,
+            31.280971
+          ],
+          "height_m": 3.619684,
+          "face_slope_deg": 69.233446,
+          "occupancy_interpolated_normal_y_angle_deg": 43.557004,
+          "weights_grass_rock_path_soil_sand": [
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            0.18130500614643097,
+            0.0,
+            0.8186950087547302,
+            0.0
+          ],
+          "road23_scope": 1.0,
+          "triangle": 49673
+        },
+        {
+          "xz": [
+            23.538406,
+            30.880063
+          ],
+          "height_m": 4.017902,
+          "face_slope_deg": 64.302071,
+          "occupancy_interpolated_normal_y_angle_deg": 38.428808,
+          "weights_grass_rock_path_soil_sand": [
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            0.052404001355171204,
+            0.0,
+            0.94759601354599,
+            0.0
+          ],
+          "road23_scope": 1.0,
+          "triangle": 49379
+        },
+        {
+          "xz": [
+            22.128379,
+            31.446813
+          ],
+          "height_m": 3.769822,
+          "face_slope_deg": 64.26694,
+          "occupancy_interpolated_normal_y_angle_deg": 36.789073,
+          "weights_grass_rock_path_soil_sand": [
+            0.268848,
+            0.0,
+            0.729726,
+            0.0,
+            0.001426
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "road23_scope": 1.0,
+          "triangle": 49946
+        },
+        {
+          "xz": [
+            21.97,
+            30.585
+          ],
+          "height_m": 4.257782,
+          "face_slope_deg": 62.674326,
+          "occupancy_interpolated_normal_y_angle_deg": 34.134292,
+          "weights_grass_rock_path_soil_sand": [
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "road23_scope": 1.0,
+          "triangle": 49081
+        }
+      ],
+      "center_path_under_050_locations": []
+    },
+    {
+      "name": "chapel_entry",
+      "diagnostic_envelope_halfwidth_m": 0.6625000000000001,
+      "length_m": 1.164302,
+      "samples": 210,
+      "path_dominant_samples": 210,
+      "path_dominant_fraction": 1.0,
+      "path_face_slope_deg": {
+        "min": 0.0,
+        "median": 7.895444,
+        "p95": 24.411323,
+        "max": 31.561271
+      },
+      "path_cross_slope_deg": {
+        "min": 0.0,
+        "median": 0.778731,
+        "p95": 8.30292,
+        "max": 8.986536
+      },
+      "path_longitudinal_slope_deg": {
+        "min": 0.0,
+        "median": 5.353138,
+        "p95": 23.344384,
+        "max": 30.73733
+      },
+      "path_samples_face_slope_over_30_deg": 2,
+      "path_samples_face_slope_over_45_deg": 0,
+      "nominal_width_side_height_difference_m": {
+        "min": 0.000116,
+        "median": 0.028858,
+        "p95": 0.074831,
+        "max": 0.075462
+      },
+      "center_path_weight": {
+        "min": 1.0,
+        "median": 1.0,
+        "p95": 1.0,
+        "max": 1.0
+      },
+      "scope_range": {
+        "min": 0.0,
+        "median": 0.0,
+        "p95": 0.0,
+        "max": 0.0
+      },
+      "steep_path_locations": [
+        {
+          "xz": [
+            22.591099,
+            15.390052
+          ],
+          "height_m": 4.081924,
+          "face_slope_deg": 31.561271,
+          "occupancy_interpolated_normal_y_angle_deg": 20.619076,
+          "weights_grass_rock_path_soil_sand": [
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "road23_scope": 0.0,
+          "triangle": 35541
+        },
+        {
+          "xz": [
+            22.704901,
+            14.069948
+          ],
+          "height_m": 4.146315,
+          "face_slope_deg": 19.816408,
+          "occupancy_interpolated_normal_y_angle_deg": 13.127142,
+          "weights_grass_rock_path_soil_sand": [
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "road23_scope": 0.0,
+          "triangle": 34100
+        },
+        {
+          "xz": [
+            22.764,
+            14.74
+          ],
+          "height_m": 4.182274,
+          "face_slope_deg": 18.796729,
+          "occupancy_interpolated_normal_y_angle_deg": 12.072988,
+          "weights_grass_rock_path_soil_sand": [
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "road23_scope": 0.0,
+          "triangle": 34677
+        },
+        {
+          "xz": [
+            23.287099,
+            15.450052
+          ],
+          "height_m": 4.243653,
+          "face_slope_deg": 1.028936,
+          "occupancy_interpolated_normal_y_angle_deg": 3.493791,
+          "weights_grass_rock_path_soil_sand": [
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            0.33044499158859253,
+            0.0,
+            0.6695550084114075,
+            0.0
+          ],
+          "road23_scope": 0.0,
+          "triangle": 35545
+        },
+        {
+          "xz": [
+            23.395211,
+            14.195953
+          ],
+          "height_m": 4.24243,
+          "face_slope_deg": 0.051532,
+          "occupancy_interpolated_normal_y_angle_deg": 3.385233,
+          "weights_grass_rock_path_soil_sand": [
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            0.2561889886856079,
+            0.0,
+            0.7438110113143921,
+            0.0
+          ],
+          "road23_scope": 0.0,
+          "triangle": 34393
+        }
+      ],
+      "center_path_under_050_locations": []
+    },
+    {
+      "name": "clinic_entry",
+      "diagnostic_envelope_halfwidth_m": 0.5375,
+      "length_m": 0.923472,
+      "samples": 168,
+      "path_dominant_samples": 168,
+      "path_dominant_fraction": 1.0,
+      "path_face_slope_deg": {
+        "min": 0.0,
+        "median": 8.993248,
+        "p95": 28.229353,
+        "max": 28.402084
+      },
+      "path_cross_slope_deg": {
+        "min": 0.0,
+        "median": 2.28402,
+        "p95": 8.019996,
+        "max": 8.019996
+      },
+      "path_longitudinal_slope_deg": {
+        "min": 0.0,
+        "median": 8.35831,
+        "p95": 28.037435,
+        "max": 28.107332
+      },
+      "path_samples_face_slope_over_30_deg": 0,
+      "path_samples_face_slope_over_45_deg": 0,
+      "nominal_width_side_height_difference_m": {
+        "min": 0.0,
+        "median": 0.033139,
+        "p95": 0.078166,
+        "max": 0.081287
+      },
+      "center_path_weight": {
+        "min": 1.0,
+        "median": 1.0,
+        "p95": 1.0,
+        "max": 1.0
+      },
+      "scope_range": {
+        "min": 0.0,
+        "median": 0.0,
+        "p95": 0.0,
+        "max": 0.005052
+      },
+      "steep_path_locations": [
+        {
+          "xz": [
+            22.476563,
+            27.884521
+          ],
+          "height_m": 4.394415,
+          "face_slope_deg": 28.402084,
+          "occupancy_interpolated_normal_y_angle_deg": 18.602428,
+          "weights_grass_rock_path_soil_sand": [
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            0.7248309850692749,
+            0.03261899948120117,
+            0.24255000054836273,
+            0.0
+          ],
+          "road23_scope": 0.0,
+          "triangle": 46488
+        },
+        {
+          "xz": [
+            22.153437,
+            28.935479
+          ],
+          "height_m": 4.374924,
+          "face_slope_deg": 26.153285,
+          "occupancy_interpolated_normal_y_angle_deg": 16.775503,
+          "weights_grass_rock_path_soil_sand": [
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            0.8728489875793457,
+            0.0,
+            0.1271509975194931,
+            0.0
+          ],
+          "road23_scope": 0.0,
+          "triangle": 47640
+        },
+        {
+          "xz": [
+            22.756375,
+            28.664192
+          ],
+          "height_m": 4.543305,
+          "face_slope_deg": 5.367689,
+          "occupancy_interpolated_normal_y_angle_deg": 8.792496,
+          "weights_grass_rock_path_soil_sand": [
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            0.006725000217556953,
+            0.0,
+            0.993274986743927,
+            0.0
+          ],
+          "road23_scope": 0.0,
+          "triangle": 47355
+        }
+      ],
+      "center_path_under_050_locations": []
+    },
+    {
+      "name": "restaurant_entry",
+      "diagnostic_envelope_halfwidth_m": 0.75,
+      "length_m": 1.755591,
+      "samples": 315,
+      "path_dominant_samples": 315,
+      "path_dominant_fraction": 1.0,
+      "path_face_slope_deg": {
+        "min": 0.0,
+        "median": 7.290545,
+        "p95": 29.97149,
+        "max": 31.116818
+      },
+      "path_cross_slope_deg": {
+        "min": 0.0,
+        "median": 1.447202,
+        "p95": 4.754174,
+        "max": 14.364236
+      },
+      "path_longitudinal_slope_deg": {
+        "min": 0.0,
+        "median": 7.23174,
+        "p95": 29.894166,
+        "max": 31.030448
+      },
+      "path_samples_face_slope_over_30_deg": 16,
+      "path_samples_face_slope_over_45_deg": 0,
+      "nominal_width_side_height_difference_m": {
+        "min": 5e-06,
+        "median": 0.005965,
+        "p95": 0.065058,
+        "max": 0.065113
+      },
+      "center_path_weight": {
+        "min": 1.0,
+        "median": 1.0,
+        "p95": 1.0,
+        "max": 1.0
+      },
+      "scope_range": {
+        "min": 1.0,
+        "median": 1.0,
+        "p95": 1.0,
+        "max": 1.0
+      },
+      "steep_path_locations": [
+        {
+          "xz": [
+            12.888038,
+            23.850478
+          ],
+          "height_m": 1.143154,
+          "face_slope_deg": 31.116818,
+          "occupancy_interpolated_normal_y_angle_deg": 21.622102,
+          "weights_grass_rock_path_soil_sand": [
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            0.6666669845581055,
+            0.0,
+            0.0,
+            0.33333298563957214
+          ],
+          "road23_scope": 1.0,
+          "triangle": 42969
+        },
+        {
+          "xz": [
+            14.009809,
+            24.663611
+          ],
+          "height_m": 1.375226,
+          "face_slope_deg": 23.754695,
+          "occupancy_interpolated_normal_y_angle_deg": 16.693774,
+          "weights_grass_rock_path_soil_sand": [
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            0.0,
+            0.0,
+            1.0,
+            0.0
+          ],
+          "road23_scope": 1.0,
+          "triangle": 43840
+        },
+        {
+          "xz": [
+            14.147448,
+            23.448766
+          ],
+          "height_m": 1.409529,
+          "face_slope_deg": 23.651326,
+          "occupancy_interpolated_normal_y_angle_deg": 15.070513,
+          "weights_grass_rock_path_soil_sand": [
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            0.0,
+            0.0,
+            1.0,
+            0.0
+          ],
+          "road23_scope": 1.0,
+          "triangle": 42688
+        },
+        {
+          "xz": [
+            13.722648,
+            24.009428
+          ],
+          "height_m": 1.254881,
+          "face_slope_deg": 20.987345,
+          "occupancy_interpolated_normal_y_angle_deg": 14.43527,
+          "weights_grass_rock_path_soil_sand": [
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            0.196369007229805,
+            0.0,
+            0.8036310076713562,
+            0.0
+          ],
+          "road23_scope": 1.0,
+          "triangle": 42975
+        },
+        {
+          "xz": [
+            12.959809,
+            24.747611
+          ],
+          "height_m": 1.156706,
+          "face_slope_deg": 14.820896,
+          "occupancy_interpolated_normal_y_angle_deg": 17.314038,
+          "weights_grass_rock_path_soil_sand": [
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            0.9948809742927551,
+            0.0,
+            0.0,
+            0.005119000095874071
+          ],
+          "road23_scope": 1.0,
+          "triangle": 43834
+        },
+        {
+          "xz": [
+            13.306858,
+            23.215055
+          ],
+          "height_m": 1.219378,
+          "face_slope_deg": 2.378643,
+          "occupancy_interpolated_normal_y_angle_deg": 3.99527,
+          "weights_grass_rock_path_soil_sand": [
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "road23_scope": 1.0,
+          "triangle": 42395
+        }
+      ],
+      "center_path_under_050_locations": []
+    },
+    {
+      "name": "chapel_north_connection",
+      "diagnostic_envelope_halfwidth_m": 0.6875,
+      "length_m": 4.9962,
+      "samples": 924,
+      "path_dominant_samples": 798,
+      "path_dominant_fraction": 0.863636,
+      "path_face_slope_deg": {
+        "min": 0.067914,
+        "median": 1.081385,
+        "p95": 12.726888,
+        "max": 19.816408
+      },
+      "path_cross_slope_deg": {
+        "min": 0.004881,
+        "median": 0.922301,
+        "p95": 12.663188,
+        "max": 19.737281
+      },
+      "path_longitudinal_slope_deg": {
+        "min": 0.005718,
+        "median": 0.486645,
+        "p95": 2.956412,
+        "max": 9.43426
+      },
+      "path_samples_face_slope_over_30_deg": 0,
+      "path_samples_face_slope_over_45_deg": 0,
+      "nominal_width_side_height_difference_m": {
+        "min": 0.012154,
+        "median": 0.020461,
+        "p95": 0.111687,
+        "max": 0.13597
+      },
+      "center_path_weight": {
+        "min": 1.0,
+        "median": 1.0,
+        "p95": 1.0,
+        "max": 1.0
+      },
+      "scope_range": {
+        "min": 0.0,
+        "median": 0.0,
+        "p95": 0.0,
+        "max": 0.0
+      },
+      "steep_path_locations": [
+        {
+          "xz": [
+            22.708655,
+            14.066272
+          ],
+          "height_m": 4.147636,
+          "face_slope_deg": 19.816408,
+          "occupancy_interpolated_normal_y_angle_deg": 13.08534,
+          "weights_grass_rock_path_soil_sand": [
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "road23_scope": 0.0,
+          "triangle": 34100
+        },
+        {
+          "xz": [
+            22.542655,
+            12.682939
+          ],
+          "height_m": 4.105138,
+          "face_slope_deg": 11.772883,
+          "occupancy_interpolated_normal_y_angle_deg": 8.633685,
+          "weights_grass_rock_path_soil_sand": [
+            0.238506,
+            0.0,
+            0.761494,
+            0.0,
+            0.0
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "road23_scope": 0.0,
+          "triangle": 32946
+        },
+        {
+          "xz": [
+            22.420874,
+            13.39918
+          ],
+          "height_m": 4.08999,
+          "face_slope_deg": 10.05818,
+          "occupancy_interpolated_normal_y_angle_deg": 6.434237,
+          "weights_grass_rock_path_soil_sand": [
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "road23_scope": 0.0,
+          "triangle": 33522
+        },
+        {
+          "xz": [
+            21.958699,
+            14.740956
+          ],
+          "height_m": 4.074149,
+          "face_slope_deg": 8.130078,
+          "occupancy_interpolated_normal_y_angle_deg": 4.649267,
+          "weights_grass_rock_path_soil_sand": [
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "road23_scope": 0.0,
+          "triangle": 34961
+        },
+        {
+          "xz": [
+            22.84289,
+            9.936839
+          ],
+          "height_m": 4.057293,
+          "face_slope_deg": 2.536364,
+          "occupancy_interpolated_normal_y_angle_deg": 1.841544,
+          "weights_grass_rock_path_soil_sand": [
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "road23_scope": 0.0,
+          "triangle": 30355
+        },
+        {
+          "xz": [
+            21.505888,
+            12.25411
+          ],
+          "height_m": 4.069787,
+          "face_slope_deg": 1.379196,
+          "occupancy_interpolated_normal_y_angle_deg": 1.322266,
+          "weights_grass_rock_path_soil_sand": [
+            0.267702,
+            0.0,
+            0.732298,
+            0.0,
+            0.0
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "road23_scope": 0.0,
+          "triangle": 32651
+        }
+      ],
+      "center_path_under_050_locations": []
+    },
+    {
+      "name": "clinic_side_hut_entry",
+      "diagnostic_envelope_halfwidth_m": 0.55,
+      "length_m": 3.712678,
+      "samples": 777,
+      "path_dominant_samples": 687,
+      "path_dominant_fraction": 0.88417,
+      "path_face_slope_deg": {
+        "min": 0.0,
+        "median": 28.441933,
+        "p95": 53.249357,
+        "max": 56.717681
+      },
+      "path_cross_slope_deg": {
+        "min": 0.0,
+        "median": 1.330069,
+        "p95": 32.142179,
+        "max": 44.095412
+      },
+      "path_longitudinal_slope_deg": {
+        "min": 0.0,
+        "median": 28.346637,
+        "p95": 51.206071,
+        "max": 56.362484
+      },
+      "path_samples_face_slope_over_30_deg": 291,
+      "path_samples_face_slope_over_45_deg": 89,
+      "nominal_width_side_height_difference_m": {
+        "min": 0.000297,
+        "median": 0.027359,
+        "p95": 0.247177,
+        "max": 0.33254
+      },
+      "center_path_weight": {
+        "min": 1.0,
+        "median": 1.0,
+        "p95": 1.0,
+        "max": 1.0
+      },
+      "scope_range": {
+        "min": 0.0,
+        "median": 0.0,
+        "p95": 1.0,
+        "max": 1.0
+      },
+      "steep_path_locations": [
+        {
+          "xz": [
+            22.052738,
+            35.325542
+          ],
+          "height_m": 3.117335,
+          "face_slope_deg": 56.717681,
+          "occupancy_interpolated_normal_y_angle_deg": 47.307769,
+          "weights_grass_rock_path_soil_sand": [
+            0.381691,
+            0.157937,
+            0.460372,
+            0.0,
+            0.0
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            0.5035430192947388,
+            0.33857500553131104,
+            0.15788300335407257,
+            0.0
+          ],
+          "road23_scope": 0.0,
+          "triangle": 53409
+        },
+        {
+          "xz": [
+            21.170637,
+            35.291246
+          ],
+          "height_m": 3.018948,
+          "face_slope_deg": 51.128385,
+          "occupancy_interpolated_normal_y_angle_deg": 33.380599,
+          "weights_grass_rock_path_soil_sand": [
+            0.334812,
+            0.0,
+            0.665188,
+            0.0,
+            0.0
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            0.4456459879875183,
+            0.0,
+            0.5543540120124817,
+            0.0
+          ],
+          "road23_scope": 0.0,
+          "triangle": 53403
+        },
+        {
+          "xz": [
+            21.082221,
+            33.879548
+          ],
+          "height_m": 2.247915,
+          "face_slope_deg": 47.783698,
+          "occupancy_interpolated_normal_y_angle_deg": 36.118272,
+          "weights_grass_rock_path_soil_sand": [
+            0.129707,
+            0.0,
+            0.870293,
+            0.0,
+            0.0
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "road23_scope": 0.550721,
+          "triangle": 51961
+        },
+        {
+          "xz": [
+            21.7938,
+            35.927117
+          ],
+          "height_m": 3.6553,
+          "face_slope_deg": 46.040259,
+          "occupancy_interpolated_normal_y_angle_deg": 38.768683,
+          "weights_grass_rock_path_soil_sand": [
+            0.001826,
+            8.1e-05,
+            0.998093,
+            0.0,
+            0.0
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            0.0,
+            0.06030299887061119,
+            0.9396970272064209,
+            0.0
+          ],
+          "road23_scope": 0.0,
+          "triangle": 97400
+        },
+        {
+          "xz": [
+            21.785518,
+            36.608711
+          ],
+          "height_m": 3.760339,
+          "face_slope_deg": 37.022235,
+          "occupancy_interpolated_normal_y_angle_deg": 26.877687,
+          "weights_grass_rock_path_soil_sand": [
+            0.077279,
+            0.032695,
+            0.890026,
+            0.0,
+            0.0
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            0.0,
+            0.5099509954452515,
+            0.49004900455474854,
+            0.0
+          ],
+          "road23_scope": 0.0,
+          "triangle": 96938
+        },
+        {
+          "xz": [
+            21.160418,
+            36.237258
+          ],
+          "height_m": 3.451953,
+          "face_slope_deg": 36.314157,
+          "occupancy_interpolated_normal_y_angle_deg": 35.8879,
+          "weights_grass_rock_path_soil_sand": [
+            0.38908,
+            0.138837,
+            0.472083,
+            0.0,
+            0.0
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            0.022130999714136124,
+            0.21329399943351746,
+            0.7645750045776367,
+            0.0
+          ],
+          "road23_scope": 0.0,
+          "triangle": 96878
+        }
+      ],
+      "center_path_under_050_locations": []
+    },
+    {
+      "name": "chapel_side_hut_entry",
+      "diagnostic_envelope_halfwidth_m": 0.5375,
+      "length_m": 2.221511,
+      "samples": 483,
+      "path_dominant_samples": 372,
+      "path_dominant_fraction": 0.770186,
+      "path_face_slope_deg": {
+        "min": 0.0,
+        "median": 21.801432,
+        "p95": 48.585087,
+        "max": 59.349815
+      },
+      "path_cross_slope_deg": {
+        "min": 0.0,
+        "median": 4.44158,
+        "p95": 28.781061,
+        "max": 43.595542
+      },
+      "path_longitudinal_slope_deg": {
+        "min": 0.0,
+        "median": 21.801387,
+        "p95": 48.31117,
+        "max": 59.286407
+      },
+      "path_samples_face_slope_over_30_deg": 81,
+      "path_samples_face_slope_over_45_deg": 35,
+      "nominal_width_side_height_difference_m": {
+        "min": 0.000193,
+        "median": 0.073766,
+        "p95": 0.226467,
+        "max": 0.238633
+      },
+      "center_path_weight": {
+        "min": 1.0,
+        "median": 1.0,
+        "p95": 1.0,
+        "max": 1.0
+      },
+      "scope_range": {
+        "min": 0.0,
+        "median": 0.0,
+        "p95": 0.0,
+        "max": 0.0
+      },
+      "steep_path_locations": [
+        {
+          "xz": [
+            24.43,
+            18.511429
+          ],
+          "height_m": 3.549729,
+          "face_slope_deg": 59.349815,
+          "occupancy_interpolated_normal_y_angle_deg": 38.255711,
+          "weights_grass_rock_path_soil_sand": [
+            0.249104,
+            0.0,
+            0.750896,
+            0.0,
+            0.0
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            0.9946399927139282,
+            0.0,
+            0.00535999983549118,
+            0.0
+          ],
+          "road23_scope": 0.0,
+          "triangle": 38145
+        },
+        {
+          "xz": [
+            23.583377,
+            18.795767
+          ],
+          "height_m": 3.551436,
+          "face_slope_deg": 44.587435,
+          "occupancy_interpolated_normal_y_angle_deg": 26.529,
+          "weights_grass_rock_path_soil_sand": [
+            0.085743,
+            0.0,
+            0.914257,
+            0.0,
+            0.0
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "road23_scope": 0.0,
+          "triangle": 38427
+        },
+        {
+          "xz": [
+            24.29925,
+            19.16575
+          ],
+          "height_m": 3.890345,
+          "face_slope_deg": 39.291073,
+          "occupancy_interpolated_normal_y_angle_deg": 30.705076,
+          "weights_grass_rock_path_soil_sand": [
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "road23_scope": 0.0,
+          "triangle": 38720
+        },
+        {
+          "xz": [
+            23.62375,
+            18.037143
+          ],
+          "height_m": 3.289948,
+          "face_slope_deg": 29.898805,
+          "occupancy_interpolated_normal_y_angle_deg": 14.4607,
+          "weights_grass_rock_path_soil_sand": [
+            0.046786,
+            0.0,
+            0.953214,
+            0.0,
+            0.0
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            0.9464370012283325,
+            0.0,
+            0.05356299877166748,
+            0.0
+          ],
+          "road23_scope": 0.0,
+          "triangle": 37851
+        },
+        {
+          "xz": [
+            24.26875,
+            17.8
+          ],
+          "height_m": 3.236656,
+          "face_slope_deg": 12.743879,
+          "occupancy_interpolated_normal_y_angle_deg": 11.214175,
+          "weights_grass_rock_path_soil_sand": [
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            0.655019998550415,
+            0.0,
+            0.34498000144958496,
+            0.0
+          ],
+          "road23_scope": 0.0,
+          "triangle": 37567
+        },
+        {
+          "xz": [
+            24.825718,
+            19.564615
+          ],
+          "height_m": 4.037203,
+          "face_slope_deg": 1.775539,
+          "occupancy_interpolated_normal_y_angle_deg": 6.022978,
+          "weights_grass_rock_path_soil_sand": [
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "road23_scope": 0.0,
+          "triangle": 39011
+        }
+      ],
+      "center_path_under_050_locations": []
+    },
+    {
+      "name": "rosie_entry",
+      "diagnostic_envelope_halfwidth_m": 0.6625000000000001,
+      "length_m": 1.750686,
+      "samples": 357,
+      "path_dominant_samples": 351,
+      "path_dominant_fraction": 0.983193,
+      "path_face_slope_deg": {
+        "min": 0.0,
+        "median": 5.108134,
+        "p95": 35.636049,
+        "max": 37.086872
+      },
+      "path_cross_slope_deg": {
+        "min": 0.0,
+        "median": 0.600146,
+        "p95": 4.799177,
+        "max": 7.832401
+      },
+      "path_longitudinal_slope_deg": {
+        "min": 0.0,
+        "median": 5.057918,
+        "p95": 35.612504,
+        "max": 36.935616
+      },
+      "path_samples_face_slope_over_30_deg": 35,
+      "path_samples_face_slope_over_45_deg": 0,
+      "nominal_width_side_height_difference_m": {
+        "min": 0.0,
+        "median": 0.007483,
+        "p95": 0.035763,
+        "max": 0.054337
+      },
+      "center_path_weight": {
+        "min": 1.0,
+        "median": 1.0,
+        "p95": 1.0,
+        "max": 1.0
+      },
+      "scope_range": {
+        "min": 0.0,
+        "median": 0.0,
+        "p95": 0.0,
+        "max": 0.0
+      },
+      "steep_path_locations": [
+        {
+          "xz": [
+            13.116139,
+            48.825272
+          ],
+          "height_m": 1.268075,
+          "face_slope_deg": 37.086872,
+          "occupancy_interpolated_normal_y_angle_deg": 26.545425,
+          "weights_grass_rock_path_soil_sand": [
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            0.8600000143051147,
+            0.0,
+            0.14000000059604645,
+            0.0
+          ],
+          "road23_scope": 0.0,
+          "triangle": 95258
+        },
+        {
+          "xz": [
+            13.140965,
+            49.487307
+          ],
+          "height_m": 1.244739,
+          "face_slope_deg": 32.280385,
+          "occupancy_interpolated_normal_y_angle_deg": 17.004061,
+          "weights_grass_rock_path_soil_sand": [
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            0.8600000143051147,
+            0.0,
+            0.14000000059604645,
+            0.0
+          ],
+          "road23_scope": 0.0,
+          "triangle": 95463
+        },
+        {
+          "xz": [
+            12.041633,
+            49.737412
+          ],
+          "height_m": 1.156693,
+          "face_slope_deg": 13.605817,
+          "occupancy_interpolated_normal_y_angle_deg": 10.30132,
+          "weights_grass_rock_path_soil_sand": [
+            0.30459,
+            0.0,
+            0.69541,
+            0.0,
+            0.0
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            0.8739380240440369,
+            0.0,
+            0.12606200575828552,
+            0.0
+          ],
+          "road23_scope": 0.0,
+          "triangle": 93671
+        },
+        {
+          "xz": [
+            12.055578,
+            49.075059
+          ],
+          "height_m": 1.153837,
+          "face_slope_deg": 12.401117,
+          "occupancy_interpolated_normal_y_angle_deg": 12.129755,
+          "weights_grass_rock_path_soil_sand": [
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            0.8813109993934631,
+            0.0,
+            0.11868900060653687,
+            0.0
+          ],
+          "road23_scope": 0.0,
+          "triangle": 94473
+        },
+        {
+          "xz": [
+            13.71416,
+            49.996185
+          ],
+          "height_m": 1.404181,
+          "face_slope_deg": 7.439277,
+          "occupancy_interpolated_normal_y_angle_deg": 8.4023,
+          "weights_grass_rock_path_soil_sand": [
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            0.8600000143051147,
+            0.0,
+            0.14000000059604645,
+            0.0
+          ],
+          "road23_scope": 0.0,
+          "triangle": 95906
+        },
+        {
+          "xz": [
+            12.711913,
+            50.016582
+          ],
+          "height_m": 1.18,
+          "face_slope_deg": 0.0,
+          "occupancy_interpolated_normal_y_angle_deg": 1.887886,
+          "weights_grass_rock_path_soil_sand": [
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            0.8600000143051147,
+            0.0,
+            0.14000000059604645,
+            0.0
+          ],
+          "road23_scope": 0.0,
+          "triangle": 96613
+        }
+      ],
+      "center_path_under_050_locations": []
+    },
+    {
+      "name": "tavern_entry",
+      "diagnostic_envelope_halfwidth_m": 0.6,
+      "length_m": 3.498251,
+      "samples": 714,
+      "path_dominant_samples": 632,
+      "path_dominant_fraction": 0.885154,
+      "path_face_slope_deg": {
+        "min": 0.000288,
+        "median": 5.956596,
+        "p95": 28.907601,
+        "max": 36.736067
+      },
+      "path_cross_slope_deg": {
+        "min": 0.000112,
+        "median": 4.670143,
+        "p95": 23.465928,
+        "max": 30.569386
+      },
+      "path_longitudinal_slope_deg": {
+        "min": 1e-06,
+        "median": 1.822759,
+        "p95": 20.284038,
+        "max": 25.043774
+      },
+      "path_samples_face_slope_over_30_deg": 24,
+      "path_samples_face_slope_over_45_deg": 0,
+      "nominal_width_side_height_difference_m": {
+        "min": 0.034874,
+        "median": 0.144216,
+        "p95": 0.274864,
+        "max": 0.350769
+      },
+      "center_path_weight": {
+        "min": 0.915179,
+        "median": 1.0,
+        "p95": 1.0,
+        "max": 1.0
+      },
+      "scope_range": {
+        "min": 0.0,
+        "median": 0.0,
+        "p95": 0.0,
+        "max": 0.0
+      },
+      "steep_path_locations": [
+        {
+          "xz": [
+            9.917009,
+            37.941495
+          ],
+          "height_m": 1.260102,
+          "face_slope_deg": 36.736067,
+          "occupancy_interpolated_normal_y_angle_deg": 36.401412,
+          "weights_grass_rock_path_soil_sand": [
+            0.109941,
+            0.0,
+            0.612883,
+            0.00056,
+            0.276616
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            0.6556730270385742,
+            0.0,
+            0.0,
+            0.002369999885559082
+          ],
+          "road23_scope": 0.0,
+          "triangle": 92253
+        },
+        {
+          "xz": [
+            11.142889,
+            39.76383
+          ],
+          "height_m": 1.825742,
+          "face_slope_deg": 28.907601,
+          "occupancy_interpolated_normal_y_angle_deg": 17.842119,
+          "weights_grass_rock_path_soil_sand": [
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "road23_scope": 0.0,
+          "triangle": 93539
+        },
+        {
+          "xz": [
+            10.281925,
+            38.537163
+          ],
+          "height_m": 1.545597,
+          "face_slope_deg": 23.741962,
+          "occupancy_interpolated_normal_y_angle_deg": 21.562469,
+          "weights_grass_rock_path_soil_sand": [
+            0.372857,
+            0.0,
+            0.428074,
+            0.000197,
+            0.198873
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            0.8298779726028442,
+            0.0,
+            0.0,
+            0.00015300000086426735
+          ],
+          "road23_scope": 0.0,
+          "triangle": 91770
+        },
+        {
+          "xz": [
+            11.037794,
+            40.565978
+          ],
+          "height_m": 1.788859,
+          "face_slope_deg": 23.434937,
+          "occupancy_interpolated_normal_y_angle_deg": 16.209268,
+          "weights_grass_rock_path_soil_sand": [
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "road23_scope": 0.0,
+          "triangle": 93534
+        },
+        {
+          "xz": [
+            11.179369,
+            41.223811
+          ],
+          "height_m": 1.814757,
+          "face_slope_deg": 23.024249,
+          "occupancy_interpolated_normal_y_angle_deg": 15.992022,
+          "weights_grass_rock_path_soil_sand": [
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "road23_scope": 0.0,
+          "triangle": 93283
+        },
+        {
+          "xz": [
+            10.560997,
+            37.619502
+          ],
+          "height_m": 1.605388,
+          "face_slope_deg": 21.408247,
+          "occupancy_interpolated_normal_y_angle_deg": 16.471917,
+          "weights_grass_rock_path_soil_sand": [
+            0.015546,
+            0.0,
+            0.970011,
+            0.0,
+            0.014443
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            0.9526669979095459,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "road23_scope": 0.0,
+          "triangle": 95130
+        }
+      ],
+      "center_path_under_050_locations": []
+    },
+    {
+      "name": "travel_entry",
+      "diagnostic_envelope_halfwidth_m": 0.6125,
+      "length_m": 1.551255,
+      "samples": 315,
+      "path_dominant_samples": 210,
+      "path_dominant_fraction": 0.666667,
+      "path_face_slope_deg": {
+        "min": 0.261833,
+        "median": 18.10765,
+        "p95": 64.531273,
+        "max": 64.740194
+      },
+      "path_cross_slope_deg": {
+        "min": 0.041996,
+        "median": 10.352549,
+        "p95": 33.618263,
+        "max": 53.942671
+      },
+      "path_longitudinal_slope_deg": {
+        "min": 0.258443,
+        "median": 15.096042,
+        "p95": 64.052979,
+        "max": 64.484909
+      },
+      "path_samples_face_slope_over_30_deg": 85,
+      "path_samples_face_slope_over_45_deg": 77,
+      "nominal_width_side_height_difference_m": {
+        "min": 0.001585,
+        "median": 0.397654,
+        "p95": 0.639086,
+        "max": 0.732135
+      },
+      "center_path_weight": {
+        "min": 0.994468,
+        "median": 1.0,
+        "p95": 1.0,
+        "max": 1.0
+      },
+      "scope_range": {
+        "min": 0.0,
+        "median": 0.0,
+        "p95": 0.0,
+        "max": 0.0
+      },
+      "steep_path_locations": [
+        {
+          "xz": [
+            22.230977,
+            46.936789
+          ],
+          "height_m": 4.275452,
+          "face_slope_deg": 64.740194,
+          "occupancy_interpolated_normal_y_angle_deg": 38.895932,
+          "weights_grass_rock_path_soil_sand": [
+            0.458302,
+            0.008554,
+            0.533144,
+            0.0,
+            0.0
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            0.961001992225647,
+            0.03899800032377243,
+            0.0,
+            0.0
+          ],
+          "road23_scope": 0.0,
+          "triangle": 110198
+        },
+        {
+          "xz": [
+            21.973212,
+            46.33641
+          ],
+          "height_m": 4.046181,
+          "face_slope_deg": 62.678429,
+          "occupancy_interpolated_normal_y_angle_deg": 35.731121,
+          "weights_grass_rock_path_soil_sand": [
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "road23_scope": 0.0,
+          "triangle": 110203
+        },
+        {
+          "xz": [
+            21.246326,
+            46.848998
+          ],
+          "height_m": 3.36458,
+          "face_slope_deg": 56.239606,
+          "occupancy_interpolated_normal_y_angle_deg": 50.797372,
+          "weights_grass_rock_path_soil_sand": [
+            0.0,
+            0.49757,
+            0.50243,
+            0.0,
+            0.0
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ],
+          "road23_scope": 0.0,
+          "triangle": 108194
+        },
+        {
+          "xz": [
+            21.342858,
+            46.110771
+          ],
+          "height_m": 3.542676,
+          "face_slope_deg": 9.817813,
+          "occupancy_interpolated_normal_y_angle_deg": 18.441645,
+          "weights_grass_rock_path_soil_sand": [
+            0.425754,
+            0.0,
+            0.574246,
+            0.0,
+            0.0
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "road23_scope": 0.0,
+          "triangle": 108206
+        }
+      ],
+      "center_path_under_050_locations": []
+    },
+    {
+      "name": "trading_lower_lane",
+      "diagnostic_envelope_halfwidth_m": 0.6,
+      "length_m": 18.696448,
+      "samples": 3381,
+      "path_dominant_samples": 2831,
+      "path_dominant_fraction": 0.837326,
+      "path_face_slope_deg": {
+        "min": 0.0,
+        "median": 9.284231,
+        "p95": 40.956367,
+        "max": 47.564363
+      },
+      "path_cross_slope_deg": {
+        "min": 0.0,
+        "median": 4.04511,
+        "p95": 40.048436,
+        "max": 47.503439
+      },
+      "path_longitudinal_slope_deg": {
+        "min": 0.0,
+        "median": 1.41315,
+        "p95": 20.831046,
+        "max": 35.73091
+      },
+      "path_samples_face_slope_over_30_deg": 366,
+      "path_samples_face_slope_over_45_deg": 3,
+      "nominal_width_side_height_difference_m": {
+        "min": 0.0,
+        "median": 0.144799,
+        "p95": 0.532949,
+        "max": 0.587292
+      },
+      "center_path_weight": {
+        "min": 1.0,
+        "median": 1.0,
+        "p95": 1.0,
+        "max": 1.0
+      },
+      "scope_range": {
+        "min": 0.0,
+        "median": 1.0,
+        "p95": 1.0,
+        "max": 1.0
+      },
+      "steep_path_locations": [
+        {
+          "xz": [
+            13.532132,
+            18.385711
+          ],
+          "height_m": 0.744432,
+          "face_slope_deg": 47.564363,
+          "occupancy_interpolated_normal_y_angle_deg": 41.175811,
+          "weights_grass_rock_path_soil_sand": [
+            0.075023,
+            0.0,
+            0.679531,
+            0.243988,
+            0.001458
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            0.0,
+            0.0,
+            0.3297480046749115,
+            0.6702520251274109
+          ],
+          "road23_scope": 1.0,
+          "triangle": 38076
+        },
+        {
+          "xz": [
+            13.61416,
+            15.453532
+          ],
+          "height_m": 0.816359,
+          "face_slope_deg": 44.82874,
+          "occupancy_interpolated_normal_y_angle_deg": 30.496506,
+          "weights_grass_rock_path_soil_sand": [
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            0.5027490258216858,
+            0.0,
+            0.020526999607682228,
+            0.4767250120639801
+          ],
+          "road23_scope": 1.0,
+          "triangle": 35485
+        },
+        {
+          "xz": [
+            13.175742,
+            19.130288
+          ],
+          "height_m": 1.020886,
+          "face_slope_deg": 44.310439,
+          "occupancy_interpolated_normal_y_angle_deg": 33.745591,
+          "weights_grass_rock_path_soil_sand": [
+            0.000207,
+            0.0,
+            0.933768,
+            0.064803,
+            0.001223
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            0.6699100136756897,
+            0.0,
+            0.0006280000088736415,
+            0.3294619917869568
+          ],
+          "road23_scope": 1.0,
+          "triangle": 38650
+        },
+        {
+          "xz": [
+            13.62,
+            17.738462
+          ],
+          "height_m": 0.759026,
+          "face_slope_deg": 43.772821,
+          "occupancy_interpolated_normal_y_angle_deg": 39.971191,
+          "weights_grass_rock_path_soil_sand": [
+            0.059897,
+            0.0,
+            0.565748,
+            0.374343,
+            1.2e-05
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            0.0,
+            0.0,
+            0.239205002784729,
+            0.760794997215271
+          ],
+          "road23_scope": 1.0,
+          "triangle": 37500
+        },
+        {
+          "xz": [
+            13.506387,
+            14.792621
+          ],
+          "height_m": 0.709937,
+          "face_slope_deg": 43.383125,
+          "occupancy_interpolated_normal_y_angle_deg": 27.152081,
+          "weights_grass_rock_path_soil_sand": [
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            0.7491859793663025,
+            0.0,
+            0.0643950030207634,
+            0.18641899526119232
+          ],
+          "road23_scope": 1.0,
+          "triangle": 34908
+        },
+        {
+          "xz": [
+            13.68,
+            17.046154
+          ],
+          "height_m": 0.76652,
+          "face_slope_deg": 42.769241,
+          "occupancy_interpolated_normal_y_angle_deg": 39.870555,
+          "weights_grass_rock_path_soil_sand": [
+            0.023139,
+            0.0,
+            0.891572,
+            0.085255,
+            3.4e-05
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            0.0,
+            0.0,
+            0.42910701036453247,
+            0.5708929896354675
+          ],
+          "road23_scope": 1.0,
+          "triangle": 36924
+        }
+      ],
+      "center_path_under_050_locations": []
+    },
+    {
+      "name": "trading_entry",
+      "diagnostic_envelope_halfwidth_m": 0.8125,
+      "length_m": 1.7,
+      "samples": 315,
+      "path_dominant_samples": 315,
+      "path_dominant_fraction": 1.0,
+      "path_face_slope_deg": {
+        "min": 0.0,
+        "median": 0.0,
+        "p95": 0.0,
+        "max": 0.0
+      },
+      "path_cross_slope_deg": {
+        "min": 0.0,
+        "median": 0.0,
+        "p95": 0.0,
+        "max": 0.0
+      },
+      "path_longitudinal_slope_deg": {
+        "min": 0.0,
+        "median": 0.0,
+        "p95": 0.0,
+        "max": 0.0
+      },
+      "path_samples_face_slope_over_30_deg": 0,
+      "path_samples_face_slope_over_45_deg": 0,
+      "nominal_width_side_height_difference_m": {
+        "min": 0.0,
+        "median": 0.0,
+        "p95": 0.0,
+        "max": 0.0
+      },
+      "center_path_weight": {
+        "min": 1.0,
+        "median": 1.0,
+        "p95": 1.0,
+        "max": 1.0
+      },
+      "scope_range": {
+        "min": 0.0,
+        "median": 0.0,
+        "p95": 0.0,
+        "max": 0.0
+      },
+      "steep_path_locations": [
+        {
+          "xz": [
+            14.686667,
+            7.8125
+          ],
+          "height_m": 1.35,
+          "face_slope_deg": 0.0,
+          "occupancy_interpolated_normal_y_angle_deg": 0.0,
+          "weights_grass_rock_path_soil_sand": [
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            0.0,
+            0.0,
+            1.0,
+            0.0
+          ],
+          "road23_scope": 0.0,
+          "triangle": 28574
+        },
+        {
+          "xz": [
+            14.686667,
+            7.1625
+          ],
+          "height_m": 1.35,
+          "face_slope_deg": 0.0,
+          "occupancy_interpolated_normal_y_angle_deg": 0.0,
+          "weights_grass_rock_path_soil_sand": [
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            0.0,
+            0.0,
+            1.0,
+            0.0
+          ],
+          "road23_scope": 0.0,
+          "triangle": 27999
+        },
+        {
+          "xz": [
+            14.686667,
+            6.5125
+          ],
+          "height_m": 1.35,
+          "face_slope_deg": 0.0,
+          "occupancy_interpolated_normal_y_angle_deg": 0.0,
+          "weights_grass_rock_path_soil_sand": [
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            0.0,
+            0.0,
+            1.0,
+            0.0
+          ],
+          "road23_scope": 0.0,
+          "triangle": 27423
+        },
+        {
+          "xz": [
+            14.12,
+            7.4875
+          ],
+          "height_m": 1.35,
+          "face_slope_deg": 0.0,
+          "occupancy_interpolated_normal_y_angle_deg": 0.0,
+          "weights_grass_rock_path_soil_sand": [
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            0.6666669845581055,
+            0.0,
+            0.33333298563957214,
+            0.0
+          ],
+          "road23_scope": 0.0,
+          "triangle": 28284
+        },
+        {
+          "xz": [
+            14.12,
+            6.1875
+          ],
+          "height_m": 1.35,
+          "face_slope_deg": 0.0,
+          "occupancy_interpolated_normal_y_angle_deg": 0.0,
+          "weights_grass_rock_path_soil_sand": [
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            0.6666669845581055,
+            0.0,
+            0.33333298563957214,
+            0.0
+          ],
+          "road23_scope": 0.0,
+          "triangle": 27132
+        },
+        {
+          "xz": [
+            14.006667,
+            6.8375
+          ],
+          "height_m": 1.35,
+          "face_slope_deg": 0.0,
+          "occupancy_interpolated_normal_y_angle_deg": 0.0,
+          "weights_grass_rock_path_soil_sand": [
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "road23_scope": 0.0,
+          "triangle": 27707
+        }
+      ],
+      "center_path_under_050_locations": []
+    },
+    {
+      "name": "diner_sari_shared_lane",
+      "diagnostic_envelope_halfwidth_m": 0.8500000000000001,
+      "length_m": 22.412481,
+      "samples": 4053,
+      "path_dominant_samples": 2839,
+      "path_dominant_fraction": 0.700469,
+      "path_face_slope_deg": {
+        "min": 0.0,
+        "median": 5.475418,
+        "p95": 47.022053,
+        "max": 66.677956
+      },
+      "path_cross_slope_deg": {
+        "min": 0.0,
+        "median": 2.604884,
+        "p95": 30.779786,
+        "max": 62.83651
+      },
+      "path_longitudinal_slope_deg": {
+        "min": 0.0,
+        "median": 0.760377,
+        "p95": 43.151077,
+        "max": 64.253302
+      },
+      "path_samples_face_slope_over_30_deg": 482,
+      "path_samples_face_slope_over_45_deg": 189,
+      "nominal_width_side_height_difference_m": {
+        "min": 2.3e-05,
+        "median": 0.166919,
+        "p95": 0.955205,
+        "max": 1.239892
+      },
+      "center_path_weight": {
+        "min": 0.076596,
+        "median": 1.0,
+        "p95": 1.0,
+        "max": 1.0
+      },
+      "scope_range": {
+        "min": 0.0,
+        "median": 0.0,
+        "p95": 0.0,
+        "max": 0.0
+      },
+      "steep_path_locations": [
+        {
+          "xz": [
+            11.612817,
+            42.863291
+          ],
+          "height_m": 1.316123,
+          "face_slope_deg": 66.677956,
+          "occupancy_interpolated_normal_y_angle_deg": 51.752595,
+          "weights_grass_rock_path_soil_sand": [
+            0.461377,
+            0.0,
+            0.49497,
+            0.003974,
+            0.039679
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            0.6606910228729248,
+            0.0,
+            0.0,
+            0.030789999291300774
+          ],
+          "road23_scope": 0.0,
+          "triangle": 94811
+        },
+        {
+          "xz": [
+            12.523262,
+            43.928172
+          ],
+          "height_m": 0.779321,
+          "face_slope_deg": 65.840455,
+          "occupancy_interpolated_normal_y_angle_deg": 53.258296,
+          "weights_grass_rock_path_soil_sand": [
+            0.348569,
+            0.0,
+            0.384216,
+            0.0,
+            0.267215
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            0.313740998506546,
+            0.0,
+            0.11192300170660019,
+            0.0
+          ],
+          "road23_scope": 0.0,
+          "triangle": 94282
+        },
+        {
+          "xz": [
+            13.287861,
+            43.863097
+          ],
+          "height_m": 0.9063,
+          "face_slope_deg": 61.688407,
+          "occupancy_interpolated_normal_y_angle_deg": 48.333702,
+          "weights_grass_rock_path_soil_sand": [
+            0.260019,
+            0.0,
+            0.729993,
+            0.0,
+            0.009988
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            0.6687840223312378,
+            0.0,
+            0.10736200213432312,
+            0.0
+          ],
+          "road23_scope": 0.0,
+          "triangle": 95506
+        },
+        {
+          "xz": [
+            12.069733,
+            43.373807
+          ],
+          "height_m": 1.55289,
+          "face_slope_deg": 58.847853,
+          "occupancy_interpolated_normal_y_angle_deg": 37.202604,
+          "weights_grass_rock_path_soil_sand": [
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            0.6729069948196411,
+            0.0,
+            0.05002199858427048,
+            0.023864999413490295
+          ],
+          "road23_scope": 0.0,
+          "triangle": 94534
+        },
+        {
+          "xz": [
+            11.328278,
+            42.14123
+          ],
+          "height_m": 1.610987,
+          "face_slope_deg": 55.930258,
+          "occupancy_interpolated_normal_y_angle_deg": 41.258687,
+          "weights_grass_rock_path_soil_sand": [
+            0.003706,
+            0.0,
+            0.996215,
+            6.3e-05,
+            1.6e-05
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            0.9667739868164062,
+            0.0,
+            0.0,
+            0.026071999222040176
+          ],
+          "road23_scope": 0.0,
+          "triangle": 93277
+        },
+        {
+          "xz": [
+            14.134599,
+            53.911539
+          ],
+          "height_m": 0.467181,
+          "face_slope_deg": 53.355227,
+          "occupancy_interpolated_normal_y_angle_deg": 35.822679,
+          "weights_grass_rock_path_soil_sand": [
+            0.154722,
+            0.0,
+            0.583279,
+            0.019447,
+            0.242552
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            0.4783810079097748,
+            0.0,
+            0.006171000190079212,
+            0.07096099853515625
+          ],
+          "road23_scope": 0.0,
+          "triangle": 102053
+        }
+      ],
+      "center_path_under_050_locations": [
+        {
+          "xz": [
+            13.49,
+            53.04
+          ],
+          "height_m": 0.317868,
+          "face_slope_deg": 0.649532,
+          "occupancy_interpolated_normal_y_angle_deg": 4.088231,
+          "weights_grass_rock_path_soil_sand": [
+            0.013046,
+            0.0,
+            0.076596,
+            0.080798,
+            0.829561
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            0.01419300027191639,
+            0.0,
+            0.0,
+            0.08749999850988388
+          ],
+          "road23_scope": 0.0,
+          "triangle": 95879
+        },
+        {
+          "xz": [
+            13.7,
+            53.7
+          ],
+          "height_m": 0.328107,
+          "face_slope_deg": 16.238427,
+          "occupancy_interpolated_normal_y_angle_deg": 9.996846,
+          "weights_grass_rock_path_soil_sand": [
+            0.008216,
+            0.0,
+            0.099702,
+            0.000203,
+            0.89188
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            0.07840800285339355,
+            0.0,
+            0.00018699999782256782,
+            0.0021460000425577164
+          ],
+          "road23_scope": 0.0,
+          "triangle": 95570
+        },
+        {
+          "xz": [
+            12.881818,
+            43.7
+          ],
+          "height_m": 1.238686,
+          "face_slope_deg": 64.220969,
+          "occupancy_interpolated_normal_y_angle_deg": 55.572732,
+          "weights_grass_rock_path_soil_sand": [
+            0.682419,
+            0.0,
+            0.222631,
+            0.0,
+            0.09495
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            0.39169999957084656,
+            0.0,
+            0.12930400669574738,
+            0.0
+          ],
+          "road23_scope": 0.0,
+          "triangle": 96664
+        }
+      ]
+    },
+    {
+      "name": "sari_entry",
+      "diagnostic_envelope_halfwidth_m": 0.8999999999999999,
+      "length_m": 0.95,
+      "samples": 168,
+      "path_dominant_samples": 168,
+      "path_dominant_fraction": 1.0,
+      "path_face_slope_deg": {
+        "min": 0.000704,
+        "median": 0.002079,
+        "p95": 1.98062,
+        "max": 6.777566
+      },
+      "path_cross_slope_deg": {
+        "min": 1.6e-05,
+        "median": 0.000108,
+        "p95": 0.267575,
+        "max": 6.777566
+      },
+      "path_longitudinal_slope_deg": {
+        "min": 0.000702,
+        "median": 0.002068,
+        "p95": 0.066605,
+        "max": 3.987752
+      },
+      "path_samples_face_slope_over_30_deg": 0,
+      "path_samples_face_slope_over_45_deg": 0,
+      "nominal_width_side_height_difference_m": {
+        "min": 1e-06,
+        "median": 2e-06,
+        "p95": 6e-06,
+        "max": 8e-06
+      },
+      "center_path_weight": {
+        "min": 1.0,
+        "median": 1.0,
+        "p95": 1.0,
+        "max": 1.0
+      },
+      "scope_range": {
+        "min": 0.0,
+        "median": 0.0,
+        "p95": 0.0,
+        "max": 0.0
+      },
+      "steep_path_locations": [
+        {
+          "xz": [
+            13.75,
+            58.16
+          ],
+          "height_m": 1.1705,
+          "face_slope_deg": 6.777566,
+          "occupancy_interpolated_normal_y_angle_deg": 6.908373,
+          "weights_grass_rock_path_soil_sand": [
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            0.9431610107421875,
+            0.0,
+            0.056839000433683395,
+            0.0
+          ],
+          "road23_scope": 0.0,
+          "triangle": 95840
+        },
+        {
+          "xz": [
+            14.4625,
+            58.16
+          ],
+          "height_m": 1.179871,
+          "face_slope_deg": 0.111262,
+          "occupancy_interpolated_normal_y_angle_deg": 1.032571,
+          "weights_grass_rock_path_soil_sand": [
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            0.9349250197410583,
+            0.0,
+            0.06507500261068344,
+            0.0
+          ],
+          "road23_scope": 0.0,
+          "triangle": 102381
+        },
+        {
+          "xz": [
+            14.58125,
+            56.45
+          ],
+          "height_m": 1.180019,
+          "face_slope_deg": 0.00571,
+          "occupancy_interpolated_normal_y_angle_deg": 0.0,
+          "weights_grass_rock_path_soil_sand": [
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            0.33333298563957214,
+            0.0,
+            0.6666669845581055,
+            0.0
+          ],
+          "road23_scope": 0.0,
+          "triangle": 102392
+        },
+        {
+          "xz": [
+            14.58125,
+            57.44
+          ],
+          "height_m": 1.180024,
+          "face_slope_deg": 0.005609,
+          "occupancy_interpolated_normal_y_angle_deg": 0.0,
+          "weights_grass_rock_path_soil_sand": [
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "road23_scope": 0.0,
+          "triangle": 102158
+        },
+        {
+          "xz": [
+            13.86875,
+            57.44
+          ],
+          "height_m": 1.180011,
+          "face_slope_deg": 0.002166,
+          "occupancy_interpolated_normal_y_angle_deg": 0.0,
+          "weights_grass_rock_path_soil_sand": [
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            0.8024280071258545,
+            0.0,
+            0.1975719928741455,
+            0.0
+          ],
+          "road23_scope": 0.0,
+          "triangle": 95760
+        },
+        {
+          "xz": [
+            13.9875,
+            56.72
+          ],
+          "height_m": 1.180017,
+          "face_slope_deg": 0.002163,
+          "occupancy_interpolated_normal_y_angle_deg": 0.0,
+          "weights_grass_rock_path_soil_sand": [
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ],
+          "source_triangle_mean_grass_rock_path_soil": [
+            0.8948010206222534,
+            0.0,
+            0.10519900172948837,
+            0.0
+          ],
+          "road23_scope": 0.0,
+          "triangle": 102033
+        }
+      ],
+      "center_path_under_050_locations": []
+    }
+  ],
+  "cross_sections": [
+    {
+      "name": "trade_sand_mouth",
+      "z": 11.5,
+      "samples": [
+        {
+          "x": 10.8,
+          "h": 0.269174,
+          "slope": 5.375743,
+          "weights": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "x": 11.05,
+          "h": 0.293189,
+          "slope": 5.502617,
+          "weights": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "x": 11.3,
+          "h": 0.324784,
+          "slope": 7.382997,
+          "weights": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "x": 11.55,
+          "h": 0.360765,
+          "slope": 8.894873,
+          "weights": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "x": 11.8,
+          "h": 0.401957,
+          "slope": 10.185597,
+          "weights": [
+            0.000642,
+            0.0,
+            0.0,
+            4e-06,
+            0.999355
+          ]
+        },
+        {
+          "x": 12.05,
+          "h": 0.448593,
+          "slope": 12.495581,
+          "weights": [
+            0.023308,
+            0.0,
+            0.0,
+            0.000307,
+            0.976386
+          ]
+        },
+        {
+          "x": 12.3,
+          "h": 0.499807,
+          "slope": 11.432967,
+          "weights": [
+            0.004639,
+            0.0,
+            0.0,
+            8e-06,
+            0.995353
+          ]
+        },
+        {
+          "x": 12.55,
+          "h": 0.553363,
+          "slope": 12.235493,
+          "weights": [
+            0.001589,
+            0.0,
+            0.0,
+            0.000139,
+            0.998272
+          ]
+        },
+        {
+          "x": 12.8,
+          "h": 0.612487,
+          "slope": 13.483241,
+          "weights": [
+            0.0,
+            0.0,
+            0.0,
+            0.494288,
+            0.505712
+          ]
+        },
+        {
+          "x": 13.05,
+          "h": 0.662362,
+          "slope": 7.487613,
+          "weights": [
+            0.0,
+            0.0,
+            0.074144,
+            0.553811,
+            0.372044
+          ]
+        },
+        {
+          "x": 13.3,
+          "h": 0.69448,
+          "slope": 8.667451,
+          "weights": [
+            0.000143,
+            0.0,
+            0.999366,
+            0.000282,
+            0.00021
+          ]
+        },
+        {
+          "x": 13.55,
+          "h": 0.714577,
+          "slope": 5.945927,
+          "weights": [
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "x": 13.8,
+          "h": 0.729917,
+          "slope": 5.14843,
+          "weights": [
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "x": 14.05,
+          "h": 0.750645,
+          "slope": 10.634501,
+          "weights": [
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "x": 14.3,
+          "h": 0.79349,
+          "slope": 10.634501,
+          "weights": [
+            0.364762,
+            0.0,
+            0.590797,
+            0.0,
+            0.044441
+          ]
+        },
+        {
+          "x": 14.55,
+          "h": 0.894703,
+          "slope": 21.966821,
+          "weights": [
+            0.924617,
+            0.0,
+            0.0,
+            0.0,
+            0.075383
+          ]
+        },
+        {
+          "x": 14.8,
+          "h": 1.001181,
+          "slope": 23.437796,
+          "weights": [
+            0.949919,
+            0.0,
+            0.0,
+            0.0,
+            0.050081
+          ]
+        }
+      ]
+    },
+    {
+      "name": "trade_inner_cove",
+      "z": 13,
+      "samples": [
+        {
+          "x": 10.8,
+          "h": 0.284446,
+          "slope": 5.273212,
+          "weights": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "x": 11.05,
+          "h": 0.310282,
+          "slope": 6.026023,
+          "weights": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "x": 11.3,
+          "h": 0.335264,
+          "slope": 5.153416,
+          "weights": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "x": 11.55,
+          "h": 0.359807,
+          "slope": 5.837054,
+          "weights": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "x": 11.8,
+          "h": 0.381847,
+          "slope": 4.516465,
+          "weights": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "x": 12.05,
+          "h": 0.397637,
+          "slope": 4.258321,
+          "weights": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "x": 12.3,
+          "h": 0.420737,
+          "slope": 8.732675,
+          "weights": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "x": 12.55,
+          "h": 0.45321,
+          "slope": 9.682981,
+          "weights": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "x": 12.8,
+          "h": 0.495267,
+          "slope": 12.115652,
+          "weights": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "x": 13.05,
+          "h": 0.540617,
+          "slope": 12.003849,
+          "weights": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "x": 13.3,
+          "h": 0.58493,
+          "slope": 11.857878,
+          "weights": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "x": 13.55,
+          "h": 0.615396,
+          "slope": 3.931867,
+          "weights": [
+            0.0,
+            0.0,
+            0.165994,
+            0.0,
+            0.834006
+          ]
+        },
+        {
+          "x": 13.8,
+          "h": 0.652859,
+          "slope": 9.284231,
+          "weights": [
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "x": 14.05,
+          "h": 0.737847,
+          "slope": 21.554024,
+          "weights": [
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "x": 14.3,
+          "h": 0.836004,
+          "slope": 21.426535,
+          "weights": [
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "x": 14.55,
+          "h": 0.944698,
+          "slope": 23.728543,
+          "weights": [
+            0.06075,
+            0.0,
+            0.778123,
+            0.0,
+            0.161127
+          ]
+        },
+        {
+          "x": 14.8,
+          "h": 1.057992,
+          "slope": 25.877922,
+          "weights": [
+            0.527906,
+            0.0,
+            0.0,
+            0.0,
+            0.472094
+          ]
+        },
+        {
+          "x": 15.05,
+          "h": 1.148713,
+          "slope": 18.390175,
+          "weights": [
+            0.778006,
+            0.0,
+            0.0,
+            0.0,
+            0.221994
+          ]
+        },
+        {
+          "x": 15.3,
+          "h": 1.214327,
+          "slope": 11.120653,
+          "weights": [
+            0.954201,
+            0.0,
+            0.0,
+            0.0,
+            0.045799
+          ]
+        }
+      ]
+    },
+    {
+      "name": "trade_grass_shoulder",
+      "z": 16.7,
+      "samples": [
+        {
+          "x": 11.0,
+          "h": 0.349209,
+          "slope": 0.501156,
+          "weights": [
+            0.00098,
+            0.0,
+            0.0,
+            0.0,
+            0.99902
+          ]
+        },
+        {
+          "x": 11.25,
+          "h": 0.351241,
+          "slope": 0.453478,
+          "weights": [
+            0.003049,
+            0.0,
+            0.0,
+            0.0,
+            0.996951
+          ]
+        },
+        {
+          "x": 11.5,
+          "h": 0.35307,
+          "slope": 0.453478,
+          "weights": [
+            0.010727,
+            0.0,
+            0.0,
+            0.0,
+            0.989273
+          ]
+        },
+        {
+          "x": 11.75,
+          "h": 0.354401,
+          "slope": 0.978842,
+          "weights": [
+            0.018842,
+            0.0,
+            0.0,
+            0.0,
+            0.981158
+          ]
+        },
+        {
+          "x": 12.0,
+          "h": 0.356405,
+          "slope": 0.981418,
+          "weights": [
+            0.510544,
+            0.0,
+            0.0,
+            0.0,
+            0.489456
+          ]
+        },
+        {
+          "x": 12.25,
+          "h": 0.360254,
+          "slope": 4.515383,
+          "weights": [
+            0.830054,
+            0.0,
+            0.0,
+            0.0,
+            0.169946
+          ]
+        },
+        {
+          "x": 12.5,
+          "h": 0.363964,
+          "slope": 4.5044,
+          "weights": [
+            0.830054,
+            0.0,
+            0.0,
+            0.0,
+            0.169946
+          ]
+        },
+        {
+          "x": 12.75,
+          "h": 0.36885,
+          "slope": 4.5044,
+          "weights": [
+            0.851413,
+            0.0,
+            0.0,
+            0.070945,
+            0.077642
+          ]
+        },
+        {
+          "x": 13.0,
+          "h": 0.379878,
+          "slope": 3.77486,
+          "weights": [
+            0.86667,
+            0.0,
+            0.0,
+            0.12162,
+            0.01171
+          ]
+        },
+        {
+          "x": 13.25,
+          "h": 0.455596,
+          "slope": 26.153197,
+          "weights": [
+            0.86667,
+            0.0,
+            0.0,
+            0.12162,
+            0.01171
+          ]
+        },
+        {
+          "x": 13.5,
+          "h": 0.602865,
+          "slope": 40.284064,
+          "weights": [
+            0.446629,
+            0.0,
+            0.320014,
+            0.232609,
+            0.000747
+          ]
+        },
+        {
+          "x": 13.75,
+          "h": 0.814494,
+          "slope": 40.284064,
+          "weights": [
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "x": 14.0,
+          "h": 1.025769,
+          "slope": 40.235463,
+          "weights": [
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "x": 14.25,
+          "h": 1.182117,
+          "slope": 27.757951,
+          "weights": [
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "x": 14.5,
+          "h": 1.240748,
+          "slope": 0.654993,
+          "weights": [
+            0.029868,
+            0.0,
+            0.970089,
+            3.6e-05,
+            7e-06
+          ]
+        },
+        {
+          "x": 14.75,
+          "h": 1.241601,
+          "slope": 0.427602,
+          "weights": [
+            0.999778,
+            0.0,
+            0.0,
+            5.7e-05,
+            0.000164
+          ]
+        },
+        {
+          "x": 15.0,
+          "h": 1.243133,
+          "slope": 0.406309,
+          "weights": [
+            0.999893,
+            0.0,
+            0.0,
+            0.0,
+            0.000107
+          ]
+        },
+        {
+          "x": 15.25,
+          "h": 1.244773,
+          "slope": 0.390471,
+          "weights": [
+            0.999933,
+            0.0,
+            0.0,
+            0.0,
+            6.7e-05
+          ]
+        },
+        {
+          "x": 15.5,
+          "h": 1.24543,
+          "slope": 0.593628,
+          "weights": [
+            0.99996,
+            0.0,
+            0.0,
+            0.0,
+            4e-05
+          ]
+        }
+      ]
+    },
+    {
+      "name": "grill_apron",
+      "z": 24,
+      "samples": [
+        {
+          "x": 10.5,
+          "h": 0.336072,
+          "slope": 3.654168,
+          "weights": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "x": 10.75,
+          "h": 0.349314,
+          "slope": 0.17707,
+          "weights": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "x": 11.0,
+          "h": 0.349996,
+          "slope": 0.061157,
+          "weights": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "x": 11.25,
+          "h": 0.35,
+          "slope": 0.0,
+          "weights": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "x": 11.5,
+          "h": 0.409792,
+          "slope": 19.024159,
+          "weights": [
+            0.0,
+            0.0,
+            0.0,
+            0.103479,
+            0.896521
+          ]
+        },
+        {
+          "x": 11.75,
+          "h": 0.517621,
+          "slope": 30.118703,
+          "weights": [
+            0.0,
+            0.0,
+            0.0,
+            0.690422,
+            0.309578
+          ]
+        },
+        {
+          "x": 12.0,
+          "h": 0.662,
+          "slope": 27.474432,
+          "weights": [
+            0.0,
+            0.0,
+            0.0,
+            1.0,
+            0.0
+          ]
+        },
+        {
+          "x": 12.25,
+          "h": 0.792,
+          "slope": 27.474432,
+          "weights": [
+            0.0,
+            0.0,
+            0.330039,
+            0.669961,
+            0.0
+          ]
+        },
+        {
+          "x": 12.5,
+          "h": 0.922,
+          "slope": 27.474432,
+          "weights": [
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "x": 12.75,
+          "h": 1.060636,
+          "slope": 30.994365,
+          "weights": [
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "x": 13.0,
+          "h": 1.184759,
+          "slope": 7.282991,
+          "weights": [
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "x": 13.25,
+          "h": 1.216684,
+          "slope": 7.282991,
+          "weights": [
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "x": 13.5,
+          "h": 1.220716,
+          "slope": 0.183132,
+          "weights": [
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "x": 13.75,
+          "h": 1.264946,
+          "slope": 20.987345,
+          "weights": [
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "x": 14.0,
+          "h": 1.362039,
+          "slope": 22.583212,
+          "weights": [
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "x": 14.25,
+          "h": 1.445403,
+          "slope": 1.311098,
+          "weights": [
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "x": 14.5,
+          "h": 1.451084,
+          "slope": 1.311098,
+          "weights": [
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "x": 14.75,
+          "h": 1.452933,
+          "slope": 0.0,
+          "weights": [
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "x": 15.0,
+          "h": 1.406374,
+          "slope": 16.0361,
+          "weights": [
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "x": 15.25,
+          "h": 1.328335,
+          "slope": 22.007178,
+          "weights": [
+            0.592388,
+            0.0,
+            0.399973,
+            0.0,
+            0.00764
+          ]
+        },
+        {
+          "x": 15.5,
+          "h": 1.227331,
+          "slope": 22.007178,
+          "weights": [
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      ]
+    },
+    {
+      "name": "diner_apron",
+      "z": 49.3,
+      "samples": [
+        {
+          "x": 10.0,
+          "h": 0.242997,
+          "slope": 0.649376,
+          "weights": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "x": 10.25,
+          "h": 0.269655,
+          "slope": 9.478793,
+          "weights": [
+            0.0,
+            0.0,
+            0.0,
+            0.105161,
+            0.894839
+          ]
+        },
+        {
+          "x": 10.5,
+          "h": 0.312855,
+          "slope": 14.060109,
+          "weights": [
+            0.0,
+            0.0,
+            0.0,
+            0.377238,
+            0.622762
+          ]
+        },
+        {
+          "x": 10.75,
+          "h": 0.383944,
+          "slope": 18.352808,
+          "weights": [
+            0.00023,
+            0.0,
+            0.0,
+            0.986446,
+            0.013324
+          ]
+        },
+        {
+          "x": 11.0,
+          "h": 0.532057,
+          "slope": 32.957556,
+          "weights": [
+            0.204699,
+            0.0,
+            0.0,
+            0.795284,
+            1.7e-05
+          ]
+        },
+        {
+          "x": 11.25,
+          "h": 0.702267,
+          "slope": 39.09794,
+          "weights": [
+            0.546909,
+            0.0,
+            0.0,
+            0.453091,
+            0.0
+          ]
+        },
+        {
+          "x": 11.5,
+          "h": 0.903034,
+          "slope": 32.391983,
+          "weights": [
+            0.858405,
+            0.0,
+            0.114769,
+            0.026825,
+            0.0
+          ]
+        },
+        {
+          "x": 11.75,
+          "h": 1.05967,
+          "slope": 23.186408,
+          "weights": [
+            0.029685,
+            0.0,
+            0.970313,
+            2e-06,
+            0.0
+          ]
+        },
+        {
+          "x": 12.0,
+          "h": 1.144423,
+          "slope": 12.977433,
+          "weights": [
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "x": 12.25,
+          "h": 1.179132,
+          "slope": 3.932959,
+          "weights": [
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "x": 12.5,
+          "h": 1.17979,
+          "slope": 0.209143,
+          "weights": [
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "x": 12.75,
+          "h": 1.18,
+          "slope": 0.0,
+          "weights": [
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "x": 13.0,
+          "h": 1.182335,
+          "slope": 4.979438,
+          "weights": [
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "x": 13.25,
+          "h": 1.321274,
+          "slope": 34.237401,
+          "weights": [
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "x": 13.5,
+          "h": 1.393394,
+          "slope": 5.884096,
+          "weights": [
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "x": 13.75,
+          "h": 1.413084,
+          "slope": 0.0,
+          "weights": [
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "x": 14.0,
+          "h": 1.413084,
+          "slope": 0.0,
+          "weights": [
+            0.008962,
+            0.0,
+            0.991038,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "x": 14.25,
+          "h": 1.324382,
+          "slope": 24.261945,
+          "weights": [
+            0.850979,
+            0.0,
+            0.149021,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "x": 14.5,
+          "h": 1.234746,
+          "slope": 11.261106,
+          "weights": [
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "x": 14.75,
+          "h": 1.184633,
+          "slope": 11.537914,
+          "weights": [
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "x": 15.0,
+          "h": 1.179993,
+          "slope": 0.0,
+          "weights": [
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      ]
+    },
+    {
+      "name": "sari_shoulder",
+      "z": 56,
+      "samples": [
+        {
+          "x": 10.0,
+          "h": 0.279832,
+          "slope": 6.704992,
+          "weights": [
+            0.0,
+            0.0,
+            0.0,
+            0.154721,
+            0.845279
+          ]
+        },
+        {
+          "x": 10.25,
+          "h": 0.321033,
+          "slope": 11.309927,
+          "weights": [
+            0.051276,
+            0.0,
+            0.0,
+            0.730976,
+            0.217748
+          ]
+        },
+        {
+          "x": 10.5,
+          "h": 0.407799,
+          "slope": 35.562428,
+          "weights": [
+            0.918859,
+            0.0,
+            0.0,
+            0.081141,
+            0.0
+          ]
+        },
+        {
+          "x": 10.75,
+          "h": 0.583776,
+          "slope": 35.562428,
+          "weights": [
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "x": 11.0,
+          "h": 0.76159,
+          "slope": 29.360902,
+          "weights": [
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "x": 11.25,
+          "h": 0.896797,
+          "slope": 19.374655,
+          "weights": [
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "x": 11.5,
+          "h": 0.98063,
+          "slope": 17.829243,
+          "weights": [
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "x": 11.75,
+          "h": 1.057601,
+          "slope": 17.126077,
+          "weights": [
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "x": 12.0,
+          "h": 1.120906,
+          "slope": 14.272316,
+          "weights": [
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "x": 12.25,
+          "h": 1.096505,
+          "slope": 10.161156,
+          "weights": [
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "x": 12.5,
+          "h": 1.047188,
+          "slope": 21.173644,
+          "weights": [
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "x": 12.75,
+          "h": 1.136966,
+          "slope": 21.173644,
+          "weights": [
+            0.290661,
+            0.0,
+            0.709339,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "x": 13.0,
+          "h": 1.175769,
+          "slope": 8.011735,
+          "weights": [
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "x": 13.25,
+          "h": 1.18,
+          "slope": 7.6e-05,
+          "weights": [
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "x": 13.5,
+          "h": 1.180003,
+          "slope": 0.001519,
+          "weights": [
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "x": 13.75,
+          "h": 1.18001,
+          "slope": 0.001483,
+          "weights": [
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "x": 14.0,
+          "h": 1.180012,
+          "slope": 0.002784,
+          "weights": [
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "x": 14.25,
+          "h": 1.180023,
+          "slope": 0.003454,
+          "weights": [
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "x": 14.5,
+          "h": 1.180016,
+          "slope": 0.022613,
+          "weights": [
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "x": 14.75,
+          "h": 1.179949,
+          "slope": 0.021116,
+          "weights": [
+            0.349201,
+            0.0,
+            0.650799,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "x": 15.0,
+          "h": 1.179993,
+          "slope": 0.026134,
+          "weights": [
+            0.999996,
+            0.0,
+            4e-06,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "x": 15.25,
+          "h": 1.179998,
+          "slope": 0.001794,
+          "weights": [
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "x": 15.5,
+          "h": 1.18,
+          "slope": 0.0,
+          "weights": [
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      ]
+    },
+    {
+      "name": "school_rock",
+      "z": 58.5,
+      "samples": [
+        {
+          "x": 17.0,
+          "h": 1.179996,
+          "slope": 0.001219,
+          "weights": [
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "x": 17.25,
+          "h": 1.179995,
+          "slope": 0.001219,
+          "weights": [
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "x": 17.5,
+          "h": 1.18,
+          "slope": 0.0,
+          "weights": [
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "x": 17.75,
+          "h": 1.18,
+          "slope": 0.0,
+          "weights": [
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "x": 18.0,
+          "h": 1.18,
+          "slope": 0.0,
+          "weights": [
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "x": 18.25,
+          "h": 1.180003,
+          "slope": 0.004399,
+          "weights": [
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "x": 18.5,
+          "h": 1.180022,
+          "slope": 0.004388,
+          "weights": [
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "x": 18.75,
+          "h": 1.182342,
+          "slope": 1.310514,
+          "weights": [
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "x": 19.0,
+          "h": 1.27776,
+          "slope": 50.183951,
+          "weights": [
+            0.99978,
+            0.00022,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "x": 19.25,
+          "h": 1.429551,
+          "slope": 19.973768,
+          "weights": [
+            0.96449,
+            0.03551,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "x": 19.5,
+          "h": 1.309546,
+          "slope": 38.582137,
+          "weights": [
+            0.901007,
+            0.098993,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "x": 19.75,
+          "h": 1.180232,
+          "slope": 1.212174,
+          "weights": [
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "x": 20.0,
+          "h": 1.184045,
+          "slope": 1.212174,
+          "weights": [
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "x": 20.25,
+          "h": 1.217275,
+          "slope": 21.693907,
+          "weights": [
+            0.999579,
+            0.000421,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "x": 20.5,
+          "h": 1.358865,
+          "slope": 36.19368,
+          "weights": [
+            0.124412,
+            0.875588,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "x": 20.75,
+          "h": 1.707727,
+          "slope": 65.364866,
+          "weights": [
+            0.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "x": 21.0,
+          "h": 2.116594,
+          "slope": 65.096,
+          "weights": [
+            0.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "x": 21.25,
+          "h": 2.653358,
+          "slope": 65.095999,
+          "weights": [
+            0.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "x": 21.5,
+          "h": 3.192801,
+          "slope": 65.382142,
+          "weights": [
+            0.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "x": 21.75,
+          "h": 3.456217,
+          "slope": 45.034261,
+          "weights": [
+            0.088028,
+            0.911972,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "x": 22.0,
+          "h": 3.614481,
+          "slope": 11.923116,
+          "weights": [
+            0.882808,
+            0.117192,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "x": 22.25,
+          "h": 3.652677,
+          "slope": 11.923116,
+          "weights": [
+            0.978488,
+            0.021512,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "x": 22.5,
+          "h": 3.731222,
+          "slope": 36.209449,
+          "weights": [
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "x": 22.75,
+          "h": 3.913654,
+          "slope": 36.209449,
+          "weights": [
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "x": 23.0,
+          "h": 4.096086,
+          "slope": 36.209449,
+          "weights": [
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "x": 23.25,
+          "h": 4.278005,
+          "slope": 36.145652,
+          "weights": [
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "x": 23.5,
+          "h": 4.287921,
+          "slope": 0.978818,
+          "weights": [
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "x": 23.75,
+          "h": 4.290008,
+          "slope": 0.001752,
+          "weights": [
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "x": 24.0,
+          "h": 4.290001,
+          "slope": 0.0,
+          "weights": [
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      ]
+    }
+  ],
+  "selected_visible_locations": [
+    {
+      "xz": [
+        21.95,
+        30.55
+      ],
+      "height_m": 4.332099,
+      "face_slope_deg": 62.674326,
+      "occupancy_interpolated_normal_y_angle_deg": 32.023313,
+      "weights_grass_rock_path_soil_sand": [
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      "source_triangle_mean_grass_rock_path_soil": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "road23_scope": 1.0,
+      "triangle": 49081,
+      "route": "clinic_ramp",
+      "nearest_route_xz": [
+        21.939969,
+        30.565265
+      ],
+      "local_cross_slope_deg": 53.679481,
+      "local_longitudinal_slope_deg": 54.004641,
+      "nominal_width_m": 1.4,
+      "nominal_left_right_xz": [
+        [
+          21.555544,
+          31.150259
+        ],
+        [
+          22.324393,
+          29.980271
+        ]
+      ],
+      "nominal_left_right_height_m": [
+        3.917486,
+        4.558098
+      ],
+      "nominal_left_right_path_weights": [
+        0.774064,
+        1.0
+      ]
+    },
+    {
+      "xz": [
+        23.55,
+        32.15
+      ],
+      "height_m": 3.178557,
+      "face_slope_deg": 73.597581,
+      "occupancy_interpolated_normal_y_angle_deg": 40.077556,
+      "weights_grass_rock_path_soil_sand": [
+        0.141513,
+        0.0,
+        0.857655,
+        0.0,
+        0.000832
+      ],
+      "source_triangle_mean_grass_rock_path_soil": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "road23_scope": 1.0,
+      "triangle": 50534,
+      "route": "clinic_ramp",
+      "nearest_route_xz": [
+        24.0,
+        32.6
+      ],
+      "local_cross_slope_deg": 70.531387,
+      "local_longitudinal_slope_deg": 62.004616,
+      "nominal_width_m": 1.4,
+      "nominal_left_right_xz": [
+        [
+          23.505025,
+          32.105025
+        ],
+        [
+          24.494975,
+          33.094975
+        ]
+      ],
+      "nominal_left_right_height_m": [
+        3.310643,
+        2.848263
+      ],
+      "nominal_left_right_path_weights": [
+        0.648176,
+        0.492118
+      ]
+    },
+    {
+      "xz": [
+        13.75,
+        15.45
+      ],
+      "height_m": 0.947748,
+      "face_slope_deg": 44.82874,
+      "occupancy_interpolated_normal_y_angle_deg": 27.50247,
+      "weights_grass_rock_path_soil_sand": [
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      "source_triangle_mean_grass_rock_path_soil": [
+        0.5027490258216858,
+        0.0,
+        0.020526999607682228,
+        0.4767250120639801
+      ],
+      "road23_scope": 1.0,
+      "triangle": 35485,
+      "route": "trading_lower_lane",
+      "nearest_route_xz": [
+        13.68452,
+        15.429537
+      ],
+      "local_cross_slope_deg": 40.049905,
+      "local_longitudinal_slope_deg": 27.950228,
+      "nominal_width_m": 0.96,
+      "nominal_left_right_xz": [
+        [
+          14.14267,
+          15.572709
+        ],
+        [
+          13.226369,
+          15.286365
+        ]
+      ],
+      "nominal_left_right_height_m": [
+        1.058747,
+        0.596043
+      ],
+      "nominal_left_right_path_weights": [
+        0.686912,
+        0.61249
+      ]
+    },
+    {
+      "xz": [
+        13.75,
+        16.7
+      ],
+      "height_m": 0.814494,
+      "face_slope_deg": 40.284064,
+      "occupancy_interpolated_normal_y_angle_deg": 40.067787,
+      "weights_grass_rock_path_soil_sand": [
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      "source_triangle_mean_grass_rock_path_soil": [
+        0.01947999931871891,
+        0.0,
+        0.24453599750995636,
+        0.7359840273857117
+      ],
+      "road23_scope": 1.0,
+      "triangle": 36637,
+      "route": "trading_lower_lane",
+      "nearest_route_xz": [
+        14.03,
+        16.56
+      ],
+      "local_cross_slope_deg": 36.431863,
+      "local_longitudinal_slope_deg": 22.617657,
+      "nominal_width_m": 0.96,
+      "nominal_left_right_xz": [
+        [
+          14.459325,
+          16.345337
+        ],
+        [
+          13.600675,
+          16.774663
+        ]
+      ],
+      "nominal_left_right_height_m": [
+        1.229836,
+        0.691264
+      ],
+      "nominal_left_right_path_weights": [
+        0.555697,
+        0.634791
+      ]
+    },
+    {
+      "xz": [
+        12.55,
+        21.95
+      ],
+      "height_m": 0.909786,
+      "face_slope_deg": 47.131628,
+      "occupancy_interpolated_normal_y_angle_deg": 41.027858,
+      "weights_grass_rock_path_soil_sand": [
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      "source_triangle_mean_grass_rock_path_soil": [
+        0.011633999645709991,
+        0.0,
+        0.0,
+        0.9883660078048706
+      ],
+      "road23_scope": 1.0,
+      "triangle": 41238,
+      "route": "lower_lane",
+      "nearest_route_xz": [
+        12.809085,
+        21.953239
+      ],
+      "local_cross_slope_deg": 44.995084,
+      "local_longitudinal_slope_deg": 21.86068,
+      "nominal_width_m": 1.06,
+      "nominal_left_right_xz": [
+        [
+          13.339043,
+          21.959863
+        ],
+        [
+          12.279126,
+          21.946614
+        ]
+      ],
+      "nominal_left_right_height_m": [
+        1.22,
+        0.670865
+      ],
+      "nominal_left_right_path_weights": [
+        1.0,
+        0.629541
+      ]
+    },
+    {
+      "xz": [
+        12.5,
+        24.0
+      ],
+      "height_m": 0.922,
+      "face_slope_deg": 27.474432,
+      "occupancy_interpolated_normal_y_angle_deg": 28.516322,
+      "weights_grass_rock_path_soil_sand": [
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      "source_triangle_mean_grass_rock_path_soil": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "road23_scope": 1.0,
+      "triangle": 42967,
+      "route": "lower_lane",
+      "nearest_route_xz": [
+        12.909226,
+        23.953231
+      ],
+      "local_cross_slope_deg": 27.322551,
+      "local_longitudinal_slope_deg": 3.379051,
+      "nominal_width_m": 1.06,
+      "nominal_left_right_xz": [
+        [
+          13.435799,
+          23.893052
+        ],
+        [
+          12.382654,
+          24.013411
+        ]
+      ],
+      "nominal_left_right_height_m": [
+        1.220497,
+        0.86098
+      ],
+      "nominal_left_right_path_weights": [
+        1.0,
+        0.998838
+      ]
+    },
+    {
+      "xz": [
+        13.49,
+        53.04
+      ],
+      "height_m": 0.317868,
+      "face_slope_deg": 0.649532,
+      "occupancy_interpolated_normal_y_angle_deg": 4.088231,
+      "weights_grass_rock_path_soil_sand": [
+        0.013046,
+        0.0,
+        0.076596,
+        0.080798,
+        0.829561
+      ],
+      "source_triangle_mean_grass_rock_path_soil": [
+        0.01419300027191639,
+        0.0,
+        0.0,
+        0.08749999850988388
+      ],
+      "road23_scope": 0.0,
+      "triangle": 95879,
+      "route": "diner_sari_shared_lane",
+      "nearest_route_xz": [
+        13.49,
+        53.04
+      ],
+      "local_cross_slope_deg": 0.449968,
+      "local_longitudinal_slope_deg": 0.468444,
+      "nominal_width_m": 1.36,
+      "nominal_left_right_xz": [
+        [
+          14.13799,
+          52.833822
+        ],
+        [
+          12.84201,
+          53.246178
+        ]
+      ],
+      "nominal_left_right_height_m": [
+        0.418747,
+        0.310021
+      ],
+      "nominal_left_right_path_weights": [
+        0.015046,
+        0.022971
+      ]
+    },
+    {
+      "xz": [
+        13.75,
+        52.55
+      ],
+      "height_m": 0.568322,
+      "face_slope_deg": 53.338768,
+      "occupancy_interpolated_normal_y_angle_deg": 41.249483,
+      "weights_grass_rock_path_soil_sand": [
+        0.028616,
+        0.0,
+        0.87873,
+        0.009329,
+        0.083325
+      ],
+      "source_triangle_mean_grass_rock_path_soil": [
+        0.2903589904308319,
+        0.0,
+        0.041499000042676926,
+        0.07840199768543243
+      ],
+      "road23_scope": 0.0,
+      "triangle": 95638,
+      "route": "diner_sari_shared_lane",
+      "nearest_route_xz": [
+        13.372326,
+        52.670169
+      ],
+      "local_cross_slope_deg": 25.377034,
+      "local_longitudinal_slope_deg": 51.495634,
+      "nominal_width_m": 1.36,
+      "nominal_left_right_xz": [
+        [
+          14.020316,
+          52.46399
+        ],
+        [
+          12.724337,
+          52.876347
+        ]
+      ],
+      "nominal_left_right_height_m": [
+        0.738963,
+        0.315896
+      ],
+      "nominal_left_right_path_weights": [
+        0.050813,
+        0.016726
+      ]
+    }
+  ],
+  "tight_control_bends": [
+    {
+      "route": "lower_lane",
+      "three_point_radius_m": 1.851463,
+      "at_xz": [
+        14.0575,
+        34.47875
+      ],
+      "note": "A local three-control-point curvature indicator. These are distance-band centerlines, not a promise that the physical ground was shaped to this bend."
+    },
+    {
+      "route": "chapel_ramp",
+      "three_point_radius_m": 0.315397,
+      "at_xz": [
+        23.9575,
+        18.9745
+      ],
+      "note": "A local three-control-point curvature indicator. These are distance-band centerlines, not a promise that the physical ground was shaped to this bend."
+    },
+    {
+      "route": "clinic_ramp",
+      "three_point_radius_m": 0.126579,
+      "at_xz": [
+        24.364937,
+        32.153781
+      ],
+      "note": "A local three-control-point curvature indicator. These are distance-band centerlines, not a promise that the physical ground was shaped to this bend."
+    },
+    {
+      "route": "chapel_north_connection",
+      "three_point_radius_m": 1.280635,
+      "at_xz": [
+        22.06375,
+        12.21275
+      ],
+      "note": "A local three-control-point curvature indicator. These are distance-band centerlines, not a promise that the physical ground was shaped to this bend."
+    },
+    {
+      "route": "clinic_side_hut_entry",
+      "three_point_radius_m": 0.226881,
+      "at_xz": [
+        21.634,
+        36.078325
+      ],
+      "note": "A local three-control-point curvature indicator. These are distance-band centerlines, not a promise that the physical ground was shaped to this bend."
+    },
+    {
+      "route": "chapel_side_hut_entry",
+      "three_point_radius_m": 0.263683,
+      "at_xz": [
+        24.493988,
+        19.357544
+      ],
+      "note": "A local three-control-point curvature indicator. These are distance-band centerlines, not a promise that the physical ground was shaped to this bend."
+    },
+    {
+      "route": "tavern_entry",
+      "three_point_radius_m": 0.219007,
+      "at_xz": [
+        11.056312,
+        40.418275
+      ],
+      "note": "A local three-control-point curvature indicator. These are distance-band centerlines, not a promise that the physical ground was shaped to this bend."
+    },
+    {
+      "route": "trading_lower_lane",
+      "three_point_radius_m": 1.874166,
+      "at_xz": [
+        13.6,
+        15.7
+      ],
+      "note": "A local three-control-point curvature indicator. These are distance-band centerlines, not a promise that the physical ground was shaped to this bend."
+    },
+    {
+      "route": "diner_sari_shared_lane",
+      "three_point_radius_m": 1.460625,
+      "at_xz": [
+        13.2,
+        44.2
+      ],
+      "note": "A local three-control-point curvature indicator. These are distance-band centerlines, not a promise that the physical ground was shaped to this bend."
+    }
+  ],
+  "limitations": [
+    "No occlusion culling: region scans include ground under buildings; use screenshot and coordinates before treating a location as visibly exposed.",
+    "Shader grass-edge perturbation and texture bump do not change triangle heights; measured weights are upstream occupancy, not reconstructed screenshot colors.",
+    "No conclusion that every steep path point is wrong: steps, short banks and actual visible route purpose require visual interpretation."
+  ]
+}

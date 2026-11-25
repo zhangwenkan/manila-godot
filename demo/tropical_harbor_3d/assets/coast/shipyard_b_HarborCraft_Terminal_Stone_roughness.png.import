@@ -3,9 +3,10 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://4t07r4d6k6p6"
-path="res://.godot/imported/shipyard_b_HarborCraft_Terminal_Stone_roughness.png-8d03a2278e4729d9939c495b8bea1854.ctex"
+path.s3tc="res://.godot/imported/shipyard_b_HarborCraft_Terminal_Stone_roughness.png-8d03a2278e4729d9939c495b8bea1854.s3tc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
 }
 generator_parameters={
 "md5": "846d5248446d4fd194b2c2af5087a3cf"
@@ -14,11 +15,11 @@ generator_parameters={
 [deps]
 
 source_file="res://demo/tropical_harbor_3d/assets/coast/shipyard_b_HarborCraft_Terminal_Stone_roughness.png"
-dest_files=["res://.godot/imported/shipyard_b_HarborCraft_Terminal_Stone_roughness.png-8d03a2278e4729d9939c495b8bea1854.ctex"]
+dest_files=["res://.godot/imported/shipyard_b_HarborCraft_Terminal_Stone_roughness.png-8d03a2278e4729d9939c495b8bea1854.s3tc.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0
@@ -40,4 +41,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=1
+detect_3d/compress_to=0

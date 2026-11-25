@@ -1,0 +1,15 @@
+{
+  "meta": null,
+  "content": [
+    {
+      "type": "text",
+      "text": "Code executed successfully: {\"pid\": 28032, \"port\": 9881, \"source\": \"F:\\\\马尼拉godot\\\\manila-godot\\\\demo\\\\tropical_harbor_3d\\\\source\\\\harbor_shore_control_mcp.blend\", \"source_sha256\": \"791081d9a9b653e63523396c660b636d53c4c191bc1301a2d093044d801973d2\", \"source_saved\": true, \"dirty\": false, \"integrity_pass\": true, \"technical_pass\": true, \"visual_accepted\": false, \"normal_quit_requested\": true, \"process_exited\": false}\n",
+      "annotations": null,
+      "meta": null
+    }
+  ],
+  "structuredContent": {
+    "result": "Code executed successfully: {\"pid\": 28032, \"port\": 9881, \"source\": \"F:\\\\马尼拉godot\\\\manila-godot\\\\demo\\\\tropical_harbor_3d\\\\source\\\\harbor_shore_control_mcp.blend\", \"source_sha256\": \"791081d9a9b653e63523396c660b636d53c4c191bc1301a2d093044d801973d2\", \"source_saved\": true, \"dirty\": false, \"integrity_pass\": true, \"technical_pass\": true, \"visual_accepted\": false, \"normal_quit_requested\": true, \"process_exited\": false}\n"
+  },
+  "isError": false
+}

@@ -1,0 +1,5197 @@
+{
+  "pixels": [
+    {
+      "view": "town_market_chapel",
+      "pixel": [
+        1490,
+        531
+      ],
+      "godot_xyz": [
+        21.245585093490998,
+        3.8215049988395844,
+        31.168708822781664
+      ],
+      "triangle": 49653,
+      "face_slope_degrees": 61.43415137415644,
+      "roles_grass_rock_path_soil": [
+        0.9674604351359237,
+        0.0325395648640762,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 1.1102230246251565e-16,
+      "map_normal_up": 0.7428969144821167,
+      "map_height": 3.8500795364379883
+    },
+    {
+      "view": "town_market_chapel",
+      "pixel": [
+        1500,
+        560
+      ],
+      "godot_xyz": [
+        21.063754148892656,
+        3.246590645425135,
+        31.423516739469797
+      ],
+      "triangle": 49653,
+      "face_slope_degrees": 61.43415137415644,
+      "roles_grass_rock_path_soil": [
+        0.8075101564997451,
+        0.19248984350025478,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 1.1102230246251565e-16,
+      "map_normal_up": 0.38177406787872314,
+      "map_height": 3.2254929542541504
+    },
+    {
+      "view": "town_market_chapel",
+      "pixel": [
+        1492,
+        600
+      ],
+      "godot_xyz": [
+        20.116765575536704,
+        2.655387311287038,
+        31.230651144284895
+      ],
+      "triangle": 49647,
+      "face_slope_degrees": 72.96354342759348,
+      "roles_grass_rock_path_soil": [
+        0.52560461270372,
+        0.4743953866382692,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 6.580107569931215e-10,
+      "map_normal_up": 0.3663005232810974,
+      "map_height": 2.5815789699554443
+    },
+    {
+      "view": "town_market_chapel",
+      "pixel": [
+        1510,
+        645
+      ],
+      "godot_xyz": [
+        20.084996074747252,
+        1.7084917731501061,
+        31.711259335621193
+      ],
+      "triangle": 49935,
+      "face_slope_degrees": 59.210192917745445,
+      "roles_grass_rock_path_soil": [
+        0.9108873991410426,
+        0.08911259158674878,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 9.272208667532311e-09,
+      "map_normal_up": 0.7555654048919678,
+      "map_height": 1.6908074617385864
+    },
+    {
+      "view": "town_market_chapel",
+      "pixel": [
+        1310,
+        478
+      ],
+      "godot_xyz": [
+        22.148475028679556,
+        4.275303421396878,
+        27.555108434043756
+      ],
+      "triangle": 46486,
+      "face_slope_degrees": 8.94113680670594,
+      "roles_grass_rock_path_soil": [
+        0.5676938238381076,
+        0.005993372234672794,
+        0.4263128039272196,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.9574166536331177,
+      "map_height": 4.274837493896484
+    },
+    {
+      "view": "town_market_chapel",
+      "pixel": [
+        1320,
+        489
+      ],
+      "godot_xyz": [
+        21.55476772960346,
+        4.211731898125846,
+        27.763265197284813
+      ],
+      "triangle": 46484,
+      "face_slope_degrees": 16.868467738116664,
+      "roles_grass_rock_path_soil": [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.8808278441429138,
+      "map_height": 4.206717491149902
+    },
+    {
+      "view": "town_market_chapel",
+      "pixel": [
+        1330,
+        497
+      ],
+      "godot_xyz": [
+        21.298877502363187,
+        4.126247993582811,
+        27.976201121124
+      ],
+      "triangle": 46771,
+      "face_slope_degrees": 34.84513995449373,
+      "roles_grass_rock_path_soil": [
+        0.005195006413675037,
+        0.41520497585349253,
+        0.5796000177328324,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.8111574649810791,
+      "map_height": 4.128460884094238
+    },
+    {
+      "view": "town_market_chapel",
+      "pixel": [
+        1303,
+        488
+      ],
+      "godot_xyz": [
+        21.705740159512615,
+        4.139004985831319,
+        27.41382642277494
+      ],
+      "triangle": 46196,
+      "face_slope_degrees": 45.1501446718546,
+      "roles_grass_rock_path_soil": [
+        0.0,
+        0.9304587162030307,
+        0.06954128379696933,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.7700773477554321,
+      "map_height": 4.135300636291504
+    },
+    {
+      "view": "town_market_chapel",
+      "pixel": [
+        886,
+        432
+      ],
+      "godot_xyz": [
+        22.553755860226214,
+        4.023293334249293,
+        16.57596983796122
+      ],
+      "triangle": 36405,
+      "face_slope_degrees": 50.044544331803976,
+      "roles_grass_rock_path_soil": [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.8489990234375,
+      "map_height": 4.013175964355469
+    },
+    {
+      "view": "town_market_chapel",
+      "pixel": [
+        929,
+        448
+      ],
+      "godot_xyz": [
+        23.898828021006143,
+        3.284645789194057,
+        17.46966002661457
+      ],
+      "triangle": 37277,
+      "face_slope_degrees": 16.148773783887684,
+      "roles_grass_rock_path_soil": [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.898287296295166,
+      "map_height": 3.2843151092529297
+    },
+    {
+      "view": "town_market_chapel",
+      "pixel": [
+        974,
+        436
+      ],
+      "godot_xyz": [
+        24.33849603355094,
+        3.690876440328431,
+        18.70407083126593
+      ],
+      "triangle": 38433,
+      "face_slope_degrees": 48.585086622883395,
+      "roles_grass_rock_path_soil": [
+        0.020970940589904785,
+        0.0,
+        0.9790290594100952,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.8349741697311401,
+      "map_height": 3.6945765018463135
+    },
+    {
+      "view": "town_market_chapel",
+      "pixel": [
+        1011,
+        427
+      ],
+      "godot_xyz": [
+        24.57705599461632,
+        4.026932828810836,
+        19.732674921038267
+      ],
+      "triangle": 39298,
+      "face_slope_degrees": 3.4073213195550114,
+      "roles_grass_rock_path_soil": [
+        0.6486520171165466,
+        0.0,
+        0.35134798288345337,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.9398866891860962,
+      "map_height": 4.027064800262451
+    },
+    {
+      "view": "town_market_chapel",
+      "pixel": [
+        1003,
+        448
+      ],
+      "godot_xyz": [
+        23.895899240542864,
+        3.56413556568541,
+        19.688851688132665
+      ],
+      "triangle": 39293,
+      "face_slope_degrees": 69.05407094630998,
+      "roles_grass_rock_path_soil": [
+        0.9009773655676305,
+        0.0,
+        0.09902263443236947,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.6426033973693848,
+      "map_height": 3.5704267024993896
+    },
+    {
+      "view": "town_market_chapel",
+      "pixel": [
+        692,
+        407
+      ],
+      "godot_xyz": [
+        22.616634776205316,
+        4.055514340775358,
+        10.079092202301547
+      ],
+      "triangle": 30641,
+      "face_slope_degrees": 1.1218011601531113,
+      "roles_grass_rock_path_soil": [
+        0.11064106225967407,
+        0.0,
+        0.8893589377403259,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.9996635317802429,
+      "map_height": 4.055464744567871
+    },
+    {
+      "view": "terrace_cross_street",
+      "pixel": [
+        914,
+        456
+      ],
+      "godot_xyz": [
+        22.079214995182042,
+        4.30914223290354,
+        46.234940895898156
+      ],
+      "triangle": 110204,
+      "face_slope_degrees": 62.18289390996382,
+      "roles_grass_rock_path_soil": [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.844930112361908,
+      "map_height": 4.310889720916748
+    },
+    {
+      "view": "terrace_cross_street",
+      "pixel": [
+        917,
+        475
+      ],
+      "godot_xyz": [
+        21.95642880589562,
+        4.042252602689077,
+        46.30011854124297
+      ],
+      "triangle": 110203,
+      "face_slope_degrees": 62.67842900463551,
+      "roles_grass_rock_path_soil": [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.8140332698822021,
+      "map_height": 4.034920692443848
+    },
+    {
+      "view": "terrace_cross_street",
+      "pixel": [
+        914,
+        488
+      ],
+      "godot_xyz": [
+        21.845488999275425,
+        3.8635783854400017,
+        46.27165407750255
+      ],
+      "triangle": 110203,
+      "face_slope_degrees": 62.67842900463551,
+      "roles_grass_rock_path_soil": [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.8026167154312134,
+      "map_height": 3.8586766719818115
+    },
+    {
+      "view": "terrace_cross_street",
+      "pixel": [
+        900,
+        491
+      ],
+      "godot_xyz": [
+        21.750357328247567,
+        3.8277384291453704,
+        46.07411747936255
+      ],
+      "triangle": 108531,
+      "face_slope_degrees": 60.87506924236961,
+      "roles_grass_rock_path_soil": [
+        0.37619274854660034,
+        0.0,
+        0.6238072514533997,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.7912991642951965,
+      "map_height": 3.8201305866241455
+    },
+    {
+      "view": "terrace_cross_street",
+      "pixel": [
+        839,
+        560
+      ],
+      "godot_xyz": [
+        19.78800983905797,
+        3.27178779227807,
+        45.53132697784649
+      ],
+      "triangle": 107085,
+      "face_slope_degrees": 57.30418857960386,
+      "roles_grass_rock_path_soil": [
+        0.2145275563178852,
+        0.7854724436821147,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 1.1102230246251565e-16,
+      "map_normal_up": 0.6287018656730652,
+      "map_height": 3.233391284942627
+    },
+    {
+      "view": "shore_grass_bank",
+      "pixel": [
+        1173,
+        280
+      ],
+      "godot_xyz": [
+        22.982459532656275,
+        4.1551417208085475,
+        60.2795552215977
+      ],
+      "triangle": 109044,
+      "face_slope_degrees": 29.119850403815843,
+      "roles_grass_rock_path_soil": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.923323392868042,
+      "map_height": 4.158707141876221
+    },
+    {
+      "view": "shore_grass_bank",
+      "pixel": [
+        1176,
+        311
+      ],
+      "godot_xyz": [
+        21.987348245757612,
+        3.5516643725571364,
+        60.388078041780716
+      ],
+      "triangle": 110079,
+      "face_slope_degrees": 59.91504448112147,
+      "roles_grass_rock_path_soil": [
+        0.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.6604321002960205,
+      "map_height": 3.541264533996582
+    },
+    {
+      "view": "shore_grass_bank",
+      "pixel": [
+        1180,
+        359
+      ],
+      "godot_xyz": [
+        21.52348467773557,
+        2.555533216145021,
+        60.55165729493606
+      ],
+      "triangle": 108392,
+      "face_slope_degrees": 68.74512489288303,
+      "roles_grass_rock_path_soil": [
+        0.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.4168050289154053,
+      "map_height": 2.5778145790100098
+    },
+    {
+      "view": "shore_grass_bank",
+      "pixel": [
+        1184,
+        405
+      ],
+      "godot_xyz": [
+        21.1177012963982,
+        1.6149914370888325,
+        60.7095091591942
+      ],
+      "triangle": 108597,
+      "face_slope_degrees": 61.60039999612433,
+      "roles_grass_rock_path_soil": [
+        0.0396806046773629,
+        0.9603193953226372,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.6081756949424744,
+      "map_height": 1.606982946395874
+    },
+    {
+      "view": "shore_grass_bank",
+      "pixel": [
+        1105,
+        293
+      ],
+      "godot_xyz": [
+        22.665804923528587,
+        3.8417143140899284,
+        58.81787871364849
+      ],
+      "triangle": 109914,
+      "face_slope_degrees": 36.062219471142576,
+      "roles_grass_rock_path_soil": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.9277998208999634,
+      "map_height": 3.8375377655029297
+    },
+    {
+      "view": "shore_grass_bank",
+      "pixel": [
+        1070,
+        312
+      ],
+      "godot_xyz": [
+        21.90991362560381,
+        3.454562877396683,
+        58.1172701235733
+      ],
+      "triangle": 108401,
+      "face_slope_degrees": 59.835069154086575,
+      "roles_grass_rock_path_soil": [
+        0.009978950023651123,
+        0.9900210499763489,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.6854293942451477,
+      "map_height": 3.4510130882263184
+    },
+    {
+      "view": "town_north_shops",
+      "pixel": [
+        696,
+        393
+      ],
+      "godot_xyz": [
+        21.95525743139268,
+        4.124707359868449,
+        46.17081342012433
+      ],
+      "triangle": 110204,
+      "face_slope_degrees": 62.18289390996382,
+      "roles_grass_rock_path_soil": [
+        0.004007399082183838,
+        0.0,
+        0.9959926009178162,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.8111886978149414,
+      "map_height": 4.128578186035156
+    },
+    {
+      "view": "town_north_shops",
+      "pixel": [
+        698,
+        407
+      ],
+      "godot_xyz": [
+        21.79365698014226,
+        3.708294466004398,
+        46.35777056538642
+      ],
+      "triangle": 110203,
+      "face_slope_degrees": 62.67842900463551,
+      "roles_grass_rock_path_soil": [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.7739171981811523,
+      "map_height": 3.70607590675354
+    },
+    {
+      "view": "town_north_shops",
+      "pixel": [
+        700,
+        419
+      ],
+      "godot_xyz": [
+        21.33691450433642,
+        3.4749048037485526,
+        46.77106389140468
+      ],
+      "triangle": 108196,
+      "face_slope_degrees": 25.794878783408457,
+      "roles_grass_rock_path_soil": [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.8514977693557739,
+      "map_height": 3.4715073108673096
+    },
+    {
+      "view": "town_north_shops",
+      "pixel": [
+        749,
+        398
+      ],
+      "godot_xyz": [
+        22.649216618516018,
+        4.026783903775252,
+        47.825267344986415
+      ],
+      "triangle": 109270,
+      "face_slope_degrees": 64.11242719151046,
+      "roles_grass_rock_path_soil": [
+        0.6944404902634405,
+        0.30555950973655954,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.6421067714691162,
+      "map_height": 4.031637191772461
+    },
+    {
+      "view": "town_north_shops",
+      "pixel": [
+        838,
+        365
+      ],
+      "godot_xyz": [
+        27.770142056168474,
+        4.141784489015183,
+        48.32335720161087
+      ],
+      "triangle": 112717,
+      "face_slope_degrees": 5.103627871960429,
+      "roles_grass_rock_path_soil": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.9965007305145264,
+      "map_height": 4.139804363250732
+    },
+    {
+      "view": "town_north_shops",
+      "pixel": [
+        895,
+        348
+      ],
+      "godot_xyz": [
+        31.175111804600995,
+        4.200203249103813,
+        48.97831086706993
+      ],
+      "triangle": 101527,
+      "face_slope_degrees": 3.95838110224298,
+      "roles_grass_rock_path_soil": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.998283863067627,
+      "map_height": 4.200942039489746
+    }
+  ],
+  "cross_sections": [
+    {
+      "godot_xyz": [
+        19.0,
+        4.050204027332471,
+        14.8
+      ],
+      "triangle": 34941,
+      "face_slope_degrees": 0.05836232291431828,
+      "roles_grass_rock_path_soil": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.9999960660934448,
+      "map_height": 4.050196647644043
+    },
+    {
+      "godot_xyz": [
+        19.25,
+        4.051143932035834,
+        14.8
+      ],
+      "triangle": 34942,
+      "face_slope_degrees": 0.2600177759459674,
+      "roles_grass_rock_path_soil": [
+        0.9999999926308192,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 7.369180821115151e-09,
+      "map_normal_up": 0.9999764561653137,
+      "map_height": 4.051197052001953
+    },
+    {
+      "godot_xyz": [
+        19.5,
+        4.052691206990977,
+        14.8
+      ],
+      "triangle": 34945,
+      "face_slope_degrees": 0.656061574118343,
+      "roles_grass_rock_path_soil": [
+        0.9999999857758439,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 1.4224156075215433e-08,
+      "map_normal_up": 0.9999505281448364,
+      "map_height": 4.052549362182617
+    },
+    {
+      "godot_xyz": [
+        19.75,
+        4.055207015423974,
+        14.8
+      ],
+      "triangle": 34946,
+      "face_slope_degrees": 0.8190393318259555,
+      "roles_grass_rock_path_soil": [
+        0.9999999964298354,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 3.570164608390769e-09,
+      "map_normal_up": 0.9999032020568848,
+      "map_height": 4.055147647857666
+    },
+    {
+      "godot_xyz": [
+        20.0,
+        4.058377599141061,
+        14.8
+      ],
+      "triangle": 34949,
+      "face_slope_degrees": 1.087311686924209,
+      "roles_grass_rock_path_soil": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.9998546838760376,
+      "map_height": 4.05837869644165
+    },
+    {
+      "godot_xyz": [
+        20.25,
+        4.062143688550977,
+        14.8
+      ],
+      "triangle": 34949,
+      "face_slope_degrees": 1.087311686924209,
+      "roles_grass_rock_path_soil": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.9998252987861633,
+      "map_height": 4.0619096755981445
+    },
+    {
+      "godot_xyz": [
+        20.5,
+        4.066077052895518,
+        14.8
+      ],
+      "triangle": 34950,
+      "face_slope_degrees": 1.1189057120903338,
+      "roles_grass_rock_path_soil": [
+        0.9999999452730775,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 5.4726922549264145e-08,
+      "map_normal_up": 0.999803900718689,
+      "map_height": 4.06596565246582
+    },
+    {
+      "godot_xyz": [
+        20.75,
+        4.069467545509698,
+        14.8
+      ],
+      "triangle": 34953,
+      "face_slope_degrees": 1.7754327100473566,
+      "roles_grass_rock_path_soil": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.9996863603591919,
+      "map_height": 4.06920051574707
+    },
+    {
+      "godot_xyz": [
+        21.0,
+        4.071814738593954,
+        14.8
+      ],
+      "triangle": 34954,
+      "face_slope_degrees": 1.8105459646841489,
+      "roles_grass_rock_path_soil": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.9993897676467896,
+      "map_height": 4.071359157562256
+    },
+    {
+      "godot_xyz": [
+        21.25,
+        4.070588632732943,
+        14.8
+      ],
+      "triangle": 34666,
+      "face_slope_degrees": 1.0968570981145291,
+      "roles_grass_rock_path_soil": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.9981822967529297,
+      "map_height": 4.069422245025635
+    },
+    {
+      "godot_xyz": [
+        21.5,
+        4.067943166423285,
+        14.8
+      ],
+      "triangle": 34957,
+      "face_slope_degrees": 7.442923537880503,
+      "roles_grass_rock_path_soil": [
+        0.1386815643703981,
+        0.0,
+        0.8613184356296019,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.9967166781425476,
+      "map_height": 4.065832138061523
+    },
+    {
+      "godot_xyz": [
+        21.75,
+        4.066631490937502,
+        14.8
+      ],
+      "triangle": 34958,
+      "face_slope_degrees": 7.366320827248559,
+      "roles_grass_rock_path_soil": [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.9961338043212891,
+      "map_height": 4.064672470092773
+    },
+    {
+      "godot_xyz": [
+        22.0,
+        4.065714248423109,
+        14.8
+      ],
+      "triangle": 34961,
+      "face_slope_degrees": 8.130078438945086,
+      "roles_grass_rock_path_soil": [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.9953293800354004,
+      "map_height": 4.063544750213623
+    },
+    {
+      "godot_xyz": [
+        22.25,
+        4.065758798444883,
+        14.8
+      ],
+      "triangle": 34962,
+      "face_slope_degrees": 9.234601580835367,
+      "roles_grass_rock_path_soil": [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.993762195110321,
+      "map_height": 4.0646281242370605
+    },
+    {
+      "godot_xyz": [
+        22.5,
+        4.088887396269615,
+        14.8
+      ],
+      "triangle": 34963,
+      "face_slope_degrees": 9.343921870506822,
+      "roles_grass_rock_path_soil": [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.9736678004264832,
+      "map_height": 4.086921215057373
+    },
+    {
+      "godot_xyz": [
+        22.75,
+        4.178373342061455,
+        14.8
+      ],
+      "triangle": 34965,
+      "face_slope_degrees": 18.764905842969753,
+      "roles_grass_rock_path_soil": [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.9764660596847534,
+      "map_height": 4.179834365844727
+    },
+    {
+      "godot_xyz": [
+        23.0,
+        4.229029402290898,
+        14.8
+      ],
+      "triangle": 34966,
+      "face_slope_degrees": 4.422815572171153,
+      "roles_grass_rock_path_soil": [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.9865726232528687,
+      "map_height": 4.230114936828613
+    },
+    {
+      "godot_xyz": [
+        23.25,
+        4.242364406585693,
+        14.8
+      ],
+      "triangle": 34969,
+      "face_slope_degrees": 0.0,
+      "roles_grass_rock_path_soil": [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.9990164637565613,
+      "map_height": 4.242364406585693
+    },
+    {
+      "godot_xyz": [
+        23.5,
+        4.2376681527811275,
+        14.8
+      ],
+      "triangle": 34970,
+      "face_slope_degrees": 8.58288732599277,
+      "roles_grass_rock_path_soil": [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.993830680847168,
+      "map_height": 4.2373948097229
+    },
+    {
+      "godot_xyz": [
+        23.75,
+        4.200284449290663,
+        14.8
+      ],
+      "triangle": 34970,
+      "face_slope_degrees": 8.58288732599277,
+      "roles_grass_rock_path_soil": [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.963962972164154,
+      "map_height": 4.198843002319336
+    },
+    {
+      "godot_xyz": [
+        24.0,
+        4.113468579526303,
+        14.8
+      ],
+      "triangle": 34973,
+      "face_slope_degrees": 26.304253334949617,
+      "roles_grass_rock_path_soil": [
+        0.7230890393257141,
+        0.0,
+        0.2769109606742859,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.9545397758483887,
+      "map_height": 4.114991664886475
+    },
+    {
+      "godot_xyz": [
+        24.25,
+        4.036690335420343,
+        14.8
+      ],
+      "triangle": 34974,
+      "face_slope_degrees": 7.852767754087467,
+      "roles_grass_rock_path_soil": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.9717603921890259,
+      "map_height": 4.035426139831543
+    },
+    {
+      "godot_xyz": [
+        24.5,
+        4.009316444396973,
+        14.8
+      ],
+      "triangle": 34976,
+      "face_slope_degrees": 0.0,
+      "roles_grass_rock_path_soil": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.9985170960426331,
+      "map_height": 4.009316444396973
+    },
+    {
+      "godot_xyz": [
+        19.0,
+        1.5420991898504484,
+        18.4
+      ],
+      "triangle": 38111,
+      "face_slope_degrees": 13.69128238484489,
+      "roles_grass_rock_path_soil": [
+        0.9889329836333971,
+        0.011066981591284275,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 3.4775318624724605e-08,
+      "map_normal_up": 0.9438211917877197,
+      "map_height": 1.5383946895599365
+    },
+    {
+      "godot_xyz": [
+        19.25,
+        1.5123949497000804,
+        18.4
+      ],
+      "triangle": 38112,
+      "face_slope_degrees": 15.615993007005198,
+      "roles_grass_rock_path_soil": [
+        0.9971396910979518,
+        0.0028603089020482566,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.9488393664360046,
+      "map_height": 1.5071296691894531
+    },
+    {
+      "godot_xyz": [
+        19.5,
+        1.4934302370968062,
+        18.4
+      ],
+      "triangle": 38114,
+      "face_slope_degrees": 10.808042024800086,
+      "roles_grass_rock_path_soil": [
+        0.9996848494990606,
+        0.0003151505009394185,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.9546758532524109,
+      "map_height": 1.4909417629241943
+    },
+    {
+      "godot_xyz": [
+        19.75,
+        1.532451197549505,
+        18.4
+      ],
+      "triangle": 38115,
+      "face_slope_degrees": 12.88088747647263,
+      "roles_grass_rock_path_soil": [
+        0.999026239315365,
+        0.0009737476939335465,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 1.2990701403481353e-08,
+      "map_normal_up": 0.9415292739868164,
+      "map_height": 1.5307714939117432
+    },
+    {
+      "godot_xyz": [
+        20.0,
+        1.5752706017756941,
+        18.4
+      ],
+      "triangle": 38117,
+      "face_slope_degrees": 13.10773645067699,
+      "roles_grass_rock_path_soil": [
+        0.9990034911699683,
+        0.0009965088300316102,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.9397857189178467,
+      "map_height": 1.5752662420272827
+    },
+    {
+      "godot_xyz": [
+        20.25,
+        1.6253301593507128,
+        18.4
+      ],
+      "triangle": 38119,
+      "face_slope_degrees": 15.200568448254705,
+      "roles_grass_rock_path_soil": [
+        0.9989213563214233,
+        0.001078643678576686,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.9358749985694885,
+      "map_height": 1.6221364736557007
+    },
+    {
+      "godot_xyz": [
+        20.5,
+        1.6785768753301107,
+        18.4
+      ],
+      "triangle": 38120,
+      "face_slope_degrees": 14.260551186654522,
+      "roles_grass_rock_path_soil": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.9330843687057495,
+      "map_height": 1.6769931316375732
+    },
+    {
+      "godot_xyz": [
+        20.75,
+        1.7326927903899254,
+        18.4
+      ],
+      "triangle": 38122,
+      "face_slope_degrees": 17.556921561083797,
+      "roles_grass_rock_path_soil": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.9322996735572815,
+      "map_height": 1.7341989278793335
+    },
+    {
+      "godot_xyz": [
+        21.0,
+        1.8023787784172098,
+        18.4
+      ],
+      "triangle": 38123,
+      "face_slope_degrees": 16.431407201232016,
+      "roles_grass_rock_path_soil": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.9283148646354675,
+      "map_height": 1.799675703048706
+    },
+    {
+      "godot_xyz": [
+        21.25,
+        1.8811245777051664,
+        18.4
+      ],
+      "triangle": 38125,
+      "face_slope_degrees": 18.555913585273515,
+      "roles_grass_rock_path_soil": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.9262670278549194,
+      "map_height": 1.880577564239502
+    },
+    {
+      "godot_xyz": [
+        21.5,
+        1.962574980299359,
+        18.4
+      ],
+      "triangle": 38126,
+      "face_slope_degrees": 19.6176562189463,
+      "roles_grass_rock_path_soil": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.9230876564979553,
+      "map_height": 1.9648209810256958
+    },
+    {
+      "godot_xyz": [
+        21.75,
+        2.031669775958545,
+        18.4
+      ],
+      "triangle": 38128,
+      "face_slope_degrees": 16.698154566406014,
+      "roles_grass_rock_path_soil": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.9221017956733704,
+      "map_height": 2.0298500061035156
+    },
+    {
+      "godot_xyz": [
+        22.0,
+        2.111018942666507,
+        18.4
+      ],
+      "triangle": 38130,
+      "face_slope_degrees": 19.338504355244122,
+      "roles_grass_rock_path_soil": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.8901280760765076,
+      "map_height": 2.112375020980835
+    },
+    {
+      "godot_xyz": [
+        22.25,
+        2.197590755370373,
+        18.4
+      ],
+      "triangle": 38131,
+      "face_slope_degrees": 18.97484905097542,
+      "roles_grass_rock_path_soil": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.8213465213775635,
+      "map_height": 2.2017180919647217
+    },
+    {
+      "godot_xyz": [
+        22.5,
+        2.4697716286821634,
+        18.4
+      ],
+      "triangle": 38132,
+      "face_slope_degrees": 57.652591486302335,
+      "roles_grass_rock_path_soil": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.714760422706604,
+      "map_height": 2.4593822956085205
+    },
+    {
+      "godot_xyz": [
+        22.75,
+        2.59357154679146,
+        18.4
+      ],
+      "triangle": 38134,
+      "face_slope_degrees": 38.96147884110315,
+      "roles_grass_rock_path_soil": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.6364361047744751,
+      "map_height": 2.5845890045166016
+    },
+    {
+      "godot_xyz": [
+        23.0,
+        2.821137178277415,
+        18.4
+      ],
+      "triangle": 38135,
+      "face_slope_degrees": 58.88246898336358,
+      "roles_grass_rock_path_soil": [
+        0.9999999733408913,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 2.6659108698368073e-08,
+      "map_normal_up": 0.6295377612113953,
+      "map_height": 2.8108575344085693
+    },
+    {
+      "godot_xyz": [
+        23.25,
+        3.1167897804089177,
+        18.4
+      ],
+      "triangle": 38137,
+      "face_slope_degrees": 66.8740682453991,
+      "roles_grass_rock_path_soil": [
+        0.999999969266355,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 3.073364496231079e-08,
+      "map_normal_up": 0.7743675708770752,
+      "map_height": 3.1092681884765625
+    },
+    {
+      "godot_xyz": [
+        23.5,
+        3.410493115947896,
+        18.4
+      ],
+      "triangle": 38139,
+      "face_slope_degrees": 26.669432675197378,
+      "roles_grass_rock_path_soil": [
+        0.4306205238381424,
+        0.0,
+        0.569379448890686,
+        0.0
+      ],
+      "residual_sand": 2.7271171543219452e-08,
+      "map_normal_up": 0.9063090085983276,
+      "map_height": 3.4174458980560303
+    },
+    {
+      "godot_xyz": [
+        23.75,
+        3.4400000722830963,
+        18.4
+      ],
+      "triangle": 38140,
+      "face_slope_degrees": 21.801402992076966,
+      "roles_grass_rock_path_soil": [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.9220705628395081,
+      "map_height": 3.445918560028076
+    },
+    {
+      "godot_xyz": [
+        24.0,
+        3.4400000815586718,
+        18.4
+      ],
+      "triangle": 38142,
+      "face_slope_degrees": 21.80138477397939,
+      "roles_grass_rock_path_soil": [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.9216145277023315,
+      "map_height": 3.4459187984466553
+    },
+    {
+      "godot_xyz": [
+        24.25,
+        3.4399999677073887,
+        18.4
+      ],
+      "triangle": 38143,
+      "face_slope_degrees": 21.801418737030026,
+      "roles_grass_rock_path_soil": [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.8902448415756226,
+      "map_height": 3.445918321609497
+    },
+    {
+      "godot_xyz": [
+        24.5,
+        3.4423171818465583,
+        18.4
+      ],
+      "triangle": 38145,
+      "face_slope_degrees": 59.349815447741804,
+      "roles_grass_rock_path_soil": [
+        0.6356256621450609,
+        0.0,
+        0.3643743378549391,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.7896558046340942,
+      "map_height": 3.473735809326172
+    },
+    {
+      "godot_xyz": [
+        19.0,
+        1.3683326864904637,
+        20.0
+      ],
+      "triangle": 39551,
+      "face_slope_degrees": 7.236644921861468,
+      "roles_grass_rock_path_soil": [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.9870803356170654,
+      "map_height": 1.3689675331115723
+    },
+    {
+      "godot_xyz": [
+        19.25,
+        1.4104508732348413,
+        20.0
+      ],
+      "triangle": 39552,
+      "face_slope_degrees": 12.753401920333804,
+      "roles_grass_rock_path_soil": [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.9788901805877686,
+      "map_height": 1.4135477542877197
+    },
+    {
+      "godot_xyz": [
+        19.5,
+        1.4668032971998213,
+        20.0
+      ],
+      "triangle": 39554,
+      "face_slope_degrees": 12.753397239723459,
+      "roles_grass_rock_path_soil": [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.975333571434021,
+      "map_height": 1.466378092765808
+    },
+    {
+      "godot_xyz": [
+        19.75,
+        1.5231557153200352,
+        20.0
+      ],
+      "triangle": 39555,
+      "face_slope_degrees": 12.753393965424412,
+      "roles_grass_rock_path_soil": [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.9752712845802307,
+      "map_height": 1.5244914293289185
+    },
+    {
+      "godot_xyz": [
+        20.0,
+        1.5795081979514392,
+        20.0
+      ],
+      "triangle": 39557,
+      "face_slope_degrees": 12.753412830494838,
+      "roles_grass_rock_path_soil": [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.9752827882766724,
+      "map_height": 1.5826051235198975
+    },
+    {
+      "godot_xyz": [
+        20.25,
+        1.635861794618693,
+        20.0
+      ],
+      "triangle": 39558,
+      "face_slope_degrees": 12.75375177389047,
+      "roles_grass_rock_path_soil": [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.9752832651138306,
+      "map_height": 1.6354366540908813
+    },
+    {
+      "godot_xyz": [
+        20.5,
+        1.6922407575659721,
+        20.0
+      ],
+      "triangle": 39560,
+      "face_slope_degrees": 12.76522097804753,
+      "roles_grass_rock_path_soil": [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.975275456905365,
+      "map_height": 1.6935752630233765
+    },
+    {
+      "godot_xyz": [
+        20.75,
+        1.7486199676941525,
+        20.0
+      ],
+      "triangle": 39562,
+      "face_slope_degrees": 12.768386386777575,
+      "roles_grass_rock_path_soil": [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.9743669629096985,
+      "map_height": 1.7517162561416626
+    },
+    {
+      "godot_xyz": [
+        21.0,
+        1.805042427808884,
+        20.0
+      ],
+      "triangle": 39563,
+      "face_slope_degrees": 12.766747137402675,
+      "roles_grass_rock_path_soil": [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.9705942273139954,
+      "map_height": 1.8046131134033203
+    },
+    {
+      "godot_xyz": [
+        21.25,
+        1.8676297896252072,
+        20.0
+      ],
+      "triangle": 39565,
+      "face_slope_degrees": 16.204728056133245,
+      "roles_grass_rock_path_soil": [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.9636392593383789,
+      "map_height": 1.8701720237731934
+    },
+    {
+      "godot_xyz": [
+        21.5,
+        1.9409378015227783,
+        20.0
+      ],
+      "triangle": 39566,
+      "face_slope_degrees": 17.16752161672518,
+      "roles_grass_rock_path_soil": [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.9591046571731567,
+      "map_height": 1.9459223747253418
+    },
+    {
+      "godot_xyz": [
+        21.75,
+        2.0162802659584873,
+        20.0
+      ],
+      "triangle": 39568,
+      "face_slope_degrees": 17.184579001670247,
+      "roles_grass_rock_path_soil": [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.9552749395370483,
+      "map_height": 2.0165674686431885
+    },
+    {
+      "godot_xyz": [
+        22.0,
+        2.0916869779831004,
+        20.0
+      ],
+      "triangle": 39570,
+      "face_slope_degrees": 17.166578145666744,
+      "roles_grass_rock_path_soil": [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.9547918438911438,
+      "map_height": 2.094320058822632
+    },
+    {
+      "godot_xyz": [
+        22.25,
+        2.167131723398553,
+        20.0
+      ],
+      "triangle": 39571,
+      "face_slope_degrees": 17.142885545048596,
+      "roles_grass_rock_path_soil": [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.9549564123153687,
+      "map_height": 2.1721317768096924
+    },
+    {
+      "godot_xyz": [
+        22.5,
+        2.242512644221909,
+        20.0
+      ],
+      "triangle": 39573,
+      "face_slope_degrees": 17.12759539582461,
+      "roles_grass_rock_path_soil": [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.9548582434654236,
+      "map_height": 2.2427921295166016
+    },
+    {
+      "godot_xyz": [
+        22.75,
+        2.31788888316492,
+        20.0
+      ],
+      "triangle": 39574,
+      "face_slope_degrees": 17.170600014121103,
+      "roles_grass_rock_path_soil": [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.9571444988250732,
+      "map_height": 2.320523738861084
+    },
+    {
+      "godot_xyz": [
+        23.0,
+        2.383658765946284,
+        20.0
+      ],
+      "triangle": 39576,
+      "face_slope_degrees": 10.552055736043062,
+      "roles_grass_rock_path_soil": [
+        0.08197122812271118,
+        0.0,
+        0.9180287718772888,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.9617383480072021,
+      "map_height": 2.387101650238037
+    },
+    {
+      "godot_xyz": [
+        23.25,
+        2.4339308478664843,
+        20.0
+      ],
+      "triangle": 39577,
+      "face_slope_degrees": 13.490908016102923,
+      "roles_grass_rock_path_soil": [
+        0.42568838596343994,
+        0.0,
+        0.5743116140365601,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.9515885710716248,
+      "map_height": 2.43556547164917
+    },
+    {
+      "godot_xyz": [
+        23.5,
+        2.5197013526579974,
+        20.0
+      ],
+      "triangle": 39579,
+      "face_slope_degrees": 20.587711455333732,
+      "roles_grass_rock_path_soil": [
+        0.822344171620064,
+        0.0,
+        0.17765581607818604,
+        0.0
+      ],
+      "residual_sand": 1.2301749952037255e-08,
+      "map_normal_up": 0.7809096574783325,
+      "map_height": 2.524637222290039
+    },
+    {
+      "godot_xyz": [
+        23.75,
+        2.7329018208294555,
+        20.0
+      ],
+      "triangle": 39581,
+      "face_slope_degrees": 71.3803567930918,
+      "roles_grass_rock_path_soil": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.5983685851097107,
+      "map_height": 2.8035244941711426
+    },
+    {
+      "godot_xyz": [
+        24.0,
+        3.2128630750311156,
+        20.0
+      ],
+      "triangle": 39582,
+      "face_slope_degrees": 67.81562971949948,
+      "roles_grass_rock_path_soil": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.5237153768539429,
+      "map_height": 3.2488441467285156
+    },
+    {
+      "godot_xyz": [
+        24.25,
+        3.566049526012593,
+        20.0
+      ],
+      "triangle": 39584,
+      "face_slope_degrees": 71.70323588664706,
+      "roles_grass_rock_path_soil": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.614364743232727,
+      "map_height": 3.623175621032715
+    },
+    {
+      "godot_xyz": [
+        24.5,
+        3.8991009771787053,
+        20.0
+      ],
+      "triangle": 39585,
+      "face_slope_degrees": 44.927673128345376,
+      "roles_grass_rock_path_soil": [
+        0.9999999981373549,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 1.862645149230957e-09,
+      "map_normal_up": 0.7634732723236084,
+      "map_height": 3.923537015914917
+    },
+    {
+      "godot_xyz": [
+        19.0,
+        1.2064325874880044,
+        28.0
+      ],
+      "triangle": 46756,
+      "face_slope_degrees": 1.3601287847872012,
+      "roles_grass_rock_path_soil": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.9992274045944214,
+      "map_height": 1.206864833831787
+    },
+    {
+      "godot_xyz": [
+        19.25,
+        1.2052600571204455,
+        28.0
+      ],
+      "triangle": 46758,
+      "face_slope_degrees": 2.132451034431425,
+      "roles_grass_rock_path_soil": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.9994223713874817,
+      "map_height": 1.2059414386749268
+    },
+    {
+      "godot_xyz": [
+        19.5,
+        1.2020430525376706,
+        28.0
+      ],
+      "triangle": 46760,
+      "face_slope_degrees": 0.7847344618640769,
+      "roles_grass_rock_path_soil": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.9968010187149048,
+      "map_height": 1.2021278142929077
+    },
+    {
+      "godot_xyz": [
+        19.75,
+        1.2087276731724266,
+        28.0
+      ],
+      "triangle": 46762,
+      "face_slope_degrees": 30.676767256409732,
+      "roles_grass_rock_path_soil": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.9798741340637207,
+      "map_height": 1.2053601741790771
+    },
+    {
+      "godot_xyz": [
+        20.0,
+        1.2747307674581574,
+        28.0
+      ],
+      "triangle": 46763,
+      "face_slope_degrees": 28.637893412361365,
+      "roles_grass_rock_path_soil": [
+        0.9438617403357334,
+        0.05613819214951256,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 6.751475400967877e-08,
+      "map_normal_up": 0.783790111541748,
+      "map_height": 1.2656912803649902
+    },
+    {
+      "godot_xyz": [
+        20.25,
+        1.5154284033686514,
+        28.0
+      ],
+      "triangle": 46764,
+      "face_slope_degrees": 70.26791956579433,
+      "roles_grass_rock_path_soil": [
+        0.0026420349778133166,
+        0.9973579650221867,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.4594447612762451,
+      "map_height": 1.4715726375579834
+    },
+    {
+      "godot_xyz": [
+        20.5,
+        2.9883686619000374,
+        28.0
+      ],
+      "triangle": 46767,
+      "face_slope_degrees": 86.89995669082766,
+      "roles_grass_rock_path_soil": [
+        0.0009649315616115928,
+        0.9990350604057312,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 8.032657206058502e-09,
+      "map_normal_up": 0.26474088430404663,
+      "map_height": 2.97697114944458
+    },
+    {
+      "godot_xyz": [
+        20.75,
+        3.5856147693865674,
+        28.0
+      ],
+      "triangle": 46768,
+      "face_slope_degrees": 62.54456778326812,
+      "roles_grass_rock_path_soil": [
+        0.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.44404715299606323,
+      "map_height": 3.583296775817871
+    },
+    {
+      "godot_xyz": [
+        21.0,
+        3.9436630489610156,
+        28.0
+      ],
+      "triangle": 46769,
+      "face_slope_degrees": 56.961049822550315,
+      "roles_grass_rock_path_soil": [
+        0.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.6131876707077026,
+      "map_height": 3.924846887588501
+    },
+    {
+      "godot_xyz": [
+        21.25,
+        4.096727753188276,
+        28.0
+      ],
+      "triangle": 46771,
+      "face_slope_degrees": 34.84513995449373,
+      "roles_grass_rock_path_soil": [
+        0.0,
+        0.6153670499958187,
+        0.3846329500041813,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.7729313969612122,
+      "map_height": 4.096635818481445
+    },
+    {
+      "godot_xyz": [
+        21.5,
+        4.244037327804117,
+        28.0
+      ],
+      "triangle": 46772,
+      "face_slope_degrees": 5.02537845350601,
+      "roles_grass_rock_path_soil": [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.9516260623931885,
+      "map_height": 4.244200229644775
+    },
+    {
+      "godot_xyz": [
+        21.75,
+        4.26301269526382,
+        28.0
+      ],
+      "triangle": 46773,
+      "face_slope_degrees": 3.5886193400696773,
+      "roles_grass_rock_path_soil": [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.9808687567710876,
+      "map_height": 4.2623395919799805
+    },
+    {
+      "godot_xyz": [
+        22.0,
+        4.289152685963809,
+        28.0
+      ],
+      "triangle": 46774,
+      "face_slope_degrees": 9.698410819161564,
+      "roles_grass_rock_path_soil": [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.9784122705459595,
+      "map_height": 4.289036750793457
+    },
+    {
+      "godot_xyz": [
+        22.25,
+        4.324902771760693,
+        28.0
+      ],
+      "triangle": 46775,
+      "face_slope_degrees": 8.917602708459059,
+      "roles_grass_rock_path_soil": [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.9548521637916565,
+      "map_height": 4.324958801269531
+    },
+    {
+      "godot_xyz": [
+        22.5,
+        4.419876733920306,
+        28.0
+      ],
+      "triangle": 46776,
+      "face_slope_degrees": 28.229352535158004,
+      "roles_grass_rock_path_soil": [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.9453380107879639,
+      "map_height": 4.415800094604492
+    },
+    {
+      "godot_xyz": [
+        22.75,
+        4.517370840007059,
+        28.0
+      ],
+      "triangle": 46778,
+      "face_slope_degrees": 7.616117486428792,
+      "roles_grass_rock_path_soil": [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.9620949625968933,
+      "map_height": 4.516510009765625
+    },
+    {
+      "godot_xyz": [
+        23.0,
+        4.551097869873047,
+        28.0
+      ],
+      "triangle": 46780,
+      "face_slope_degrees": 0.0,
+      "roles_grass_rock_path_soil": [
+        0.2118489911760042,
+        0.0,
+        0.7881510088239958,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.9976692199707031,
+      "map_height": 4.551098346710205
+    },
+    {
+      "godot_xyz": [
+        23.25,
+        4.551097869873047,
+        28.0
+      ],
+      "triangle": 46781,
+      "face_slope_degrees": 0.0,
+      "roles_grass_rock_path_soil": [
+        0.8968655318021774,
+        0.0,
+        0.10313446819782257,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.998594343662262,
+      "map_height": 4.551097869873047
+    },
+    {
+      "godot_xyz": [
+        23.5,
+        4.5290021792474375,
+        28.0
+      ],
+      "triangle": 46783,
+      "face_slope_degrees": 5.613344776485917,
+      "roles_grass_rock_path_soil": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.9774951338768005,
+      "map_height": 4.530318260192871
+    },
+    {
+      "godot_xyz": [
+        23.75,
+        4.463499829108277,
+        28.0
+      ],
+      "triangle": 46784,
+      "face_slope_degrees": 24.638424204238866,
+      "roles_grass_rock_path_soil": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.9602487087249756,
+      "map_height": 4.459702491760254
+    },
+    {
+      "godot_xyz": [
+        24.0,
+        4.366606998862147,
+        28.0
+      ],
+      "triangle": 46786,
+      "face_slope_degrees": 10.086892406362606,
+      "roles_grass_rock_path_soil": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.9623510837554932,
+      "map_height": 4.368249893188477
+    },
+    {
+      "godot_xyz": [
+        24.25,
+        4.324993336815649,
+        28.0
+      ],
+      "triangle": 46787,
+      "face_slope_degrees": 9.948824062159774,
+      "roles_grass_rock_path_soil": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.9918255805969238,
+      "map_height": 4.325376033782959
+    },
+    {
+      "godot_xyz": [
+        24.5,
+        4.318107604980469,
+        28.0
+      ],
+      "triangle": 46789,
+      "face_slope_degrees": 0.0,
+      "roles_grass_rock_path_soil": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.9989007711410522,
+      "map_height": 4.318107604980469
+    },
+    {
+      "godot_xyz": [
+        19.0,
+        2.98149037196407,
+        29.8
+      ],
+      "triangle": 48204,
+      "face_slope_degrees": 71.62463289957381,
+      "roles_grass_rock_path_soil": [
+        0.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.3055499196052551,
+      "map_height": 2.947378635406494
+    },
+    {
+      "godot_xyz": [
+        19.25,
+        3.463725016434309,
+        29.8
+      ],
+      "triangle": 48204,
+      "face_slope_degrees": 71.62463289957381,
+      "roles_grass_rock_path_soil": [
+        0.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.5317209959030151,
+      "map_height": 3.44468355178833
+    },
+    {
+      "godot_xyz": [
+        19.5,
+        3.809312666016614,
+        29.8
+      ],
+      "triangle": 48207,
+      "face_slope_degrees": 31.801303689455185,
+      "roles_grass_rock_path_soil": [
+        0.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.6920059323310852,
+      "map_height": 3.8027002811431885
+    },
+    {
+      "godot_xyz": [
+        19.75,
+        3.951890274434323,
+        29.8
+      ],
+      "triangle": 48207,
+      "face_slope_degrees": 31.801303689455185,
+      "roles_grass_rock_path_soil": [
+        0.01121211051940918,
+        0.9887878894805908,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.810616135597229,
+      "map_height": 3.949733257293701
+    },
+    {
+      "godot_xyz": [
+        20.0,
+        4.094467882852032,
+        29.8
+      ],
+      "triangle": 48207,
+      "face_slope_degrees": 31.801303689455185,
+      "roles_grass_rock_path_soil": [
+        0.9609438712913567,
+        0.039056128708643355,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.929226279258728,
+      "map_height": 4.096766471862793
+    },
+    {
+      "godot_xyz": [
+        20.25,
+        4.135073823160297,
+        29.8
+      ],
+      "triangle": 48208,
+      "face_slope_degrees": 6.726648361954131,
+      "roles_grass_rock_path_soil": [
+        0.9894031953104007,
+        0.010596804689599325,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.9575570821762085,
+      "map_height": 4.13389253616333
+    },
+    {
+      "godot_xyz": [
+        20.5,
+        4.162662935595053,
+        29.8
+      ],
+      "triangle": 48208,
+      "face_slope_degrees": 6.726648361954131,
+      "roles_grass_rock_path_soil": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.978987991809845,
+      "map_height": 4.162598133087158
+    },
+    {
+      "godot_xyz": [
+        20.75,
+        4.1725121478989955,
+        29.8
+      ],
+      "triangle": 48211,
+      "face_slope_degrees": 12.153184049632854,
+      "roles_grass_rock_path_soil": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.9877294898033142,
+      "map_height": 4.176421165466309
+    },
+    {
+      "godot_xyz": [
+        21.0,
+        4.173314304299312,
+        29.8
+      ],
+      "triangle": 48499,
+      "face_slope_degrees": 11.683152825701837,
+      "roles_grass_rock_path_soil": [
+        0.9765609792737475,
+        0.0,
+        0.02343902072625248,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.9819043874740601,
+      "map_height": 4.177026748657227
+    },
+    {
+      "godot_xyz": [
+        21.25,
+        4.177580273706701,
+        29.8
+      ],
+      "triangle": 48500,
+      "face_slope_degrees": 11.482047667551244,
+      "roles_grass_rock_path_soil": [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.9755986928939819,
+      "map_height": 4.181321144104004
+    },
+    {
+      "godot_xyz": [
+        21.5,
+        4.1861061798700465,
+        29.8
+      ],
+      "triangle": 48500,
+      "face_slope_degrees": 11.482047667551244,
+      "roles_grass_rock_path_soil": [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.968101978302002,
+      "map_height": 4.1901140213012695
+    },
+    {
+      "godot_xyz": [
+        21.75,
+        4.269025492861828,
+        29.8
+      ],
+      "triangle": 48503,
+      "face_slope_degrees": 21.715141614747033,
+      "roles_grass_rock_path_soil": [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.9284377694129944,
+      "map_height": 4.2650556564331055
+    },
+    {
+      "godot_xyz": [
+        22.0,
+        4.385208291754772,
+        29.8
+      ],
+      "triangle": 48504,
+      "face_slope_degrees": 31.36117659411319,
+      "roles_grass_rock_path_soil": [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.9177107214927673,
+      "map_height": 4.384822368621826
+    },
+    {
+      "godot_xyz": [
+        22.25,
+        4.5329211259554905,
+        29.8
+      ],
+      "triangle": 48504,
+      "face_slope_degrees": 31.36117659411319,
+      "roles_grass_rock_path_soil": [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.9608339071273804,
+      "map_height": 4.537151336669922
+    },
+    {
+      "godot_xyz": [
+        22.5,
+        4.558098316192627,
+        29.8
+      ],
+      "triangle": 48507,
+      "face_slope_degrees": 0.0,
+      "roles_grass_rock_path_soil": [
+        0.3404051217458431,
+        0.0,
+        0.6559299230575562,
+        0.0
+      ],
+      "residual_sand": 0.0036649551966008165,
+      "map_normal_up": 0.9891181588172913,
+      "map_height": 4.558059215545654
+    },
+    {
+      "godot_xyz": [
+        22.75,
+        4.558098316192627,
+        29.8
+      ],
+      "triangle": 48508,
+      "face_slope_degrees": 0.0,
+      "roles_grass_rock_path_soil": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.9932819604873657,
+      "map_height": 4.558063507080078
+    },
+    {
+      "godot_xyz": [
+        23.0,
+        4.52894298697512,
+        29.8
+      ],
+      "triangle": 48511,
+      "face_slope_degrees": 20.7492115800088,
+      "roles_grass_rock_path_soil": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.9649239778518677,
+      "map_height": 4.5296630859375
+    },
+    {
+      "godot_xyz": [
+        23.25,
+        4.446428591813134,
+        29.8
+      ],
+      "triangle": 48512,
+      "face_slope_degrees": 26.090330333124026,
+      "roles_grass_rock_path_soil": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.9322245717048645,
+      "map_height": 4.452530860900879
+    },
+    {
+      "godot_xyz": [
+        23.5,
+        4.340726883491602,
+        29.8
+      ],
+      "triangle": 48512,
+      "face_slope_degrees": 26.090330333124026,
+      "roles_grass_rock_path_soil": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.9663400650024414,
+      "map_height": 4.34346866607666
+    },
+    {
+      "godot_xyz": [
+        23.75,
+        4.3217274342019305,
+        29.8
+      ],
+      "triangle": 48227,
+      "face_slope_degrees": 2.361754320625802,
+      "roles_grass_rock_path_soil": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.9910730123519897,
+      "map_height": 4.321551322937012
+    },
+    {
+      "godot_xyz": [
+        24.0,
+        4.318107604980469,
+        29.8
+      ],
+      "triangle": 48228,
+      "face_slope_degrees": 0.0,
+      "roles_grass_rock_path_soil": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.9997339248657227,
+      "map_height": 4.318107604980469
+    },
+    {
+      "godot_xyz": [
+        24.25,
+        4.318107604980469,
+        29.8
+      ],
+      "triangle": 48231,
+      "face_slope_degrees": 0.0,
+      "roles_grass_rock_path_soil": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 1.0,
+      "map_height": 4.318107604980469
+    },
+    {
+      "godot_xyz": [
+        24.5,
+        4.318107604980469,
+        29.8
+      ],
+      "triangle": 48232,
+      "face_slope_degrees": 0.0,
+      "roles_grass_rock_path_soil": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 1.0,
+      "map_height": 4.318107604980469
+    },
+    {
+      "godot_xyz": [
+        19.0,
+        2.744080618201666,
+        30.5
+      ],
+      "triangle": 49067,
+      "face_slope_degrees": 79.81577579985172,
+      "roles_grass_rock_path_soil": [
+        0.008847668635134866,
+        0.9911523313648651,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.3416157066822052,
+      "map_height": 2.7911086082458496
+    },
+    {
+      "godot_xyz": [
+        19.25,
+        3.1485914376047153,
+        30.5
+      ],
+      "triangle": 49068,
+      "face_slope_degrees": 70.99007333263378,
+      "roles_grass_rock_path_soil": [
+        0.008241009898483753,
+        0.9917589426040649,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 4.7497451305389404e-08,
+      "map_normal_up": 0.44056186079978943,
+      "map_height": 3.1830191612243652
+    },
+    {
+      "godot_xyz": [
+        19.5,
+        3.4596252407592516,
+        30.5
+      ],
+      "triangle": 49068,
+      "face_slope_degrees": 70.99007333263378,
+      "roles_grass_rock_path_soil": [
+        0.008261325746044539,
+        0.9917386742539555,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.5253086686134338,
+      "map_height": 3.474616050720215
+    },
+    {
+      "godot_xyz": [
+        19.75,
+        3.750051709005467,
+        30.5
+      ],
+      "triangle": 49071,
+      "face_slope_degrees": 49.493212271184326,
+      "roles_grass_rock_path_soil": [
+        0.009428810222869998,
+        0.99057118977713,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.6422373652458191,
+      "map_height": 3.7598390579223633
+    },
+    {
+      "godot_xyz": [
+        20.0,
+        3.9314287480875922,
+        30.5
+      ],
+      "triangle": 49071,
+      "face_slope_degrees": 49.493212271184326,
+      "roles_grass_rock_path_soil": [
+        0.012148117216649974,
+        0.98785188278335,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.7791441082954407,
+      "map_height": 3.9468836784362793
+    },
+    {
+      "godot_xyz": [
+        20.25,
+        4.026335555767264,
+        30.5
+      ],
+      "triangle": 49072,
+      "face_slope_degrees": 39.02786096769537,
+      "roles_grass_rock_path_soil": [
+        0.13580501061287747,
+        0.8641949884846871,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 9.024354596931516e-10,
+      "map_normal_up": 0.8660442233085632,
+      "map_height": 4.031942367553711
+    },
+    {
+      "godot_xyz": [
+        20.5,
+        4.055930094100108,
+        30.5
+      ],
+      "triangle": 49072,
+      "face_slope_degrees": 39.02786096769537,
+      "roles_grass_rock_path_soil": [
+        0.9413702879633474,
+        0.0586296558717672,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 5.616488540916009e-08,
+      "map_normal_up": 0.933769941329956,
+      "map_height": 4.06246280670166
+    },
+    {
+      "godot_xyz": [
+        20.75,
+        4.0661549880639445,
+        30.5
+      ],
+      "triangle": 49075,
+      "face_slope_degrees": 7.127355686580876,
+      "roles_grass_rock_path_soil": [
+        0.9999999403953552,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 5.960464477539063e-08,
+      "map_normal_up": 0.9719619750976562,
+      "map_height": 4.06577205657959
+    },
+    {
+      "godot_xyz": [
+        21.0,
+        4.043843632435804,
+        30.5
+      ],
+      "triangle": 49075,
+      "face_slope_degrees": 7.127355686580876,
+      "roles_grass_rock_path_soil": [
+        0.9521003049991386,
+        0.0,
+        0.04789969500086144,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.9818668365478516,
+      "map_height": 4.044855117797852
+    },
+    {
+      "godot_xyz": [
+        21.25,
+        4.041279085493983,
+        30.5
+      ],
+      "triangle": 49076,
+      "face_slope_degrees": 4.041466049798839,
+      "roles_grass_rock_path_soil": [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.973874032497406,
+      "map_height": 4.041819095611572
+    },
+    {
+      "godot_xyz": [
+        21.5,
+        4.046410337699718,
+        30.5
+      ],
+      "triangle": 49079,
+      "face_slope_degrees": 10.254781933785136,
+      "roles_grass_rock_path_soil": [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.9610650539398193,
+      "map_height": 4.048893928527832
+    },
+    {
+      "godot_xyz": [
+        21.75,
+        4.093894657866301,
+        30.5
+      ],
+      "triangle": 49080,
+      "face_slope_degrees": 52.9457642405787,
+      "roles_grass_rock_path_soil": [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.8622884154319763,
+      "map_height": 4.086499214172363
+    },
+    {
+      "godot_xyz": [
+        22.0,
+        4.406570896213232,
+        30.5
+      ],
+      "triangle": 49081,
+      "face_slope_degrees": 62.67432565614448,
+      "roles_grass_rock_path_soil": [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.8320475220680237,
+      "map_height": 4.41827917098999
+    },
+    {
+      "godot_xyz": [
+        22.25,
+        4.398055250720116,
+        30.5
+      ],
+      "triangle": 49083,
+      "face_slope_degrees": 57.94068819414286,
+      "roles_grass_rock_path_soil": [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.8451327085494995,
+      "map_height": 4.410311698913574
+    },
+    {
+      "godot_xyz": [
+        22.5,
+        4.409736831321052,
+        30.5
+      ],
+      "triangle": 49084,
+      "face_slope_degrees": 57.538345062392274,
+      "roles_grass_rock_path_soil": [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.8750780820846558,
+      "map_height": 4.421258449554443
+    },
+    {
+      "godot_xyz": [
+        22.75,
+        4.441497873109715,
+        30.5
+      ],
+      "triangle": 49086,
+      "face_slope_degrees": 53.894882067297466,
+      "roles_grass_rock_path_soil": [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.8360629677772522,
+      "map_height": 4.451516628265381
+    },
+    {
+      "godot_xyz": [
+        23.0,
+        4.386999106634702,
+        30.5
+      ],
+      "triangle": 49087,
+      "face_slope_degrees": 52.35712576342702,
+      "roles_grass_rock_path_soil": [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.8156479001045227,
+      "map_height": 4.394033908843994
+    },
+    {
+      "godot_xyz": [
+        23.25,
+        4.303566343172153,
+        30.5
+      ],
+      "triangle": 49088,
+      "face_slope_degrees": 54.24276086128098,
+      "roles_grass_rock_path_soil": [
+        0.02214838795948213,
+        0.0,
+        0.9776618480682373,
+        0.0
+      ],
+      "residual_sand": 0.00018976397228054331,
+      "map_normal_up": 0.8855689167976379,
+      "map_height": 4.315148830413818
+    },
+    {
+      "godot_xyz": [
+        23.5,
+        4.303273763511148,
+        30.5
+      ],
+      "triangle": 49091,
+      "face_slope_degrees": 17.330661144973785,
+      "roles_grass_rock_path_soil": [
+        0.7547195348446226,
+        0.0,
+        0.24026605486869812,
+        0.0
+      ],
+      "residual_sand": 0.005014410286679261,
+      "map_normal_up": 0.9416671991348267,
+      "map_height": 4.305605411529541
+    },
+    {
+      "godot_xyz": [
+        23.75,
+        4.302542946147664,
+        30.5
+      ],
+      "triangle": 49092,
+      "face_slope_degrees": 17.036284400771184,
+      "roles_grass_rock_path_soil": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.9629915356636047,
+      "map_height": 4.304999351501465
+    },
+    {
+      "godot_xyz": [
+        24.0,
+        4.311033922285175,
+        30.5
+      ],
+      "triangle": 49093,
+      "face_slope_degrees": 19.90815208457582,
+      "roles_grass_rock_path_soil": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.9769304394721985,
+      "map_height": 4.308730125427246
+    },
+    {
+      "godot_xyz": [
+        24.25,
+        4.318107604980469,
+        30.5
+      ],
+      "triangle": 49095,
+      "face_slope_degrees": 0.0,
+      "roles_grass_rock_path_soil": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.9903538227081299,
+      "map_height": 4.318107604980469
+    },
+    {
+      "godot_xyz": [
+        24.5,
+        4.318107604980469,
+        30.5
+      ],
+      "triangle": 49096,
+      "face_slope_degrees": 0.0,
+      "roles_grass_rock_path_soil": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.9910635948181152,
+      "map_height": 4.318107604980469
+    },
+    {
+      "godot_xyz": [
+        19.0,
+        1.2836537125889833,
+        31.2
+      ],
+      "triangle": 49640,
+      "face_slope_degrees": 51.70658374858873,
+      "roles_grass_rock_path_soil": [
+        0.9527607634563522,
+        0.04723921138035029,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 2.516329755675173e-08,
+      "map_normal_up": 0.7589912414550781,
+      "map_height": 1.2882938385009766
+    },
+    {
+      "godot_xyz": [
+        19.25,
+        1.5294871554656768,
+        31.2
+      ],
+      "triangle": 49642,
+      "face_slope_degrees": 44.665753554516535,
+      "roles_grass_rock_path_soil": [
+        0.0816696901840355,
+        0.9183303098159645,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.6001222729682922,
+      "map_height": 1.5367697477340698
+    },
+    {
+      "godot_xyz": [
+        19.5,
+        1.8165224137465519,
+        31.2
+      ],
+      "triangle": 49643,
+      "face_slope_degrees": 60.258237190981184,
+      "roles_grass_rock_path_soil": [
+        0.49603288436473614,
+        0.5039671096230979,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 6.012165987279161e-09,
+      "map_normal_up": 0.5063015818595886,
+      "map_height": 1.8080500364303589
+    },
+    {
+      "godot_xyz": [
+        19.75,
+        2.2772204870548642,
+        31.2
+      ],
+      "triangle": 49645,
+      "face_slope_degrees": 66.75544144112997,
+      "roles_grass_rock_path_soil": [
+        0.5307068289590071,
+        0.4692931710409928,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 1.1102230246251565e-16,
+      "map_normal_up": 0.4283258318901062,
+      "map_height": 2.274418592453003
+    },
+    {
+      "godot_xyz": [
+        20.0,
+        2.553060237622056,
+        31.2
+      ],
+      "triangle": 49647,
+      "face_slope_degrees": 72.96354342759348,
+      "roles_grass_rock_path_soil": [
+        0.492349098251623,
+        0.5076509017483771,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.34809523820877075,
+      "map_height": 2.5638794898986816
+    },
+    {
+      "godot_xyz": [
+        20.25,
+        2.9049079513134863,
+        31.2
+      ],
+      "triangle": 49648,
+      "face_slope_degrees": 71.55430450967275,
+      "roles_grass_rock_path_soil": [
+        0.45917935668586773,
+        0.5408205869113913,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 5.6402740922223416e-08,
+      "map_normal_up": 0.3817801773548126,
+      "map_height": 2.8926544189453125
+    },
+    {
+      "godot_xyz": [
+        20.5,
+        3.171238574188728,
+        31.2
+      ],
+      "triangle": 49649,
+      "face_slope_degrees": 71.6315972513387,
+      "roles_grass_rock_path_soil": [
+        0.39687877181366965,
+        0.603121202530102,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 2.5656228253012614e-08,
+      "map_normal_up": 0.4010176360607147,
+      "map_height": 3.1672286987304688
+    },
+    {
+      "godot_xyz": [
+        20.75,
+        3.4200538950910633,
+        31.2
+      ],
+      "triangle": 49651,
+      "face_slope_degrees": 67.29751291005167,
+      "roles_grass_rock_path_soil": [
+        0.3660847555599098,
+        0.6339152050630372,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 3.937705295165017e-08,
+      "map_normal_up": 0.4874420762062073,
+      "map_height": 3.4223098754882812
+    },
+    {
+      "godot_xyz": [
+        21.0,
+        3.5736604585507274,
+        31.2
+      ],
+      "triangle": 49652,
+      "face_slope_degrees": 67.16029027665792,
+      "roles_grass_rock_path_soil": [
+        0.6472168772291657,
+        0.35278306671011384,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 5.6060720510231477e-08,
+      "map_normal_up": 0.6006594896316528,
+      "map_height": 3.5647974014282227
+    },
+    {
+      "godot_xyz": [
+        21.25,
+        3.775603961060007,
+        31.2
+      ],
+      "triangle": 49654,
+      "face_slope_degrees": 61.12063695630578,
+      "roles_grass_rock_path_soil": [
+        0.9521763561316344,
+        0.04782364386836552,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.6908219456672668,
+      "map_height": 3.774296522140503
+    },
+    {
+      "godot_xyz": [
+        21.5,
+        3.867648991947217,
+        31.2
+      ],
+      "triangle": 49655,
+      "face_slope_degrees": 44.39816186600904,
+      "roles_grass_rock_path_soil": [
+        0.6571782827377319,
+        0.0,
+        0.34282171726226807,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.7466513514518738,
+      "map_height": 3.8650686740875244
+    },
+    {
+      "godot_xyz": [
+        21.75,
+        3.838662460838791,
+        31.2
+      ],
+      "triangle": 49657,
+      "face_slope_degrees": 27.788752756804417,
+      "roles_grass_rock_path_soil": [
+        0.049291691040243,
+        0.0,
+        0.9498739838600159,
+        0.0
+      ],
+      "residual_sand": 0.0008343250997411289,
+      "map_normal_up": 0.7854436039924622,
+      "map_height": 3.83610463142395
+    },
+    {
+      "godot_xyz": [
+        22.0,
+        3.892327096072684,
+        31.2
+      ],
+      "triangle": 49659,
+      "face_slope_degrees": 17.25653690686955,
+      "roles_grass_rock_path_soil": [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.9023700952529907,
+      "map_height": 3.890838623046875
+    },
+    {
+      "godot_xyz": [
+        22.25,
+        3.837511628368015,
+        31.2
+      ],
+      "triangle": 49660,
+      "face_slope_degrees": 18.460479867923237,
+      "roles_grass_rock_path_soil": [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.9028319716453552,
+      "map_height": 3.834010601043701
+    },
+    {
+      "godot_xyz": [
+        22.5,
+        3.792792451622572,
+        31.2
+      ],
+      "triangle": 49661,
+      "face_slope_degrees": 6.80152197968531,
+      "roles_grass_rock_path_soil": [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.910736083984375,
+      "map_height": 3.792926549911499
+    },
+    {
+      "godot_xyz": [
+        22.75,
+        3.7397686051924754,
+        31.2
+      ],
+      "triangle": 49663,
+      "face_slope_degrees": 13.857211902665547,
+      "roles_grass_rock_path_soil": [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.9227628707885742,
+      "map_height": 3.7385897636413574
+    },
+    {
+      "godot_xyz": [
+        23.0,
+        3.6913627119376384,
+        31.2
+      ],
+      "triangle": 49664,
+      "face_slope_degrees": 11.35119514245334,
+      "roles_grass_rock_path_soil": [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.8940508365631104,
+      "map_height": 3.689016819000244
+    },
+    {
+      "godot_xyz": [
+        23.25,
+        3.6391472559335725,
+        31.2
+      ],
+      "triangle": 49666,
+      "face_slope_degrees": 14.522891453056115,
+      "roles_grass_rock_path_soil": [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.8895322680473328,
+      "map_height": 3.639589548110962
+    },
+    {
+      "godot_xyz": [
+        23.5,
+        3.616958784784695,
+        31.2
+      ],
+      "triangle": 49668,
+      "face_slope_degrees": 20.105923167244526,
+      "roles_grass_rock_path_soil": [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.860435426235199,
+      "map_height": 3.6176795959472656
+    },
+    {
+      "godot_xyz": [
+        23.75,
+        3.6574716230883904,
+        31.2
+      ],
+      "triangle": 49669,
+      "face_slope_degrees": 46.64096576697504,
+      "roles_grass_rock_path_soil": [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.7612448334693909,
+      "map_height": 3.649930477142334
+    },
+    {
+      "godot_xyz": [
+        24.0,
+        3.6351134435856793,
+        31.2
+      ],
+      "triangle": 49671,
+      "face_slope_degrees": 41.43620006838103,
+      "roles_grass_rock_path_soil": [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.7294090390205383,
+      "map_height": 3.6324405670166016
+    },
+    {
+      "godot_xyz": [
+        24.25,
+        3.719474538144247,
+        31.2
+      ],
+      "triangle": 49672,
+      "face_slope_degrees": 43.526704819627575,
+      "roles_grass_rock_path_soil": [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.6743114590644836,
+      "map_height": 3.7194886207580566
+    },
+    {
+      "godot_xyz": [
+        24.5,
+        3.744765627682317,
+        31.2
+      ],
+      "triangle": 49674,
+      "face_slope_degrees": 64.06619006108585,
+      "roles_grass_rock_path_soil": [
+        0.04022907904585984,
+        0.0,
+        0.9593055248260498,
+        0.0
+      ],
+      "residual_sand": 0.00046539612809037845,
+      "map_normal_up": 0.597529947757721,
+      "map_height": 3.7426905632019043
+    },
+    {
+      "godot_xyz": [
+        19.0,
+        1.232322854200984,
+        32.0
+      ],
+      "triangle": 50217,
+      "face_slope_degrees": 12.976063044636183,
+      "roles_grass_rock_path_soil": [
+        0.995281689648851,
+        0.004718310351149002,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.9463647603988647,
+      "map_height": 1.23036789894104
+    },
+    {
+      "godot_xyz": [
+        19.25,
+        1.3304832547618037,
+        32.0
+      ],
+      "triangle": 50218,
+      "face_slope_degrees": 38.640490172261615,
+      "roles_grass_rock_path_soil": [
+        0.9390528314320896,
+        0.06094716856791037,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.9218406081199646,
+      "map_height": 1.3388020992279053
+    },
+    {
+      "godot_xyz": [
+        19.5,
+        1.467608918498665,
+        32.0
+      ],
+      "triangle": 50221,
+      "face_slope_degrees": 14.825741658092692,
+      "roles_grass_rock_path_soil": [
+        0.7927440028020006,
+        0.20725599598087757,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 1.2171217367296094e-09,
+      "map_normal_up": 0.9169114232063293,
+      "map_height": 1.4656622409820557
+    },
+    {
+      "godot_xyz": [
+        19.75,
+        1.5240237032516324,
+        32.0
+      ],
+      "triangle": 50222,
+      "face_slope_degrees": 12.97497108923631,
+      "roles_grass_rock_path_soil": [
+        0.9999920725822449,
+        7.911145985417534e-06,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 1.627176970941946e-08,
+      "map_normal_up": 0.9668720960617065,
+      "map_height": 1.52358078956604
+    },
+    {
+      "godot_xyz": [
+        20.0,
+        1.5692517894480618,
+        32.0
+      ],
+      "triangle": 50222,
+      "face_slope_degrees": 12.97497108923631,
+      "roles_grass_rock_path_soil": [
+        0.9999673962593079,
+        3.2578533136984333e-05,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 2.520755515433848e-08,
+      "map_normal_up": 0.9636367559432983,
+      "map_height": 1.57022225856781
+    },
+    {
+      "godot_xyz": [
+        20.25,
+        1.637561973521135,
+        32.0
+      ],
+      "triangle": 50225,
+      "face_slope_degrees": 29.68426525465493,
+      "roles_grass_rock_path_soil": [
+        0.9989255754590877,
+        0.0010744245409123221,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.9344344735145569,
+      "map_height": 1.6324635744094849
+    },
+    {
+      "godot_xyz": [
+        20.5,
+        1.6928452162710987,
+        32.0
+      ],
+      "triangle": 50226,
+      "face_slope_degrees": 29.611714466494174,
+      "roles_grass_rock_path_soil": [
+        0.9970669799219646,
+        0.0029330200780353748,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.9084457755088806,
+      "map_height": 1.6894605159759521
+    },
+    {
+      "godot_xyz": [
+        20.75,
+        1.7999512994213573,
+        32.0
+      ],
+      "triangle": 50229,
+      "face_slope_degrees": 57.97984324370376,
+      "roles_grass_rock_path_soil": [
+        0.9914383712808331,
+        0.008561628719166903,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.8529207706451416,
+      "map_height": 1.7929062843322754
+    },
+    {
+      "godot_xyz": [
+        21.0,
+        1.9132064220461935,
+        32.0
+      ],
+      "triangle": 50229,
+      "face_slope_degrees": 57.97984324370376,
+      "roles_grass_rock_path_soil": [
+        0.9805908716201267,
+        0.01940904641057399,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 8.196929934811692e-08,
+      "map_normal_up": 0.8022173047065735,
+      "map_height": 1.8990809917449951
+    },
+    {
+      "godot_xyz": [
+        21.25,
+        1.9123850819069472,
+        32.0
+      ],
+      "triangle": 50230,
+      "face_slope_degrees": 57.977742570381885,
+      "roles_grass_rock_path_soil": [
+        0.9924191236495972,
+        0.007580861449241638,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 1.4901161193847656e-08,
+      "map_normal_up": 0.8080700635910034,
+      "map_height": 1.8991942405700684
+    },
+    {
+      "godot_xyz": [
+        21.5,
+        1.9804006019934453,
+        32.0
+      ],
+      "triangle": 50233,
+      "face_slope_degrees": 74.4109184611406,
+      "roles_grass_rock_path_soil": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.7783483266830444,
+      "map_height": 1.9543495178222656
+    },
+    {
+      "godot_xyz": [
+        21.75,
+        2.119353584857273,
+        32.0
+      ],
+      "triangle": 50234,
+      "face_slope_degrees": 74.1454818343118,
+      "roles_grass_rock_path_soil": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.7357138395309448,
+      "map_height": 2.0879697799682617
+    },
+    {
+      "godot_xyz": [
+        22.0,
+        2.399986006624567,
+        32.0
+      ],
+      "triangle": 50236,
+      "face_slope_degrees": 73.06064634936598,
+      "roles_grass_rock_path_soil": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.7276768684387207,
+      "map_height": 2.3758206367492676
+    },
+    {
+      "godot_xyz": [
+        22.25,
+        2.350923835770528,
+        32.0
+      ],
+      "triangle": 50237,
+      "face_slope_degrees": 76.51898028609067,
+      "roles_grass_rock_path_soil": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.655641496181488,
+      "map_height": 2.312826633453369
+    },
+    {
+      "godot_xyz": [
+        22.5,
+        2.8807115273453725,
+        32.0
+      ],
+      "triangle": 50238,
+      "face_slope_degrees": 78.63592660654002,
+      "roles_grass_rock_path_soil": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.509027361869812,
+      "map_height": 2.8377509117126465
+    },
+    {
+      "godot_xyz": [
+        22.75,
+        3.2915495081735004,
+        32.0
+      ],
+      "triangle": 50241,
+      "face_slope_degrees": 42.133194990623075,
+      "roles_grass_rock_path_soil": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.5250394344329834,
+      "map_height": 3.2901721000671387
+    },
+    {
+      "godot_xyz": [
+        23.0,
+        3.4279854675894983,
+        32.0
+      ],
+      "triangle": 50242,
+      "face_slope_degrees": 38.419402721196846,
+      "roles_grass_rock_path_soil": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.666004478931427,
+      "map_height": 3.4253268241882324
+    },
+    {
+      "godot_xyz": [
+        23.25,
+        3.4732081205137586,
+        32.0
+      ],
+      "triangle": 50244,
+      "face_slope_degrees": 20.876969811545894,
+      "roles_grass_rock_path_soil": [
+        0.5213556356618072,
+        0.0,
+        0.47536522150039673,
+        0.0
+      ],
+      "residual_sand": 0.0032791428377960674,
+      "map_normal_up": 0.7301252484321594,
+      "map_height": 3.471163511276245
+    },
+    {
+      "godot_xyz": [
+        23.5,
+        3.4662953340535805,
+        32.0
+      ],
+      "triangle": 50245,
+      "face_slope_degrees": 5.2581573166271625,
+      "roles_grass_rock_path_soil": [
+        0.0026192886552079053,
+        0.0,
+        0.9973486065864563,
+        0.0
+      ],
+      "residual_sand": 3.210475833581583e-05,
+      "map_normal_up": 0.7821928262710571,
+      "map_height": 3.465564489364624
+    },
+    {
+      "godot_xyz": [
+        23.75,
+        3.352683063172486,
+        32.0
+      ],
+      "triangle": 50246,
+      "face_slope_degrees": 37.56553128980948,
+      "roles_grass_rock_path_soil": [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.7656151056289673,
+      "map_height": 3.3423497676849365
+    },
+    {
+      "godot_xyz": [
+        24.0,
+        3.2527182203693354,
+        32.0
+      ],
+      "triangle": 50249,
+      "face_slope_degrees": 31.101797145536004,
+      "roles_grass_rock_path_soil": [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.7638298869132996,
+      "map_height": 3.249635934829712
+    },
+    {
+      "godot_xyz": [
+        24.25,
+        3.1789301657206113,
+        32.0
+      ],
+      "triangle": 50250,
+      "face_slope_degrees": 31.025835857292037,
+      "roles_grass_rock_path_soil": [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.8474896550178528,
+      "map_height": 3.173553466796875
+    },
+    {
+      "godot_xyz": [
+        24.5,
+        3.1069744974855698,
+        32.0
+      ],
+      "triangle": 50251,
+      "face_slope_degrees": 31.000489254189795,
+      "roles_grass_rock_path_soil": [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.9193645715713501,
+      "map_height": 3.0995776653289795
+    },
+    {
+      "godot_xyz": [
+        19.0,
+        1.1801390913155378,
+        46.5
+      ],
+      "triangle": 105629,
+      "face_slope_degrees": 2.7809278375263586,
+      "roles_grass_rock_path_soil": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.9899934530258179,
+      "map_height": 1.180055856704712
+    },
+    {
+      "godot_xyz": [
+        19.25,
+        1.2045125833176553,
+        46.5
+      ],
+      "triangle": 107281,
+      "face_slope_degrees": 19.657909203776367,
+      "roles_grass_rock_path_soil": [
+        0.9925717115402222,
+        0.007428271695971489,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 1.6763806343078613e-08,
+      "map_normal_up": 0.9499948024749756,
+      "map_height": 1.2047041654586792
+    },
+    {
+      "godot_xyz": [
+        19.5,
+        1.2232819505080619,
+        46.5
+      ],
+      "triangle": 106363,
+      "face_slope_degrees": 39.711276214054045,
+      "roles_grass_rock_path_soil": [
+        0.9371153197261451,
+        0.06288461782592841,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 6.244792638554486e-08,
+      "map_normal_up": 0.9144590497016907,
+      "map_height": 1.2202084064483643
+    },
+    {
+      "godot_xyz": [
+        19.75,
+        1.3121851374570825,
+        46.5
+      ],
+      "triangle": 106362,
+      "face_slope_degrees": 38.46863964032462,
+      "roles_grass_rock_path_soil": [
+        0.09778904644330162,
+        0.9022109535566984,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.7508369088172913,
+      "map_height": 1.312418818473816
+    },
+    {
+      "godot_xyz": [
+        20.0,
+        1.638417987543618,
+        46.5
+      ],
+      "triangle": 106552,
+      "face_slope_degrees": 76.90295015236832,
+      "roles_grass_rock_path_soil": [
+        0.0,
+        0.9999999403953552,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 5.960464477539063e-08,
+      "map_normal_up": 0.23066985607147217,
+      "map_height": 1.6677041053771973
+    },
+    {
+      "godot_xyz": [
+        20.25,
+        2.677855885595414,
+        46.5
+      ],
+      "triangle": 113306,
+      "face_slope_degrees": 71.85049792984067,
+      "roles_grass_rock_path_soil": [
+        0.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.22936198115348816,
+      "map_height": 2.6694815158843994
+    },
+    {
+      "godot_xyz": [
+        20.5,
+        3.253310541187265,
+        46.5
+      ],
+      "triangle": 108007,
+      "face_slope_degrees": 63.07680849373658,
+      "roles_grass_rock_path_soil": [
+        0.0,
+        0.9830390547833585,
+        0.016960945216641488,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.6003601551055908,
+      "map_height": 3.257498264312744
+    },
+    {
+      "godot_xyz": [
+        20.75,
+        3.4017961281202953,
+        46.5
+      ],
+      "triangle": 108732,
+      "face_slope_degrees": 25.57536978701058,
+      "roles_grass_rock_path_soil": [
+        0.006057858925472344,
+        0.03898412015678258,
+        0.954958020917745,
+        0.0
+      ],
+      "residual_sand": 1.1102230246251565e-16,
+      "map_normal_up": 0.8467108011245728,
+      "map_height": 3.4054460525512695
+    },
+    {
+      "godot_xyz": [
+        21.0,
+        3.4761826645860108,
+        46.5
+      ],
+      "triangle": 108201,
+      "face_slope_degrees": 13.40703206053066,
+      "roles_grass_rock_path_soil": [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.9321297407150269,
+      "map_height": 3.4752137660980225
+    },
+    {
+      "godot_xyz": [
+        21.25,
+        3.525479696689649,
+        46.5
+      ],
+      "triangle": 108112,
+      "face_slope_degrees": 7.852546462784803,
+      "roles_grass_rock_path_soil": [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.9828838109970093,
+      "map_height": 3.5259549617767334
+    },
+    {
+      "godot_xyz": [
+        21.5,
+        3.547606137683964,
+        46.5
+      ],
+      "triangle": 108140,
+      "face_slope_degrees": 6.516070590740077,
+      "roles_grass_rock_path_soil": [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.9781863689422607,
+      "map_height": 3.5489492416381836
+    },
+    {
+      "godot_xyz": [
+        21.75,
+        3.6175350567518705,
+        46.5
+      ],
+      "triangle": 108527,
+      "face_slope_degrees": 16.965463801890998,
+      "roles_grass_rock_path_soil": [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.798970103263855,
+      "map_height": 3.616288661956787
+    },
+    {
+      "godot_xyz": [
+        22.0,
+        4.002904085199536,
+        46.5
+      ],
+      "triangle": 110202,
+      "face_slope_degrees": 64.53127340433134,
+      "roles_grass_rock_path_soil": [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.796421229839325,
+      "map_height": 4.010227680206299
+    },
+    {
+      "godot_xyz": [
+        22.25,
+        4.371748949762092,
+        46.5
+      ],
+      "triangle": 108946,
+      "face_slope_degrees": 0.8692261795184028,
+      "roles_grass_rock_path_soil": [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.8813444375991821,
+      "map_height": 4.371806621551514
+    },
+    {
+      "godot_xyz": [
+        22.5,
+        4.372871319705455,
+        46.5
+      ],
+      "triangle": 108945,
+      "face_slope_degrees": 0.26183283891394976,
+      "roles_grass_rock_path_soil": [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.9798677563667297,
+      "map_height": 4.372852325439453
+    },
+    {
+      "godot_xyz": [
+        22.75,
+        4.373063474823226,
+        46.5
+      ],
+      "triangle": 109280,
+      "face_slope_degrees": 0.002817455749465328,
+      "roles_grass_rock_path_soil": [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.9784399271011353,
+      "map_height": 4.373063087463379
+    },
+    {
+      "godot_xyz": [
+        23.0,
+        4.316052667479435,
+        46.5
+      ],
+      "triangle": 110007,
+      "face_slope_degrees": 31.167975503908863,
+      "roles_grass_rock_path_soil": [
+        0.45209354162216187,
+        0.0,
+        0.5479064583778381,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.9607731103897095,
+      "map_height": 4.309296607971191
+    },
+    {
+      "godot_xyz": [
+        23.25,
+        4.168495327908376,
+        46.5
+      ],
+      "triangle": 110007,
+      "face_slope_degrees": 31.167975503908863,
+      "roles_grass_rock_path_soil": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.9557363986968994,
+      "map_height": 4.170962810516357
+    },
+    {
+      "godot_xyz": [
+        23.5,
+        4.147076230560336,
+        46.5
+      ],
+      "triangle": 109485,
+      "face_slope_degrees": 3.3489335983421222,
+      "roles_grass_rock_path_soil": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.9848213791847229,
+      "map_height": 4.1468682289123535
+    },
+    {
+      "godot_xyz": [
+        23.75,
+        4.140008265023657,
+        46.5
+      ],
+      "triangle": 109832,
+      "face_slope_degrees": 0.0016385113024201881,
+      "roles_grass_rock_path_soil": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.9997196197509766,
+      "map_height": 4.140008449554443
+    },
+    {
+      "godot_xyz": [
+        24.0,
+        4.140013217891919,
+        46.5
+      ],
+      "triangle": 109672,
+      "face_slope_degrees": 0.0013660391680555754,
+      "roles_grass_rock_path_soil": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 1.0,
+      "map_height": 4.140012741088867
+    },
+    {
+      "godot_xyz": [
+        24.25,
+        4.14000479199295,
+        46.5
+      ],
+      "triangle": 109671,
+      "face_slope_degrees": 0.002567801846252072,
+      "roles_grass_rock_path_soil": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 1.0,
+      "map_height": 4.140004634857178
+    },
+    {
+      "godot_xyz": [
+        24.5,
+        4.139997959102857,
+        46.5
+      ],
+      "triangle": 113090,
+      "face_slope_degrees": 0.0013660391680555754,
+      "roles_grass_rock_path_soil": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 1.0,
+      "map_height": 4.139997959136963
+    },
+    {
+      "godot_xyz": [
+        19.0,
+        1.452887005603295,
+        59.25
+      ],
+      "triangle": 105543,
+      "face_slope_degrees": 36.80196430630032,
+      "roles_grass_rock_path_soil": [
+        0.8493050005114989,
+        0.15069499948850107,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.7067720890045166,
+      "map_height": 1.4528107643127441
+    },
+    {
+      "godot_xyz": [
+        19.25,
+        1.579574640800283,
+        59.25
+      ],
+      "triangle": 105401,
+      "face_slope_degrees": 11.853766590272842,
+      "roles_grass_rock_path_soil": [
+        0.9985347390174866,
+        0.0014652445679530501,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 1.641456037759781e-08,
+      "map_normal_up": 0.9620327353477478,
+      "map_height": 1.5784083604812622
+    },
+    {
+      "godot_xyz": [
+        19.5,
+        1.3702809540534546,
+        59.25
+      ],
+      "triangle": 106024,
+      "face_slope_degrees": 58.82514512672683,
+      "roles_grass_rock_path_soil": [
+        0.9100004134744443,
+        0.08999958652555586,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.686302125453949,
+      "map_height": 1.3791885375976562
+    },
+    {
+      "godot_xyz": [
+        19.75,
+        1.1799999475479126,
+        59.25
+      ],
+      "triangle": 106181,
+      "face_slope_degrees": 0.0,
+      "roles_grass_rock_path_soil": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.954870343208313,
+      "map_height": 1.1800000667572021
+    },
+    {
+      "godot_xyz": [
+        20.0,
+        1.1799999475479126,
+        59.25
+      ],
+      "triangle": 106970,
+      "face_slope_degrees": 0.0,
+      "roles_grass_rock_path_soil": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.9988507628440857,
+      "map_height": 1.1799999475479126
+    },
+    {
+      "godot_xyz": [
+        20.25,
+        1.1936151172436134,
+        59.25
+      ],
+      "triangle": 106775,
+      "face_slope_degrees": 11.381409431673458,
+      "roles_grass_rock_path_soil": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.9898641109466553,
+      "map_height": 1.193423867225647
+    },
+    {
+      "godot_xyz": [
+        20.5,
+        1.2563245818570143,
+        59.25
+      ],
+      "triangle": 113182,
+      "face_slope_degrees": 36.77189203216366,
+      "roles_grass_rock_path_soil": [
+        0.37043249197458944,
+        0.629567480191299,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 2.7834111460123268e-08,
+      "map_normal_up": 0.8813694715499878,
+      "map_height": 1.2598094940185547
+    },
+    {
+      "godot_xyz": [
+        20.75,
+        1.455250102992208,
+        59.25
+      ],
+      "triangle": 113183,
+      "face_slope_degrees": 45.02705119735107,
+      "roles_grass_rock_path_soil": [
+        0.03160460665822029,
+        0.9683953821659088,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 1.1175870895385742e-08,
+      "map_normal_up": 0.656198263168335,
+      "map_height": 1.4690630435943604
+    },
+    {
+      "godot_xyz": [
+        21.0,
+        1.9118427590146534,
+        59.25
+      ],
+      "triangle": 107895,
+      "face_slope_degrees": 66.76297853836296,
+      "roles_grass_rock_path_soil": [
+        0.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.5220572352409363,
+      "map_height": 1.9063224792480469
+    },
+    {
+      "godot_xyz": [
+        21.25,
+        2.4826759268789313,
+        59.25
+      ],
+      "triangle": 108607,
+      "face_slope_degrees": 66.2194438804772,
+      "roles_grass_rock_path_soil": [
+        0.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.41627439856529236,
+      "map_height": 2.4947352409362793
+    },
+    {
+      "godot_xyz": [
+        21.5,
+        3.0481340734209144,
+        59.25
+      ],
+      "triangle": 108606,
+      "face_slope_degrees": 66.64572581186815,
+      "roles_grass_rock_path_soil": [
+        0.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.5539000034332275,
+      "map_height": 3.0777573585510254
+    },
+    {
+      "godot_xyz": [
+        21.75,
+        3.477908680300767,
+        59.25
+      ],
+      "triangle": 110087,
+      "face_slope_degrees": 34.14753629102765,
+      "roles_grass_rock_path_soil": [
+        0.28324935061974077,
+        0.7167506493802592,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.6845978498458862,
+      "map_height": 3.4751901626586914
+    },
+    {
+      "godot_xyz": [
+        22.0,
+        3.6466569218840132,
+        59.25
+      ],
+      "triangle": 110086,
+      "face_slope_degrees": 33.96877796435568,
+      "roles_grass_rock_path_soil": [
+        0.8942611687416391,
+        0.10573883125836098,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.8471545577049255,
+      "map_height": 3.649264335632324
+    },
+    {
+      "godot_xyz": [
+        22.25,
+        3.754397649113216,
+        59.25
+      ],
+      "triangle": 109182,
+      "face_slope_degrees": 11.546055151674585,
+      "roles_grass_rock_path_soil": [
+        0.9803753484852334,
+        0.01962465151476641,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 1.1102230246251565e-16,
+      "map_normal_up": 0.9252841472625732,
+      "map_height": 3.7551469802856445
+    },
+    {
+      "godot_xyz": [
+        22.5,
+        3.801851992304612,
+        59.25
+      ],
+      "triangle": 109181,
+      "face_slope_degrees": 15.269437304940576,
+      "roles_grass_rock_path_soil": [
+        0.992389976978302,
+        0.007609994616359472,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 2.8405338525772095e-08,
+      "map_normal_up": 0.9198257923126221,
+      "map_height": 3.7995665073394775
+    },
+    {
+      "godot_xyz": [
+        22.75,
+        3.9145679426642226,
+        59.25
+      ],
+      "triangle": 109912,
+      "face_slope_degrees": 34.53005378975656,
+      "roles_grass_rock_path_soil": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.9232162833213806,
+      "map_height": 3.916759490966797
+    },
+    {
+      "godot_xyz": [
+        23.0,
+        4.078687319993804,
+        59.25
+      ],
+      "triangle": 109911,
+      "face_slope_degrees": 32.215068738678085,
+      "roles_grass_rock_path_soil": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.9379117488861084,
+      "map_height": 4.086516380310059
+    },
+    {
+      "godot_xyz": [
+        23.25,
+        4.2355157715362495,
+        59.25
+      ],
+      "triangle": 109911,
+      "face_slope_degrees": 32.215068738678085,
+      "roles_grass_rock_path_soil": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.9539509415626526,
+      "map_height": 4.2335429191589355
+    },
+    {
+      "godot_xyz": [
+        23.5,
+        4.287862587489183,
+        59.25
+      ],
+      "triangle": 109408,
+      "face_slope_degrees": 0.6536591097104294,
+      "roles_grass_rock_path_soil": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.9807034730911255,
+      "map_height": 4.28791618347168
+    },
+    {
+      "godot_xyz": [
+        23.75,
+        4.2900100362293765,
+        59.25
+      ],
+      "triangle": 109733,
+      "face_slope_degrees": 0.0017547632412203958,
+      "roles_grass_rock_path_soil": [
+        0.9999999403953552,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 5.960464477539063e-08,
+      "map_normal_up": 0.9999883770942688,
+      "map_height": 4.290009498596191
+    },
+    {
+      "godot_xyz": [
+        24.0,
+        4.29000638021181,
+        59.25
+      ],
+      "triangle": 109732,
+      "face_slope_degrees": 0.0015169340219181463,
+      "roles_grass_rock_path_soil": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.9999983906745911,
+      "map_height": 4.290006160736084
+    },
+    {
+      "godot_xyz": [
+        24.25,
+        4.290005922300452,
+        59.25
+      ],
+      "triangle": 112994,
+      "face_slope_degrees": 0.0013660391680555754,
+      "roles_grass_rock_path_soil": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 1.0,
+      "map_height": 4.290005683898926
+    },
+    {
+      "godot_xyz": [
+        24.5,
+        4.290007842651417,
+        59.25
+      ],
+      "triangle": 112995,
+      "face_slope_degrees": 0.0017360294145276694,
+      "roles_grass_rock_path_soil": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 1.0,
+      "map_height": 4.290008068084717
+    }
+  ],
+  "route_samples": [
+    {
+      "godot_xyz": [
+        21.8,
+        4.158239773419339,
+        30.5
+      ],
+      "triangle": 49080,
+      "face_slope_degrees": 52.9457642405787,
+      "roles_grass_rock_path_soil": [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.8567900061607361,
+      "map_height": 4.146822929382324,
+      "route": "clinic_ramp",
+      "local_longitudinal_slope_degrees": -47.13341366675218,
+      "local_transverse_slope_degrees": 37.60708137227956
+    },
+    {
+      "godot_xyz": [
+        22.3,
+        3.9996502638353655,
+        30.75
+      ],
+      "triangle": 49083,
+      "face_slope_degrees": 57.94068819414286,
+      "roles_grass_rock_path_soil": [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.8286013007164001,
+      "map_height": 4.03291130065918,
+      "route": "clinic_ramp",
+      "local_longitudinal_slope_degrees": 35.02095665042365,
+      "local_transverse_slope_degrees": 55.12238154658664
+    },
+    {
+      "godot_xyz": [
+        22.63,
+        3.926816099235232,
+        30.915
+      ],
+      "triangle": 49374,
+      "face_slope_degrees": 47.360636460487974,
+      "roles_grass_rock_path_soil": [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.7889296412467957,
+      "map_height": 3.9221348762512207,
+      "route": "clinic_ramp",
+      "local_longitudinal_slope_degrees": 29.852168761722794,
+      "local_transverse_slope_degrees": 42.67469716782861
+    },
+    {
+      "godot_xyz": [
+        22.3,
+        4.011291412875326,
+        15.3
+      ],
+      "triangle": 35250,
+      "face_slope_degrees": 10.282520409960442,
+      "roles_grass_rock_path_soil": [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.9714829921722412,
+      "map_height": 4.013762474060059,
+      "route": "chapel_ramp",
+      "local_longitudinal_slope_degrees": 5.626196102197747,
+      "local_transverse_slope_degrees": 8.661742850346567
+    },
+    {
+      "godot_xyz": [
+        22.55,
+        4.083047029542592,
+        16.1
+      ],
+      "triangle": 36117,
+      "face_slope_degrees": 43.18361716417176,
+      "roles_grass_rock_path_soil": [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.8555984497070312,
+      "map_height": 4.076010704040527,
+      "route": "chapel_ramp",
+      "local_longitudinal_slope_degrees": -21.139573903442002,
+      "local_transverse_slope_degrees": 40.536173756609585
+    },
+    {
+      "godot_xyz": [
+        22.7,
+        4.214489314781279,
+        16.5
+      ],
+      "triangle": 36405,
+      "face_slope_degrees": 50.044544331803976,
+      "roles_grass_rock_path_soil": [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.8521339893341064,
+      "map_height": 4.216846466064453,
+      "route": "chapel_ramp",
+      "local_longitudinal_slope_degrees": -6.8800751292322495,
+      "local_transverse_slope_degrees": 49.89963315522923
+    },
+    {
+      "godot_xyz": [
+        22.9,
+        3.872702593309198,
+        16.9
+      ],
+      "triangle": 36695,
+      "face_slope_degrees": 60.22788146787347,
+      "roles_grass_rock_path_soil": [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.8279131054878235,
+      "map_height": 3.8743667602539062,
+      "route": "chapel_ramp",
+      "local_longitudinal_slope_degrees": 50.8312519884106,
+      "local_transverse_slope_degrees": 51.21908997244016
+    },
+    {
+      "godot_xyz": [
+        23.4,
+        3.4501788960999074,
+        17.3
+      ],
+      "triangle": 36986,
+      "face_slope_degrees": 44.784909776819134,
+      "roles_grass_rock_path_soil": [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.8308569192886353,
+      "map_height": 3.4686222076416016,
+      "route": "chapel_ramp",
+      "local_longitudinal_slope_degrees": 39.00240224232462,
+      "local_transverse_slope_degrees": 29.846709962024615
+    },
+    {
+      "godot_xyz": [
+        23.9,
+        3.259167417313993,
+        17.6
+      ],
+      "triangle": 37276,
+      "face_slope_degrees": 16.168287860048583,
+      "roles_grass_rock_path_soil": [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.9679418802261353,
+      "map_height": 3.256845235824585,
+      "route": "chapel_ramp",
+      "local_longitudinal_slope_degrees": 16.13067890695051,
+      "local_transverse_slope_degrees": -1.1628527742340686
+    },
+    {
+      "godot_xyz": [
+        24,
+        3.2799999737190073,
+        18
+      ],
+      "triangle": 37854,
+      "face_slope_degrees": 21.80143233680737,
+      "roles_grass_rock_path_soil": [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.9657420516014099,
+      "map_height": 3.27540922164917,
+      "route": "chapel_ramp",
+      "local_longitudinal_slope_degrees": -21.642208401750004,
+      "local_transverse_slope_degrees": -2.8996949577922226
+    },
+    {
+      "godot_xyz": [
+        24,
+        3.480000031526454,
+        18.5
+      ],
+      "triangle": 38142,
+      "face_slope_degrees": 21.80138477397939,
+      "roles_grass_rock_path_soil": [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.9257869720458984,
+      "map_height": 3.483808755874634,
+      "route": "chapel_ramp",
+      "local_longitudinal_slope_degrees": -21.80138477397749,
+      "local_transverse_slope_degrees": 1.0034538510611355e-05
+    },
+    {
+      "godot_xyz": [
+        23.8,
+        3.623018644352603,
+        19.1
+      ],
+      "triangle": 38717,
+      "face_slope_degrees": 26.814453700189976,
+      "roles_grass_rock_path_soil": [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.8564755916595459,
+      "map_height": 3.6201171875,
+      "route": "chapel_ramp",
+      "local_longitudinal_slope_degrees": 11.532182606656765,
+      "local_transverse_slope_degrees": 24.817749112656003
+    },
+    {
+      "godot_xyz": [
+        23.2,
+        2.516663194535112,
+        19.5
+      ],
+      "triangle": 39000,
+      "face_slope_degrees": 23.59184619574697,
+      "roles_grass_rock_path_soil": [
+        0.0009624361991882324,
+        0.0,
+        0.9990375638008118,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.7549543976783752,
+      "map_height": 2.5155491828918457,
+      "route": "chapel_ramp",
+      "local_longitudinal_slope_degrees": 23.52832736445737,
+      "local_transverse_slope_degrees": 1.9428300140414088
+    },
+    {
+      "godot_xyz": [
+        21.75,
+        3.6175350567518705,
+        46.5
+      ],
+      "triangle": 108527,
+      "face_slope_degrees": 16.965463801890998,
+      "roles_grass_rock_path_soil": [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.798970103263855,
+      "map_height": 3.616288661956787,
+      "route": "travel_entry",
+      "local_longitudinal_slope_degrees": 16.60582153780723,
+      "local_transverse_slope_degrees": -3.677695633759177
+    },
+    {
+      "godot_xyz": [
+        22.0,
+        4.002904085199536,
+        46.5
+      ],
+      "triangle": 110202,
+      "face_slope_degrees": 64.53127340433134,
+      "roles_grass_rock_path_soil": [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.796421229839325,
+      "map_height": 4.010227680206299,
+      "route": "travel_entry",
+      "local_longitudinal_slope_degrees": 64.05324760118327,
+      "local_transverse_slope_degrees": -23.229900846014846
+    },
+    {
+      "godot_xyz": [
+        22.1,
+        4.2064502530653485,
+        46.5
+      ],
+      "triangle": 110202,
+      "face_slope_degrees": 64.53127340433134,
+      "roles_grass_rock_path_soil": [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "residual_sand": 0,
+      "map_normal_up": 0.8248607516288757,
+      "map_height": 4.201053142547607,
+      "route": "travel_entry",
+      "local_longitudinal_slope_degrees": 64.11143515352718,
+      "local_transverse_slope_degrees": -21.94580731638978
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "meta": null,
+  "content": [
+    {
+      "type": "text",
+      "text": "Code executed successfully: {\"pid\": 28032, \"port\": 9881, \"file\": \"F:\\\\\\u9a6c\\u5c3c\\u62c9godot\\\\manila-godot\\\\demo\\\\tropical_harbor_3d\\\\source\\\\harbor_shore_control_mcp.blend\", \"source_sha256\": \"a1bc01b19da7b12c9993f8afaecc70889f15d10f7190a482b6f6fa35e5e7cdaf\", \"dirty\": false, \"blender\": \"5.3.0\", \"resumed_on\": \"2026-11-25\", \"previous_pid\": 12164, \"previous_session_normal_quit_verified\": false, \"saved_state\": \"third completed export; fourth failed trial was not saved\", \"immutable_baseline\": \"baseline.npz and objects_before.json remain unchanged\"}\n",
+      "annotations": null,
+      "meta": null
+    }
+  ],
+  "structuredContent": {
+    "result": "Code executed successfully: {\"pid\": 28032, \"port\": 9881, \"file\": \"F:\\\\\\u9a6c\\u5c3c\\u62c9godot\\\\manila-godot\\\\demo\\\\tropical_harbor_3d\\\\source\\\\harbor_shore_control_mcp.blend\", \"source_sha256\": \"a1bc01b19da7b12c9993f8afaecc70889f15d10f7190a482b6f6fa35e5e7cdaf\", \"dirty\": false, \"blender\": \"5.3.0\", \"resumed_on\": \"2026-11-25\", \"previous_pid\": 12164, \"previous_session_normal_quit_verified\": false, \"saved_state\": \"third completed export; fourth failed trial was not saved\", \"immutable_baseline\": \"baseline.npz and objects_before.json remain unchanged\"}\n"
+  },
+  "isError": false
+}

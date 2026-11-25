@@ -1,0 +1,15 @@
+{
+  "meta": null,
+  "content": [
+    {
+      "type": "text",
+      "text": "Error executing code: Communication error with Blender: {\"exception_type\": \"AssertionError\", \"message\": \"\", \"traceback\": \"Traceback (most recent call last):\\n  File \\\"C:\\\\Users\\\\derwyn king\\\\AppData\\\\Roaming\\\\Blender Foundation\\\\Blender\\\\5.3\\\\scripts\\\\addons\\\\blender_mcp.py\\\", line 2438, in execute_code\\n    exec(code, namespace)\\n    ~~~~^^^^^^^^^^^^^^^^^\\n  File \\\"<string>\\\", line 12, in <module>\\n  File \\\"structure23_11_finalize_surface.py\\\", line 8, in <module>\\n    assert not json.loads((LOG/'structure_audit.json').read_text(encoding='utf8'))['failures']\\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\\nAssertionError\\n\"}",
+      "annotations": null,
+      "meta": null
+    }
+  ],
+  "structuredContent": {
+    "result": "Error executing code: Communication error with Blender: {\"exception_type\": \"AssertionError\", \"message\": \"\", \"traceback\": \"Traceback (most recent call last):\\n  File \\\"C:\\\\Users\\\\derwyn king\\\\AppData\\\\Roaming\\\\Blender Foundation\\\\Blender\\\\5.3\\\\scripts\\\\addons\\\\blender_mcp.py\\\", line 2438, in execute_code\\n    exec(code, namespace)\\n    ~~~~^^^^^^^^^^^^^^^^^\\n  File \\\"<string>\\\", line 12, in <module>\\n  File \\\"structure23_11_finalize_surface.py\\\", line 8, in <module>\\n    assert not json.loads((LOG/'structure_audit.json').read_text(encoding='utf8'))['failures']\\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\\nAssertionError\\n\"}"
+  },
+  "isError": false
+}

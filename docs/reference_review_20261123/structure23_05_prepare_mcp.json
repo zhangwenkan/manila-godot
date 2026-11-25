@@ -1,0 +1,15 @@
+{
+  "meta": null,
+  "content": [
+    {
+      "type": "text",
+      "text": "Code executed successfully: {\"routes\": 15, \"platforms\": 21, \"shore_sections\": 24}\n",
+      "annotations": null,
+      "meta": null
+    }
+  ],
+  "structuredContent": {
+    "result": "Code executed successfully: {\"routes\": 15, \"platforms\": 21, \"shore_sections\": 24}\n"
+  },
+  "isError": false
+}

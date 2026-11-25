@@ -1,0 +1,968 @@
+{
+  "status": "proposed_for_live_mesh_validation_not_applied",
+  "coordinate_order": "routes.points are [Godot x, Godot z, Godot y height], metres; polygons are [x,z]",
+  "baseline": "road_contacts_20261123/grade_before_after.npz positions; final land_data.npz; current live source must match before using",
+  "design_intent": "One supported upper frontage path connects chapel, hospital, side huts and travel agency. A public side path passes inland around the travel building and low valley, then enters the school forecourt from its north side. Retire the former painted cliff shortcuts.",
+  "routes": [
+    {
+      "name": "upper_frontage_chapel_clinic_travel",
+      "kind": "path",
+      "halfwidth": 0.72,
+      "shoulder_width": 0.5,
+      "points": [
+        [
+          22.1,
+          14.8,
+          4.18
+        ],
+        [
+          22.2,
+          16.0,
+          4.18
+        ],
+        [
+          23.25,
+          18.0,
+          4.08
+        ],
+        [
+          23.65,
+          19.5,
+          4.02
+        ],
+        [
+          23.65,
+          21.0,
+          4.1
+        ],
+        [
+          23.45,
+          23.15,
+          4.18
+        ],
+        [
+          22.85,
+          24.7,
+          4.26
+        ],
+        [
+          22.05,
+          26.5,
+          4.42
+        ],
+        [
+          21.75,
+          28.4,
+          4.48
+        ],
+        [
+          21.85,
+          30.0,
+          4.4
+        ],
+        [
+          22.25,
+          31.7,
+          4.2
+        ],
+        [
+          22.15,
+          33.6,
+          4.05
+        ],
+        [
+          21.55,
+          35.3,
+          3.94
+        ],
+        [
+          21.4,
+          36.5,
+          3.94
+        ],
+        [
+          21.6,
+          38.0,
+          4.05
+        ],
+        [
+          21.7,
+          39.2,
+          4.14
+        ],
+        [
+          21.8,
+          41.1,
+          4.2
+        ],
+        [
+          21.7,
+          42.3,
+          4.24
+        ],
+        [
+          21.15,
+          44.25,
+          4.29
+        ],
+        [
+          21.15,
+          46.5,
+          4.35
+        ]
+      ],
+      "notes": "Build the whole road width as a low-crossfall bed, not a centreline color. At clinic z31..35, replace the old steep grass strip/painted turn with one continuous supported shoulder; this intentionally changes the former low cut. The old clinic ramp must not remain underneath the new frontage. At z18..20, the route meets the chapel-side hut landing west of its lowest stair."
+    },
+    {
+      "name": "upper_public_side_route_to_school",
+      "kind": "path",
+      "halfwidth": 0.7,
+      "shoulder_width": 0.55,
+      "points": [
+        [
+          21.7,
+          42.3,
+          4.24
+        ],
+        [
+          23.6,
+          42.0,
+          4.2
+        ],
+        [
+          26.4,
+          42.0,
+          4.2
+        ],
+        [
+          28.0,
+          42.8,
+          4.2
+        ],
+        [
+          28.65,
+          44.7,
+          4.2
+        ],
+        [
+          28.8,
+          47.5,
+          4.2
+        ],
+        [
+          29.25,
+          49.4,
+          4.2
+        ],
+        [
+          30.25,
+          51.0,
+          4.15
+        ],
+        [
+          30.5,
+          52.5,
+          4.1
+        ],
+        [
+          29.55,
+          54.0,
+          4.2
+        ],
+        [
+          27.8,
+          54.0,
+          4.25
+        ],
+        [
+          25.8,
+          53.9,
+          4.25
+        ],
+        [
+          23.7,
+          54.0,
+          4.28
+        ],
+        [
+          22.7,
+          55.0,
+          4.32
+        ],
+        [
+          22.15,
+          56.8,
+          4.4
+        ],
+        [
+          22.1,
+          59.25,
+          4.45
+        ]
+      ],
+      "notes": "Keep the travel building footprint intact: connector passes its z42 south side and then its x28.65 east/back side. Do not connect travel to school by raising x22..25,z49..55 from 1.18m into a long embankment. Crossing the inland saddle needs at most a moderate local shoulder. The school north approach z53.9..55 needs a deliberately supported platform/returning slope, not a path painted down the old cliff."
+    }
+  ],
+  "platforms": [
+    {
+      "name": "chapel_forecourt",
+      "kind": "court",
+      "polygon": [
+        [
+          21.65,
+          13.35
+        ],
+        [
+          22.4,
+          13.1
+        ],
+        [
+          23.5,
+          13.2
+        ],
+        [
+          23.55,
+          16.05
+        ],
+        [
+          22.8,
+          16.65
+        ],
+        [
+          21.75,
+          16.15
+        ]
+      ],
+      "height": 4.22,
+      "blend_width": 0.7,
+      "entry_object": "Town_Step.005",
+      "entry_bottom_height": 4.2343645095825195,
+      "notes": "Finish immediately below existing entry step; keep actual footing/floor supports, not the former road paint."
+    },
+    {
+      "name": "chapel_side_hut_landing",
+      "kind": "court",
+      "polygon": [
+        [
+          23.3,
+          18.75
+        ],
+        [
+          24.72,
+          18.75
+        ],
+        [
+          24.85,
+          20.05
+        ],
+        [
+          23.55,
+          20.25
+        ],
+        [
+          23.15,
+          19.55
+        ]
+      ],
+      "height": 4.02,
+      "blend_width": 0.7,
+      "entry_object": "Hut_EntrySteps.051",
+      "entry_bottom_height": 4.031,
+      "notes": "Lowest stair landing, not the stilt-house floor height. Maintain the step sequence above it."
+    },
+    {
+      "name": "clinic_forecourt",
+      "kind": "court",
+      "polygon": [
+        [
+          21.2,
+          27.0
+        ],
+        [
+          22.2,
+          26.9
+        ],
+        [
+          22.72,
+          27.45
+        ],
+        [
+          22.85,
+          29.4
+        ],
+        [
+          22.3,
+          30.0
+        ],
+        [
+          21.25,
+          29.5
+        ]
+      ],
+      "height": 4.53,
+      "blend_width": 0.75,
+      "entry_object": "Town_Step.008",
+      "entry_bottom_height": 4.543097972869873,
+      "notes": "Stops before the true clinic footing. Move the two planter assemblies off the active walking footprint as complete groups; do not preserve grass strips around their current positions. Road/rock boundary must follow the rebuilt crest."
+    },
+    {
+      "name": "clinic_side_hut_landing",
+      "kind": "court",
+      "polygon": [
+        [
+          21.0,
+          35.5
+        ],
+        [
+          22.25,
+          35.5
+        ],
+        [
+          22.4,
+          37.2
+        ],
+        [
+          21.15,
+          37.3
+        ],
+        [
+          20.85,
+          36.5
+        ]
+      ],
+      "height": 3.93,
+      "blend_width": 0.7,
+      "entry_object": "Hut_EntrySteps.043",
+      "entry_bottom_height": 3.94,
+      "notes": "Keep an actual resting area at the lowest stair; the continuous frontage path passes its west side."
+    },
+    {
+      "name": "travel_forecourt",
+      "kind": "court",
+      "polygon": [
+        [
+          20.9,
+          45.4
+        ],
+        [
+          21.65,
+          45.0
+        ],
+        [
+          22.22,
+          45.15
+        ],
+        [
+          22.4,
+          47.3
+        ],
+        [
+          21.65,
+          47.85
+        ],
+        [
+          20.85,
+          47.15
+        ]
+      ],
+      "height": 4.35,
+      "blend_width": 0.8,
+      "entry_object": "Town_Step.003",
+      "entry_bottom_height": 4.3650665283203125,
+      "notes": "Raise the existing false short path into a real supported forecourt. Access comes from the south along the frontage, not straight through the cliff toward Rosie's roof."
+    },
+    {
+      "name": "school_forecourt",
+      "kind": "court",
+      "polygon": [
+        [
+          21.65,
+          57.8
+        ],
+        [
+          22.45,
+          57.45
+        ],
+        [
+          23.02,
+          57.7
+        ],
+        [
+          23.2,
+          60.8
+        ],
+        [
+          22.6,
+          61.1
+        ],
+        [
+          21.6,
+          60.45
+        ]
+      ],
+      "height": 4.5,
+      "blend_width": 0.85,
+      "entry_object": "Town_Step.007",
+      "entry_bottom_height": 4.515011787414551,
+      "notes": "Creates the missing school entry court; access from north-side public route. Rebuild the local cliff shoulder with an oblique return, not a rectangular green ledge or a new path painted down the front rock."
+    }
+  ],
+  "requested_lower_connections": [
+    {
+      "name": "chapel_shared_upper_junction",
+      "point": [
+        23.45,
+        23.15,
+        4.18
+      ],
+      "intent": "A new lower-to-upper passage should join here with matching full-width height. Do not reuse the chapel/hut V-shaped trench at z16..20. Choose enough length or explicit stair landings; no grade-normal clipping as a substitute for roadbed."
+    },
+    {
+      "name": "central_shared_upper_junction",
+      "point": [
+        21.7,
+        39.2,
+        4.14
+      ],
+      "intent": "Optional second central lower-to-upper access approaching from the outer slope, coordinated with tavern ground-floor footprint. If it cannot fit a real grade, omit it and keep one well-designed shared ascent."
+    }
+  ],
+  "retire_old_upper_routes": [
+    "chapel_ramp",
+    "chapel_entry",
+    "chapel_north_connection",
+    "chapel_side_hut_entry",
+    "clinic_ramp",
+    "clinic_entry",
+    "clinic_side_hut_entry",
+    "travel_entry"
+  ],
+  "earthwork_regions": [
+    {
+      "name": "chapel_hut_return",
+      "bounds_xz": [
+        21.0,
+        16.0,
+        25.3,
+        22.4
+      ],
+      "action": "Replace the old short convex lip and trough with the upper path/landing and a continuous outside earth/rock shoulder; preserve actual hut stair geometry."
+    },
+    {
+      "name": "clinic_crown_and_side",
+      "bounds_xz": [
+        19.2,
+        25.8,
+        23.8,
+        35.1
+      ],
+      "action": "Rebuild road width, crest and sidewall together. Remove the straight green strip on 59–73-degree faces. Frontage continuity crosses the former low ramp cut; this needs real terrain fill and a returning slope."
+    },
+    {
+      "name": "travel_entry_bench",
+      "bounds_xz": [
+        19.7,
+        43.8,
+        22.8,
+        48.6
+      ],
+      "action": "Widen and raise the isolated entry into a real upper bench; route it south into the shared frontage. Stop road material at the resulting crest."
+    },
+    {
+      "name": "inland_saddle",
+      "bounds_xz": [
+        27.8,
+        49.6,
+        31.7,
+        54.6
+      ],
+      "action": "Moderate cut/fill and roots relocation for the inland connection. Preserve the seaward low valley rather than creating a straight wall across it."
+    },
+    {
+      "name": "school_north_return",
+      "bounds_xz": [
+        21.3,
+        52.8,
+        28.5,
+        57.2
+      ],
+      "action": "Shape one oblique shoulder supporting the route into the school platform; do not retain a sharp road/grass corner at the old cliff."
+    },
+    {
+      "name": "school_forecourt_rock",
+      "bounds_xz": [
+        19.9,
+        56.4,
+        23.5,
+        62.0
+      ],
+      "action": "Build school court support and varied rock shoulder/foot. Break the old 6m almost-straight crown into a few purposeful masses; keep true school footing contact."
+    }
+  ],
+  "support_policy": {
+    "preserve": "Actual structural footing/floor and stair geometry for the four public buildings and two side huts. Protect real direct support, not all high wall projections.",
+    "move_then_reground": "Complete tree groups, shrubs, shore stones, planters and loose props overlapping the new route/earthwork. Never pin terrain around them into little grass islands.",
+    "no_partial_group_moves": "Tree crowns/trunks, barrel bands/lids, crate frames and planter plants follow their group transform.",
+    "shoulder_width_meaning": "The stated shoulder width is immediate road-edge shaping beyond the flat bed, not the full extent of a fill slope. Broader cut/fill must connect to untouched ground without leaving vertical height steps at the mask edge.",
+    "validation": "Check true geometry along both road edges and through junctions, as well as centreline. Show clay and material views before considering this successful. Guard against nearby routes imposing different heights on the same surface."
+  },
+  "offline_validation": {
+    "routes": [
+      {
+        "name": "upper_frontage_chapel_clinic_travel",
+        "plan_length_m": 32.594711757321676,
+        "maximum_segment_longitudinal_grade": 0.11451966686277382,
+        "maximum_segment_longitudinal_degrees": 6.533033075626071,
+        "largest_sampled_fill_m": 3.121693219482946,
+        "largest_sampled_cut_m": 0.20809831619262642,
+        "fill_hotspots": [
+          {
+            "xz": [
+              21.392055684993416,
+              26.207580304441517
+            ],
+            "baseline_h": 1.2983067805170536,
+            "target_h": 4.42,
+            "fill_m": 3.121693219482946
+          },
+          {
+            "xz": [
+              21.33881066496307,
+              26.38770694709943
+            ],
+            "baseline_h": 1.3127374701605719,
+            "target_h": 4.42,
+            "fill_m": 3.107262529839428
+          },
+          {
+            "xz": [
+              21.552055684993416,
+              25.847580304441518
+            ],
+            "baseline_h": 1.282247473989963,
+            "target_h": 4.388,
+            "fill_m": 3.105752526010037
+          },
+          {
+            "xz": [
+              21.712055684993416,
+              25.48758030444152
+            ],
+            "baseline_h": 1.3642558006170233,
+            "target_h": 4.356,
+            "fill_m": 2.9917441993829765
+          }
+        ],
+        "sample_spacing_m": 0.3,
+        "note": "Sampled centre and both planned edges; profile still requires live sculpt/edge verification."
+      },
+      {
+        "name": "upper_public_side_route_to_school",
+        "plan_length_m": 30.061848477376767,
+        "maximum_segment_longitudinal_grade": 0.056321271703615554,
+        "maximum_segment_longitudinal_degrees": 3.2235655684829245,
+        "largest_sampled_fill_m": 3.203026010143255,
+        "largest_sampled_cut_m": 0.05497356215611582,
+        "fill_hotspots": [
+          {
+            "xz": [
+              21.590553900264062,
+              56.23544702508068
+            ],
+            "baseline_h": 1.1809739898567453,
+            "target_h": 4.384,
+            "fill_m": 3.203026010143255
+          },
+          {
+            "xz": [
+              21.480553900264063,
+              56.59544702508068
+            ],
+            "baseline_h": 1.207925840487807,
+            "target_h": 4.4,
+            "fill_m": 3.1920741595121935
+          },
+          {
+            "xz": [
+              21.70055390026406,
+              55.87544702508068
+            ],
+            "baseline_h": 1.1799999475479126,
+            "target_h": 4.368,
+            "fill_m": 3.1880000524520877
+          },
+          {
+            "xz": [
+              21.450145727075586,
+              56.78571725973624
+            ],
+            "baseline_h": 1.2252487981885907,
+            "target_h": 4.4,
+            "fill_m": 3.17475120181141
+          }
+        ],
+        "sample_spacing_m": 0.3,
+        "note": "Sampled centre and both planned edges; profile still requires live sculpt/edge verification."
+      }
+    ],
+    "structural_nearby": [
+      {
+        "object": "Town_Step.003",
+        "bounds_xz": [
+          22.250112533569336,
+          45.68442916870117,
+          22.845666885375977,
+          47.30025100708008
+        ],
+        "height_bounds": [
+          4.3650665283203125,
+          4.455066680908203
+        ],
+        "near_routes": [
+          "upper_frontage_chapel_clinic_travel"
+        ]
+      },
+      {
+        "object": "Town_Floor.003",
+        "bounds_xz": [
+          22.630281448364258,
+          43.859378814697266,
+          26.835947036743164,
+          48.140621185302734
+        ],
+        "height_bounds": [
+          4.455066680908203,
+          4.6150665283203125
+        ],
+        "near_routes": [
+          "upper_frontage_chapel_clinic_travel",
+          "upper_public_side_route_to_school"
+        ]
+      },
+      {
+        "object": "Town_Step.005",
+        "bounds_xz": [
+          23.139076232910156,
+          13.940668106079102,
+          23.52973175048828,
+          15.556516647338867
+        ],
+        "height_bounds": [
+          4.2343645095825195,
+          4.32436466217041
+        ],
+        "near_routes": [
+          "upper_frontage_chapel_clinic_travel"
+        ]
+      },
+      {
+        "object": "Town_Floor.005",
+        "bounds_xz": [
+          23.65428352355957,
+          12.89942741394043,
+          28.672224044799805,
+          17.10057258605957
+        ],
+        "height_bounds": [
+          4.32436466217041,
+          4.4843645095825195
+        ],
+        "near_routes": [
+          "upper_frontage_chapel_clinic_travel"
+        ]
+      },
+      {
+        "object": "Town_Step.007",
+        "bounds_xz": [
+          23.08355140686035,
+          58.444847106933594,
+          23.48879051208496,
+          60.061622619628906
+        ],
+        "height_bounds": [
+          4.515011787414551,
+          4.605011940002441
+        ],
+        "near_routes": [
+          "upper_public_side_route_to_school"
+        ]
+      },
+      {
+        "object": "Town_Floor.007",
+        "bounds_xz": [
+          23.451175689697266,
+          55.51049041748047,
+          28.276348114013672,
+          62.48950958251953
+        ],
+        "height_bounds": [
+          4.605011940002441,
+          4.765011787414551
+        ],
+        "near_routes": [
+          "upper_public_side_route_to_school"
+        ]
+      },
+      {
+        "object": "Town_Step.008",
+        "bounds_xz": [
+          22.743154525756836,
+          27.651872634887695,
+          23.356229782104492,
+          29.266328811645508
+        ],
+        "height_bounds": [
+          4.543097972869873,
+          4.633098125457764
+        ],
+        "near_routes": [
+          "upper_frontage_chapel_clinic_travel"
+        ]
+      },
+      {
+        "object": "Town_Floor.008",
+        "bounds_xz": [
+          23.087228775024414,
+          26.72382354736328,
+          27.565404891967773,
+          31.27617645263672
+        ],
+        "height_bounds": [
+          4.633098125457764,
+          4.793097972869873
+        ],
+        "near_routes": [
+          "upper_frontage_chapel_clinic_travel"
+        ]
+      },
+      {
+        "object": "Hut_Floor.010",
+        "bounds_xz": [
+          23.12310028076172,
+          34.48624038696289,
+          26.381690979003906,
+          37.51375961303711
+        ],
+        "height_bounds": [
+          4.420318126678467,
+          4.560318470001221
+        ],
+        "near_routes": [
+          "upper_frontage_chapel_clinic_travel"
+        ]
+      },
+      {
+        "object": "Hut_EntrySteps.041",
+        "bounds_xz": [
+          22.682363510131836,
+          35.87477111816406,
+          23.144594192504883,
+          36.90697479248047
+        ],
+        "height_bounds": [
+          4.200318336486816,
+          4.320318222045898
+        ],
+        "near_routes": [
+          "upper_frontage_chapel_clinic_travel"
+        ]
+      },
+      {
+        "object": "Hut_EntrySteps.042",
+        "bounds_xz": [
+          22.447607040405273,
+          35.9246711730957,
+          22.90983772277832,
+          36.95687484741211
+        ],
+        "height_bounds": [
+          4.070318698883057,
+          4.190318584442139
+        ],
+        "near_routes": [
+          "upper_frontage_chapel_clinic_travel"
+        ]
+      },
+      {
+        "object": "Hut_EntrySteps.043",
+        "bounds_xz": [
+          22.212852478027344,
+          35.974571228027344,
+          22.67508316040039,
+          37.00677490234375
+        ],
+        "height_bounds": [
+          3.9403185844421387,
+          4.060318470001221
+        ],
+        "near_routes": [
+          "upper_frontage_chapel_clinic_travel"
+        ]
+      },
+      {
+        "object": "Hut_EntrySteps.050",
+        "bounds_xz": [
+          24.96034812927246,
+          18.924671173095703,
+          25.422578811645508,
+          19.95687484741211
+        ],
+        "height_bounds": [
+          4.160743236541748,
+          4.28074312210083
+        ],
+        "near_routes": [
+          "upper_frontage_chapel_clinic_travel"
+        ]
+      },
+      {
+        "object": "Hut_EntrySteps.051",
+        "bounds_xz": [
+          24.72559356689453,
+          18.97456932067871,
+          25.187824249267578,
+          20.006772994995117
+        ],
+        "height_bounds": [
+          4.03074312210083,
+          4.150743007659912
+        ],
+        "near_routes": [
+          "upper_frontage_chapel_clinic_travel"
+        ]
+      }
+    ],
+    "warning": "Footprint proximity only: low-root/complete-group live tests required. All baseline terrain remains unmodified."
+  },
+  "relocation_candidates": [
+    {
+      "object": "Prop_Barrel.010",
+      "bounds_xz": [
+        20.63975715637207,
+        41.49349594116211,
+        21.204320907592773,
+        42.05805969238281
+      ],
+      "height_bounds": [
+        3.8014321327209473,
+        4.336932182312012
+      ],
+      "near_routes": [
+        "upper_frontage_chapel_clinic_travel",
+        "upper_public_side_route_to_school"
+      ]
+    },
+    {
+      "object": "Prop_Crate.016",
+      "bounds_xz": [
+        19.685462951660156,
+        38.24384307861328,
+        20.33779525756836,
+        38.89617919921875
+      ],
+      "height_bounds": [
+        3.4309558868408203,
+        3.9809560775756836
+      ],
+      "near_routes": [
+        "upper_frontage_chapel_clinic_travel"
+      ]
+    },
+    {
+      "object": "Palm_Trunk.005",
+      "bounds_xz": [
+        28.015174865722656,
+        52.81290817260742,
+        28.54897117614746,
+        53.64798355102539
+      ],
+      "height_bounds": [
+        3.346526861190796,
+        8.472160339355469
+      ],
+      "near_routes": [
+        "upper_public_side_route_to_school"
+      ]
+    },
+    {
+      "object": "Palm_Trunk.007",
+      "bounds_xz": [
+        26.27174186706543,
+        43.81288528442383,
+        27.148263931274414,
+        44.189022064208984
+      ],
+      "height_bounds": [
+        4.128659248352051,
+        9.751769065856934
+      ],
+      "near_routes": [
+        "upper_public_side_route_to_school"
+      ]
+    },
+    {
+      "object": "Tree_Trunk.023",
+      "bounds_xz": [
+        27.2722110748291,
+        52.56932067871094,
+        27.72802734375,
+        52.98574447631836
+      ],
+      "height_bounds": [
+        2.599579334259033,
+        5.738061428070068
+      ],
+      "near_routes": [
+        "upper_public_side_route_to_school"
+      ]
+    },
+    {
+      "object": "Town_Planter.012",
+      "bounds_xz": [
+        22.238479245987115,
+        29.723617379384624,
+        22.786762605819526,
+        30.33124178199233
+      ],
+      "height_bounds": [
+        4.5530980080366135,
+        4.953098013997078
+      ],
+      "near_routes": [
+        "upper_frontage_chapel_clinic_travel"
+      ]
+    },
+    {
+      "object": "Town_PlanterBand.024",
+      "bounds_xz": [
+        22.20351173236466,
+        29.692357850081244,
+        22.37418602154159,
+        30.256166625016412
+      ],
+      "height_bounds": [
+        4.838098144158721,
+        4.888098144903779
+      ],
+      "near_routes": [
+        "upper_frontage_chapel_clinic_travel"
+      ]
+    },
+    {
+      "object": "Town_PlanterBand.025",
+      "bounds_xz": [
+        22.651052015567785,
+        29.798688721663275,
+        22.821726304744715,
+        30.362497496598444
+      ],
+      "height_bounds": [
+        4.838098144158721,
+        4.888098144903779
+      ],
+      "near_routes": [
+        "upper_frontage_chapel_clinic_travel"
+      ]
+    }
+  ]
+}

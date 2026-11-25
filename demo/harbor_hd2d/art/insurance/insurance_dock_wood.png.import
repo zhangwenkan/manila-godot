@@ -3,9 +3,10 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ngaltrfh6k3s"
-path="res://.godot/imported/insurance_dock_wood.png-9de7585bca18c7e7bc4eb49358e888e9.ctex"
+path.s3tc="res://.godot/imported/insurance_dock_wood.png-9de7585bca18c7e7bc4eb49358e888e9.s3tc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
 }
 generator_parameters={
 "md5": "2381b4f2a7285c7352c5ded57ac5db1e"
@@ -14,7 +15,7 @@ generator_parameters={
 [deps]
 
 source_file="res://demo/harbor_hd2d/art/insurance/insurance_dock_wood.png"
-dest_files=["res://.godot/imported/insurance_dock_wood.png-9de7585bca18c7e7bc4eb49358e888e9.ctex"]
+dest_files=["res://.godot/imported/insurance_dock_wood.png-9de7585bca18c7e7bc4eb49358e888e9.s3tc.ctex"]
 
 [params]
 

@@ -3,9 +3,10 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://1y7ilm8enaxf"
-path="res://.godot/imported/pirate_doll_pirate_doll_3d_model_rm.jpg-6c11e0690939af4cb15e511b8d384f9b.ctex"
+path.s3tc="res://.godot/imported/pirate_doll_pirate_doll_3d_model_rm.jpg-6c11e0690939af4cb15e511b8d384f9b.s3tc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
 }
 generator_parameters={
 "md5": "110fdd89c01ab28f8e33d59046e7b0b7"
@@ -14,7 +15,7 @@ generator_parameters={
 [deps]
 
 source_file="res://character_preview/comparison/pirate_doll_pirate_doll_3d_model_rm.jpg"
-dest_files=["res://.godot/imported/pirate_doll_pirate_doll_3d_model_rm.jpg-6c11e0690939af4cb15e511b8d384f9b.ctex"]
+dest_files=["res://.godot/imported/pirate_doll_pirate_doll_3d_model_rm.jpg-6c11e0690939af4cb15e511b8d384f9b.s3tc.ctex"]
 
 [params]
 

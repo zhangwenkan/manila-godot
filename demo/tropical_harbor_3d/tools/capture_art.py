@@ -1,6 +1,9 @@
 """Bounded main-scene art capture; add --background for an invisible Windows desktop.
 
 Layout review also checks camera/arrival behavior. Visual acceptance is separate.
+rebuild-shore saves two gameplay, two shore detail and two town street views;
+it does not run navigation checks or performance sampling.
+rebuild-terminal reviews the current terminal and runs two bounded arrival cases.
 """
 from datetime import datetime
 from pathlib import Path
@@ -27,7 +30,7 @@ mode = sys.argv[1] if len(sys.argv) > 1 else 'preview'
 output = root / 'captures' / ('art_' + datetime.now().strftime('%Y%m%d_%H%M%S_%f'))
 output.mkdir(parents=True, exist_ok=False)
 user = ['--art-preview', '--art-output=' + output.as_posix()]
-if mode in ('rebuild', 'rebuild-sample', 'rebuild-composition', 'rebuild-clay'):
+if mode in ('rebuild', 'rebuild-sample', 'rebuild-composition', 'rebuild-clay', 'rebuild-shore', 'rebuild-terminal'):
     user.extend(['--reference-rebuild', '--local-voyage-review'])
     if mode == 'rebuild-sample':
         user.append('--reference-rebuild-sample')
@@ -35,6 +38,10 @@ if mode in ('rebuild', 'rebuild-sample', 'rebuild-composition', 'rebuild-clay'):
         user.append('--reference-composition-study')
     if mode == 'rebuild-clay':
         user.append('--reference-landform-clay')
+    if mode == 'rebuild-shore':
+        user.append('--reference-shore-sample')
+    if mode == 'rebuild-terminal':
+        user.append('--reference-terminal-sample')
 elif mode == 'diagnose':
     user.append('--art-diagnose=hull')
 elif mode in ('shipyard', 'shipyard-sample', 'shipyard-compare', 'environment'):
@@ -107,5 +114,8 @@ print('OUTPUT', output)
 if mode in ('layout', 'voyage', 'rebuild'):
     print('LOCAL_NAVIGATION_CHECKS', result.get('checks', 0))
     print('This checks the camera/navigation prototype, not the complete Manila rules or visual acceptance.')
+elif mode == 'rebuild-terminal':
+    print('TERMINAL_ARRIVAL_CHECKS', result.get('checks', 0))
+    print('Current terminal views and two arrival cases only; run rebuild separately for full regression.')
 else:
     print('Art review only. No gameplay regression or visual acceptance claimed.')

@@ -1,0 +1,105 @@
+2026-11-25 15:26:16,372 - BlenderMCPServer - INFO - BlenderMCP server starting up
+2026-11-25 15:26:16,377 - BlenderMCPServer - INFO - Blender addon on disk is current (protocol 16).
+2026-11-25 15:26:16,379 - blender-mcp-telemetry - WARNING - Telemetry disabled via environment variable
+2026-11-25 15:26:16,384 - BlenderMCPServer - INFO - Connected to Blender at 127.0.0.1:9881
+2026-11-25 15:26:16,384 - BlenderMCPServer - INFO - Created new persistent connection to Blender
+2026-11-25 15:26:16,384 - BlenderMCPServer - INFO - Sending command: get_addon_info with params: None
+2026-11-25 15:26:16,385 - BlenderMCPServer - INFO - Command sent, waiting for response...
+2026-11-25 15:26:16,388 - BlenderMCPServer - INFO - Received complete response (465 bytes)
+2026-11-25 15:26:16,388 - BlenderMCPServer - INFO - Received 465 bytes of data
+2026-11-25 15:26:16,388 - BlenderMCPServer - INFO - Response parsed, status: success
+2026-11-25 15:26:16,389 - BlenderMCPServer - INFO - Blender addon up to date (protocol 16, addon [2, 0], Blender 5.3.0)
+2026-11-25 15:26:16,389 - BlenderMCPServer - INFO - Successfully connected to Blender on startup
+2026-11-25 15:26:16,394 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-11-25 15:26:16,394 - BlenderMCPServer - INFO - MCP client mcp 0.1.0: extensions=[], apps=False, openai_forms=False
+2026-11-25 15:26:16,397 - BlenderMCPServer - INFO - Sending command: execute_code with params: {'code': 'import bpy, os\nfrom pathlib import Path\nassert os.getpid() == 28032, "Wrong Blender PID"\nassert Path(bpy.data.filepath).resolve() == Path(\'F:/马尼拉godot/manila-godot/demo/tropical_harbor_3d/source/harbor_shore_control_mcp.blend\').resolve(), "Wrong Blender file"\nassert bpy.types.blendermcp_server.port == 9881, "Wrong Blender port"\n"""Run the reviewed whole-shore correction in the owned GUI only."""\nimport bpy,json,time\nfrom pathlib import Path\nROOT=Path(bpy.data.filepath).parent.parent\nLOG=ROOT/\'captures/terrain_structure_20261123\'\nstarted=time.time()\nfor stage_filename25 in [\'structure25_grade_review.py\',\'structure23_11_finalize_surface.py\',\'structure25_export_review.py\',\'structure23_09_final_check.py\']:\n    (LOG/\'revision_progress.json\').write_text(json.dumps({\'phase\':stage_filename25,\'state\':\'running\',\'started\':started,\'time\':time.time()}),encoding=\'utf8\')\n    exec(compile((ROOT/\'source\'/stage_filename25).read_text(encoding=\'utf8\'),stage_filename25,\'exec\'),globals())\n    if stage_filename25==\'structure25_grade_review.py\':\n        assert json.loads((LOG/\'structure_audit.json\').read_text(encoding=\'utf8\'))[\'technical_pass\']\n    (LOG/\'revision_progress.json\').write_text(json.dumps({\'phase\':stage_filename25,\'state\':\'completed\',\'started\':started,\'time\':time.time()}),encoding=\'utf8\')\nprint(\'WHOLE_SHORE_REVISION_SAVED_AND_VERIFIED\')\n'}
+2026-11-25 15:26:16,397 - BlenderMCPServer - INFO - Command sent, waiting for response...
+2026-11-25 15:29:16,400 - BlenderMCPServer - WARNING - Socket timeout during chunked receive
+2026-11-25 15:29:16,400 - BlenderMCPServer - ERROR - Error communicating with Blender: No data received
+2026-11-25 15:29:16,400 - BlenderMCPServer - ERROR - Error executing code: Communication error with Blender: No data received
+2026-11-25 15:29:16,402 - BlenderMCPServer - INFO - Connected to Blender at 127.0.0.1:9881
+2026-11-25 15:29:16,402 - BlenderMCPServer - INFO - Sending command: get_telemetry_consent with params: None
+2026-11-25 15:29:16,402 - BlenderMCPServer - INFO - Command sent, waiting for response...
+  + Exception Group Traceback (most recent call last):
+  |   File "F:\������godot\manila-godot\tools\blender_mcp\run_mcp.py", line 51, in <module>
+  |     asyncio.run(main())
+  |   File "C:\Users\derwyn king\AppData\Local\ManilaBlenderMCP\python\Lib\asyncio\runners.py", line 190, in run
+  |     return runner.run(main)
+  |            ^^^^^^^^^^^^^^^^
+  |   File "C:\Users\derwyn king\AppData\Local\ManilaBlenderMCP\python\Lib\asyncio\runners.py", line 118, in run
+  |     return self._loop.run_until_complete(task)
+  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  |   File "C:\Users\derwyn king\AppData\Local\ManilaBlenderMCP\python\Lib\asyncio\base_events.py", line 654, in run_until_complete
+  |     return future.result()
+  |            ^^^^^^^^^^^^^^^
+  |   File "F:\������godot\manila-godot\tools\blender_mcp\run_mcp.py", line 35, in main
+  |     async with stdio_client(StdioServerParameters(command=str(exe), args=[], env=env)) as streams:
+  |   File "C:\Users\derwyn king\AppData\Local\ManilaBlenderMCP\python\Lib\contextlib.py", line 231, in __aexit__
+  |     await self.gen.athrow(typ, value, traceback)
+  |   File "C:\Users\derwyn king\AppData\Local\ManilaBlenderMCP\venv\Lib\site-packages\mcp\client\stdio\__init__.py", line 182, in stdio_client
+  |     async with (
+  |   File "C:\Users\derwyn king\AppData\Local\ManilaBlenderMCP\venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 871, in __aexit__
+  |     raise BaseExceptionGroup(
+  | ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+  +-+---------------- 1 ----------------
+    | Exception Group Traceback (most recent call last):
+    |   File "C:\Users\derwyn king\AppData\Local\ManilaBlenderMCP\venv\Lib\site-packages\mcp\client\stdio\__init__.py", line 189, in stdio_client
+    |     yield read_stream, write_stream
+    |   File "F:\������godot\manila-godot\tools\blender_mcp\run_mcp.py", line 36, in main
+    |     async with ClientSession(*streams, read_timeout_seconds=timedelta(seconds=240)) as session:
+    |   File "C:\Users\derwyn king\AppData\Local\ManilaBlenderMCP\venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 871, in __aexit__
+    |     raise BaseExceptionGroup(
+    | ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+    +-+---------------- 1 ----------------
+      | Traceback (most recent call last):
+      |   File "C:\Users\derwyn king\AppData\Local\ManilaBlenderMCP\venv\Lib\site-packages\anyio\streams\memory.py", line 119, in receive
+      |     return self.receive_nowait()
+      |            ^^^^^^^^^^^^^^^^^^^^^
+      |   File "C:\Users\derwyn king\AppData\Local\ManilaBlenderMCP\venv\Lib\site-packages\anyio\streams\memory.py", line 114, in receive_nowait
+      |     raise WouldBlock
+      | anyio._core._exceptions.WouldBlock
+      | 
+      | During handling of the above exception, another exception occurred:
+      | 
+      | Traceback (most recent call last):
+      |   File "C:\Users\derwyn king\AppData\Local\ManilaBlenderMCP\venv\Lib\site-packages\anyio\_core\_tasks.py", line 152, in fail_at
+      |     yield cancel_scope
+      |   File "C:\Users\derwyn king\AppData\Local\ManilaBlenderMCP\venv\Lib\site-packages\anyio\_core\_tasks.py", line 179, in fail_after
+      |     yield scope
+      |   File "C:\Users\derwyn king\AppData\Local\ManilaBlenderMCP\venv\Lib\site-packages\mcp\shared\session.py", line 292, in send_request
+      |     response_or_error = await response_stream_reader.receive()
+      |                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+      |   File "C:\Users\derwyn king\AppData\Local\ManilaBlenderMCP\venv\Lib\site-packages\anyio\streams\memory.py", line 131, in receive
+      |     await receive_event.wait()
+      |   File "C:\Users\derwyn king\AppData\Local\ManilaBlenderMCP\python\Lib\asyncio\locks.py", line 213, in wait
+      |     await fut
+      | asyncio.exceptions.CancelledError: Cancelled via cancel scope 2363617a5c0; reason: deadline exceeded
+      | 
+      | During handling of the above exception, another exception occurred:
+      | 
+      | Traceback (most recent call last):
+      |   File "C:\Users\derwyn king\AppData\Local\ManilaBlenderMCP\venv\Lib\site-packages\mcp\shared\session.py", line 291, in send_request
+      |     with anyio.fail_after(timeout):
+      |   File "C:\Users\derwyn king\AppData\Local\ManilaBlenderMCP\python\Lib\contextlib.py", line 158, in __exit__
+      |     self.gen.throw(typ, value, traceback)
+      |   File "C:\Users\derwyn king\AppData\Local\ManilaBlenderMCP\venv\Lib\site-packages\anyio\_core\_tasks.py", line 178, in fail_after
+      |     with fail_at(deadline, shield=shield, reason=reason) as scope:
+      |   File "C:\Users\derwyn king\AppData\Local\ManilaBlenderMCP\python\Lib\contextlib.py", line 158, in __exit__
+      |     self.gen.throw(typ, value, traceback)
+      |   File "C:\Users\derwyn king\AppData\Local\ManilaBlenderMCP\venv\Lib\site-packages\anyio\_core\_tasks.py", line 155, in fail_at
+      |     raise TimeoutError(reason) if reason else TimeoutError
+      | TimeoutError
+      | 
+      | During handling of the above exception, another exception occurred:
+      | 
+      | Traceback (most recent call last):
+      |   File "F:\������godot\manila-godot\tools\blender_mcp\run_mcp.py", line 41, in main
+      |     result = await session.call_tool('execute_blender_code', arguments)
+      |              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+      |   File "C:\Users\derwyn king\AppData\Local\ManilaBlenderMCP\venv\Lib\site-packages\mcp\client\session.py", line 401, in call_tool
+      |     result = await self.send_request(
+      |              ^^^^^^^^^^^^^^^^^^^^^^^^
+      |   File "C:\Users\derwyn king\AppData\Local\ManilaBlenderMCP\venv\Lib\site-packages\mcp\shared\session.py", line 294, in send_request
+      |     raise McpError(
+      | mcp.shared.exceptions.McpError: Timed out while waiting for response to ClientRequest. Waited 240.0 seconds.
+      +------------------------------------

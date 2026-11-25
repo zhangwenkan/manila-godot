@@ -1,0 +1,15 @@
+{
+  "meta": null,
+  "content": [
+    {
+      "type": "text",
+      "text": "Code executed successfully: {\"jobs\": 8, \"components\": 146, \"applied\": true, \"problems\": []}\n",
+      "annotations": null,
+      "meta": null
+    }
+  ],
+  "structuredContent": {
+    "result": "Code executed successfully: {\"jobs\": 8, \"components\": 146, \"applied\": true, \"problems\": []}\n"
+  },
+  "isError": false
+}

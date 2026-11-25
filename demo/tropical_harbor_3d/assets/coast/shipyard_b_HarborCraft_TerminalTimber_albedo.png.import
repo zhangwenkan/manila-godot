@@ -3,9 +3,10 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b7no23172p64b"
-path="res://.godot/imported/shipyard_b_HarborCraft_TerminalTimber_albedo.png-49f2802ea7d621e0902c1682e0a7101c.ctex"
+path.s3tc="res://.godot/imported/shipyard_b_HarborCraft_TerminalTimber_albedo.png-49f2802ea7d621e0902c1682e0a7101c.s3tc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
 }
 generator_parameters={
 "md5": "c84931722973e6b74051ecf6fd129ab2"
@@ -14,11 +15,11 @@ generator_parameters={
 [deps]
 
 source_file="res://demo/tropical_harbor_3d/assets/coast/shipyard_b_HarborCraft_TerminalTimber_albedo.png"
-dest_files=["res://.godot/imported/shipyard_b_HarborCraft_TerminalTimber_albedo.png-49f2802ea7d621e0902c1682e0a7101c.ctex"]
+dest_files=["res://.godot/imported/shipyard_b_HarborCraft_TerminalTimber_albedo.png-49f2802ea7d621e0902c1682e0a7101c.s3tc.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0
@@ -40,4 +41,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=1
+detect_3d/compress_to=0

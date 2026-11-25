@@ -1,0 +1,22 @@
+2026-11-25 16:57:40,111 - BlenderMCPServer - INFO - BlenderMCP server starting up
+2026-11-25 16:57:40,113 - BlenderMCPServer - INFO - Blender addon on disk is current (protocol 16).
+2026-11-25 16:57:40,119 - blender-mcp-telemetry - WARNING - Telemetry disabled via environment variable
+2026-11-25 16:57:40,119 - BlenderMCPServer - INFO - Connected to Blender at 127.0.0.1:9881
+2026-11-25 16:57:40,119 - BlenderMCPServer - INFO - Created new persistent connection to Blender
+2026-11-25 16:57:40,119 - BlenderMCPServer - INFO - Sending command: get_addon_info with params: None
+2026-11-25 16:57:40,119 - BlenderMCPServer - INFO - Command sent, waiting for response...
+2026-11-25 16:57:40,164 - BlenderMCPServer - INFO - Received complete response (465 bytes)
+2026-11-25 16:57:40,164 - BlenderMCPServer - INFO - Received 465 bytes of data
+2026-11-25 16:57:40,164 - BlenderMCPServer - INFO - Response parsed, status: success
+2026-11-25 16:57:40,164 - BlenderMCPServer - INFO - Blender addon up to date (protocol 16, addon [2, 0], Blender 5.3.0)
+2026-11-25 16:57:40,164 - BlenderMCPServer - INFO - Successfully connected to Blender on startup
+2026-11-25 16:57:40,169 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-11-25 16:57:40,169 - BlenderMCPServer - INFO - MCP client mcp 0.1.0: extensions=[], apps=False, openai_forms=False
+2026-11-25 16:57:40,169 - BlenderMCPServer - INFO - Sending command: execute_code with params: {'code': 'import bpy, os\nfrom pathlib import Path\nassert os.getpid() == 9864, "Wrong Blender PID"\nassert Path(bpy.data.filepath).resolve() == Path(\'F:/马尼拉godot/manila-godot/demo/tropical_harbor_3d/source/harbor_shore_control_mcp.blend\').resolve(), "Wrong Blender file"\nassert bpy.types.blendermcp_server.port == 9881, "Wrong Blender port"\nimport bpy,os,json,numpy as np\nfrom mathutils import Vector\nfrom pathlib import Path\nROOT=Path(bpy.data.filepath).parent.parent;LOG=ROOT/\'captures/cliff_contacts_20261125\'\nassert os.getpid()==9864 and bpy.types.blendermcp_server.port==9881 and not bpy.app.background\nassert json.loads((LOG/\'cliff_structure_audit.json\').read_text())[\'technical_pass\']\nnamespace={}\nexec(compile((ROOT/\'source/structure23_export.py\').read_text(encoding=\'utf-8-sig\'),\'structure23_export.py\',\'exec\'),namespace)\n# The immutable new-round snapshot used Blender float32 matrix multiplication.\n# Compare bounds using that identical path, instead of a float64 conversion\n# which invents 1-2 micrometre differences at otherwise untouched buildings.\ndef same_precision_metadata(obj):\n    box=np.array([obj.matrix_world@Vector(v) for v in obj.bound_box])\n    return {\'matrix\':np.asarray(obj.matrix_world,float).tolist(),\'bounds\':[box.min(0).tolist(),box.max(0).tolist()],\'vertices\':len(obj.data.vertices)}\nnamespace[\'_object_metadata\']=same_precision_metadata\nreport=namespace[\'export_structure23\'](9864,changed_collections=[\'Reference_Foliage\',\'Reference_GroundCover\'],log_path=LOG,force_terrain=True)\nprint(json.dumps({\'status\':report[\'status\'],\'source_saved\':report[\'source_saved\'],\'dirty\':report[\'dirty\'],\'sha\':report.get(\'source_sha256\'),\'elapsed_seconds\':report.get(\'elapsed_seconds\')}))\n'}
+2026-11-25 16:57:40,169 - BlenderMCPServer - INFO - Command sent, waiting for response...
+2026-11-25 16:58:43,865 - BlenderMCPServer - INFO - Received complete response (12476 bytes)
+2026-11-25 16:58:43,865 - BlenderMCPServer - INFO - Received 12476 bytes of data
+2026-11-25 16:58:43,865 - BlenderMCPServer - INFO - Response parsed, status: success
+2026-11-25 16:58:43,872 - mcp.server.lowlevel.server - INFO - Processing request of type ListToolsRequest
+2026-11-25 16:58:43,881 - BlenderMCPServer - INFO - Disconnecting from Blender on shutdown
+2026-11-25 16:58:43,881 - BlenderMCPServer - INFO - BlenderMCP server shut down

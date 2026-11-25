@@ -1,0 +1,67 @@
+{
+  "status": "read_only_proposal_not_applied",
+  "basis": "terrain_structure_20261123/slope_cleanup.npz; source 791081d9a9b653e63523396c660b636d53c4c191bc1301a2d093044d801973d2",
+  "coordinates": "Godot [X,Z,H], metres. Mesh source positions are Blender [X,-Z,H].",
+  "study_extent_xz": [15.8, 21.8, 23.0, 44.8],
+  "principle": "Three unequal connected rock masses; toe and crown are independent. No new panels, no evenly repeated knobs, no continuous shelf or horizontal seam crossing the ramp.",
+  "protected": {
+    "routes": "Use current design.json all routes: lock vertices of ALL actual triangles intersecting full roadbed halfwidth+bench_margin (default .28). Fade additional .35m beyond this footprint. Do not let target section blend overwrite protected triangles.",
+    "courts": "Use current design.json all platforms and junction polygons, lock actual intersecting triangles and .15m margin. Leave actual stair landing heights unchanged.",
+    "floors": "Use live exact convex hulls of Town_Floor/Hut_Floor/TavernPorch; lock intersecting triangles and conservative .30m footprint margin. AABB coordinates below only preliminary guards.",
+    "seabreeze_floor_xz": [14.921395,21.241693,19.02986,26.758299],
+    "seabreeze_floor_bottom_h": 1.534933,
+    "clinic_floor_xz": [23.087229,26.723824,27.565405,31.276176],
+    "clinic_floor_bottom_h": 4.633098,
+    "tavern_floor_xz": [11.85903,38.039009,16.169706,42.960991],
+    "tavern_floor_bottom_h": 1.965021,
+    "north_ramp": "Full corridor through [13.2,18.8] [15,18.8] [17,18.8] [19.5,19.2] [21.5,21.2] [23.45,23.15] unchanged. This constrains north end of mass A.",
+    "south_ramp": "Full corridor through [12,34.8] [14,34.8] [16.5,35.1] [18.9,35.7] [20.2,36.3] [21.4,36.5] unchanged. Fade mass B by Z33.4; start mass C at Z37.8.",
+    "low_coast": "No geometry edits seaward of X15.8 or H<=.10; retained lower roads, coast, pier approaches and sea boundary unchanged. Local low bank changes require separate deliberate design."
+  },
+  "mass_A": {
+    "label": "Sea Breeze rear shoulder turning toward the hospital",
+    "z_extent": [22.2,27.6],
+    "description": "Restrained rear mass because the restaurant floor reaches X19.03. Crown turns diagonally from X22 to X20.7; avoid a new wall pressed against the rear building. Visible southern side should have one broad angular plane, north end blends into existing climbing route.",
+    "sections": [
+      {"z":23.0,"profile_xh":[[19.60,1.23],[20.00,1.42],[20.38,2.18],[20.98,3.63],[21.65,4.03],[22.25,4.13]]},
+      {"z":25.0,"profile_xh":[[19.55,1.24],[19.92,1.46],[20.24,2.04],[20.73,3.83],[21.48,4.22],[21.70,4.25]]},
+      {"z":26.8,"profile_xh":[[19.48,1.26],[19.67,1.43],[20.05,2.50],[20.28,3.62],[20.72,4.34],[21.02,4.40]]}
+    ],
+    "caution": "At Z26.8 protect the actual floor+margin: some target vertices must remain baseline, so use the next mass only after Z27.2. Preserve terrain behind the floor; do not lower support."
+  },
+  "mass_B": {
+    "label": "Primary exposed hospital buttress and recessed southern bay",
+    "z_extent": [27.15,33.4],
+    "description": "Main visible improvement. A wide westward projection peaks around Z29, with a low debris apron and one oblique broad plane. At Z31.5 the toe returns inland while crown stays outward, making a genuinely different side-face. Avoid a sinusoidal series; use irregular stations and broad planar portions.",
+    "sections": [
+      {"z":27.5,"profile_xh":[[18.65,1.27],[19.05,1.48],[19.35,2.63],[19.85,2.88],[20.33,4.20],[20.65,4.42]]},
+      {"z":29.0,"profile_xh":[[16.85,1.23],[17.60,1.50],[18.10,2.62],[18.78,2.89],[19.58,4.13],[20.15,4.40]]},
+      {"z":30.0,"profile_xh":[[17.15,1.22],[17.85,1.46],[18.47,2.28],[18.70,3.18],[19.55,4.13],[20.20,4.36]]},
+      {"z":31.5,"profile_xh":[[18.00,1.24],[18.63,1.52],[19.20,2.19],[19.58,3.35],[20.12,3.91],[20.58,4.18]]},
+      {"z":32.8,"profile_xh":[[18.35,1.39],[18.95,1.70],[19.65,2.47],[20.03,3.55],[20.55,4.04]]}
+    ],
+    "talus_patch": {"xz_polygon":[[16.7,28.35],[17.25,27.8],[18.7,28.35],[18.4,30.0],[17.45,30.7],[16.85,29.9]],"height_above_baseline_m":[0.08,0.28],"description":"Continuous low foot debris integrated with the terrain, one lobe tapering into soil; no fence of repeated standalone boulders."},
+    "caution": "The row Z27.5 is only .74m beyond the southern floor AABB; protect exact floor-adjacent faces. Keep the intact upper road core: its western edge at Z30 is about X20.73, so profile reaches near-full road height before it. Rock/soil may meet the road shoulder directly; do not add a uniform green lip."
+  },
+  "mass_C": {
+    "label": "Tavern rear broad wedge with lower southern shoulder",
+    "z_extent": [37.8,44.8],
+    "description": "Lower-weight secondary wedge, separated from B by the actual climbing passage. Its crest is farther inland at north and bends seaward toward south. Only one broad middle ledge near Z41..42, not a repeated stair profile.",
+    "sections": [
+      {"z":38.2,"profile_xh":[[17.65,1.70],[18.25,1.94],[19.10,2.75],[19.90,3.73],[20.55,4.01]]},
+      {"z":40.2,"profile_xh":[[16.90,1.67],[17.45,1.92],[17.95,2.98],[18.75,3.13],[19.65,4.02],[20.50,4.15]]},
+      {"z":42.0,"profile_xh":[[17.05,1.66],[17.55,2.14],[17.92,3.20],[18.63,3.30],[19.30,3.97],[20.35,4.20]]},
+      {"z":43.8,"profile_xh":[[17.50,1.62],[18.00,1.88],[18.55,2.73],[19.25,3.49],[20.10,4.23]]}
+    ],
+    "caution": "Tavern floor reaches X16.17 at Z38..43; use exact floor hull and margin. Do not place loose debris into the narrow rear-side gap. The southern floor/props toward diner begin near Z46: fade back to baseline before Z45.2."
+  },
+  "implementation_notes": [
+    "These are proposed target sections, not sampled source coordinates. Parent should inspect monochrome silhouette and adapt after live protected-footprint clipping.",
+    "Interpolate the broad mass section locations with monotone/slope-limited curves, keep across-face segments mostly planar. Round only major transitions over about .15-.30m; do not smooth the whole face into the old S-profile.",
+    "Fade to immutable new-round baseline at both Z ends and outside each profile X extent, lock protected triangles before writing. If clipping creates a ridge, revise the section; never relax path/floor constraints to hide it.",
+    "Surface geometry accents should be sparse: two or three broad oblique fracture offsets, <=.08m normal relief, with locations chosen per mass. Main silhouette is in these section controls, not the accents.",
+    "Classify rock from actual intended mass faces, soil on apron/shoulder, grass on plausible top/pockets. Do not use slope alone to repaint every steep grass face grey, or preserve pixel green islands stranded in the new rock.",
+    "Road wear should remain within full fixed route/court. Vary .10-.30m soft irregular edge and small dirt intrusions into actual level verge, avoiding persistent parallel yellow/green strips.",
+    "Review normal gameplay plus town_civic_street and fishing_working_court first, then near shots. All form editing via owned live Blender MCP only."
+  ]
+}

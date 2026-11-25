@@ -11,7 +11,7 @@ func build(parent: Node3D) -> void:
     root = Node3D.new()
     root.name = "ReferenceCoast"
     parent.add_child(root)
-    for filename in ["coast", "town", "cargo_port", "foliage", "rocks"]:
+    for filename in ["coast", "town", "cargo_port", "terminal", "foliage", "rocks"]:
         var instance := (load(ART + filename + ".glb") as PackedScene).instantiate() as Node3D
         instance.set_meta("reference_asset", filename)
         root.add_child(instance)

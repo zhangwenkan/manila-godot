@@ -1,0 +1,27 @@
+2026-11-25 14:30:17,352 - BlenderMCPServer - INFO - BlenderMCP server starting up
+2026-11-25 14:30:17,355 - BlenderMCPServer - INFO - Blender addon on disk is current (protocol 16).
+2026-11-25 14:30:17,358 - blender-mcp-telemetry - WARNING - Telemetry disabled via environment variable
+2026-11-25 14:30:17,361 - BlenderMCPServer - INFO - Connected to Blender at 127.0.0.1:9881
+2026-11-25 14:30:17,361 - BlenderMCPServer - INFO - Created new persistent connection to Blender
+2026-11-25 14:30:17,361 - BlenderMCPServer - INFO - Sending command: get_addon_info with params: None
+2026-11-25 14:30:17,361 - BlenderMCPServer - INFO - Command sent, waiting for response...
+2026-11-25 14:30:17,383 - BlenderMCPServer - INFO - Received complete response (465 bytes)
+2026-11-25 14:30:17,383 - BlenderMCPServer - INFO - Received 465 bytes of data
+2026-11-25 14:30:17,383 - BlenderMCPServer - INFO - Response parsed, status: success
+2026-11-25 14:30:17,383 - BlenderMCPServer - INFO - Blender addon up to date (protocol 16, addon [2, 0], Blender 5.3.0)
+2026-11-25 14:30:17,383 - BlenderMCPServer - INFO - Successfully connected to Blender on startup
+2026-11-25 14:30:17,389 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-11-25 14:30:17,389 - BlenderMCPServer - INFO - MCP client mcp 0.1.0: extensions=[], apps=False, openai_forms=False
+2026-11-25 14:30:17,394 - BlenderMCPServer - INFO - Sending command: execute_code with params: {'code': 'import bpy, os\nfrom pathlib import Path\nassert os.getpid() == 28032, "Wrong Blender PID"\nassert Path(bpy.data.filepath).resolve() == Path(\'F:/马尼拉godot/manila-godot/demo/tropical_harbor_3d/source/harbor_shore_control_mcp.blend\').resolve(), "Wrong Blender file"\nassert bpy.types.blendermcp_server.port == 9881, "Wrong Blender port"\n"""Record a verified new GUI session without changing any scene data."""\nimport bpy, os, json, hashlib\nfrom pathlib import Path\nROOT=Path(bpy.data.filepath).parent.parent\nLOG=ROOT/\'captures/terrain_structure_20261123\'\nassert os.getpid()==28032 and bpy.types.blendermcp_server.port==9881\nassert not bpy.app.background and not bpy.data.is_dirty\ndigest=hashlib.sha256(Path(bpy.data.filepath).read_bytes()).hexdigest()\nassert digest==\'a1bc01b19da7b12c9993f8afaecc70889f15d10f7190a482b6f6fa35e5e7cdaf\'\nrecord={\'pid\':os.getpid(),\'port\':9881,\'file\':bpy.data.filepath,\'source_sha256\':digest,\n \'dirty\':bpy.data.is_dirty,\'blender\':bpy.app.version_string,\'resumed_on\':\'2026-11-25\',\n \'previous_pid\':12164,\'previous_session_normal_quit_verified\':False,\n \'saved_state\':\'third completed export; fourth failed trial was not saved\',\n \'immutable_baseline\':\'baseline.npz and objects_before.json remain unchanged\'}\n(LOG/\'session_resume_20261125.json\').write_text(json.dumps(record,indent=2),encoding=\'utf8\')\nprint(json.dumps(record))\n'}
+2026-11-25 14:30:17,394 - BlenderMCPServer - INFO - Command sent, waiting for response...
+2026-11-25 14:30:19,117 - BlenderMCPServer - INFO - Received complete response (638 bytes)
+2026-11-25 14:30:19,117 - BlenderMCPServer - INFO - Received 638 bytes of data
+2026-11-25 14:30:19,117 - BlenderMCPServer - INFO - Response parsed, status: success
+2026-11-25 14:30:19,121 - BlenderMCPServer - INFO - Sending command: get_telemetry_consent with params: None
+2026-11-25 14:30:19,121 - BlenderMCPServer - INFO - Command sent, waiting for response...
+2026-11-25 14:30:19,123 - BlenderMCPServer - INFO - Received complete response (51 bytes)
+2026-11-25 14:30:19,123 - BlenderMCPServer - INFO - Received 51 bytes of data
+2026-11-25 14:30:19,123 - BlenderMCPServer - INFO - Response parsed, status: success
+2026-11-25 14:30:19,123 - mcp.server.lowlevel.server - INFO - Processing request of type ListToolsRequest
+2026-11-25 14:30:19,136 - BlenderMCPServer - INFO - Disconnecting from Blender on shutdown
+2026-11-25 14:30:19,137 - BlenderMCPServer - INFO - BlenderMCP server shut down

@@ -1,0 +1,15 @@
+{
+  "meta": null,
+  "content": [
+    {
+      "type": "text",
+      "text": "Code executed successfully: {\"routes\": 15, \"platforms\": 13, \"map_size\": 2048, \"geometry_driven_shore_and_slope\": true, \"path_elevation_clipping\": false, \"source_image_packed\": true, \"visual_accepted\": false}\n",
+      "annotations": null,
+      "meta": null
+    }
+  ],
+  "structuredContent": {
+    "result": "Code executed successfully: {\"routes\": 15, \"platforms\": 13, \"map_size\": 2048, \"geometry_driven_shore_and_slope\": true, \"path_elevation_clipping\": false, \"source_image_packed\": true, \"visual_accepted\": false}\n"
+  },
+  "isError": false
+}

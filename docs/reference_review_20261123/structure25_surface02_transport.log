@@ -1,0 +1,64 @@
+2026-11-25 15:17:27,245 - BlenderMCPServer - INFO - BlenderMCP server starting up
+2026-11-25 15:17:27,254 - BlenderMCPServer - INFO - Blender addon on disk is current (protocol 16).
+2026-11-25 15:17:27,258 - blender-mcp-telemetry - WARNING - Telemetry disabled via environment variable
+2026-11-25 15:17:27,264 - BlenderMCPServer - INFO - Connected to Blender at 127.0.0.1:9881
+2026-11-25 15:17:27,264 - BlenderMCPServer - INFO - Created new persistent connection to Blender
+2026-11-25 15:17:27,264 - BlenderMCPServer - INFO - Sending command: get_addon_info with params: None
+2026-11-25 15:17:27,265 - BlenderMCPServer - INFO - Command sent, waiting for response...
+2026-11-25 15:17:27,275 - BlenderMCPServer - INFO - Received complete response (465 bytes)
+2026-11-25 15:17:27,275 - BlenderMCPServer - INFO - Received 465 bytes of data
+2026-11-25 15:17:27,275 - BlenderMCPServer - INFO - Response parsed, status: success
+2026-11-25 15:17:27,277 - BlenderMCPServer - INFO - Blender addon up to date (protocol 16, addon [2, 0], Blender 5.3.0)
+2026-11-25 15:17:27,277 - BlenderMCPServer - INFO - Successfully connected to Blender on startup
+2026-11-25 15:17:27,289 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-11-25 15:17:27,290 - BlenderMCPServer - INFO - MCP client mcp 0.1.0: extensions=[], apps=False, openai_forms=False
+2026-11-25 15:17:27,296 - BlenderMCPServer - INFO - Sending command: execute_code with params: {'code': 'import bpy, os\nfrom pathlib import Path\nassert os.getpid() == 28032, "Wrong Blender PID"\nassert Path(bpy.data.filepath).resolve() == Path(\'F:/马尼拉godot/manila-godot/demo/tropical_harbor_3d/source/harbor_shore_control_mcp.blend\').resolve(), "Wrong Blender file"\nassert bpy.types.blendermcp_server.port == 9881, "Wrong Blender port"\n"""Refresh surface and contacts after full-width slope finishing; GUI MCP only."""\nimport bpy,json,time\nfrom pathlib import Path\nROOT=Path(bpy.data.filepath).parent.parent\nLOG=ROOT/\'captures/terrain_structure_20261123\'\nfor name in [\'structure23_02_land.py\',\'structure23_03_props.py\',\'structure23_04_manual_props.py\',\'structure23_04_grass.py\',\'structure23_07_check.py\']:\n    exec(compile((ROOT/\'source\'/name).read_text(encoding=\'utf8\'),name,\'exec\'),globals())\nassert not json.loads((LOG/\'structure_audit.json\').read_text(encoding=\'utf8\'))[\'failures\']\nassert not json.loads((LOG/\'manual_props.json\').read_text(encoding=\'utf8\'))[\'problems\']\nprint(\'SURFACE_AND_CONTACTS_COMPLETE\')\n'}
+2026-11-25 15:17:27,297 - BlenderMCPServer - INFO - Command sent, waiting for response...
+2026-11-25 15:20:27,308 - BlenderMCPServer - WARNING - Socket timeout during chunked receive
+2026-11-25 15:20:27,308 - BlenderMCPServer - ERROR - Error communicating with Blender: No data received
+2026-11-25 15:20:27,308 - BlenderMCPServer - ERROR - Error executing code: Communication error with Blender: No data received
+2026-11-25 15:20:27,311 - BlenderMCPServer - INFO - Connected to Blender at 127.0.0.1:9881
+2026-11-25 15:20:27,311 - BlenderMCPServer - INFO - Sending command: get_telemetry_consent with params: None
+2026-11-25 15:20:27,311 - BlenderMCPServer - INFO - Command sent, waiting for response...
+2026-11-25 15:21:12,561 - BlenderMCPServer - INFO - Received complete response (51 bytes)
+2026-11-25 15:21:12,561 - BlenderMCPServer - INFO - Received 51 bytes of data
+2026-11-25 15:21:12,562 - BlenderMCPServer - INFO - Response parsed, status: success
+2026-11-25 15:21:12,571 - mcp.server.lowlevel.server - INFO - Processing request of type ListToolsRequest
+2026-11-25 15:21:12,589 - BlenderMCPServer - INFO - Disconnecting from Blender on shutdown
+2026-11-25 15:21:12,589 - BlenderMCPServer - INFO - BlenderMCP server shut down
+  + Exception Group Traceback (most recent call last):
+  |   File "F:\������godot\manila-godot\tools\blender_mcp\run_mcp.py", line 51, in <module>
+  |     asyncio.run(main())
+  |   File "C:\Users\derwyn king\AppData\Local\ManilaBlenderMCP\python\Lib\asyncio\runners.py", line 190, in run
+  |     return runner.run(main)
+  |            ^^^^^^^^^^^^^^^^
+  |   File "C:\Users\derwyn king\AppData\Local\ManilaBlenderMCP\python\Lib\asyncio\runners.py", line 118, in run
+  |     return self._loop.run_until_complete(task)
+  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  |   File "C:\Users\derwyn king\AppData\Local\ManilaBlenderMCP\python\Lib\asyncio\base_events.py", line 654, in run_until_complete
+  |     return future.result()
+  |            ^^^^^^^^^^^^^^^
+  |   File "F:\������godot\manila-godot\tools\blender_mcp\run_mcp.py", line 35, in main
+  |     async with stdio_client(StdioServerParameters(command=str(exe), args=[], env=env)) as streams:
+  |   File "C:\Users\derwyn king\AppData\Local\ManilaBlenderMCP\python\Lib\contextlib.py", line 231, in __aexit__
+  |     await self.gen.athrow(typ, value, traceback)
+  |   File "C:\Users\derwyn king\AppData\Local\ManilaBlenderMCP\venv\Lib\site-packages\mcp\client\stdio\__init__.py", line 182, in stdio_client
+  |     async with (
+  |   File "C:\Users\derwyn king\AppData\Local\ManilaBlenderMCP\venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 871, in __aexit__
+  |     raise BaseExceptionGroup(
+  | BaseExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+  +-+---------------- 1 ----------------
+    | Exception Group Traceback (most recent call last):
+    |   File "C:\Users\derwyn king\AppData\Local\ManilaBlenderMCP\venv\Lib\site-packages\mcp\client\stdio\__init__.py", line 189, in stdio_client
+    |     yield read_stream, write_stream
+    |   File "F:\������godot\manila-godot\tools\blender_mcp\run_mcp.py", line 36, in main
+    |     async with ClientSession(*streams, read_timeout_seconds=timedelta(seconds=240)) as session:
+    |   File "C:\Users\derwyn king\AppData\Local\ManilaBlenderMCP\venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 871, in __aexit__
+    |     raise BaseExceptionGroup(
+    | BaseExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+    +-+---------------- 1 ----------------
+      | Traceback (most recent call last):
+      |   File "F:\������godot\manila-godot\tools\blender_mcp\run_mcp.py", line 47, in main
+      |     raise SystemExit(1)
+      | SystemExit: 1
+      +------------------------------------
